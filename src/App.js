@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Layout } from 'antd';
+import PageHeader from './template/Header';
+import PageFooter from './template/Footer';
+import Routing from "./route";
+import { BrowserRouter as Router } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import 'antd/dist/antd.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const { Header, Content, Footer } = Layout;
+var heightContent = "";
+export default class App extends Component {
+  render() {
+    heightContent = (window.innerHeight) + "px";
+    return (
+      <Router>
+        <Layout>
+          <Layout className="site-layout" style={{ minHeight: heightContent }}>
+              <Header> <PageHeader /> </Header>
+              <Content >
+                <Routing />
+              </Content>
+              <Footer style={{ textAlign: 'center' }}><PageFooter /></Footer>
+          </Layout>
+        </Layout>
+      </Router>
+    );
+  }
 }
-
-export default App;

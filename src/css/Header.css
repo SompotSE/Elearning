@@ -1,0 +1,32 @@
+#conflu{
+    background-color: #ffffff;
+}
+
+#row-header{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+    display: flex;
+    align-items: center;
+}
+
+#btn-header{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#btn-sty{
+    background-color: #6F6AFA;
+    border: none;
+    border-radius: 2mm;
+    box-shadow: 1px 2px 2px 0px rgba(0,0,0,.2);
+    margin-right: 2%;
+}
+
+#btn-sty1{
+    background-color: #6F6AFA;
+    border: none;
+    border-radius: 2mm;
+    box-shadow: 1px 2px 2px 0px rgba(0,0,0,.2);
+}

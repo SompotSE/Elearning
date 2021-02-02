@@ -3,6 +3,7 @@ import './App.css';
 import { Layout } from 'antd';
 import PageHeader from './template/Header';
 import PageFooter from './template/Footer';
+import PageHeader2 from './template/Header2';
 import Routing from "./route";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -18,7 +19,7 @@ export default class App extends Component {
       <Router>
         <Layout>
           <Layout className="site-layout" style={{ minHeight: heightContent }}>
-              <Header> <PageHeader /> </Header>
+             <PageHeader /><PageHeader2/>
               <Content style={{ marginLeft: "6%", marginRight: "6%"}} >
                 <Routing />
               </Content>

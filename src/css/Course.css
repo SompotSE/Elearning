@@ -28,3 +28,7 @@
     display: block;
     text-align: end;
 }
+
+#video-center {
+    text-align: center;
+}

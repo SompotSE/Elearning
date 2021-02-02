@@ -6,9 +6,14 @@ import { AiFillCheckSquare } from "react-icons/ai";
 import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
-// import v1 from '../../img/V1.png';
-// import v2 from '../../img/V2.png';
-// import v3 from '../../img/V3.png';
+import v1 from '../../img/V1.png';
+import v2 from '../../img/V2.png';
+import v3 from '../../img/V3.png';
+
+import course2 from '../../img/course2.png';
+import course3 from '../../img/course3.png';
+import course4 from '../../img/course4.png';
+import course5 from '../../img/course5.png';
 
 const { Panel } = Collapse;
 
@@ -86,8 +91,43 @@ export default class Course1 extends Component {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={12} md={12} xl={12}> </Col>
-                                    <Col xs={1} md={1} xl={1} id="icon-chack"></Col>
+                                    <Col xs={24} md={12} xl={12} id="video-center"><Image src={v1} fluid></Image></Col>
+                                    <Col xs={24} md={8} xl={8}>
+                                        <Row>รายละเอียด</Row>
+                                        <Row>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
+                                    </Col>
+                                </Row>
+
+                                <Row>
+                                    <Col xs={23} md={23} xl={23} id="sub-header"> 2. มาตรฐานอ้างอิง อธิบายถึงการอ้างอิงข้อกำหนดของมาตรฐาน ISO 9001:2015 </Col>
+                                    <Col xs={1} md={1} xl={1} id="icon-chack">
+                                        {
+                                            (1 === 2) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                        }
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={24} md={12} xl={12} id="video-center"><Image src={v2} fluid></Image></Col>
+                                    <Col xs={24} md={8} xl={8}>
+                                        <Row>รายละเอียด</Row>
+                                        <Row>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
+                                    </Col>
+                                </Row>
+
+                                <Row>
+                                    <Col xs={23} md={23} xl={23} id="sub-header"> 3. คำศัพท์และคำนิยาม อธิบายคำศัพท์และนิยาม ทั้งในส่วนของข้อกำหนดระบบบริหารคุณภาพทั่วไป และสำหรับเครื่องมือแพทย์ ซี่งอ้างอิงตาม ISO 9001:2015 </Col>
+                                    <Col xs={1} md={1} xl={1} id="icon-chack">
+                                        {
+                                            (1 === 2) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                        }
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={24} md={12} xl={12} id="video-center"><Image src={v3} fluid></Image></Col>
+                                    <Col xs={24} md={8} xl={8}>
+                                        <Row>รายละเอียด</Row>
+                                        <Row>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
+                                    </Col>
                                 </Row>
                             </Panel>
                             <Panel header="แบบทดสอบท้ายบทเรียน" key="3">
@@ -101,6 +141,18 @@ export default class Course1 extends Component {
                                 </Row>
                             </Panel>
                         </Collapse>
+                    </Col>
+                </Row>
+
+                <Row id="row-header">
+                    <Col xs={24} md={24} xl={24} id="font-header">หลักสูตรที่เกี่ยวข้อง</Col>
+                    <Col xs={24} md={24} xl={24} id="font-header">
+                        <Row>
+                            <Col xs={12} md={6} xl={6}><Image src={course2} style={{justifyContent: "space-between"}} fluid></Image></Col>
+                            <Col xs={12} md={6} xl={6}><Image src={course3} fluid></Image></Col>
+                            <Col xs={12} md={6} xl={6}><Image src={course4} fluid></Image></Col>
+                            <Col xs={12} md={6} xl={6}><Image src={course5} fluid></Image></Col>
+                        </Row>
                     </Col>
                 </Row>
             </Container>

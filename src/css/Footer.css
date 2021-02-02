@@ -1,0 +1,191 @@
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+    width: 100%;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.ant-layout-footer {
+    padding: 0px 0px 0px 0px !important;
+}
+
+#row-footer{
+    background-color: #FAFAFA;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+#col-footer1{
+    margin-top: 2.5%;
+    margin-bottom: 0.5%;
+}
+
+#col-footer2{
+    padding-left: 2%;
+    margin-top: 2.5%;
+    margin-bottom: 0.5%;
+}
+
+#col-footer3{
+    padding-left: 2%;
+    margin-top: 2.5%;
+    margin-bottom: 0.5%;
+}
+
+#col-footer4{
+    padding-left: 2%;
+    margin-top: 2.5%;
+    margin-bottom: 0.5%;
+}
+
+#header-footer{
+    font-size: medium;
+}
+
+/* notebook */
+@media screen and (min-width: 601px) {
+    #col-footer2{
+        padding-left: 4%;
+        margin-top: 2.5%;
+        margin-bottom: 0.5%;
+    }
+    
+    #col-footer3{
+        padding-left: 4%;
+        margin-top: 2.5%;
+        margin-bottom: 0.5%;
+    }
+    
+    #col-footer4{
+        padding-left: 4%;
+        margin-top: 2.5%;
+        margin-bottom: 0.5%;
+    }
+    #header-footer{
+        font-size: 16px;
+        margin-bottom: 8%;
+        font-weight: bold
+    }
+
+    #descript-footer{
+        font-size: 13px;
+    }
+    #descript1-footer{
+        font-size: 13px;
+        color: #FF7C00;
+    }
+    #descript2-footer{
+        font-size: 13px;
+        color: #FF7C00;
+        border-left: 1px solid #000000;
+        display: flex;
+        justify-content: center;
+    }
+    #descript-footer1{
+        margin-bottom: 10%;
+        font-size: 13px;
+    }
+    #descript-footer2{
+        font-size: 13px;
+        margin-bottom: 10%;
+    }
+}
+
+/* ipad pro */
+@media screen and (max-width: 1025px) {
+    #header-footer{
+        font-size: 12px;
+        margin-bottom: 8%;
+        font-weight: bold
+    }
+    #descript-footer{
+        font-size: 9px;
+    }
+    #descript1-footer{
+        font-size: 9px;
+        color: #FF7C00;
+    }
+    #descript2-footer{
+        font-size: 9px;
+        color: #FF7C00;
+        border-left: 1px solid #000000;
+        display: flex;
+        justify-content: center;
+    }
+    #descript-footer1{
+        margin-bottom: 9%;
+        font-size: 6px;
+    }
+    #descript-footer2{
+        font-size: 9px;
+        margin-bottom: 10%;
+    }
+}
+
+/* ipad */
+@media screen and (max-width: 768px) {
+    #header-footer{
+        font-size: 10px;
+        margin-bottom: 8%;
+        font-weight: bold
+    }
+    #descript-footer{
+        font-size: 6px;
+    }
+    #descript1-footer{
+        font-size: 5px;
+        color: #FF7C00;
+    }
+    #descript2-footer{
+        font-size: 5px;
+        color: #FF7C00;
+        border-left: 1px solid #000000;
+        display: flex;
+        justify-content: center;
+    }
+
+    #descript-footer1{
+        margin-bottom: 5%;
+        font-size: 5px;
+    }
+    #descript-footer2{
+        font-size: 6px;
+        margin-bottom: 10%;
+    }
+}
+
+/* telephone */
+@media screen and (max-width: 684px){
+    #header-footer{
+        font-size: 10px;
+        margin-bottom: 10%;
+        font-weight: bold
+    }
+    #descript-footer{
+        font-size: 6px;
+        margin-top: 16%;
+    }
+    #descript1-footer{
+        font-size: 3px;
+        color: #FF7C00;
+    }
+    #descript2-footer{
+        font-size: 3px;
+        color: #FF7C00;
+        border-left: 1px solid #000000;
+        display: flex;
+        justify-content: center;
+    }
+    #descript-footer1{
+        margin-bottom: 5%;
+        font-size: 6px;
+    }
+    #descript-footer2{
+        font-size: 6px;
+        margin-bottom: 10%;
+    }
+}
+
+
+

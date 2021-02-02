@@ -3,6 +3,9 @@ import { Container, Image } from 'react-bootstrap';
 import { Row, Col } from 'antd';
 import '../css/Footer.css';
 import iFooter from '../img/footer.png';
+import { FaFacebookF, FaInstagram, FaTwitter, FaFax } from "react-icons/fa";
+import { FiPhoneCall } from "react-icons/fi";
+import { IoIosMailOpen } from "react-icons/io";
 export default class Footer extends Component {
     constructor(props) {
         super(props);
@@ -35,15 +38,15 @@ export default class Footer extends Component {
                     </Col>
                     <Col xs={13} md={6} xl={6} id="col-footer3">
                         <Col xs={24} md={24} xl={24} id="header-footer">FOLLOW US</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer2">Facebook</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer2">Instragram</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer2">Twitter</Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer2"><FaFacebookF style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>Facebook</Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer2"><FaInstagram style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>Instragram</Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer2"><FaTwitter style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>Twitter</Col>
                     </Col>
                     <Col xs={11} md={6} xl={6} id="col-footer4">
                         <Col xs={24} md={24} xl={24} id="header-footer">ติดต่อสอบถาม</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer2">0 2644 8150</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer2">0 2644 8110</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer2">elearn@nstda.or.th</Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer2"><FiPhoneCall style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>0 2644 8150</Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer2"><FaFax style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>0 2644 8110</Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer2"><IoIosMailOpen style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>elearn@nstda.or.th</Col>
                     </Col>   
                 </Row>
             </Container>

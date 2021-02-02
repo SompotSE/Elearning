@@ -22,7 +22,7 @@ export default class App extends Component {
               <Content >
                 <Routing />
               </Content>
-              <Footer style={{ textAlign: 'center' }}><PageFooter /></Footer>
+              <Footer><PageFooter /></Footer>
           </Layout>
         </Layout>
       </Router>

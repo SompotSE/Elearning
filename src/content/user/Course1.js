@@ -15,6 +15,9 @@ import course3 from '../../img/course3.png';
 import course4 from '../../img/course4.png';
 import course5 from '../../img/course5.png';
 
+import incourse1 from '../../img/incourse1.svg';
+import incourse2 from '../../img/incourse2.svg';
+
 const { Panel } = Collapse;
 
 export default class Course1 extends Component {
@@ -148,10 +151,42 @@ export default class Course1 extends Component {
                     <Col xs={24} md={24} xl={24} id="font-header">หลักสูตรที่เกี่ยวข้อง</Col>
                     <Col xs={24} md={24} xl={24} id="font-header">
                         <Row>
-                            <Col xs={12} md={6} xl={6}><Image src={course2} style={{justifyContent: "space-between"}} fluid></Image></Col>
-                            <Col xs={12} md={6} xl={6}><Image src={course3} fluid></Image></Col>
-                            <Col xs={12} md={6} xl={6}><Image src={course4} fluid></Image></Col>
-                            <Col xs={12} md={6} xl={6}><Image src={course5} fluid></Image></Col>
+                            <Col xs={12} md={6} xl={6} id="course-menu">
+                                <Row id="course-menu">
+                                    <Image src={course2} id="img-course" fluid></Image>
+                                </Row>
+                                <Row id="course-menu">
+                                    <Image src={incourse2} fluid id="img-play"></Image>
+                                    <Image src={incourse1} fluid id="img-button"></Image>
+                                </Row>
+                            </Col>
+                            <Col xs={12} md={6} xl={6} id="course-menu">
+                                <Row id="course-menu">
+                                    <Image src={course3} id="img-course" fluid></Image>
+                                </Row>
+                                <Row id="course-menu">
+                                    <Image src={incourse2} fluid id="img-play"></Image>
+                                    <Image src={incourse1} fluid id="img-button"></Image>
+                                </Row>
+                            </Col>
+                            <Col xs={12} md={6} xl={6} id="course-menu">
+                                <Row id="course-menu">
+                                    <Image src={course4} id="img-course" fluid></Image>
+                                </Row>
+                                <Row id="course-menu">
+                                    <Image src={incourse2} fluid id="img-play"></Image>
+                                    <Image src={incourse1} fluid id="img-button"></Image>
+                                </Row>
+                            </Col>
+                            <Col xs={12} md={6} xl={6} id="course-menu">
+                                <Row id="course-menu">
+                                    <Image src={course5} id="img-course" fluid></Image>
+                                </Row>
+                                <Row id="course-menu">
+                                    <Image src={incourse2} fluid id="img-play"></Image>
+                                    <Image src={incourse1} fluid id="img-button"></Image>
+                                </Row>
+                            </Col>
                         </Row>
                     </Col>
                 </Row>

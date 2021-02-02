@@ -1,0 +1,14 @@
+<svg id="Submit_Check" data-name="Submit &gt; Check" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="188" height="56" viewBox="0 0 188 56">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Text_Mask" data-name="Text Mask" width="180" height="43" transform="translate(0.025 -0.271)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Rectangle_1525" data-name="Rectangle 1525" fill="#fff" stroke="#a8a8a8" stroke-width="8">
+    <rect width="188" height="56" rx="28" stroke="none"/>
+    <rect x="4" y="4" width="180" height="48" rx="24" fill="none"/>
+  </g>
+  <g id="Text" transform="translate(3.975 7.271)" clip-path="url(#clip-path)">
+    <text id="เข้าสู่หลักสูตร" transform="translate(26.025 29.729)" fill="#5a5a5a" font-size="24" font-family="LeelawadeeUI, Leelawadee UI"><tspan x="0" y="0">เข้าสู่หลักสูตร</tspan></text>
+  </g>
+</svg>

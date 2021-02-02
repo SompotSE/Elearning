@@ -32,3 +32,23 @@
 #video-center {
     text-align: center;
 }
+
+#course-menu {
+    text-align: center;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+#img-course {
+    justify-content: space-between; 
+    width: 90%;
+    max-width: 90%;
+}
+
+#img-play {
+    width: 20%;
+}
+
+#img-button {
+    width: 70%;
+}

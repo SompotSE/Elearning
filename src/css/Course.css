@@ -1,0 +1,30 @@
+#row-header {
+    margin-top: 1%;
+}
+
+#font-header {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+#font-detail {
+    font-size: 120%;
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    padding-left: 80px !important;
+    color: rgba(255, 253, 253, 0.85) !important;
+    font-size: 200%;
+    background-color: #32A0CE;
+}
+
+#sub-header {
+    background-color: #D6ECF5;
+    padding: 1%;
+    font-size: 140%;
+}
+
+#icon-chack {
+    display: block;
+    text-align: end;
+}

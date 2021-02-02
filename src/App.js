@@ -19,7 +19,7 @@ export default class App extends Component {
         <Layout>
           <Layout className="site-layout" style={{ minHeight: heightContent }}>
               <Header> <PageHeader /> </Header>
-              <Content >
+              <Content style={{ marginLeft: "6%", marginRight: "6%"}} >
                 <Routing />
               </Content>
               <Footer><PageFooter /></Footer>

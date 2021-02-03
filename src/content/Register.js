@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Image, Button } from 'react-bootstrap';
-import { Row, Col, Input, Checkbox, Form } from 'antd';
+import { Container, Image } from 'react-bootstrap';
+import { Row, Col, Input, Checkbox, Form, Button } from 'antd';
 import banner from '../img/register.png';
 // import { NavLink } from 'react-router-dom';
 import '../css/Register.css';
@@ -90,9 +90,9 @@ export default class Register extends Component {
                                             <span id="check-regis">ลงทะเบียนเพื่อรับข้อมูลทางอีเมล</span>
                                         </Checkbox>
                                     </Col>
-                                        <Col xs={24} md={24} xl={24} id="row-regis1">
-                                            <Button id="btn-regis">ลงทะเบียน</Button>
-                                        </Col>
+                                    <Col xs={24} md={24} xl={24} id="row-regis1">
+                                        <Button id="btn-regis">ลงทะเบียน</Button>
+                                    </Col>
                                     <Col xs={24} md={24} xl={24} id="row-regis1">คุณมีบัญชีอยู่แล้ว <span id="color-regis">ลงชื่อเข้าใช้</span> </Col>
                                 </Col>
                                 <Col xs={2} md={5} xl={5}></Col>

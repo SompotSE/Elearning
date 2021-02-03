@@ -1,0 +1,100 @@
+#Register{
+    margin-left: 0% !important;
+    margin-right: 0% !important;
+}
+
+#form-Regis{
+    background-color: #ffffff;
+}
+
+#form-register{
+    margin-left: 15%;
+    margin-right: 15%;        
+    margin-bottom: 3%;
+    margin-top: 5%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+}
+
+#form-input{
+    border-radius: 2mm;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 10%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.ant-form-item {
+    margin-bottom: 8px !important;
+}
+
+#form-header{
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 5%;
+    margin-top: 3%;
+}
+
+#row-regis{
+    margin-bottom: 5%;
+}
+
+#row-regis1{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+#btn-regis{
+    width: 100%;
+    background-color: #2C4893;
+}
+
+#color-regis{
+    color: #BB0000;
+    text-decoration-line: underline;
+}
+
+@media screen and (max-width: 684px){
+    #form-header{
+        font-size: large;
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        margin-bottom: 5%;
+        font-size: 14px;
+        margin-top: 3%;
+    }
+    #form-header1{
+        font-size: 12px;
+    }
+    #check-regis{
+        margin-bottom: 5%;
+        font-size: 6%;
+    }
+    #form-input{
+        border-radius: 2mm;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-left: 10%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        font-size: 10px;
+    }
+    #btn-regis{
+        width: 100%;
+        background-color: #2C4893;
+        font-size: 10px;
+    }
+    #row-regis1{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5%;
+        font-size: 6%;
+    }
+}

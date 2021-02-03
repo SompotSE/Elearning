@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import '../css/Header.css';
 import banner from '../img/banner.png';
 
-export default withRouter(class Header extends Component {
+export default withRouter(class Header2 extends Component {
     constructor(props) {
         super(props);
         this.state = {

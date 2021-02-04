@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Layout } from 'antd';
-// import PageHeader from './template/Header';
+import PageHeader from './template/Header';
 // import PageFooter from './template/Footer';
 // import PageHeader2 from './template/Header2';
 import Routing from "./route";
@@ -22,7 +22,7 @@ export default class App extends Component {
       <Router>
         <Layout>
           <Layout className="site-layout" style={{ minHeight: heightContent }}>
-            {/* < PageHeader /> */}
+            < PageHeader />
             {/* <PageHeader2 /> */}
             <Content >
               <Routing />

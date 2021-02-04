@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Image } from 'react-bootstrap';
 import { Row, Col, Progress } from 'antd';
-// import axios from 'axios';
+import axios from 'axios';
 import Cookies from 'universal-cookie';
+import swal from 'sweetalert';
 import '../../css/Course.css';
 import vdoclip from '../../img/vdoclip.png';
 
@@ -15,7 +16,11 @@ import course5 from '../../img/course5.png';
 import incourse1 from '../../img/incourse1.svg';
 import incourse2 from '../../img/incourse2.svg';
 
+import { config } from '../../config/config';
+
 const cookies = new Cookies();
+
+const ip = config.ipServer;
 
 export default class HomeUser extends Component {
     constructor(props) {
@@ -23,38 +28,39 @@ export default class HomeUser extends Component {
         this.state = {
             token: "",
             email: "",
-            header: []
+            header: [],
+            allTopic: []
         };
     }
 
     componentWillMount() {
         this.setState({
-            token: cookies.get('token_user', { path: '/Admin/' }),
-            email: cookies.get('email', { path: '/Admin/' }),
+            token: cookies.get('token_user', { path: '/' }),
+            email: cookies.get('email', { path: '/' }),
             header: {
-                token: cookies.get('token_user', { path: '/Admin/' }),
-                email: cookies.get('email', { path: '/Admin/' })
+                token: cookies.get('token_user', { path: '/' }),
+                email: cookies.get('email', { path: '/' })
             }
         });
     }
 
     async componentDidMount() {
-        // var url_new = ip + "/UserCourse/find";
-        // const newP = await (await axios.get(url_new, { headers: { "token": this.state.token, "key": this.state.user?.username } })).data;
-        // if ((newP?.statusCode === 500) || (newP?.statusCode === 400)) {
-        //   swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
-        //     this.setState({
-        //       token: cookies.remove('token_key', { path: '/Admin/' }),
-        //       user: cookies.remove('user', { path: '/Admin/' })
-        //     });
-        //     window.location.replace('/Admin/Login', false);
-        //   });
-        // } else {
-        //   this.setState({
-        //     newP: newP,
-        //   });
-        // }
-      }
+        var url_all_topic = ip + "/UserTopic/find/all";
+        const alltopic = await (await axios.get(url_all_topic, { headers: { "token": this.state.token, "key": this.state.user?.username } })).data;
+        if (!alltopic?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
+        } else {
+            this.setState({
+                allTopic: alltopic.data
+            });
+        }
+    }
 
     render() {
         return (

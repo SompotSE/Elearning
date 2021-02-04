@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { Container, Image } from 'react-bootstrap';
 import { Row, Col, Breadcrumb, Progress, Collapse } from 'antd';
 import { HomeOutlined, SnippetsOutlined, RightCircleTwoTone, BorderOutlined } from '@ant-design/icons';
+import { withRouter } from "react-router-dom";
 import { AiFillCheckSquare } from "react-icons/ai";
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import swal from 'sweetalert';
 import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
+import { NavLink } from 'react-router-dom';
 import v1 from '../../img/V1.png';
 import v2 from '../../img/V2.png';
 import v3 from '../../img/V3.png';
@@ -35,10 +38,10 @@ const TopicCode2 = "TOP100002";
 // const TopicCode5 = "TOP100005";
 // const TopicCode6 = "TOP100006";
 
-// const ExamCodePre = "EXAM10001";
-// const ExamCodePost = "EXAM10002";
+const ExamCodePre = "EXAM10001";
+const ExamCodePost = "EXAM10002";
 
-export default class Course1 extends Component {
+export default withRouter(class Course1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -46,36 +49,71 @@ export default class Course1 extends Component {
             email: "",
             header: [],
             course: [],
-            topic: []
+            topicAll: [],
+            examPost: [],
+            percentExamPost: 0
         };
 
         this.onDownlode = this.onDownlode.bind(this);
         this.onCreateTopic = this.onCreateTopic.bind(this);
+        this.onExamPost = this.onExamPost.bind(this)
     }
 
     componentWillMount() {
         this.setState({
-            token: cookies.get('token_user', { path: '/Admin/' }),
-            email: cookies.get('email', { path: '/Admin/' }),
+            token: cookies.get('token_user', { path: '/' }),
+            email: cookies.get('email', { path: '/' }),
             header: {
-                token: cookies.get('token_user', { path: '/Admin/' }),
-                key: cookies.get('email', { path: '/Admin/' })
+                token: cookies.get('token_user', { path: '/' }),
+                key: cookies.get('email', { path: '/' })
             }
         });
     }
 
     async componentDidMount() {
+        var url_exam_pre = ip + "/UserExamination/find/" + CourseCode + "/" + ExamCodePre;
+        const exam_pre = await (await axios.get(url_exam_pre, { headers: this.state.header })).data;
+        if (!exam_pre?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
+        } else {
+            if (exam_pre.data.length <= 0) {
+                this.props.history.push("/ExamPre");
+            }
+        }
+
+        var url_exam_post = ip + "/UserExamination/find/" + CourseCode + "/" + ExamCodePost;
+        const exam_post = await (await axios.get(url_exam_post, { headers: this.state.header })).data;
+        if (!exam_post?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
+        } else {
+            this.setState({
+                examPost: exam_post.data,
+                percentExamPost: Math.max.apply(Math, exam_post.data.map(function (item) { return item.percenScore; }))
+            });
+        }
+
         var url_course = ip + "/UserCourse/find/" + CourseCode;
         const course = await (await axios.get(url_course, { headers: this.state.header })).data;
         if (!course?.status) {
-            alert("testttttt")
-            //   swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
-            //     this.setState({
-            //       token: cookies.remove('token_key', { path: '/Admin/' }),
-            //       user: cookies.remove('user', { path: '/Admin/' })
-            //     });
-            //     window.location.replace('/Admin/Login', false);
-            //   });
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
         } else {
             this.setState({
                 course: course.data[0],
@@ -85,20 +123,47 @@ export default class Course1 extends Component {
         var url_topic = ip + "/UserTopic/find/" + CourseCode;
         const topic = await (await axios.get(url_topic, { headers: this.state.header })).data;
         if (!topic?.status) {
-            alert("testttttt")
-            //   swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
-            //     this.setState({
-            //       token: cookies.remove('token_key', { path: '/Admin/' }),
-            //       user: cookies.remove('user', { path: '/Admin/' })
-            //     });
-            //     window.location.replace('/Admin/Login', false);
-            //   });
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
         } else {
             this.setState({
                 topicAll: topic.data
             });
         }
 
+        this.updateTimer = setInterval(() => this.timeCourse(), 10000);
+
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.updateTimer);
+    }
+
+    async timeCourse() {
+        console.log("testttttttttt")
+        const updateTime = {
+            time: 10
+        };
+
+        var url_update_time = ip + "/UserCourse/update/time/" + CourseCode;
+        const update_time = await (await axios.put(url_update_time, updateTime, { headers: this.state.header })).data;
+
+        if (!update_time?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
+        } else {
+
+        }
     }
 
     async onDownlode() {
@@ -109,28 +174,26 @@ export default class Course1 extends Component {
 
             var url_update_topic = ip + "/UserCourse/update/" + CourseCode;
             const update_topic = await (await axios.put(url_update_topic, downlodeDoc, { headers: this.state.header })).data;
-            console.log(update_topic, " topic")
+
             if (!update_topic?.status) {
-                alert("อัพเดดไม่สำเร็จ")
-                //   swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
-                //     this.setState({
-                //       token: cookies.remove('token_key', { path: '/Admin/' }),
-                //       user: cookies.remove('user', { path: '/Admin/' })
-                //     });
-                //     window.location.replace('/Admin/Login', false);
-                //   });
+                swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                    this.setState({
+                        token: cookies.remove('token_user', { path: '/' }),
+                        user: cookies.remove('email', { path: '/' })
+                    });
+                    window.location.replace('/Login', false);
+                });
             } else {
                 var url_course = ip + "/UserCourse/find/" + CourseCode;
                 const course = await (await axios.get(url_course, { headers: this.state.header })).data;
                 if (!course?.status) {
-                    alert("testttttt")
-                    //   swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
-                    //     this.setState({
-                    //       token: cookies.remove('token_key', { path: '/Admin/' }),
-                    //       user: cookies.remove('user', { path: '/Admin/' })
-                    //     });
-                    //     window.location.replace('/Admin/Login', false);
-                    //   });
+                    swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                        this.setState({
+                            token: cookies.remove('token_user', { path: '/' }),
+                            user: cookies.remove('email', { path: '/' })
+                        });
+                        window.location.replace('/Login', false);
+                    });
                 } else {
                     this.setState({
                         course: course.data[0],
@@ -151,29 +214,27 @@ export default class Course1 extends Component {
             };
 
             var url_create_topic = ip + "/UserTopic/create";
-            const create_topic = await(await axios.post(url_create_topic, createTopic, { headers: this.state.header })).data;
-            console.log(create_topic, " topic")
+            const create_topic = await (await axios.post(url_create_topic, createTopic, { headers: this.state.header })).data;
+
             if (!create_topic?.status) {
-                alert("อัพเดดไม่สำเร็จ")
-                //   swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
-                //     this.setState({
-                //       token: cookies.remove('token_key', { path: '/Admin/' }),
-                //       user: cookies.remove('user', { path: '/Admin/' })
-                //     });
-                //     window.location.replace('/Admin/Login', false);
-                //   });
+                swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                    this.setState({
+                        token: cookies.remove('token_user', { path: '/' }),
+                        user: cookies.remove('email', { path: '/' })
+                    });
+                    window.location.replace('/Login', false);
+                });
             } else {
                 var url_topic = ip + "/UserTopic/find/" + CourseCode;
-                const topic = await(await axios.get(url_topic, { headers: this.state.header })).data;
+                const topic = await (await axios.get(url_topic, { headers: this.state.header })).data;
                 if (!topic?.status) {
-                    alert("testttttt")
-                    //   swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
-                    //     this.setState({
-                    //       token: cookies.remove('token_key', { path: '/Admin/' }),
-                    //       user: cookies.remove('user', { path: '/Admin/' })
-                    //     });
-                    //     window.location.replace('/Admin/Login', false);
-                    //   });
+                    swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                        this.setState({
+                            token: cookies.remove('token_user', { path: '/' }),
+                            user: cookies.remove('email', { path: '/' })
+                        });
+                        window.location.replace('/Login', false);
+                    });
                 } else {
                     this.setState({
                         topicAll: topic.data
@@ -183,6 +244,14 @@ export default class Course1 extends Component {
         }
     }
 
+    onExamPost() {
+        if (this.state.examPost.length !== 3) {
+            this.props.history.push("/ExamPost");
+        } else {
+            swal("Warning!", "จำนวนครั้งในการทำข้อสอบครบแล้ว", "warning").then((value) => {
+            });
+        }
+    }
 
     render() {
         return (
@@ -190,7 +259,7 @@ export default class Course1 extends Component {
                 <Row id="row-header">
                     <Breadcrumb>
                         <Breadcrumb.Item>
-                            <HomeOutlined /><span>Home</span>
+                            <NavLink to="/HomeUser"><HomeOutlined /><span>Home</span></NavLink>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
                             <SnippetsOutlined /><span>หลักสูตรที่ 1</span>
@@ -224,7 +293,7 @@ export default class Course1 extends Component {
                                 <Row id="font-detail">กล่าวถึงวัตถุประสงค์ของมาตรฐาน ชี้แจงแนวคิดของมาตรฐาน พื้นฐานแนวคิดตามมาตรฐานระบบคุณภาพ</Row>
                             </Col>
                             <Col xs={5} md={5} xl={5}>
-                                <Progress type="circle" percent={75} strokeWidth={13} />
+                                <Progress type="circle" percent={this.state.percentExamPost} strokeWidth={13} />
                             </Col>
                         </Row>
                     </Col>
@@ -299,10 +368,10 @@ export default class Course1 extends Component {
                             </Panel>
                             <Panel header="แบบทดสอบท้ายบทเรียน" key="3">
                                 <Row>
-                                    <Col xs={23} md={23} xl={23} id="sub-header" style={{ cursor: "pointer" }}> - ทำแบบทดสอบ </Col>
+                                    <Col xs={23} md={23} xl={23} id="sub-header" style={{ cursor: "pointer" }} onClick={() => { this.onExamPost() }}> - ทำแบบทดสอบ </Col>
                                     <Col xs={1} md={1} xl={1} id="icon-chack">
                                         {
-                                            (1 === 2) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                            (this.state.examPost.length > 0) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -357,4 +426,4 @@ export default class Course1 extends Component {
             </Container>
         );
     }
-}
+})

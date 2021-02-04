@@ -12,7 +12,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import 'antd/dist/antd.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const { Content , Footer} = Layout;
+const { Content, Footer } = Layout;
 // const { Login } = Layout1;
 var heightContent = "";
 export default class App extends Component {

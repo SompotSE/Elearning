@@ -1,0 +1,42 @@
+#ForgetMobile{
+    background-color: #FFFFFF;
+}
+
+#forgetMobile{
+    margin-top: 10%;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7%;
+}
+
+#forgetDescrip{
+    font-size: 4px;
+    margin-bottom: 7%
+}
+
+#login-header{
+    font-size: 14px;
+    display: flex;
+    margin-bottom: 3%;
+    margin-top: 5%;
+}
+
+#form-logininput{
+    font-size: 14px;
+    border-radius: 2mm;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 10%;
+    margin-bottom: 3%;
+}
+
+#ft-footer{
+    margin-top: 7%;
+    margin-bottom: 5%;
+    font-size: 8px;
+    display: flex;
+    justify-content: center;
+    color: #C4C4C4;
+}

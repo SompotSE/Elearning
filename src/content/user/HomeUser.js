@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Image } from 'react-bootstrap';
 import { Row, Col, Progress } from 'antd';
+// import axios from 'axios';
+import Cookies from 'universal-cookie';
 import '../../css/Course.css';
 import vdoclip from '../../img/vdoclip.png';
 
@@ -13,7 +15,47 @@ import course5 from '../../img/course5.png';
 import incourse1 from '../../img/incourse1.svg';
 import incourse2 from '../../img/incourse2.svg';
 
+const cookies = new Cookies();
+
 export default class HomeUser extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            token: "",
+            email: "",
+            header: []
+        };
+    }
+
+    componentWillMount() {
+        this.setState({
+            token: cookies.get('token_user', { path: '/Admin/' }),
+            email: cookies.get('email', { path: '/Admin/' }),
+            header: {
+                token: cookies.get('token_user', { path: '/Admin/' }),
+                email: cookies.get('email', { path: '/Admin/' })
+            }
+        });
+    }
+
+    async componentDidMount() {
+        // var url_new = ip + "/UserCourse/find";
+        // const newP = await (await axios.get(url_new, { headers: { "token": this.state.token, "key": this.state.user?.username } })).data;
+        // if ((newP?.statusCode === 500) || (newP?.statusCode === 400)) {
+        //   swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+        //     this.setState({
+        //       token: cookies.remove('token_key', { path: '/Admin/' }),
+        //       user: cookies.remove('user', { path: '/Admin/' })
+        //     });
+        //     window.location.replace('/Admin/Login', false);
+        //   });
+        // } else {
+        //   this.setState({
+        //     newP: newP,
+        //   });
+        // }
+      }
+
     render() {
         return (
             <Container fluid>
@@ -25,7 +67,7 @@ export default class HomeUser extends Component {
                     </Col>
                     <Col xs={24} md={10} xl={10}>
                         <Row>ความคืบหน้าการเรียนรู้</Row>
-                        <Row><Progress percent={30} /></Row>
+                        <Row><Progress percent={30} strokeWidth={20} /></Row>
                         <Row>
                             <Col xs={6} md={6} xl={6}>หลักสูตรที่ 1</Col>
                             <Col xs={18} md={18} xl={18}><Progress percent={30} /></Col>

@@ -58,6 +58,7 @@
 #color-regis{
     color: #BB0000;
     text-decoration-line: underline;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 684px){

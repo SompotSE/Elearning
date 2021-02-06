@@ -22,12 +22,22 @@ export default class App extends Component {
       <Router>
         <Layout>
           <Layout className="site-layout" style={{ minHeight: heightContent }}>
-            < PageHeader />
-            <PageHeader2 />
+            {(window.innerWidth >= 1200 && (window.location.pathname === "/Register" || window.location.pathname === "/register")) ?
+              <></>
+              :
+              <>
+                < PageHeader />
+                <PageHeader2 />
+              </>
+            }
             <Content >
               <Routing />
             </Content>
-            <Footer><PageFooter /></Footer>
+            {(window.innerWidth >= 1200 && (window.location.pathname === "/Register" || window.location.pathname === "/register")) ?
+              <></>
+              :
+              <Footer style={{ marginTop: "2%" }}><PageFooter /></Footer>
+            }
           </Layout>
         </Layout>
       </Router>

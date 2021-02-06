@@ -38,6 +38,9 @@ export default withRouter(class Header extends Component {
             email: "",
             header: [],
             statusSend: false,
+            statusSendChangePass: false,
+            statusSendForgetPass: false,
+
             isModalVisible: false,
             isModalForgetPass: false,
             isModalchangePass: false,
@@ -53,6 +56,12 @@ export default withRouter(class Header extends Component {
         this.handleCancelForgetPass = this.handleCancelForgetPass.bind(this);
         this.showConfirmMail = this.showConfirmMail.bind(this);
         this.showchangePass = this.showchangePass.bind(this);
+        this.handleCancelChangePass = this.handleCancelChangePass.bind(this);
+        // this.handleCancelCPSuccessPass = this.handleCancelCPSuccessPass.bind(this);
+        this.onChangePass = this.onChangePass.bind(this);
+        this.onLoginAgain = this.onLoginAgain.bind(this);
+        this.onForgetPass = this.onForgetPass.bind(this);
+        this.confirmMailClose = this.confirmMailClose.bind(this);
     }
 
     componentWillMount() {
@@ -64,16 +73,49 @@ export default withRouter(class Header extends Component {
                 key: cookies.get('email', { path: '/' })
             }
         });
-        
+
     }
 
     showModal() {
-        this.setState({ isModalVisible: true });
+        this.setState({ isModalVisible: true, isModalCPSuccess: false });
     };
 
     showForgetPass() {
         this.setState({ isModalForgetPass: true, isModalVisible: false });
     }
+
+    showConfirmMail() {
+        this.setState({ isModalConfirmMail: true, isModalForgetPass: false, isModalVisible: false });
+    }
+
+    showchangePass() {
+        this.setState({ isModalchangePass: true });
+    }
+
+    showCPSuccess() {
+        this.setState({ isModalCPSuccess: true, isModalchangePass: false });
+    }
+
+    handleCancelLogin() {
+        this.setState({ isModalVisible: false });
+    }
+
+    handleCancelForgetPass() {
+        this.setState({ isModalForgetPass: false });
+    }
+
+    handleCancelChangePass() {
+        this.setState({ isModalchangePass: false });
+    }
+
+    confirmMailClose() {
+        this.setState({ isModalConfirmMail: false });
+        window.location.replace('/Home', false);
+    }
+
+    // handleCancelCPSuccessPass() {
+    //     this.setState({ isModalCPSuccess: false });
+    // }
 
     async onLogin(values) {
         this.setState({
@@ -100,7 +142,7 @@ export default withRouter(class Header extends Component {
             });
             window.location.replace('/HomeUser', false);
         } else {
-            if(login?.message === "You Not Confirm Email") {
+            if (login?.message === "You Not Confirm Email") {
                 swal("Warning!", "กรุณายืนยัน Email ก่อนเข้าสู่ระบบ", "warning").then((value) => {
                     this.setState({
                         statusSend: false
@@ -116,31 +158,112 @@ export default withRouter(class Header extends Component {
         }
     }
 
+    async onChangePass(values) {
+        this.setState({
+            statusSendChangePass: true
+        });
+
+        if (values.newPassword === values.newPasswordCon) {
+            const data = {
+                password: values.oldPassword,
+                passwordNew: values.newPassword
+            };
+
+            var url_change_pass = ip + "/User/ChangePassword";
+            const change_pass = await (await axios.post(url_change_pass, data, { headers: this.state.header })).data;
+
+            if (!change_pass?.status) {
+                if (change_pass?.message === "Password Wrong") {
+                    swal("Warning!", "Password ผิดพลาด", "warning").then((value) => {
+                        this.setState({
+                            statusSendChangePass: false
+                        });
+                    });
+                } else if ((change_pass?.message === "Authorization Expire") || (change_pass?.message === "Authorization Fall") || (change_pass?.message === "Authorization Wrong")) {
+                    swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                        this.setState({
+                            token: cookies.remove('token_user', { path: '/' }),
+                            user: cookies.remove('user', { path: '/' }),
+                            email: cookies.remove('email', { path: '/' })
+                        });
+                        window.location.replace('/Login', false);
+                    });
+                } else {
+                    swal("Error!", "เกิดข้อผิดพลาด \nกรุณาลองใหม่", "error").then((value) => {
+                        this.setState({
+                            statusSendChangePass: false
+                        });
+                    });
+                }
+            } else {
+                this.showCPSuccess();
+            }
+        }
+        else {
+            swal("Warning!", "Password ใหม่ไม่ตรงกัน", "warning").then((value) => {
+                this.setState({
+                    statusSendChangePass: false
+                });
+            });
+        }
+    }
+
+    async onForgetPass(values) {
+        console.log(values, " values");
+
+        this.setState({
+            statusSendForgetPass: true
+        });
+
+        const data = {
+            email: values.email
+        };
+
+        var url_forget_pass = ip + "/ForgetPassword/ForgetPassword";
+        const forget_pass = await (await axios.post(url_forget_pass, data)).data;
+
+        if (!forget_pass?.status) {
+            if (forget_pass?.message === "Email Not Already") {
+                swal("Warning!", "ไม่พบ Email ในระบบ \n กรุณาลองใหม่อีกครับ", "warning").then((value) => {
+                    this.setState({
+                        statusSendForgetPass: false
+                    });
+                });
+            } else if ((forget_pass?.message === "Authorization Expire") || (forget_pass?.message === "Authorization Fall") || (forget_pass?.message === "Authorization Wrong")) {
+                swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                    this.setState({
+                        token: cookies.remove('token_user', { path: '/' }),
+                        user: cookies.remove('user', { path: '/' }),
+                        email: cookies.remove('email', { path: '/' })
+                    });
+                    window.location.replace('/Login', false);
+                });
+            } else {
+                swal("Error!", "เกิดข้อผิดพลาด \n กรุณาลองใหม่", "error").then((value) => {
+                    this.setState({
+                        statusSendForgetPass: false
+                    });
+                });
+            }
+        } else {
+            this.showConfirmMail();
+        }
+    }
+
     onClickRegister() {
-        if(window.innerWidth >= 1200) {
+        if (window.innerWidth >= 684) {
             this.setState({ isModalVisible: false });
             window.location.replace('/Register', false);
-        } 
+        }
     }
 
-    handleCancelLogin() {
-        this.setState({ isModalVisible: false });
-    }
-
-    handleCancelForgetPass() {
-        this.setState({ isModalForgetPass: false });
-    }
-
-    showConfirmMail(){
-        this.setState({isModalConfirmMail: true, isModalForgetPass: false, isModalVisible: false});
-    }
-
-    showchangePass(){
-        this.setState({ isModalchangePass: true });
-    }
-
-    showCPSuccess(){
-        this.setState({ isModalCPSuccess: true, isModalchangePass: false });
+    onLoginAgain() {
+        this.setState({
+            token: cookies.remove('token_user', { path: '/' }),
+            user: cookies.remove('user', { path: '/' }),
+            email: cookies.remove('email', { path: '/' })
+        });
+        window.location.replace('/Home', false);
     }
 
     render() {
@@ -164,7 +287,11 @@ export default withRouter(class Header extends Component {
                                     <NavLink to="/Register"><Button type="primary" id="btn-sty1">สมัครสมาชิก</Button></NavLink>
                                 }
 
-<Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                {window.innerWidth >= 684 ?
+                                    <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                    :
+                                    <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                }
                             </Col>
                         </Row>
                     </Col>
@@ -233,82 +360,100 @@ export default withRouter(class Header extends Component {
                     visible={this.state.isModalForgetPass}
                     onCancel={this.handleCancelForgetPass}
                     width={560}>
-                        <Form>
-                            <Row>
-                                <Col xs={3} md={3} xl={3}></Col>
-                                <Col xs={18} md={18} xl={18}>
-                                    <Col xs={24} md={24} xl={24} id="ftHeader1">คุณลืมรหัสผ่านใช่หรือไม่</Col>
-                                    <Col xs={24} md={24} xl={24} id="LoginDescrip">ระบบจะส่งลิงค์สำหรับเปลี่ยนรหัสผ่านให้คุณผ่านทางอีเมลล์</Col>
-                                    <Row  id="login-header">อีเมลล์</Row>
-                                        <Col xs={24} md={24} xl={24}>
-                                            <Form.Item
-                                                name="ft-email"
-                                                rules={[
-                                                {
-                                                    type: 'email',
-                                                    message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
-                                                },
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณากรอกอีเมลล์',
-                                                },
-                                                ]}>
-                                                <Input placeholder="กรอกอีเมลล์" id="form-logininput"/>
-                                            </Form.Item>
-                                        </Col>
-                                    <Col id="row-btnForgetPass">
-                                        <Button id="btn-fotgetPass" onClick={() => this.showConfirmMail()}>ตรวจสอบ</Button>
-                                    </Col>
+                    <Form onFinish={this.onForgetPass}>
+                        <Row>
+                            <Col xs={3} md={3} xl={3}></Col>
+                            <Col xs={18} md={18} xl={18}>
+                                <Col xs={24} md={24} xl={24} id="ftHeader1">คุณลืมรหัสผ่านใช่หรือไม่</Col>
+                                <Col xs={24} md={24} xl={24} id="LoginDescrip">ระบบจะส่งลิงค์สำหรับเปลี่ยนรหัสผ่านให้คุณผ่านทางอีเมลล์</Col>
+                                <Row id="login-header">อีเมลล์</Row>
+                                <Col xs={24} md={24} xl={24}>
+                                    <Form.Item
+                                        name="email"
+                                        rules={[
+                                            {
+                                                type: 'email',
+                                                message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
+                                            },
+                                            {
+                                                required: true,
+                                                message: 'กรุณากรอกอีเมลล์',
+                                            },
+                                        ]}>
+                                        <Input placeholder="กรอกอีเมลล์" id="form-logininput" />
+                                    </Form.Item>
                                 </Col>
-                                <Col xs={3} md={3} xl={3}></Col>
-                            </Row>
-                            <Col xs={24} md={24} xl={24} id="ft-footer"><QuestionCircleOutlined style={{fontSize: "10px", display: "flex", alignItems: "center", marginRight: "0.5%"}}/>หากคุณลืมอีเมลที่ใช้ในการลงทะเบียนกรุณาติดต่อที่ 082-222-2232 หรือทางอีเมลที่ Dairc.kmutnb@gmail.com</Col>
-                        </Form>
+                                <Col id="row-btnForgetPass">
+                                    {
+                                        (!this.state.statusSendForgetPass) ? <Button htmlType="submit" id="btn-fotgetPass">ตรวจสอบ</Button> : <Spin />
+                                    }
+                                </Col>
+                            </Col>
+                            <Col xs={3} md={3} xl={3}></Col>
+                        </Row>
+                        <Col xs={24} md={24} xl={24} id="ft-footer"><QuestionCircleOutlined style={{ fontSize: "10px", display: "flex", alignItems: "center", marginRight: "0.5%" }} />หากคุณลืมอีเมลที่ใช้ในการลงทะเบียนกรุณาติดต่อที่ 082-222-2232 หรือทางอีเมลที่ Dairc.kmutnb@gmail.com</Col>
+                    </Form>
                 </Modal>
 
                 <Modal
                     title={null}
                     footer={null}
                     visible={this.state.isModalchangePass}
+                    onCancel={this.handleCancelChangePass}
                     width={450}>
-                        <Form>
-                            <Row id="row-CP">
-                                <Col xs={4} md={4} xl={4}></Col>
-                                <Col xs={16} md={16} xl={16}>
-                                    <Col xs={24} md={24} xl={24} id="CPHeader">สร้างรหัสผ่านใหม่</Col>
-                                    <Row  id="CPDescript">รหัสผ่าน</Row>
-                                        <Col xs={24} md={24} xl={24}>
-                                            <Form.Item
-                                                name="newPassword"
-                                                rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณากรอกรหัสผ่าน!',
-                                                },
-                                                ]}>
-                                                <Input.Password  placeholder="รหัสผ่าน" id="CPInput" />
-                                            </Form.Item>   
-                                        </Col>
-                                        <Row  id="CPDescript1">รหัสผ่านใหม่</Row>
-                                        <Col xs={24} md={24} xl={24}>
-                                            <Form.Item
-                                                name="newPassword1"
-                                                rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณากรอกรหัสผ่าน!',
-                                                },
-                                                ]}>
-                                                <Input.Password  placeholder="รหัสผ่าน" id="CPInput" />
-                                            </Form.Item>   
-                                        </Col>
-                                        <Row>
-                                            <Button id="btn-CP" onClick={() => this.showCPSuccess()}>เปลี่ยนรหัสผ่าน</Button>
-                                        </Row>
+                    <Form onFinish={this.onChangePass}>
+                        <Row id="row-CP">
+                            <Col xs={4} md={4} xl={4}></Col>
+                            <Col xs={16} md={16} xl={16}>
+                                <Col xs={24} md={24} xl={24} id="CPHeader">สร้างรหัสผ่านใหม่</Col>
+                                <Row id="CPDescript">รหัสผ่านเดิม</Row>
+                                <Col xs={24} md={24} xl={24}>
+                                    <Form.Item
+                                        name="oldPassword"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'กรุณากรอกรหัสเดิม!',
+                                            },
+                                        ]}>
+                                        <Input.Password placeholder="รหัสผ่านเดิม" id="CPInput" />
+                                    </Form.Item>
                                 </Col>
-                                <Col xs={4} md={4} xl={4}></Col>
-                            </Row>
-                        </Form>
+                                <Row id="CPDescript">รหัสผ่านใหม่</Row>
+                                <Col xs={24} md={24} xl={24}>
+                                    <Form.Item
+                                        name="newPassword"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'กรุณากรอกรหัสผ่านใหม่!',
+                                            },
+                                        ]}>
+                                        <Input.Password placeholder="รหัสผ่านใหม่" id="CPInput" />
+                                    </Form.Item>
+                                </Col>
+                                <Row id="CPDescript1">ยืนยันรหัสผ่านใหม่</Row>
+                                <Col xs={24} md={24} xl={24}>
+                                    <Form.Item
+                                        name="newPasswordCon"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'กรุณากรอกยืนยันรหัสผ่านใหม่!',
+                                            },
+                                        ]}>
+                                        <Input.Password placeholder="ยืนยันรหัสผ่านใหม่" id="CPInput" />
+                                    </Form.Item>
+                                </Col>
+                                <Row id="spin-center">
+                                    {
+                                        (!this.state.statusSendChangePass) ? <Button htmlType="submit" id="btn-CP">เปลี่ยนรหัสผ่าน</Button> : <Spin />
+                                    }
+                                </Row>
+                            </Col>
+                            <Col xs={4} md={4} xl={4}></Col>
+                        </Row>
+                    </Form>
                 </Modal>
 
                 <Modal
@@ -316,43 +461,43 @@ export default withRouter(class Header extends Component {
                     footer={null}
                     visible={this.state.isModalCPSuccess}
                     width={450}>
-                        <Row id="Modal-Chanepass">
-                            <Col xs={4} md={4} xl={4}></Col>
-                            <Col xs={16} md={16} xl={16}>
-                                <Row id="Row-Modal">
-                                    <FaCheckCircle style={{fontSize: "70px", color: "#8DC53E"}}/>
-                                </Row>
-                                <Row id="Modal-CP">เปลี่ยนรหัสผ่านสำเร็จ</Row>
-                                <Row id="Modal-CP1">กรุณาเข้าสู่ระบบอีกครั้ง</Row>
-                                <Row id="Row-CP">
-                                    <Button id="btn-ModalCP1">เข้าสู่ระบบ</Button>
-                                </Row>
-                            </Col>
-                            <Col xs={4} md={4} xl={4}></Col>
-                        </Row>
-                    </Modal>
+                    <Row id="Modal-Chanepass">
+                        <Col xs={4} md={4} xl={4}></Col>
+                        <Col xs={16} md={16} xl={16}>
+                            <Row id="Row-Modal">
+                                <FaCheckCircle style={{ fontSize: "70px", color: "#8DC53E" }} />
+                            </Row>
+                            <Row id="Modal-CP">เปลี่ยนรหัสผ่านสำเร็จ</Row>
+                            <Row id="Modal-CP1">กรุณาเข้าสู่ระบบอีกครั้ง</Row>
+                            <Row id="Row-CP">
+                                <Button id="btn-ModalCP1" onClick={() => this.onLoginAgain()}>เข้าสู่ระบบ</Button>
+                            </Row>
+                        </Col>
+                        <Col xs={4} md={4} xl={4}></Col>
+                    </Row>
+                </Modal>
 
-                    <Modal
-                        title={null}
-                        footer={null}
-                        visible={this.state.isModalConfirmMail}
-                        width={450}>
-                        <Row id="Modal-Chanepass">
-                            <Col xs={4} md={4} xl={4}></Col>
-                            <Col xs={16} md={16} xl={16}>
-                                <Row id="Row-Modal">
-                                    <Image src={letter} fluid/>
-                                </Row>
-                                <Row id="Modal-cfMail">ตรวจสอบอีเมลล์ของคุณ</Row>
-                                <Row id="Modal-cfMail1">เราได้ส่งคำแนะนำในการกู้คืนรหัสผ่านไปยังอีเมลล์ของคุณ</Row>
-                                <Row id="Row-CP">
-                                    <Button id="btn-ModalCf1">เสร็จสิ้น</Button>
-                                </Row>
-                            </Col>
-                            <Col xs={4} md={4} xl={4}></Col>
-                            <Col xs={24} md={24} xl={24}id="ft-footer"><QuestionCircleOutlined style={{fontSize: "10px", display: "flex", alignItems: "center", marginRight: "0.5%"}}/>หากไม่ได้รับอีเมลล์? โปรดตรวจสอบอีเมลล์ของคุณหรือลองใช้ที่อยู่อีเมลล์อื่น</Col>
-                        </Row>
-                    </Modal>
+                <Modal
+                    title={null}
+                    footer={null}
+                    visible={this.state.isModalConfirmMail}
+                    width={450}>
+                    <Row id="Modal-Chanepass">
+                        <Col xs={4} md={4} xl={4}></Col>
+                        <Col xs={16} md={16} xl={16}>
+                            <Row id="Row-Modal">
+                                <Image src={letter} fluid />
+                            </Row>
+                            <Row id="Modal-cfMail">ตรวจสอบอีเมลล์ของคุณ</Row>
+                            <Row id="Modal-cfMail1">เราได้ส่งคำแนะนำในการกู้คืนรหัสผ่านไปยังอีเมลล์ของคุณ</Row>
+                            <Row id="Row-CP">
+                                <Button id="btn-ModalCf1" onClick={this.confirmMailClose}>เสร็จสิ้น</Button>
+                            </Row>
+                        </Col>
+                        <Col xs={4} md={4} xl={4}></Col>
+                        <Col xs={24} md={24} xl={24} id="ft-footer"><QuestionCircleOutlined style={{ fontSize: "10px", display: "flex", alignItems: "center", marginRight: "0.5%" }} />หากไม่ได้รับอีเมลล์? โปรดตรวจสอบอีเมลล์ของคุณหรือลองใช้ที่อยู่อีเมลล์อื่น</Col>
+                    </Row>
+                </Modal>
             </Container>
         )
     }

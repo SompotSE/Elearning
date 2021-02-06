@@ -3,11 +3,13 @@ import { Container, Image } from 'react-bootstrap';
 import { Row, Col, Input, Checkbox, Form, Button, Spin, Modal } from 'antd';
 import banner from '../img/register.png';
 // import { NavLink } from 'react-router-dom';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import '../css/Register.css';
 import { config } from '../config/config';
+import letter from "../img/letter.png";
 
 const cookies = new Cookies();
 
@@ -22,6 +24,8 @@ export default class Register extends Component {
             header: [],
             statusSend: false,
             isModalVisible: false,
+            isModalForgetPass: false,
+            isModalConfirmMail: false,
             statusSendLogin: false
         }
 
@@ -29,6 +33,11 @@ export default class Register extends Component {
         this.handleCancelLogin = this.handleCancelLogin.bind(this);
         this.onLogin = this.onLogin.bind(this);
         this.onClickLogin = this.onClickLogin.bind(this);
+        this.showForgetPass = this.showForgetPass.bind(this);
+        this.handleCancelForgetPass = this.handleCancelForgetPass.bind(this);
+        this.showConfirmMail = this.showConfirmMail.bind(this);
+        this.onForgetPass = this.onForgetPass.bind(this);
+        this.confirmMailClose = this.confirmMailClose.bind(this);
     }
 
     componentWillMount() {
@@ -44,6 +53,18 @@ export default class Register extends Component {
 
     handleCancelLogin() {
         this.setState({ isModalVisible: false });
+    }
+
+    handleCancelForgetPass() {
+        this.setState({ isModalForgetPass: false });
+    }
+
+    showForgetPass() {
+        this.setState({ isModalForgetPass: true, isModalVisible: false });
+    }
+
+    showConfirmMail() {
+        this.setState({ isModalConfirmMail: true, isModalForgetPass: false, isModalVisible: false });
     }
 
     async onRegister(values) {
@@ -139,6 +160,53 @@ export default class Register extends Component {
                 });
             }
         }
+    }
+
+    async onForgetPass(values) {
+        console.log(values, " values");
+
+        this.setState({
+            statusSendForgetPass: true
+        });
+
+        const data = {
+            email: values.email
+        };
+
+        var url_forget_pass = ip + "/ForgetPassword/ForgetPassword";
+        const forget_pass = await (await axios.post(url_forget_pass, data)).data;
+
+        if (!forget_pass?.status) {
+            if (forget_pass?.message === "Email Not Already") {
+                swal("Warning!", "ไม่พบ Email ในระบบ \n กรุณาลองใหม่อีกครับ", "warning").then((value) => {
+                    this.setState({
+                        statusSendForgetPass: false
+                    });
+                });
+            } else if ((forget_pass?.message === "Authorization Expire") || (forget_pass?.message === "Authorization Fall") || (forget_pass?.message === "Authorization Wrong")) {
+                swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                    this.setState({
+                        token: cookies.remove('token_user', { path: '/' }),
+                        user: cookies.remove('user', { path: '/' }),
+                        email: cookies.remove('email', { path: '/' })
+                    });
+                    window.location.replace('/Login', false);
+                });
+            } else {
+                swal("Error!", "เกิดข้อผิดพลาด \n กรุณาลองใหม่", "error").then((value) => {
+                    this.setState({
+                        statusSendForgetPass: false
+                    });
+                });
+            }
+        } else {
+            this.showConfirmMail();
+        }
+    }
+
+    confirmMailClose() {
+        this.setState({ isModalConfirmMail: false });
+        window.location.replace('/Home', false);
     }
 
     render() {
@@ -296,6 +364,70 @@ export default class Register extends Component {
                         </Row>
                     </Form>
                 </Modal>
+
+                <Modal
+                    title={null}
+                    footer={null}
+                    visible={this.state.isModalForgetPass}
+                    onCancel={this.handleCancelForgetPass}
+                    width={560}>
+                    <Form onFinish={this.onForgetPass}>
+                        <Row>
+                            <Col xs={3} md={3} xl={3}></Col>
+                            <Col xs={18} md={18} xl={18}>
+                                <Col xs={24} md={24} xl={24} id="ftHeader1">คุณลืมรหัสผ่านใช่หรือไม่</Col>
+                                <Col xs={24} md={24} xl={24} id="LoginDescrip">ระบบจะส่งลิงค์สำหรับเปลี่ยนรหัสผ่านให้คุณผ่านทางอีเมลล์</Col>
+                                <Row id="login-header">อีเมลล์</Row>
+                                <Col xs={24} md={24} xl={24}>
+                                    <Form.Item
+                                        name="email"
+                                        rules={[
+                                            {
+                                                type: 'email',
+                                                message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
+                                            },
+                                            {
+                                                required: true,
+                                                message: 'กรุณากรอกอีเมลล์',
+                                            },
+                                        ]}>
+                                        <Input placeholder="กรอกอีเมลล์" id="form-logininput" />
+                                    </Form.Item>
+                                </Col>
+                                <Col id="row-btnForgetPass">
+                                    {
+                                        (!this.state.statusSendForgetPass) ? <Button htmlType="submit" id="btn-fotgetPass">ตรวจสอบ</Button> : <Spin />
+                                    }
+                                </Col>
+                            </Col>
+                            <Col xs={3} md={3} xl={3}></Col>
+                        </Row>
+                        <Col xs={24} md={24} xl={24} id="ft-footer"><QuestionCircleOutlined style={{ fontSize: "10px", display: "flex", alignItems: "center", marginRight: "0.5%" }} />หากคุณลืมอีเมลที่ใช้ในการลงทะเบียนกรุณาติดต่อที่ 082-222-2232 หรือทางอีเมลที่ Dairc.kmutnb@gmail.com</Col>
+                    </Form>
+                </Modal>
+
+                <Modal
+                    title={null}
+                    footer={null}
+                    visible={this.state.isModalConfirmMail}
+                    width={450}>
+                    <Row id="Modal-Chanepass">
+                        <Col xs={4} md={4} xl={4}></Col>
+                        <Col xs={16} md={16} xl={16}>
+                            <Row id="Row-Modal">
+                                <Image src={letter} fluid />
+                            </Row>
+                            <Row id="Modal-cfMail">ตรวจสอบอีเมลล์ของคุณ</Row>
+                            <Row id="Modal-cfMail1">เราได้ส่งคำแนะนำในการกู้คืนรหัสผ่านไปยังอีเมลล์ของคุณ</Row>
+                            <Row id="Row-CP">
+                                <Button id="btn-ModalCf1" onClick={this.confirmMailClose}>เสร็จสิ้น</Button>
+                            </Row>
+                        </Col>
+                        <Col xs={4} md={4} xl={4}></Col>
+                        <Col xs={24} md={24} xl={24} id="ft-footer"><QuestionCircleOutlined style={{ fontSize: "10px", display: "flex", alignItems: "center", marginRight: "0.5%" }} />หากไม่ได้รับอีเมลล์? โปรดตรวจสอบอีเมลล์ของคุณหรือลองใช้ที่อยู่อีเมลล์อื่น</Col>
+                    </Row>
+                </Modal>
+
             </Container>
         );
     }

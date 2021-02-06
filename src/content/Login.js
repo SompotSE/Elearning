@@ -124,7 +124,7 @@ export default class Login extends Component {
                                 }
                             </Col>
                             <Col xs={24} md={24} xl={24} id="row-login">
-                                <span id="ft-pass">ลืมรหัสผ่าน?</span>
+                                <NavLink to="/ForgetPass"><span id="ft-pass">ลืมรหัสผ่าน?</span></NavLink>
                             </Col>
                             <Col xs={24} md={24} xl={24} id="row-login1"> คุณยังไม่มีบัญชี <NavLink to="/Register"><span id="link-regis">  ลงทะเบียนเข้าใช้ </span></NavLink>
                             </Col>

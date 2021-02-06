@@ -23,19 +23,19 @@
 
 #col-footer2{
     padding-left: 2%;
-    margin-top: 2.5%;
+    margin-top: 5%;
     margin-bottom: 0.5%;
 }
 
 #col-footer3{
     padding-left: 2%;
-    margin-top: 2.5%;
+    margin-top: 5%;
     margin-bottom: 0.5%;
 }
 
 #col-footer4{
     padding-left: 2%;
-    margin-top: 2.5%;
+    margin-top: 5%;
     margin-bottom: 0.5%;
 }
 
@@ -47,19 +47,19 @@
 @media screen and (min-width: 601px) {
     #col-footer2{
         padding-left: 4%;
-        margin-top: 2.5%;
+        margin-top: 5%;
         margin-bottom: 0.5%;
     }
     
     #col-footer3{
         padding-left: 4%;
-        margin-top: 2.5%;
+        margin-top: 5%;
         margin-bottom: 0.5%;
     }
     
     #col-footer4{
         padding-left: 4%;
-        margin-top: 2.5%;
+        margin-top: 5%;
         margin-bottom: 0.5%;
     }
     #header-footer{

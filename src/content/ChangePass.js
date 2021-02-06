@@ -1,68 +1,86 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-// import { Row, Col, Input, Form, Button } from 'antd';
-import '../css/Login.css';
-
+import { Row, Col, Input, Form, Button, Modal } from 'antd';
+import '../css/ChangePass.css';
+import { FaCheckCircle } from "react-icons/fa";
 export default class ChangePass extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isModalVisible: false,
         }
+
+        this.showModal = this.showModal.bind(this);
+    }
+
+    showModal(){
+        this.setState({ isModalVisible: true });
     }
 
     render() {
 
         return (
             <Container fluid id="LoginMobile">
-                    {/* <Form>
-                        <Row id="login-mobile">
-                            <Col xs={2} md={2} xl={2}></Col>
-                            <Col xs={20} md={20} xl={20}>
-                                <Col xs={24} md={24} xl={24} id="LoginHeader">เข้าสู่ระบบ</Col>
-                                <Col xs={24} md={24} xl={24} id="LoginDescrip">เมื่อคุณเข้าสู่ระบบคุณได้ทำตาม<span id="LoginDescrip-si">ข้อตกลงผู้ใช้</span></Col>
-                                <Row  id="login-header">อีเมลล์</Row>
+                    <Form>
+                            <Row id="row-CP">
+                                <Col xs={4} md={4} xl={4}></Col>
+                                <Col xs={16} md={16} xl={16}>
+                                    <Col xs={24} md={24} xl={24} id="CPHeaderMobile">สร้างรหัสผ่านใหม่</Col>
+                                    <Row  id="CPDescript">รหัสผ่าน</Row>
                                         <Col xs={24} md={24} xl={24}>
                                             <Form.Item
-                                                name="email"
-                                                rules={[
-                                                {
-                                                    type: 'email',
-                                                    message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
-                                                },
-                                                {
-                                                    required: true,
-                                                    message: 'กรุณากรอกอีเมลล์',
-                                                },
-                                                ]}>
-                                                <Input placeholder="อีเมลล์" id="form-logininput"/>
-                                            </Form.Item>
-                                            </Col>
-                                    <Row  id="login-header">รหัสผ่าน</Row>
-                                        <Col xs={24} md={24} xl={24}>
-                                            <Form.Item
-                                                name="password"
+                                                name="newPassword"
                                                 rules={[
                                                 {
                                                     required: true,
                                                     message: 'กรุณากรอกรหัสผ่าน!',
                                                 },
                                                 ]}>
-                                                <Input type="password" placeholder="รหัสผ่าน" id="form-logininput"/>
+                                                <Input.Password  placeholder="รหัสผ่าน" id="CPInput" />
                                             </Form.Item>   
                                         </Col>
-                                    <Col xs={24} md={24} xl={24} id="row-login">
-                                        <Button id="btn-login">SIGN IN</Button>
-                                    </Col>   
-                                    <Col xs={24} md={24} xl={24} id="row-login">
-                                            <span id="ft-pass">ลืมรหัสผ่าน?</span>
-                                    </Col>
-                                    <Col xs={24} md={24} xl={24} id="row-login1">
-                                        คุณยังไม่มีบัญชี  <span id="link-regis">  ลงทะเบียนเข้าใช้ </span> 
-                                    </Col>
+                                        <Row  id="CPDescript1">รหัสผ่านใหม่</Row>
+                                        <Col xs={24} md={24} xl={24}>
+                                            <Form.Item
+                                                name="newPassword1"
+                                                rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'กรุณากรอกรหัสผ่าน!',
+                                                },
+                                                ]}>
+                                                <Input.Password  placeholder="รหัสผ่าน" id="CPInput" />
+                                            </Form.Item>   
+                                        </Col>
+                                        <Row>
+                                            <Button id="btn-CP" onClick={() => this.showModal()}>เปลี่ยนรหัสผ่าน</Button>
+                                        </Row>
+                                </Col>
+                                <Col xs={4} md={4} xl={4}></Col>
+                            </Row>
+                        </Form>
+                <Modal
+                    title={null}
+                    footer={null}
+                    visible={this.state.isModalVisible}
+                    width={250}>
+                        <Row>
+                            <Col xs={2} md={2} xl={2}></Col>
+                            <Col xs={24} md={24} xl={24}>
+                                <Row id="Row-Modal">
+                                    <FaCheckCircle style={{fontSize: "70px", color: "#8DC53E"}}/>
+                                </Row>
+                                <Row id="Row-CP">เปลี่ยนรหัสผ่านสำเร็จ</Row>
+                                <Row id="Row-CP1">กรุณาเข้าสู่ระบบอีกครั้ง</Row>
+                                <Row id="Row-CP">
+                                    <Button id="btn-CP1">เข้าสู่ระบบ</Button>
+                                </Row>
                             </Col>
                             <Col xs={2} md={2} xl={2}></Col>
                         </Row>
-                    </Form> */}
+                </Modal>
+
+
             </Container>
         )
     }

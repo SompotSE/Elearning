@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Image } from 'react-bootstrap';
-import { Row, Col, Button, Modal, Form, Input, Spin } from 'antd';
+import { Row, Col, Button, Modal, Form, Input, Spin, Dropdown, Menu } from 'antd';
 import { withRouter } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import '../css/Header.css';
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { QuestionCircleOutlined, UserOutlined } from '@ant-design/icons';
 import { config } from '../config/config';
 import { FaCheckCircle } from "react-icons/fa";
 import letter from "../img/letter.png";
@@ -35,6 +35,7 @@ export default withRouter(class Header extends Component {
         super(props);
         this.state = {
             token: "",
+            user: [],
             email: "",
             header: [],
             statusSend: false,
@@ -67,6 +68,7 @@ export default withRouter(class Header extends Component {
     componentWillMount() {
         this.setState({
             token: cookies.get('token_user', { path: '/' }),
+            user: cookies.get('user', { path: '/' }),
             email: cookies.get('email', { path: '/' }),
             header: {
                 token: cookies.get('token_user', { path: '/' }),
@@ -276,21 +278,42 @@ export default withRouter(class Header extends Component {
                     <Col xs={6} md={6} xl={6}>
                         <Row style={{ justifyContent: "space-between" }}>
                             <Col xs={24} md={24} xl={24} id="btn-header">
-                                {window.innerWidth >= 684 ?
-                                    <Button type="primary" id="btn-sty" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button>
-                                    :
-                                    <NavLink to="/Login"><Button type="primary" id="btn-sty">เข้าสู่ระบบ</Button></NavLink>
-                                }
-                                {window.innerWidth >= 1200 ?
-                                    <Button type="primary" id="btn-sty1" onClick={() => this.onClickRegister()}>สมัครสมาชิก</Button>
-                                    :
-                                    <NavLink to="/Register"><Button type="primary" id="btn-sty1">สมัครสมาชิก</Button></NavLink>
-                                }
+                                {
+                                    (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
+                                        <>
+                                            {window.innerWidth >= 684 ?
+                                                <Button type="primary" id="btn-sty" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button>
+                                                :
+                                                <NavLink to="/Login"><Button type="primary" id="btn-sty">เข้าสู่ระบบ</Button></NavLink>
+                                            }
+                                            {window.innerWidth >= 1200 ?
+                                                <Button type="primary" id="btn-sty1" onClick={() => this.onClickRegister()}>สมัครสมาชิก</Button>
+                                                :
+                                                <NavLink to="/Register"><Button type="primary" id="btn-sty1">สมัครสมาชิก</Button></NavLink>
+                                            }
+                                        </>
+                                        :
+                                        <>
+                                            <UserOutlined /> <span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span> | <span style={{ paddingRight: "5%" }}></span>
+                                            <Dropdown overlay={
+                                                <Menu>
+                                                    <Menu.Item key="0">
+                                                        {window.innerWidth >= 684 ?
+                                                            <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                            :
+                                                            <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                        }
+                                                    </Menu.Item>
+                                                    <Menu.Divider />
+                                                    <Menu.Item key="1">
+                                                        <NavLink to="/Logout"><Button type="primary" id="btn-sty">ออกจากระบบ</Button></NavLink >
+                                                    </Menu.Item>
+                                                </Menu>
+                                            } placement="topRight" arrow>
+                                                <Button>menu</Button>
+                                            </Dropdown>
 
-                                {window.innerWidth >= 684 ?
-                                    <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
-                                    :
-                                    <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                        </>
                                 }
                             </Col>
                         </Row>

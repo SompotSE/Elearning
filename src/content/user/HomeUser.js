@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Container, Image } from 'react-bootstrap';
-import { Row, Col, Progress } from 'antd';
+import { Row, Col, Progress, Button } from 'antd';
 import { withRouter } from "react-router-dom";
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import '../../css/HomeUser.css';
-import vdoclip from '../../img/vdoclip.png';
+import ReactPlayer from 'react-player';
+import testV1 from '../../video/test.mp4';
+import { AiFillPlayCircle } from "react-icons/ai";
 
 import course1 from '../../img/course1.png';
 import course2 from '../../img/course2.png';
@@ -14,8 +16,7 @@ import course3 from '../../img/course3.png';
 import course4 from '../../img/course4.png';
 import course5 from '../../img/course5.png';
 
-import incourse1 from '../../img/incourse1.svg';
-import incourse2 from '../../img/incourse2.svg';
+// import incourse2 from '../../img/incourse2.svg';
 
 import { config } from '../../config/config';
 
@@ -125,89 +126,110 @@ export default withRouter(class HomeUser extends Component {
 
     render() {
         return (
-            <Container fluid>
+            <Container fluid id="bg-HomeUser">
+                <Row id="margin-bg">
                 <Row id="row-userheader">
-                    <Col xs={24} md={12} xl={12} id="video-center">
-                        <Image src={vdoclip} fluid></Image>
+                    <Col xs={24} md={12} xl={12}>
+                        <Row id="video-center">
+                            <ReactPlayer
+                                url={testV1}
+                                className='react-player'
+                                width='80%'
+                                height='max-content'
+                                controls={true}
+                                playsinline={true}
+                                playIcon={true}
+                                pip={false}
+                                // playing={this.state.playingTopic3}
+                                // onProgress={this.onProgressVedioTopic3}
+                                // onEnded={() => { this.onEndedVedio(TopicCode3) }}
+                                // onPlay={() => { this.onCreateTopic(TopicCode3) }}
+                                fluid />
+                        </Row>
+                        <Row id="img-btn">
+                            <AiFillPlayCircle id="img-play" style={{width: "10%"}}/>
+                            <div>เริ่มเรียนหลักสูตรของคุณต่อ</div>
+                        </Row>
                     </Col>
                     <Col xs={0} md={1} xl={1} id="line">
                     </Col>
                     <Col xs={24} md={10} xl={10}>
-                        <Row>ความคืบหน้าการเรียนรู้</Row>
-                        <Row><Progress percent={parseInt((100 * this.state.sumtopuser) / this.state.sumtopall)} strokeWidth={20} /></Row>
+                        <Row id="head-headcouse">ความคืบหน้าการเรียนรู้</Row>
+                        <Row id="headcouse"><Progress percent={parseInt((100 * this.state.sumtopuser) / this.state.sumtopall)} strokeWidth={20} /></Row>
                         <Row>
-                            <Col xs={6} md={6} xl={6}>หลักสูตรที่ 1</Col>
+                            <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 1</Col>
                             <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course1[0]?.countuser) / this.state.course1[0]?.countall)} /></Col>
                         </Row>
                         <Row>
-                            <Col xs={6} md={6} xl={6}>หลักสูตรที่ 2</Col>
+                            <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 2</Col>
                             <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course2[0]?.countuser) / this.state.course2[0]?.countall)} /></Col>
                         </Row>
                         <Row>
-                            <Col xs={6} md={6} xl={6}>หลักสูตรที่ 3</Col>
+                            <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 3</Col>
                             <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course3[0]?.countuser) / this.state.course3[0]?.countall)} /></Col>
                         </Row>
                         <Row>
-                            <Col xs={6} md={6} xl={6}>หลักสูตรที่ 4</Col>
+                            <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 4</Col>
                             <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course4[0]?.countuser) / this.state.course4[0]?.countall)} /></Col>
                         </Row>
                         <Row>
-                            <Col xs={6} md={6} xl={6}>หลักสูตรที่ 5</Col>
+                            <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 5</Col>
                             <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course5[0]?.countuser) / this.state.course5[0]?.countall)} /></Col>
                         </Row>
                     </Col>
                 </Row>
-
-                <Row>
-                    <Col xs={0} md={2} xl={2} id="course-menu">
+                    
+                <Row id="row-imgcourse">
+                    <Col xs={0} md={0} xl={0} id="course-menu">
                     </Col>
                     <Col xs={12} md={4} xl={4} id="course-menu">
                         <Row id="course-menu">
                             <Image src={course1} id="img-course" fluid style={{ cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>
                         </Row>
-                        <Row id="course-menu">
-                            <Image src={incourse2} fluid id="img-play" style={{ cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>
-                            <Image src={incourse1} fluid id="img-button" style={{ cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>
+                        <Row id="course-menu1">
+                            <AiFillPlayCircle id="img-play" onClick={() => { this.onClicktoCourse(CourseCode1) }}/>
+                            <Button id="btn-tocourse" onClick={() => { this.onClicktoCourse(CourseCode1) }}>เข้าสู่หลักสูตร</Button>
                         </Row>
                     </Col>
                     <Col xs={12} md={4} xl={4} id="course-menu">
                         <Row id="course-menu">
                             <Image src={course2} id="img-course" fluid style={{ cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode2) }}></Image>
                         </Row>
-                        <Row id="course-menu">
-                            <Image src={incourse2} fluid id="img-play" style={{ cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode2) }}></Image>
-                            <Image src={incourse1} fluid id="img-button" style={{ cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode2) }}></Image>
+                        <Row id="course-menu1">
+                            <AiFillPlayCircle id="img-play" onClick={() => { this.onClicktoCourse(CourseCode2) }}/>
+                            <Button id="btn-tocourse" onClick={() => { this.onClicktoCourse(CourseCode2) }}>เข้าสู่หลักสูตร</Button>
                         </Row>
                     </Col>
                     <Col xs={12} md={4} xl={4} id="course-menu">
                         <Row id="course-menu">
                             <Image src={course3} id="img-course" fluid></Image>
                         </Row>
-                        <Row id="course-menu">
-                            <Image src={incourse2} fluid id="img-play"></Image>
-                            <Image src={incourse1} fluid id="img-button"></Image>
+                        <Row id="course-menu1">
+                            <AiFillPlayCircle id="img-play"/>
+                            <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                         </Row>
                     </Col>
                     <Col xs={12} md={4} xl={4} id="course-menu">
                         <Row id="course-menu">
                             <Image src={course4} id="img-course" fluid></Image>
                         </Row>
-                        <Row id="course-menu">
-                            <Image src={incourse2} fluid id="img-play"></Image>
-                            <Image src={incourse1} fluid id="img-button"></Image>
+                        <Row id="course-menu1">
+                            <AiFillPlayCircle id="img-play"/>
+                            <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                         </Row>
                     </Col>
                     <Col xs={12} md={4} xl={4} id="course-menu">
                         <Row id="course-menu">
                             <Image src={course5} id="img-course" fluid></Image>
                         </Row>
-                        <Row id="course-menu">
-                            <Image src={incourse2} fluid id="img-play"></Image>
-                            <Image src={incourse1} fluid id="img-button"></Image>
+                        <Row id="course-menu1">
+                            <AiFillPlayCircle id="img-play"/>
+                            <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                         </Row>
                     </Col>
-                    <Col xs={0} md={2} xl={2} id="course-menu">
+                    <Col xs={0} md={0} xl={0} id="course-menu">
                     </Col>
+                </Row>
                 </Row>
             </Container>
         );

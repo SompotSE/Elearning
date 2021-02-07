@@ -1,11 +1,34 @@
-#row-userheader {
-    margin-top: 1%;
+#bg-HomeUser{
+    background-color: #ffffff;
+}
+
+#margin-bg{
     margin-left: 6%;
     margin-right: 6%;
 }
 
+#row-userheader {
+    padding-top: 3%;
+    margin-left: 6%;
+    margin-bottom: 3%;
+}
+
 #video-center {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+#img-btn{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10%;
+    align-items: center;
+}
+
+#img-button {
+    width: 90%;
 }
 
 #course-menu {
@@ -14,15 +37,27 @@
     margin-top: 1%;
 }
 
+#course-menu1 {
+    text-align: center;
+    justify-content: flex-end;
+    margin-top: 4%;
+    padding-right: 6%;
+    align-items: center;
+}
+
 #img-course {
     justify-content: space-between; 
     width: 90%;
     max-width: 90%;
 }
 
-#img-play {
-    width: 20%;
-}
+/* #img-play1 {
+    cursor: "pointer";
+    color: #DD403B;
+    margin-right: 1%;
+    width: fit-content;
+    font-size: 40px;
+} */
 
 #img-button {
     width: 70%;
@@ -32,29 +67,127 @@
     border-left: 2px solid #3A4145;
 }
 
-/* #font-header {
-    font-size: 200%;
-    font-weight: bold;
+#head-headcouse{
+    color: #6F6AFA;
+    font-size: 20px;
+    margin-bottom: 2%;
+    margin-top: 3%;
 }
 
-#font-detail {
-    font-size: 120%;
+#headcouse{
+    font-size: 16px;
+    margin-bottom: 2%;
 }
 
-.ant-collapse > .ant-collapse-item > .ant-collapse-header {
-    padding-left: 80px !important;
-    color: rgba(255, 253, 253, 0.85) !important;
-    font-size: 200%;
-    background-color: #32A0CE;
+#row-imgcourse{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
 }
 
-#sub-header {
-    background-color: #D6ECF5;
-    padding: 1%;
-    font-size: 140%;
+/* notebook */
+@media screen and (min-width: 601px) {
+    #headcouse{
+        font-size: 16px;
+        margin-bottom: 2%;
+    }
+    #btn-tocourse{
+        border-radius: 4mm;
+        border: 3px solid #A8A8A8;
+        width: max-content;
+        color: #000000;
+        padding: 5%;
+        display: flex;
+        align-items: center;
+        font-size: 16px !important;
+    }  
+    #img-play {
+        cursor: "pointer";
+        font-size: 40px;
+        color: #DD403B;
+        margin-right: 1%;
+    }
 }
 
-#icon-chack {
-    display: block;
-    text-align: end;
-} */
+/* ipad pro */
+@media screen and (max-width: 1025px) {
+    #headcouse{
+        font-size: 16px;
+        margin-bottom: 2%;
+    }
+    #btn-tocourse{
+        border-radius: 4mm;
+        border: 3px solid #A8A8A8;
+        width: max-content;
+        color: #000000;
+        padding: 5%;
+        display: flex;
+        align-items: center;
+        font-size: 14px !important;
+    }
+    #img-play {
+        cursor: "pointer";
+        width: 40px;
+        color: #DD403B;
+        margin-right: 1%;
+    }
+}
+
+/* ipad */
+@media screen and (max-width: 768px) {
+    #headcouse{
+        font-size: 12px;
+        margin-bottom: 2%;
+    }
+    #btn-tocourse{
+        border-radius: 4mm;
+        border: 3px solid #A8A8A8;
+        width: max-content;
+        color: #000000;
+        padding: 5%;
+        display: flex;
+        align-items: center;
+        font-size: 8px !important;
+    }
+    #img-play {
+        cursor: "pointer";
+        width: 30px;
+        color: #DD403B;
+        margin-right: 1%;
+    }
+}
+
+/* telephone */
+@media screen and (max-width: 684px){
+    #headcouse{
+        font-size: 12px;
+        margin-bottom: 2%;
+    }
+    #btn-tocourse{
+        border-radius: 4mm;
+        border: 3px solid #A8A8A8;
+        width: max-content;
+        color: #000000;
+        padding: 5%;
+        display: flex;
+        align-items: center;
+        font-size: 8px !important;
+    }
+    #img-play {
+        cursor: "pointer";
+        height: 20%;
+        color: #DD403B;
+        margin-right: 1%;
+    }
+}
+
+#btn-tocourse{
+    border-radius: 4mm;
+    border: 3px solid #A8A8A8;
+    width: max-content;
+    color: #000000;
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}

@@ -43,6 +43,14 @@
     font-size: medium;
 }
 
+.ant-layout-footer {
+    /* padding: 24px 50px; */
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    background: #f0f2f5;
+    margin-top: 0% !important;
+}
+
 /* notebook */
 @media screen and (min-width: 601px) {
     #col-footer2{

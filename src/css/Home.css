@@ -125,3 +125,10 @@
         color: #6F6AFA;
     }
 }
+
+#home-video{
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+    align-items: center;
+}

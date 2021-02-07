@@ -546,18 +546,25 @@ export default withRouter(class Course1 extends Component {
                                     </Col>
                                 </Row>
                             </Panel>
-                            <Panel header="แบบประเมิน" key="4">
-                                <Row>
-                                    <Col xs={23} md={23} xl={23} id="sub-header" style={{ cursor: "pointer" }}
-                                    //onClick={() => { this.onExamPost() }}
-                                    > - ทำแบบประเมิน </Col>
-                                    <Col xs={1} md={1} xl={1} id="icon-chack">
-                                        {
-                                            (1 === 2) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
-                                        }
-                                    </Col>
-                                </Row>
-                            </Panel>
+                            {
+                                (this.state.examPost.length > 0) ?
+                                    <Panel header="แบบประเมิน" key="4">
+                                        <Row>
+                                            <Col xs={23} md={23} xl={23} id="sub-header" style={{ cursor: "pointer" }}
+                                            //onClick={() => { this.onExamPost() }}
+                                            > - ทำแบบประเมิน </Col>
+                                            <Col xs={1} md={1} xl={1} id="icon-chack">
+                                                {
+                                                    (1 === 2) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                                }
+                                            </Col>
+                                        </Row>
+                                    </Panel>
+                                    :
+                                    <>
+                                    </>
+                            }
+
                         </Collapse>
                     </Col>
                 </Row>

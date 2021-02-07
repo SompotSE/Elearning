@@ -7,13 +7,14 @@ import { AiFillCheckSquare } from "react-icons/ai";
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
+import ReactPlayer from 'react-player';
 import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
-import v1 from '../../img/V1.png';
-import v2 from '../../img/V2.png';
-import v3 from '../../img/V3.png';
+// import v1 from '../../img/V1.png';
+// import v2 from '../../img/V2.png';
+// import v3 from '../../img/V3.png';
 
 import course2 from '../../img/course2.png';
 import course3 from '../../img/course3.png';
@@ -22,6 +23,8 @@ import course5 from '../../img/course5.png';
 
 import incourse1 from '../../img/incourse1.svg';
 import incourse2 from '../../img/incourse2.svg';
+
+import testV1 from '../../video/test.mp4';
 
 import { config } from '../../config/config';
 
@@ -33,13 +36,17 @@ const CourseCode = "COURSE1001";
 
 const TopicCode1 = "TOP100001";
 const TopicCode2 = "TOP100002";
-// const TopicCode3 = "TOP100003";
+const TopicCode3 = "TOP100003";
 // const TopicCode4 = "TOP100004";
 // const TopicCode5 = "TOP100005";
 // const TopicCode6 = "TOP100006";
 
 // const ExamCodePre = "EXAM10001";
 const ExamCodePost = "EXAM10002";
+
+var timeTopic1 = 0;
+var timeTopic2 = 0;
+var timeTopic3 = 0;
 
 export default withRouter(class Course1 extends Component {
     constructor(props) {
@@ -50,13 +57,24 @@ export default withRouter(class Course1 extends Component {
             header: [],
             course: [],
             topicAll: [],
+
+            playingTopic1: false,
+            playingTopic2: false,
+            playingTopic3: false,
+
             examPost: [],
             percentExamPost: 0
         };
 
         this.onDownlode = this.onDownlode.bind(this);
         this.onCreateTopic = this.onCreateTopic.bind(this);
-        this.onExamPost = this.onExamPost.bind(this)
+        this.onExamPost = this.onExamPost.bind(this);
+        this.onProgressVedioTopic1 = this.onProgressVedioTopic1.bind(this);
+        this.onProgressVedioTopic2 = this.onProgressVedioTopic2.bind(this);
+        this.onProgressVedioTopic3 = this.onProgressVedioTopic3.bind(this);
+        this.onEndedVedio = this.onEndedVedio.bind(this);
+        this.playingVedio = this.playingVedio.bind(this);
+        this.updateTimeTopic = this.updateTimeTopic.bind(this);
     }
 
     componentWillMount() {
@@ -209,7 +227,23 @@ export default withRouter(class Course1 extends Component {
         }
     }
 
+    playingVedio(topicCode) {
+        var playTopic1 = false;
+        var playTopic2 = false;
+        var playTopic3 = false;
+        if (topicCode === TopicCode1) { playTopic1 = true }
+        else if (topicCode === TopicCode2) { playTopic2 = true }
+        else if (topicCode === TopicCode3) { playTopic3 = true }
+
+        this.setState({
+            playingTopic1: playTopic1,
+            playingTopic2: playTopic2,
+            playingTopic3: playTopic3
+        })
+    }
+
     async onCreateTopic(topicCode) {
+        this.playingVedio(topicCode);
         if (this.state.topicAll?.filter((item) => item.topicCode === topicCode)[0]?.recStatus !== "A") {
             const createTopic = {
                 topicCode: topicCode,
@@ -248,6 +282,75 @@ export default withRouter(class Course1 extends Component {
                     });
                 }
             }
+        }
+    }
+
+    onProgressVedioTopic1(state) {
+        // state is time in vedio play
+        if (this.state.playingTopic1) { timeTopic1 += 1; }
+        if (timeTopic1 === 10) {
+            this.updateTimeTopic(TopicCode1, timeTopic1);
+            timeTopic1 = 0;
+        }
+    }
+
+    onProgressVedioTopic2(state) {
+        // state is time in vedio play
+        if (this.state.playingTopic2) { timeTopic2 += 1; }
+        if (timeTopic2 === 10) {
+            this.updateTimeTopic(TopicCode2, timeTopic2);
+            timeTopic2 = 0;
+        }
+    }
+
+    onProgressVedioTopic3(state) {
+        // state is time in vedio play
+        if (this.state.playingTopic3) { timeTopic3 += 1; }
+        if (timeTopic3 === 10) {
+            this.updateTimeTopic(TopicCode3, timeTopic3);
+            timeTopic3 = 0;
+        }
+    }
+
+    onEndedVedio(Topic) {
+        var time = 0;
+        if (Topic === TopicCode1) {
+            time = timeTopic1;
+            timeTopic1 = 0;
+            this.setState({ playingTopic1: false })
+        }
+        else if (Topic === TopicCode2) {
+            time = timeTopic2;
+            timeTopic2 = 0;
+            this.setState({ playingTopic2: false })
+        }
+        else if (Topic === TopicCode3) {
+            time = timeTopic3;
+            timeTopic3 = 0;
+            this.setState({ playingTopic3: false })
+        }
+
+        this.updateTimeTopic(Topic, time);
+    }
+
+    async updateTimeTopic(Topic, Time) {
+        const updateTime = {
+            time: Time
+        };
+
+        var url_update_time = ip + "/UserTopic/update/time/" + CourseCode + "/" + Topic;
+        const update_time = await (await axios.put(url_update_time, updateTime, { headers: this.state.header })).data;
+        if (!update_time?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('user', { path: '/' }),
+                    email: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
+        } else {
+            return update_time?.status;
         }
     }
 
@@ -334,7 +437,23 @@ export default withRouter(class Course1 extends Component {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-center"><Image src={v1} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode1) }}></Image></Col>
+                                    <Col xs={24} md={12} xl={12} id="video-center">
+                                        {/* <Image src={v1} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode1) }}></Image> */}
+                                        <ReactPlayer
+                                            url={testV1}
+                                            className='react-player'
+                                            width='70%'
+                                            height='max-content'
+                                            controls={true}
+                                            playsinline={true}
+                                            playIcon={true}
+                                            pip={false}
+                                            playing={this.state.playingTopic1}
+                                            onProgress={this.onProgressVedioTopic1}
+                                            onEnded={() => { this.onEndedVedio(TopicCode1) }}
+                                            onPlay={() => { this.onCreateTopic(TopicCode1) }}
+                                            fluid />
+                                    </Col>
                                     <Col xs={24} md={8} xl={8}>
                                         <Row>รายละเอียด</Row>
                                         <Row>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
@@ -350,7 +469,23 @@ export default withRouter(class Course1 extends Component {
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-center"><Image src={v2} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode2) }}></Image></Col>
+                                    <Col xs={24} md={12} xl={12} id="video-center">
+                                        {/* <Image src={v2} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode2) }}></Image> */}
+                                        <ReactPlayer
+                                            url={testV1}
+                                            className='react-player'
+                                            width='70%'
+                                            // height='max-content'
+                                            controls={true}
+                                            playsinline={true}
+                                            playIcon={true}
+                                            pip={false}
+                                            playing={this.state.playingTopic2}
+                                            onProgress={this.onProgressVedioTopic2}
+                                            onEnded={() => { this.onEndedVedio(TopicCode2) }}
+                                            onPlay={() => { this.onCreateTopic(TopicCode2) }}
+                                            fluid />
+                                    </Col>
                                     <Col xs={24} md={8} xl={8}>
                                         <Row>รายละเอียด</Row>
                                         <Row>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
@@ -361,12 +496,27 @@ export default withRouter(class Course1 extends Component {
                                     <Col xs={23} md={23} xl={23} id="sub-header"> 3. คำศัพท์และคำนิยาม อธิบายคำศัพท์และนิยาม ทั้งในส่วนของข้อกำหนดระบบบริหารคุณภาพทั่วไป และสำหรับเครื่องมือแพทย์ ซี่งอ้างอิงตาม ISO 9001:2015 </Col>
                                     <Col xs={1} md={1} xl={1} id="icon-chack">
                                         {
-                                            (1 === 2) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-center"><Image src={v3} fluid></Image></Col>
+                                    <Col xs={24} md={12} xl={12} id="video-center">
+                                        <ReactPlayer
+                                            url={testV1}
+                                            className='react-player'
+                                            width='70%'
+                                            height='max-content'
+                                            controls={true}
+                                            playsinline={true}
+                                            playIcon={true}
+                                            pip={false}
+                                            playing={this.state.playingTopic3}
+                                            onProgress={this.onProgressVedioTopic3}
+                                            onEnded={() => { this.onEndedVedio(TopicCode3) }}
+                                            onPlay={() => { this.onCreateTopic(TopicCode3) }}
+                                            fluid />
+                                    </Col>
                                     <Col xs={24} md={8} xl={8}>
                                         <Row>รายละเอียด</Row>
                                         <Row>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>

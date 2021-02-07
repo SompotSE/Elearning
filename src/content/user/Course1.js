@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Image } from 'react-bootstrap';
-import { Row, Col, Breadcrumb, Progress, Collapse } from 'antd';
+import { Row, Col, Breadcrumb, Progress, Collapse, Button } from 'antd';
 import { HomeOutlined, SnippetsOutlined, RightCircleTwoTone, BorderOutlined } from '@ant-design/icons';
 import { withRouter } from "react-router-dom";
 import { AiFillCheckSquare } from "react-icons/ai";
@@ -390,7 +390,7 @@ export default withRouter(class Course1 extends Component {
                         <Row>
                             <Col xs={7} md={7} xl={7}><Image src={userprofile} fluid></Image></Col>
                             <Col xs={17} md={17} xl={17}>
-                                <Row id="font-header">รายละเอียด</Row>
+                                <Row id="font-header">ผู้สอน</Row>
                                 <Row id="font-detail">กล่าวถึงวัตถุประสงค์ของมาตรฐาน ชี้แจงแนวคิดของมาตรฐาน พื้นฐานแนวคิดตามมาตรฐานระบบคุณภาพ</Row>
                             </Col>
                         </Row>
@@ -399,8 +399,21 @@ export default withRouter(class Course1 extends Component {
                     <Col xs={24} md={10} xl={10}>
                         <Row>
                             <Col xs={19} md={19} xl={19}>
-                                <Row id="font-header">รายละเอียด</Row>
+                                <Row id="font-header">ความสำเร็จในการทำแบบทดสอบ</Row>
                                 <Row id="font-detail">กล่าวถึงวัตถุประสงค์ของมาตรฐาน ชี้แจงแนวคิดของมาตรฐาน พื้นฐานแนวคิดตามมาตรฐานระบบคุณภาพ</Row>
+                                {
+                                    (this.state.percentExamPost >= 80) ?
+                                        <>
+                                            <Button>ข้อมูลการรับใบ Certificate</Button>
+                                            <Row id="font-detail">คุณผ่านการทำสอบ</Row>
+                                        </>
+                                        :
+                                        <>
+                                            <Button disabled={true}>ข้อมูลการรับใบ Certificate</Button>
+                                            <Row id="font-detail">คุณไม่ผ่านการทำสอบ</Row>
+                                            <Row id="font-detail">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
+                                        </>
+                                }
                             </Col>
                             <Col xs={5} md={5} xl={5}>
                                 <Progress type="circle" percent={this.state.percentExamPost} strokeWidth={13} />
@@ -414,7 +427,7 @@ export default withRouter(class Course1 extends Component {
                     <Col xs={24} md={24} xl={24} id="font-header">
                         <Collapse
                             expandIcon={({ isActive }) => <RightCircleTwoTone rotate={isActive ? 90 : 0} style={{ fontSize: '150%' }} />}
-                            defaultActiveKey={['1', '2', '3']}
+                            defaultActiveKey={['1', '2', '3', '4']}
                             ghost
                         >
                             <Panel header="เอกสารประกอบการเรียน" key="1">
@@ -533,6 +546,25 @@ export default withRouter(class Course1 extends Component {
                                     </Col>
                                 </Row>
                             </Panel>
+                            {
+                                (this.state.examPost.length > 0) ?
+                                    <Panel header="แบบประเมิน" key="4">
+                                        <Row>
+                                            <Col xs={23} md={23} xl={23} id="sub-header" style={{ cursor: "pointer" }}
+                                            //onClick={() => { this.onExamPost() }}
+                                            > - ทำแบบประเมิน </Col>
+                                            <Col xs={1} md={1} xl={1} id="icon-chack">
+                                                {
+                                                    (1 === 2) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                                }
+                                            </Col>
+                                        </Row>
+                                    </Panel>
+                                    :
+                                    <>
+                                    </>
+                            }
+
                         </Collapse>
                     </Col>
                 </Row>

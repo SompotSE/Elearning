@@ -3,13 +3,29 @@ import { Container } from 'react-bootstrap';
 import { Row, Col, Image, Button } from 'antd';
 import '../css/Home.css';
 import cover1 from '../img/Cover1.png';
-
+import ReactPlayer from 'react-player';
+import testV1 from '../video/test.mp4';
 export default class Home extends Component {
     render() {
         return (
             <Container fluid id="bg-home">
                 <Row>
-                    <Col xs={24} md={12} xl={12}>Video</Col>
+                    <Col xs={24} md={12} xl={12} id="home-video">
+                        <ReactPlayer
+                            url={testV1}
+                            className='react-player'
+                            width='70%'
+                            height='max-content'
+                            controls={true}
+                            playsinline={true}
+                            playIcon={true}
+                            pip={false}
+                            // playing={this.state.playingTopic3}
+                            // onProgress={this.onProgressVedioTopic3}
+                            // onEnded={() => { this.onEndedVedio(TopicCode3) }}
+                            // onPlay={() => { this.onCreateTopic(TopicCode3) }}
+                            fluid />
+                    </Col>
                     <Col xs={24} md={12} xl={12}>
                         <Row id="rowheadHome">
                             <Row id="headHome">รายละเอียดภาพรวมหลักสูตรทั้งหมด</Row>

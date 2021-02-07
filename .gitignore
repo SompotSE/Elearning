@@ -13,6 +13,8 @@
 
 .eslintcache
 
+/src/video
+
 # misc
 .DS_Store
 .env.local

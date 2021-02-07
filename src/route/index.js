@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import Home from "../content/Home";
 import Register from "../content/Register"
 import Login from "../content/Login"
+import Logout from "../content/Logout"
 import ForgetPass from "../content/ForgetPass";
 import ChangePass from "../content/ChangePass"
 
@@ -22,11 +23,13 @@ export default class Index extends Component {
                 <Route exact path="/Course1" component={Course1} />
                 <Route exact path="/ExamPre" component={ExamPre} />
                 <Route exact path="/ExamPost" component={ExamPost} />
+                <Route exact path="/ChangePass" component={ChangePass} />
 
                 <Route exact path="/Register" component={Register} />
                 <Route exact path="/Login" component={Login} />
                 <Route exact path="/ForgetPass" component={ForgetPass} />
-                <Route exact path="/ChangePass" component={ChangePass} />
+                <Route exact path="/Logout" component={Logout} />
+                
             </Switch>
         );
     }

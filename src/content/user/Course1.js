@@ -38,7 +38,7 @@ const TopicCode2 = "TOP100002";
 // const TopicCode5 = "TOP100005";
 // const TopicCode6 = "TOP100006";
 
-const ExamCodePre = "EXAM10001";
+// const ExamCodePre = "EXAM10001";
 const ExamCodePost = "EXAM10002";
 
 export default withRouter(class Course1 extends Component {
@@ -71,21 +71,22 @@ export default withRouter(class Course1 extends Component {
     }
 
     async componentDidMount() {
-        var url_exam_pre = ip + "/UserExamination/find/" + CourseCode + "/" + ExamCodePre;
-        const exam_pre = await (await axios.get(url_exam_pre, { headers: this.state.header })).data;
-        if (!exam_pre?.status) {
-            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
-                this.setState({
-                    token: cookies.remove('token_user', { path: '/' }),
-                    user: cookies.remove('email', { path: '/' })
-                });
-                window.location.replace('/Login', false);
-            });
-        } else {
-            if (exam_pre.data.length <= 0) {
-                this.props.history.push("/ExamPre");
-            }
-        }
+        // var url_exam_pre = ip + "/UserExamination/find/" + CourseCode + "/" + ExamCodePre;
+        // const exam_pre = await (await axios.get(url_exam_pre, { headers: this.state.header })).data;
+        // if (!exam_pre?.status) {
+        //     swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+        //         this.setState({
+        //             token: cookies.remove('token_user', { path: '/' }),
+        //             user: cookies.remove('user', { path: '/' }),
+        //             email: cookies.remove('email', { path: '/' })
+        //         });
+        //         window.location.replace('/Login', false);
+        //     });
+        // } else {
+        //     if (exam_pre.data.length <= 0) {
+        //         this.props.history.push("/ExamPre");
+        //     }
+        // }
 
         var url_exam_post = ip + "/UserExamination/find/" + CourseCode + "/" + ExamCodePost;
         const exam_post = await (await axios.get(url_exam_post, { headers: this.state.header })).data;
@@ -93,7 +94,8 @@ export default withRouter(class Course1 extends Component {
             swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                 this.setState({
                     token: cookies.remove('token_user', { path: '/' }),
-                    user: cookies.remove('email', { path: '/' })
+                    user: cookies.remove('user', { path: '/' }),
+                    email: cookies.remove('email', { path: '/' })
                 });
                 window.location.replace('/Login', false);
             });
@@ -110,7 +112,8 @@ export default withRouter(class Course1 extends Component {
             swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                 this.setState({
                     token: cookies.remove('token_user', { path: '/' }),
-                    user: cookies.remove('email', { path: '/' })
+                    user: cookies.remove('user', { path: '/' }),
+                    email: cookies.remove('email', { path: '/' })
                 });
                 window.location.replace('/Login', false);
             });
@@ -126,7 +129,8 @@ export default withRouter(class Course1 extends Component {
             swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                 this.setState({
                     token: cookies.remove('token_user', { path: '/' }),
-                    user: cookies.remove('email', { path: '/' })
+                    user: cookies.remove('user', { path: '/' }),
+                    email: cookies.remove('email', { path: '/' })
                 });
                 window.location.replace('/Login', false);
             });
@@ -136,35 +140,35 @@ export default withRouter(class Course1 extends Component {
             });
         }
 
-        this.updateTimer = setInterval(() => this.timeCourse(), 10000);
+        // this.updateTimer = setInterval(() => this.timeCourse(), 10000);
 
     }
 
-    componentWillUnmount() {
-        clearInterval(this.updateTimer);
-    }
+    // componentWillUnmount() {
+    //     clearInterval(this.updateTimer);
+    // }
 
-    async timeCourse() {
-        console.log("testttttttttt")
-        const updateTime = {
-            time: 10
-        };
+    // async timeCourse() {
+    //     const updateTime = {
+    //         time: 10
+    //     };
 
-        var url_update_time = ip + "/UserCourse/update/time/" + CourseCode;
-        const update_time = await (await axios.put(url_update_time, updateTime, { headers: this.state.header })).data;
+    //     var url_update_time = ip + "/UserCourse/update/time/" + CourseCode;
+    //     const update_time = await (await axios.put(url_update_time, updateTime, { headers: this.state.header })).data;
 
-        if (!update_time?.status) {
-            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
-                this.setState({
-                    token: cookies.remove('token_user', { path: '/' }),
-                    user: cookies.remove('email', { path: '/' })
-                });
-                window.location.replace('/Login', false);
-            });
-        } else {
+    //     if (!update_time?.status) {
+    //         swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+    //             this.setState({
+    //                 token: cookies.remove('token_user', { path: '/' }),
+    //                 user: cookies.remove('user', { path: '/' }),
+    //                 email: cookies.remove('email', { path: '/' })
+    //             });
+    //             window.location.replace('/Login', false);
+    //         });
+    //     } else {
 
-        }
-    }
+    //     }
+    // }
 
     async onDownlode() {
         if (this.state.course?.downlodeDoc !== "A") {
@@ -179,7 +183,8 @@ export default withRouter(class Course1 extends Component {
                 swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                     this.setState({
                         token: cookies.remove('token_user', { path: '/' }),
-                        user: cookies.remove('email', { path: '/' })
+                        user: cookies.remove('user', { path: '/' }),
+                        email: cookies.remove('email', { path: '/' })
                     });
                     window.location.replace('/Login', false);
                 });
@@ -190,7 +195,8 @@ export default withRouter(class Course1 extends Component {
                     swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                         this.setState({
                             token: cookies.remove('token_user', { path: '/' }),
-                            user: cookies.remove('email', { path: '/' })
+                            user: cookies.remove('user', { path: '/' }),
+                            email: cookies.remove('email', { path: '/' })
                         });
                         window.location.replace('/Login', false);
                     });
@@ -204,7 +210,6 @@ export default withRouter(class Course1 extends Component {
     }
 
     async onCreateTopic(topicCode) {
-        console.log(topicCode, " topicCode");
         if (this.state.topicAll?.filter((item) => item.topicCode === topicCode)[0]?.recStatus !== "A") {
             const createTopic = {
                 topicCode: topicCode,
@@ -220,7 +225,8 @@ export default withRouter(class Course1 extends Component {
                 swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                     this.setState({
                         token: cookies.remove('token_user', { path: '/' }),
-                        user: cookies.remove('email', { path: '/' })
+                        user: cookies.remove('user', { path: '/' }),
+                        email: cookies.remove('email', { path: '/' })
                     });
                     window.location.replace('/Login', false);
                 });
@@ -231,7 +237,8 @@ export default withRouter(class Course1 extends Component {
                     swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                         this.setState({
                             token: cookies.remove('token_user', { path: '/' }),
-                            user: cookies.remove('email', { path: '/' })
+                            user: cookies.remove('user', { path: '/' }),
+                            email: cookies.remove('email', { path: '/' })
                         });
                         window.location.replace('/Login', false);
                     });

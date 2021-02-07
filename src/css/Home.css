@@ -14,11 +14,114 @@
 
 #row-coverhome{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding-left: 5%;
     padding-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 .ant-image-preview-operations {
     display: none !important;
+}
+
+.ant-image-mask-info .anticon {
+    display: none;
+}
+
+/* .ant-image-mask:hover {
+    opacity: 0;
+} */
+
+.ant-image-mask {
+    color: #fff0 !important;
+    background: rgb(0 0 0 / 0%) !important;
+}
+
+#row-btn-coursedetail{
+    display: flex;
+    justify-content: flex-end;
+    padding: 3%;
+}
+
+#btn-coursedetail{
+    color: #FFFFFF;
+    background-color: #32A0CE;
+    border-radius: 1.5mm;
+}
+
+.ant-image-preview-img {
+    max-width: 200% !important;
+}
+
+
+/* notebook */
+@media screen and (min-width: 601px) {
+    #btn-coursedetail{
+        color: #FFFFFF;
+        background-color: #32A0CE;
+        border-radius: 1.5mm;
+        font-size: 16;
+    }
+}
+
+/* ipad pro */
+@media screen and (max-width: 1025px) {
+    #btn-coursedetail{
+        color: #FFFFFF;
+        background-color: #32A0CE;
+        border-radius: 1.5mm;
+        font-size: 15;
+        font-size: 12px;
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+}
+
+/* ipad */
+@media screen and (max-width: 768px) {
+    #btn-coursedetail{
+        color: #FFFFFF;
+        background-color: #32A0CE;
+        border-radius: 1.5mm;
+        font-size: 8px;
+        height: fit-content;
+        width: fit-content;
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    #headHome{
+        font-size: 18px;
+        font-weight: bold;
+        color: #6F6AFA;
+    }
+}
+
+/* telephone */
+@media screen and (max-width: 684px){
+    #row-coverhome{
+        display: flex;
+        justify-content: space-between;
+        padding-left: 7%;
+        padding-right: 7%;
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+    #btn-coursedetail{
+        color: #FFFFFF;
+        background-color: #32A0CE;
+        border-radius: 1.5mm;
+        font-size: 8px;
+        height: fit-content;
+        width: fit-content;
+        padding-left: 6%;
+        padding-right: 6%;
+        margin-bottom: 2%;
+    }
+    #headHome{
+        padding-left: 6%;
+        font-size: 14px;
+        font-weight: bold;
+        color: #6F6AFA;
+    }
 }

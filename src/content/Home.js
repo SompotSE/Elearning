@@ -33,8 +33,8 @@ export default class Home extends Component {
                     </Col>
                 </Row>
                 <Row id="row-coverhome">
-                        <Col xs={10} md={4} xl={4}>
-                            <Row>
+                        <Col xs={10} md={4} xl={4} >
+                            <Row id="row-img-coursedetail">
                                 <Image style={{width: "100%"}} src={cover1} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
@@ -42,7 +42,7 @@ export default class Home extends Component {
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
-                            <Row>
+                            <Row  id="row-img-coursedetail">
                                 <Image style={{width: "100%"}} src={cover1} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
@@ -50,7 +50,7 @@ export default class Home extends Component {
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
-                            <Row>
+                            <Row  id="row-img-coursedetail">
                                 <Image style={{width: "100%"}} src={cover1} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
@@ -58,7 +58,7 @@ export default class Home extends Component {
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
-                            <Row>
+                            <Row  id="row-img-coursedetail">
                                 <Image style={{width: "100%"}} src={cover1} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
@@ -66,7 +66,7 @@ export default class Home extends Component {
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
-                            <Row>
+                            <Row  id="row-img-coursedetail">
                                 <Image style={{width: "100%"}} src={cover1} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">

@@ -63,6 +63,10 @@
         border-radius: 1.5mm;
         font-size: 16;
     }
+    #row-img-coursedetail{
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 
 /* ipad pro */

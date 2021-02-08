@@ -127,7 +127,6 @@ export default withRouter(class HomeUser extends Component {
     render() {
         return (
             <Container fluid id="bg-HomeUser">
-                <Row id="margin-bg">
                 <Row id="row-userheader">
                     <Col xs={24} md={12} xl={12}>
                         <Row id="video-center">
@@ -180,9 +179,9 @@ export default withRouter(class HomeUser extends Component {
                 </Row>
                     
                 <Row id="row-imgcourse">
-                    <Col xs={0} md={0} xl={0} id="course-menu">
-                    </Col>
-                    <Col xs={12} md={4} xl={4} id="course-menu">
+                    {/* <Col xs={0} md={0} xl={0} id="course-menu">
+                    </Col> */}
+                    <Col xs={10} md={4} xl={4} id="course-menu">
                         <Row id="course-menu">
                             <Image src={course1} id="img-course" fluid style={{ cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>
                         </Row>
@@ -191,7 +190,7 @@ export default withRouter(class HomeUser extends Component {
                             <Button id="btn-tocourse" onClick={() => { this.onClicktoCourse(CourseCode1) }}>เข้าสู่หลักสูตร</Button>
                         </Row>
                     </Col>
-                    <Col xs={12} md={4} xl={4} id="course-menu">
+                    <Col xs={10} md={4} xl={4} id="course-menu">
                         <Row id="course-menu">
                             <Image src={course2} id="img-course" fluid style={{ cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode2) }}></Image>
                         </Row>
@@ -200,7 +199,7 @@ export default withRouter(class HomeUser extends Component {
                             <Button id="btn-tocourse" onClick={() => { this.onClicktoCourse(CourseCode2) }}>เข้าสู่หลักสูตร</Button>
                         </Row>
                     </Col>
-                    <Col xs={12} md={4} xl={4} id="course-menu">
+                    <Col xs={10} md={4} xl={4} id="course-menu">
                         <Row id="course-menu">
                             <Image src={course3} id="img-course" fluid></Image>
                         </Row>
@@ -209,7 +208,7 @@ export default withRouter(class HomeUser extends Component {
                             <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                         </Row>
                     </Col>
-                    <Col xs={12} md={4} xl={4} id="course-menu">
+                    <Col xs={10} md={4} xl={4} id="course-menu">
                         <Row id="course-menu">
                             <Image src={course4} id="img-course" fluid></Image>
                         </Row>
@@ -218,7 +217,7 @@ export default withRouter(class HomeUser extends Component {
                             <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                         </Row>
                     </Col>
-                    <Col xs={12} md={4} xl={4} id="course-menu">
+                    <Col xs={10} md={4} xl={4} id="course-menu">
                         <Row id="course-menu">
                             <Image src={course5} id="img-course" fluid></Image>
                         </Row>
@@ -227,10 +226,10 @@ export default withRouter(class HomeUser extends Component {
                             <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                         </Row>
                     </Col>
-                    <Col xs={0} md={0} xl={0} id="course-menu">
-                    </Col>
+                    {/* <Col xs={0} md={0} xl={0} id="course-menu">
+                    </Col> */}
                 </Row>
-                </Row>
+                
             </Container>
         );
     }

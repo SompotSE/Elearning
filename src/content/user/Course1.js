@@ -437,7 +437,7 @@ export default withRouter(class Course1 extends Component {
                                     <Col xs={22} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={this.onDownlode}> - ดาวน์โหลดเอกสาร </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.course?.downlodeDoc === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} id="icon-check" /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                            (this.state.course?.downlodeDoc === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -544,7 +544,7 @@ export default withRouter(class Course1 extends Component {
                             <Panel header="แบบทดสอบท้ายบทเรียน" key="3">
                                 <Row>
                                     <Col xs={22} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={() => { this.onExamPost() }}> - ทำแบบทดสอบ </Col>
-                                    <Col xs={2} md={1} xl={2} id="icon-chack">
+                                    <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.examPost.length > 0) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
                                         }
@@ -555,10 +555,10 @@ export default withRouter(class Course1 extends Component {
                                 (this.state.examPost.length > 0) ?
                                     <Panel header="แบบประเมิน" key="4">
                                         <Row>
-                                            <Col xs={23} md={23} xl={23} id="sub-header" style={{ cursor: "pointer" }}
+                                            <Col xs={22} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }}
                                             //onClick={() => { this.onExamPost() }}
                                             > - ทำแบบประเมิน </Col>
-                                            <Col xs={1} md={1} xl={1} id="icon-chack">
+                                            <Col xs={2} md={2} xl={2} id="icon-chack">
                                                 {
                                                     (1 === 2) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
                                                 }

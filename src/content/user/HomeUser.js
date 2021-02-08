@@ -133,7 +133,7 @@ export default withRouter(class HomeUser extends Component {
                             <ReactPlayer
                                 url={testV1}
                                 className='react-player'
-                                width='80%'
+                                width='100%'
                                 height='max-content'
                                 controls={true}
                                 playsinline={true}

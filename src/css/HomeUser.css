@@ -19,6 +19,7 @@
     justify-content: center;
     margin-top: 2%;
     margin-bottom: 1%;
+    margin-right: 10%;
 }
 
 #img-btn{
@@ -192,5 +193,5 @@
     padding: 5%;
     display: flex;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
 }

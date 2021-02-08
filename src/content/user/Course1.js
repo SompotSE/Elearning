@@ -12,6 +12,7 @@ import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
+import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';
 // import v2 from '../../img/V2.png';
 // import v3 from '../../img/V3.png';
@@ -21,8 +22,8 @@ import course3 from '../../img/course3.png';
 import course4 from '../../img/course4.png';
 import course5 from '../../img/course5.png';
 
-import incourse1 from '../../img/incourse1.svg';
-import incourse2 from '../../img/incourse2.svg';
+// import incourse1 from '../../img/incourse1.svg';
+// import incourse2 from '../../img/incourse2.svg';
 
 import testV1 from '../../video/test.mp4';
 
@@ -365,8 +366,8 @@ export default withRouter(class Course1 extends Component {
 
     render() {
         return (
-            <Container fluid>
-                <Row id="row-header">
+            <Container fluid id="bg-course">
+                <Row id="row-headercourse">
                     <Breadcrumb>
                         <Breadcrumb.Item>
                             <NavLink to="/HomeUser"><HomeOutlined /><span>Home</span></NavLink>
@@ -376,17 +377,18 @@ export default withRouter(class Course1 extends Component {
                         </Breadcrumb.Item>
                     </Breadcrumb>
                 </Row>
-                <Row id="row-header">
-                    <Col xs={24} md={14} xl={14}>
+                <Row id="row-headercourse">
+                    <Col xs={24} md={12} xl={12}>
                         <Image src={imgcourse} fluid></Image>
                     </Col>
-                    <Col xs={24} md={10} xl={10}>
+                    <Col xs={24} md={12} xl={12}>
                         <Row id="font-header">รายละเอียด</Row>
                         <Row id="font-detail">กล่าวถึงวัตถุประสงค์ของมาตรฐาน ชี้แจงแนวคิดของมาตรฐาน พื้นฐานแนวคิดตามมาตรฐานระบบคุณภาพ</Row>
                     </Col>
                 </Row>
-                <Row id="row-header">
-                    <Col xs={24} md={14} xl={14}>
+
+                <Row id="row-headercourse">
+                    <Col xs={24} md={12} xl={12}>
                         <Row>
                             <Col xs={7} md={7} xl={7}><Image src={userprofile} fluid></Image></Col>
                             <Col xs={17} md={17} xl={17}>
@@ -394,69 +396,71 @@ export default withRouter(class Course1 extends Component {
                                 <Row id="font-detail">กล่าวถึงวัตถุประสงค์ของมาตรฐาน ชี้แจงแนวคิดของมาตรฐาน พื้นฐานแนวคิดตามมาตรฐานระบบคุณภาพ</Row>
                             </Col>
                         </Row>
-
                     </Col>
-                    <Col xs={24} md={10} xl={10}>
+
+                    <Col xs={24} md={12} xl={12}>
                         <Row>
-                            <Col xs={19} md={19} xl={19}>
-                                <Row id="font-header">ความสำเร็จในการทำแบบทดสอบ</Row>
-                                <Row id="font-detail">กล่าวถึงวัตถุประสงค์ของมาตรฐาน ชี้แจงแนวคิดของมาตรฐาน พื้นฐานแนวคิดตามมาตรฐานระบบคุณภาพ</Row>
+                            <Row id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Row>
+                            <Col xs={16} md={16} xl={16}>  
+                                <Row id="font-detail">หลักสูตร ISO 13485:2016</Row>
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
-                                            <Button>ข้อมูลการรับใบ Certificate</Button>
-                                            <Row id="font-detail">คุณผ่านการทำสอบ</Row>
+                                            <Row  id="btn-certificate"><Button>ข้อมูลการรับใบ Certificate</Button></Row>
+                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
                                         </>
                                         :
                                         <>
-                                            <Button disabled={true}>ข้อมูลการรับใบ Certificate</Button>
-                                            <Row id="font-detail">คุณไม่ผ่านการทำสอบ</Row>
-                                            <Row id="font-detail">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
+                                            <Row  id="btn-certificate"><Button disabled={true}>ข้อมูลการรับใบ Certificate</Button></Row>
+                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
                                         </>
                                 }
                             </Col>
-                            <Col xs={5} md={5} xl={5}>
-                                <Progress type="circle" percent={this.state.percentExamPost} strokeWidth={13} />
+                            <Col xs={8} md={8} xl={8} id="progress-course">
+                                <Progress type="circle" percent={this.state.percentExamPost} strokeWidth={13} width={100}/>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
 
-                <Row id="row-header">
-                    <Col xs={24} md={24} xl={24} id="font-header">เนื้อหาของหลักสูตร</Col>
-                    <Col xs={24} md={24} xl={24} id="font-header">
+                <Row id="row-headercourse">
+                    <Col xs={24} md={24} xl={24} id="course-header">เนื้อหาของหลักสูตร</Col>
+                    <Col xs={24} md={24} xl={24} id="all-collapse">
                         <Collapse
-                            expandIcon={({ isActive }) => <RightCircleTwoTone rotate={isActive ? 90 : 0} style={{ fontSize: '150%' }} />}
+                            expandIcon={({ isActive }) => <RightCircleTwoTone rotate={isActive ? 90 : 0} style={{ fontSize: '150%',display: 'flex', alignItems: "center" }} twoToneColor="#32A0CE"/>}
                             defaultActiveKey={['1', '2', '3', '4']}
                             ghost
                         >
                             <Panel header="เอกสารประกอบการเรียน" key="1">
                                 <Row>
-                                    <Col xs={23} md={23} xl={23} id="sub-header" style={{ cursor: "pointer" }} onClick={this.onDownlode}> - ดาวน์โหลดเอกสาร </Col>
-                                    <Col xs={1} md={1} xl={1} id="icon-chack">
+                                    <Col xs={22} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={this.onDownlode}> - ดาวน์โหลดเอกสาร </Col>
+                                    <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.course?.downlodeDoc === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                            (this.state.course?.downlodeDoc === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} id="icon-check" /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                             </Panel>
+
+
                             <Panel header="บทเรียน" key="2">
                                 <Row>
-                                    <Col xs={23} md={23} xl={23} id="sub-header"> 1. ขอบเขต เป็นบททั่วไป และการประยุกต์ใช้ ISO 13485: 2016 </Col>
-                                    <Col xs={1} md={1} xl={1} id="icon-chack">
+                                    <Col xs={22} md={22} xl={22} id="sub-header"> 1. ขอบเขต เป็นบททั่วไป และการประยุกต์ใช้ ISO 13485: 2016 </Col>
+                                    <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-center">
+                                    <Col xs={24} md={12} xl={12} id="video-course1">
                                         {/* <Image src={v1} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode1) }}></Image> */}
                                         <ReactPlayer
                                             url={testV1}
                                             className='react-player'
-                                            width='70%'
-                                            height='max-content'
+                                            width='100%'
+                                            height='100%'
                                             controls={true}
                                             playsinline={true}
                                             playIcon={true}
@@ -467,28 +471,28 @@ export default withRouter(class Course1 extends Component {
                                             onPlay={() => { this.onCreateTopic(TopicCode1) }}
                                             fluid />
                                     </Col>
-                                    <Col xs={24} md={8} xl={8}>
-                                        <Row>รายละเอียด</Row>
-                                        <Row>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
+                                    <Col xs={24} md={10} xl={10}>
+                                        <Row id="unit-header">รายละเอียด</Row>
+                                        <Row id="unit-detail">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
                                     </Col>
                                 </Row>
 
                                 <Row>
-                                    <Col xs={23} md={23} xl={23} id="sub-header"> 2. มาตรฐานอ้างอิง อธิบายถึงการอ้างอิงข้อกำหนดของมาตรฐาน ISO 9001:2015 </Col>
-                                    <Col xs={1} md={1} xl={1} id="icon-chack">
+                                    <Col xs={22} md={22} xl={22} id="sub-header"> 2. มาตรฐานอ้างอิง อธิบายถึงการอ้างอิงข้อกำหนดของมาตรฐาน ISO 9001:2015 </Col>
+                                    <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-center">
+                                    <Col xs={24} md={12} xl={12} id="video-course1">
                                         {/* <Image src={v2} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode2) }}></Image> */}
                                         <ReactPlayer
                                             url={testV1}
                                             className='react-player'
-                                            width='70%'
-                                            // height='max-content'
+                                            width='100%'
+                                            height='100%'
                                             controls={true}
                                             playsinline={true}
                                             playIcon={true}
@@ -499,27 +503,27 @@ export default withRouter(class Course1 extends Component {
                                             onPlay={() => { this.onCreateTopic(TopicCode2) }}
                                             fluid />
                                     </Col>
-                                    <Col xs={24} md={8} xl={8}>
-                                        <Row>รายละเอียด</Row>
-                                        <Row>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
+                                    <Col xs={24} md={10} xl={10}>
+                                        <Row id="unit-header">รายละเอียด</Row>
+                                        <Row id="unit-detail">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
                                     </Col>
                                 </Row>
 
                                 <Row>
-                                    <Col xs={23} md={23} xl={23} id="sub-header"> 3. คำศัพท์และคำนิยาม อธิบายคำศัพท์และนิยาม ทั้งในส่วนของข้อกำหนดระบบบริหารคุณภาพทั่วไป และสำหรับเครื่องมือแพทย์ ซี่งอ้างอิงตาม ISO 9001:2015 </Col>
-                                    <Col xs={1} md={1} xl={1} id="icon-chack">
+                                    <Col xs={22} md={22} xl={22} id="sub-header"> 3. คำศัพท์และคำนิยาม อธิบายคำศัพท์และนิยาม ทั้งในส่วนของข้อกำหนดระบบบริหารคุณภาพทั่วไป และสำหรับเครื่องมือแพทย์ ซี่งอ้างอิงตาม ISO 9001:2015 </Col>
+                                    <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-center">
+                                    <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
                                             url={testV1}
                                             className='react-player'
-                                            width='70%'
-                                            height='max-content'
+                                            width='100%'
+                                            height='100%'
                                             controls={true}
                                             playsinline={true}
                                             playIcon={true}
@@ -530,16 +534,17 @@ export default withRouter(class Course1 extends Component {
                                             onPlay={() => { this.onCreateTopic(TopicCode3) }}
                                             fluid />
                                     </Col>
-                                    <Col xs={24} md={8} xl={8}>
-                                        <Row>รายละเอียด</Row>
-                                        <Row>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
+                                    <Col xs={24} md={10} xl={10}>
+                                        <Row id="unit-header">รายละเอียด</Row>
+                                        <Row id="unit-detail">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
                                     </Col>
                                 </Row>
                             </Panel>
+
                             <Panel header="แบบทดสอบท้ายบทเรียน" key="3">
                                 <Row>
-                                    <Col xs={23} md={23} xl={23} id="sub-header" style={{ cursor: "pointer" }} onClick={() => { this.onExamPost() }}> - ทำแบบทดสอบ </Col>
-                                    <Col xs={1} md={1} xl={1} id="icon-chack">
+                                    <Col xs={22} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={() => { this.onExamPost() }}> - ทำแบบทดสอบ </Col>
+                                    <Col xs={2} md={1} xl={2} id="icon-chack">
                                         {
                                             (this.state.examPost.length > 0) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
                                         }
@@ -569,44 +574,44 @@ export default withRouter(class Course1 extends Component {
                     </Col>
                 </Row>
 
-                <Row id="row-header">
-                    <Col xs={24} md={24} xl={24} id="font-header">หลักสูตรที่เกี่ยวข้อง</Col>
+                <Row id="row-headertocourse">
+                    <Col xs={24} md={24} xl={24} id="course-header">หลักสูตรที่เกี่ยวข้อง</Col>
                     <Col xs={24} md={24} xl={24} id="font-header">
                         <Row>
                             <Col xs={12} md={6} xl={6} id="course-menu">
                                 <Row id="course-menu">
                                     <Image src={course2} id="img-course" fluid></Image>
                                 </Row>
-                                <Row id="course-menu">
-                                    <Image src={incourse2} fluid id="img-play"></Image>
-                                    <Image src={incourse1} fluid id="img-button"></Image>
+                                <Row id="course-tomenu">
+                                    <AiFillPlayCircle id="img-play"/>
+                                    <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={12} md={6} xl={6} id="course-menu">
                                 <Row id="course-menu">
                                     <Image src={course3} id="img-course" fluid></Image>
                                 </Row>
-                                <Row id="course-menu">
-                                    <Image src={incourse2} fluid id="img-play"></Image>
-                                    <Image src={incourse1} fluid id="img-button"></Image>
+                                <Row id="course-tomenu">
+                                    <AiFillPlayCircle id="img-play"/>
+                                    <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={12} md={6} xl={6} id="course-menu">
                                 <Row id="course-menu">
                                     <Image src={course4} id="img-course" fluid></Image>
                                 </Row>
-                                <Row id="course-menu">
-                                    <Image src={incourse2} fluid id="img-play"></Image>
-                                    <Image src={incourse1} fluid id="img-button"></Image>
+                                <Row id="course-tomenu">
+                                    <AiFillPlayCircle id="img-play"/>
+                                    <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={12} md={6} xl={6} id="course-menu">
                                 <Row id="course-menu">
                                     <Image src={course5} id="img-course" fluid></Image>
                                 </Row>
-                                <Row id="course-menu">
-                                    <Image src={incourse2} fluid id="img-play"></Image>
-                                    <Image src={incourse1} fluid id="img-button"></Image>
+                                <Row id="course-tomenu">
+                                    <AiFillPlayCircle id="img-play"/>
+                                    <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                                 </Row>
                             </Col>
                         </Row>

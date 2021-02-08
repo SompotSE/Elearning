@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Row, Pagination } from 'antd';
+import { Row, Col, Pagination, Radio, Button } from 'antd';
 // import { HomeOutlined, SnippetsOutlined, RightCircleTwoTone, BorderOutlined } from '@ant-design/icons';
 // import { AiFillCheckSquare } from "react-icons/ai";
 import { withRouter } from "react-router-dom";
@@ -9,6 +9,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import '../../css/ExamPost.css';
+// import renderHTML from 'react-render-html';
 
 import { config } from '../../config/config';
 
@@ -16,7 +17,7 @@ const cookies = new Cookies();
 
 const ip = config.ipServer;
 const CourseCode = "COURSE1001";
-const Num = 5;
+const Num = 10;
 
 const ExamCodePost = "EXAM10002";
 
@@ -28,10 +29,13 @@ export default withRouter(class ExamPost extends Component {
             email: "",
             header: [],
             exam: [],
-            current_page: 1
+            current_page: 1,
+            countAns: 0
         };
 
         this.onChangePage = this.onChangePage.bind(this);
+        this.onChangeAns = this.onChangeAns.bind(this);
+        this.onSendExam = this.onSendExam.bind(this);
     }
 
     componentWillMount() {
@@ -94,19 +98,57 @@ export default withRouter(class ExamPost extends Component {
         });
     }
 
+    onChangeAns(e) {
+        const exam = this.state.exam[this.state.current_page - 1];
+        exam.answer = e.target.value;
+        this.setState({
+            countAns: this.state.countAns + 1
+        })
+    }
+
+    async onSendExam() {
+        const answer = await this.state.exam?.filter((item) => item.answer === "");
+        if(answer.length > 0) {
+            swal("Warning!", "กรุณาทำข้อสอบให้ครบ", "warning").then((value) => {
+            });
+        } else {
+            swal("Warning!", "ยืนยันการส่งข้อสอบหรือไม่", "warning").then((value) => {
+                console.log(value, " value")
+            });
+        }
+        console.log(answer, " exam")
+    }
+
     render() {
         return (
             <Container fluid>
                 <div id="body-exam-post">
                     <Row id="head-exam-post">แบบทดสอบหลังเรียน</Row>
-                    <Row>{this.state.exam[this.state.current_page - 1]?.examinationlistText}</Row>
-                    <Row>
-                        <Pagination
-                            current={this.state.current_page}
-                            pageSize={1}
-                            total={Num}
-                            onChange={this.onChangePage}
-                        />
+                    <Row id="box-exam">
+                        <Col xs={12} md={12} xl={12}> {this.state.exam[this.state.current_page - 1]?.examinationlistText} </Col>
+                        <Col xs={12} md={12} xl={12}>
+                            <Radio.Group onChange={this.onChangeAns} value={this.state.exam[this.state.current_page - 1]?.answer}>
+                                {
+                                    this.state.exam[this.state.current_page - 1]?.answerlist.map((anslist, i) => {
+                                        return <Col xs={24} md={24} xl={24}><Radio value={anslist.answerlistCode}>{anslist.answerlistText}</Radio></Col>
+                                    })
+                                }
+                            </Radio.Group>
+                        </Col>
+                    </Row>
+                    <Row id="pagination">
+                        <Col xs={22} md={22} xl={22}>
+                            <Pagination
+                                current={this.state.current_page}
+                                pageSize={1}
+                                responsive={true}
+                                total={Num}
+                                onChange={this.onChangePage}
+                            />
+                        </Col>
+                        <Col xs={2} md={2} xl={2}>
+                            <Button disabled={this.state.current_page === Num ? false : true} onClick={this.onSendExam}>ส่งแบบทดสอบ</Button>
+                        </Col>
                     </Row>
                 </div>
             </Container>

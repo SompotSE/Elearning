@@ -154,26 +154,26 @@ export default withRouter(class HomeUser extends Component {
                     </Col>
                     <Col xs={24} md={10} xl={10}>
                         <Row id="head-headcouse">ความคืบหน้าการเรียนรู้</Row>
-                        <Row id="headcouse"><Progress percent={parseInt((100 * this.state.sumtopuser) / this.state.sumtopall)} strokeWidth={20} /></Row>
+                        <Row id="headcouse"><Progress percent={parseInt((100 * this.state.sumtopuser) / this.state.sumtopall)} strokeWidth={20} strokeColor={(parseInt((100 * this.state.sumtopuser) / this.state.sumtopall) >= 80) ? "#006633" : "#CC0000"}/></Row>
                         <Row>
                             <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 1</Col>
-                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course1[0]?.countuser) / this.state.course1[0]?.countall)} /></Col>
+                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course1[0]?.countuser) / this.state.course1[0]?.countall)} strokeColor={(parseInt((100 * this.state.course1[0]?.countuser) / this.state.course1[0]?.countall) >= 80) ? "#006633" : "#CC0000"}/></Col>
                         </Row>
                         <Row>
                             <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 2</Col>
-                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course2[0]?.countuser) / this.state.course2[0]?.countall)} /></Col>
+                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course2[0]?.countuser) / this.state.course2[0]?.countall)} strokeColor={(parseInt((100 * this.state.course2[0]?.countuser) / this.state.course2[0]?.countall) >= 80) ? "#006633" : "#CC0000"}/></Col>
                         </Row>
                         <Row>
                             <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 3</Col>
-                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course3[0]?.countuser) / this.state.course3[0]?.countall)} /></Col>
+                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course3[0]?.countuser) / this.state.course3[0]?.countall)} strokeColor={(parseInt((100 * this.state.course3[0]?.countuser) / this.state.course3[0]?.countall) >= 80) ? "#006633" : "#CC0000"}/></Col>
                         </Row>
                         <Row>
                             <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 4</Col>
-                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course4[0]?.countuser) / this.state.course4[0]?.countall)} /></Col>
+                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course4[0]?.countuser) / this.state.course4[0]?.countall)} strokeColor={(parseInt((100 * this.state.course4[0]?.countuser) / this.state.course4[0]?.countall) >= 80) ? "#006633" : "#CC0000"}/></Col>
                         </Row>
                         <Row>
                             <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 5</Col>
-                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course5[0]?.countuser) / this.state.course5[0]?.countall)} /></Col>
+                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course5[0]?.countuser) / this.state.course5[0]?.countall)} strokeColor={(parseInt((100 * this.state.course5[0]?.countuser) / this.state.course5[0]?.countall) >= 80) ? "#006633" : "#CC0000"}/></Col>
                         </Row>
                     </Col>
                 </Row>

@@ -1,0 +1,88 @@
+#bg-form{
+    background-color: #ffffff;
+}
+
+#row-header-form{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+#logo-header-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#row-form{
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 2%;
+}
+
+#col-header-form{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#radio-source{
+    padding-left: 1.5%;
+}
+
+#choice-score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* notebook */
+@media screen and (min-width: 601px) {
+    #col-header-form{
+        font-size: 24px;
+        padding-top: 2%;
+    }
+    #header-form{
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+        font-size: 18px;
+    }
+
+}
+
+/* ipad pro */
+@media screen and (max-width: 1025px) {
+    #col-header-form{
+        font-size: 24px;
+        padding-top: 2%;
+    }
+    #header-form{
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+        font-size: 18px;
+    }
+}
+
+/* ipad */
+@media screen and (max-width: 768px) {
+    #col-header-form{
+        font-size: 24px;
+        padding-top: 2%;
+    }
+    #header-form{
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+        font-size: 14px;
+    }
+}
+
+/* telephone */
+@media screen and (max-width: 684px){
+    #col-header-form{
+        font-size: 18px;
+        padding-top: 2%;
+    }
+    #header-form{
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+        font-size: 12px;
+    }
+}

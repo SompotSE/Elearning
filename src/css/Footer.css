@@ -12,8 +12,8 @@
 
 #row-footer{
     background-color: #FAFAFA;
-    padding-left: 6%;
-    padding-right: 6%;
+    padding-left: 5%;
+    padding-right: 4%;
 }
 
 #col-footer1{
@@ -22,19 +22,19 @@
 }
 
 #col-footer2{
-    padding-left: 2%;
+    padding-left: 1%;
     margin-top: 5%;
     margin-bottom: 0.5%;
 }
 
 #col-footer3{
-    padding-left: 2%;
+    padding-left: 1%;
     margin-top: 5%;
-    margin-bottom: 0.5%;
+    margin-bottom: 0.2%;
 }
 
 #col-footer4{
-    padding-left: 2%;
+    padding-left: 1%;
     margin-top: 5%;
     margin-bottom: 0.5%;
 }
@@ -54,19 +54,19 @@
 /* notebook */
 @media screen and (min-width: 601px) {
     #col-footer2{
-        padding-left: 4%;
+        padding-left: 2%;
         margin-top: 5%;
         margin-bottom: 0.5%;
     }
     
     #col-footer3{
-        padding-left: 4%;
+        padding-left: 3%;
         margin-top: 5%;
         margin-bottom: 0.5%;
     }
     
     #col-footer4{
-        padding-left: 4%;
+        padding-left: 2%;
         margin-top: 5%;
         margin-bottom: 0.5%;
     }
@@ -75,7 +75,11 @@
         margin-bottom: 8%;
         font-weight: bold
     }
-
+    #header-footer1{
+        font-size: 16px;
+        margin-bottom: 6%;
+        font-weight: bold
+    }
     #descript-footer{
         font-size: 13px;
     }
@@ -95,7 +99,7 @@
         font-size: 13px;
     }
     #descript-footer2{
-        font-size: 13px;
+        font-size: 14px;
         margin-bottom: 10%;
     }
 }
@@ -105,6 +109,11 @@
     #header-footer{
         font-size: 12px;
         margin-bottom: 8%;
+        font-weight: bold
+    }
+    #header-footer1{
+        font-size: 12px;
+        margin-bottom: 6%;
         font-weight: bold
     }
     #descript-footer{
@@ -126,7 +135,7 @@
         font-size: 6px;
     }
     #descript-footer2{
-        font-size: 9px;
+        font-size: 6px;
         margin-bottom: 10%;
     }
 }
@@ -136,6 +145,11 @@
     #header-footer{
         font-size: 10px;
         margin-bottom: 8%;
+        font-weight: bold
+    }
+    #header-footer1{
+        font-size: 10px;
+        margin-bottom: 6%;
         font-weight: bold
     }
     #descript-footer{
@@ -168,6 +182,11 @@
     #header-footer{
         font-size: 10px;
         margin-bottom: 10%;
+        font-weight: bold
+    }
+    #header-footer1{
+        font-size: 10px;
+        margin-bottom: 8%;
         font-weight: bold
     }
     #descript-footer{

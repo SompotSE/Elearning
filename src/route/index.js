@@ -38,7 +38,7 @@ export default class Index extends Component {
 
                 <Route exact path="/Admin/Home" component={AdminHome} />
                 <Route exact path="/Admin/TopScore" component={AdminTopScore} />
-                <Route exact path="/Admin/Detail" component={AdminDetail} />
+                <Route exact path="/Admin/Detail/:userId" component={AdminDetail} />
                 
             </Switch>
         );

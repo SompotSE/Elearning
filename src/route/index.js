@@ -17,6 +17,7 @@ import ExamPost from "../content/user/ExamPost";
 import AdminHome from "../content/Admin/AdminHome";
 import AdminTopScore from "../content/Admin/AdminTopScore";
 import AdminDetail from "../content/Admin/AdminDetail";
+import AdminStatistic from "../content/Admin/Adminstatistic";
 
 export default class Index extends Component {
     render() {
@@ -39,6 +40,7 @@ export default class Index extends Component {
                 <Route exact path="/Admin/Home" component={AdminHome} />
                 <Route exact path="/Admin/TopScore" component={AdminTopScore} />
                 <Route exact path="/Admin/Detail" component={AdminDetail} />
+                <Route exact path="/Admin/Statistic" component={AdminStatistic} />
                 
             </Switch>
         );

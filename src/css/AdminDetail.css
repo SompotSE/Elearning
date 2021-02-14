@@ -1,0 +1,147 @@
+#bg-AdminDetail{
+    background-color: #ffffff;
+    margin-left: 0% !important;
+    margin-right: 0% !important;
+    padding-bottom: 3%;
+}
+
+#Header-AdminDetail{
+    padding-left: 6%;
+    padding-right: 6%;
+    /* padding-bottom: 2%; */
+    font-size: 24px;
+    padding-top: 2%;
+    font-weight: bold;
+}
+
+#row-table-AdminDetail{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 6%;
+    margin-right: 6%;
+    margin-top: 2%;
+    border: 1px solid rgb(182, 180, 180);
+    padding: 1%;
+    border-radius: 2mm;
+}
+
+/* notebook */
+@media screen and (min-width: 601px) {
+    #header-table-AdminDetail{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        background-color: #EFFFFB;
+        border-radius: 1mm;
+        margin: 0.3%;
+        padding: 1%;
+        box-shadow: 1px 2px 4px 0px rgb(0 0 0 / 20%);
+    }
+    #header1-table-AdminDetail{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        background-color: #FEE2E2;
+        border-radius: 1mm;
+        margin: 0.3%;
+        padding: 1%;
+        box-shadow: 1px 2px 4px 0px rgb(0 0 0 / 20%);
+    }
+    #detail-table-AdminDetail{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        background-color: #FAFAFA;
+        border-radius: 1mm;
+        margin: 0.3%;
+        padding: 1%;
+        box-shadow: 1px 2px 4px 0px rgb(0 0 0 / 20%);
+    }
+    #Button-table-AdminDetail{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        background-color: #FAFAFA;
+        border-radius: 1mm;
+        margin: 0.3%;
+        box-shadow: 1px 2px 4px 0px rgb(0 0 0 / 20%);
+    }
+    #button-AdminDetail{
+        background-color: #FAFAFA;
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+    }
+}
+
+/* ipad */
+@media screen and (max-width: 768px) {
+    #header-table-AdminDetail{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        background-color: #EFFFFB;
+        border-radius: 1mm;
+        margin: 0.3%;
+        padding: 1%;
+        box-shadow: 1px 2px 4px 0px rgb(0 0 0 / 20%);
+    }
+    #header1-table-AdminDetail{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        background-color: #FEE2E2;
+        border-radius: 1mm;
+        margin: 0.3%;
+        padding: 1%;
+        box-shadow: 1px 2px 4px 0px rgb(0 0 0 / 20%);
+    }
+    #detail-table-AdminDetail{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        background-color: #FAFAFA;
+        border-radius: 1mm;
+        margin: 0.3%;
+        padding: 1%;
+        box-shadow: 1px 2px 4px 0px rgb(0 0 0 / 20%);
+    }
+    #Button-table-AdminDetail{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        background-color: #FAFAFA;
+        border-radius: 1mm;
+        margin: 0.3%;
+        box-shadow: 1px 2px 4px 0px rgb(0 0 0 / 20%);
+    }
+    #button-AdminDetail{
+        background-color: #FAFAFA;
+        width: 100%;
+        height: 100%;
+        font-size: 10px;
+    }
+}
+
+.ant-modal-confirm-body > .anticon {
+    display: none;
+}
+
+.ant-modal-confirm-body > .anticon + .ant-modal-confirm-title + .ant-modal-confirm-content {
+    margin-left: 0%;
+}
+
+#row-info{
+    margin-top: 3%;
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: space-between;
+}

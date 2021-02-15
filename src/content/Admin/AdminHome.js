@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Row, Col, Input, Progress, Pagination } from 'antd';
+import { Row, Col, Input, Progress, Pagination, Spin, Empty } from 'antd';
 import '../../css/AdminHome.css';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
@@ -24,7 +24,8 @@ export default class AdminHome extends Component {
             current_page: 1,
             startdetail: 0,
             enddetail: 10,
-            useradmin: []
+            useradmin: [],
+            statuslode: false
         }
 
         this.onChangePage = this.onChangePage.bind(this);
@@ -55,7 +56,8 @@ export default class AdminHome extends Component {
             });
         } else {
             this.setState({
-                useradmin: user.data
+                useradmin: user.data,
+                statuslode: true
             });
         }
     }
@@ -105,20 +107,36 @@ export default class AdminHome extends Component {
                         <Col md={4} xl={4} id="header-table-AdminHome">รายละเอียดเพิ่มเติม</Col>
                     </Row>
                     {
-                        this.state.useradmin?.slice(this.state.startdetail, this.state.enddetail).map((admin, i) => {
-                            return <Row>
-                                <Col md={2} xl={2} id="user-table-AdminHome">{this.state.startdetail + i + 1}</Col>
-                                <Col md={3} xl={3} id="user-table-AdminHome">{admin.name}</Col>
-                                <Col md={4} xl={4} id="user-table-AdminHome">{admin.nameCompany}</Col>
-                                <Col span={10}>
-                                    <Col md={24} xl={24} id="user-table-AdminHome"></Col>
-                                    <Row style={{ display: "flex", justifyContent: "space-between" }}>
-                                        {this.detailPercenTopic(admin?.detailTop)}
-                                    </Row>
-                                </Col>
-                                <Col md={4} xl={4} id="user-table-AdminHome"><NavLink to={"/Admin/Detail/" + admin.userId}>รายละเอียดเพิ่มเติม</NavLink></Col>
+                        (this.state.statuslode) ?
+                            <>
+                                {
+                                    this.state.useradmin.length > 0 ?
+                                        <>
+                                            {
+                                                this.state.useradmin?.slice(this.state.startdetail, this.state.enddetail).map((admin, i) => {
+                                                    return <Row>
+                                                        <Col md={2} xl={2} id="user-table-AdminHome">{this.state.startdetail + i + 1}</Col>
+                                                        <Col md={3} xl={3} id="user-table-AdminHome">{admin.name}</Col>
+                                                        <Col md={4} xl={4} id="user-table-AdminHome">{admin.nameCompany}</Col>
+                                                        <Col span={10}>
+                                                            <Col md={24} xl={24} id="user-table-AdminHome"></Col>
+                                                            <Row style={{ display: "flex", justifyContent: "space-between" }}>
+                                                                {this.detailPercenTopic(admin?.detailTop)}
+                                                            </Row>
+                                                        </Col>
+                                                        <Col md={4} xl={4} id="user-table-AdminHome"><NavLink to={"/Admin/Detail/" + admin.userId}>รายละเอียดเพิ่มเติม</NavLink></Col>
+                                                    </Row>
+                                                })
+                                            }
+                                        </>
+                                        :
+                                        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                                }
+                            </>
+                            :
+                            <Row id="row-spin-slide">
+                                <Spin size="large" />
                             </Row>
-                        })
                     }
 
                     <Row>

@@ -7,6 +7,31 @@
     padding-right: 6%;
 }
 
+#row-header-form1{
+    margin-left: 6%;
+    margin-right: 6%;
+    padding-left: 2%;
+    padding-top: 0.1%;
+    padding-bottom: 0.1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid #000000;
+}
+
+#row-header-form2{
+    margin-left: 6%;
+    margin-right: 6%;
+    padding-left: 2%;
+    padding-top: 0.1%;
+    padding-bottom: 0.1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid #000000;
+    border-top: none !important;
+}
+
 #logo-header-form{
     display: flex;
     justify-content: center;
@@ -32,6 +57,49 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #E2F1FF;
+    padding: 0.5%;
+}
+#choice-score1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#kate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E2F1FF;
+}
+
+#textxarea-input{
+    padding-left: 6%;
+    padding-right: 6%;
+    margin-bottom: 2%;
+}
+
+#color-font{
+    color: red;
+}
+
+#Promoter-radio{
+    padding-left: 5%;
+    border-left: 0.5px solid #000000;
+    padding-top: 0% !important;
+    padding-bottom: 0% !important;
+}
+
+#row-thank{
+    padding-left: 6%;
+    padding-right: 6%;
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
+#row-placeholder{
+    padding: 1%;
 }
 
 /* notebook */
@@ -45,7 +113,38 @@
         padding-bottom: 0.5%;
         font-size: 18px;
     }
-
+    #choice-score{
+        padding-top: 2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #E2F1FF;
+    }
+    #row-radio{
+        display: flex;
+        justify-content: center;
+        padding-left: 6.3%;
+        align-items: center;
+    }
+    #row-header-choice{
+        padding-left: 6%;
+        padding-right: 6%;
+        font-size: 18px;
+        font-weight: bold;
+        padding-bottom: 1%;
+    }
+    #row-header-choice1{
+        padding-left: 6%;
+        padding-right: 6%;
+        font-size: 14px;
+        padding-bottom: 1%;
+    }
+    #Service-input{
+        width: 1000px;
+        font-size: 14px;
+        margin: 2%;
+        padding: 1%;
+    }
 }
 
 /* ipad pro */
@@ -58,6 +157,31 @@
         padding-top: 0.5%;
         padding-bottom: 0.5%;
         font-size: 18px;
+    }
+    #row-radio{
+        display: flex;
+        justify-content: center;
+        padding-left: 7%;
+        align-items: center;
+    }
+    #row-header-choice{
+        padding-left: 6%;
+        padding-right: 6%;
+        font-size: 18px;
+        font-weight: bold;
+        padding-bottom: 1%;
+    }
+    #row-header-choice1{
+        padding-left: 6%;
+        padding-right: 6%;
+        font-size: 14px;
+        padding-bottom: 1%;
+    }
+    #Service-input{
+        width: 700px;
+        font-size: 14px;
+        margin: 2%;
+        padding: 2%;
     }
 }
 
@@ -72,6 +196,31 @@
         padding-bottom: 0.5%;
         font-size: 14px;
     }
+    #row-radio{
+        display: flex;
+        justify-content: center;
+        padding-left: 10%;
+        align-items: center;
+    }
+    #row-header-choice{
+        padding-left: 6%;
+        padding-right: 6%;
+        font-size: 14px;
+        font-weight: bold;
+        padding-bottom: 1%;
+    }
+    #row-header-choice1{
+        padding-left: 6%;
+        padding-right: 6%;
+        font-size: 14px;
+        padding-bottom: 1%;
+    }
+    #Service-input{
+        width: 500px;
+        font-size: 14px;
+        margin: 2%;
+        padding: 2%;
+    }
 }
 
 /* telephone */
@@ -85,4 +234,51 @@
         padding-bottom: 0.5%;
         font-size: 12px;
     }
+    #row-radio{
+        display: flex;
+        justify-content: center;
+        padding-left: 12%;
+        align-items: center;
+    }
+    #row-header-choice{
+        padding-left: 6%;
+        padding-right: 6%;
+        font-size: 14px;
+        font-weight: bold;
+        padding-bottom: 1%;
+    }
+    #row-header-choice1{
+        padding-left: 6%;
+        padding-right: 6%;
+        font-size: 14px;
+        padding-bottom: 1%;
+    }
+    #input-pleased{
+        width: 150;
+        margin-left: 3%;
+        margin-bottom: 2%;
+    }
+    #Promoter-radio{
+        padding-left: 5%;
+        border-left: none !important;
+    }
+    #row-thank{
+        padding-left: 6%;
+        padding-right: 6%;
+        display: flex;
+        justify-content: flex-end;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    #Service-input{
+        width: 250px;
+        font-size: 12px;
+        margin: 2%;
+        padding: 2%;
+    }
 }
+
+.ant-radio-inner {
+    color: #000000 !important;
+}
+

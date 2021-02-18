@@ -17,25 +17,7 @@
 }
 
 #col-footer1{
-    margin-top: 2.5%;
-    margin-bottom: 0.5%;
-}
-
-#col-footer2{
-    padding-left: 1%;
-    margin-top: 5%;
-    margin-bottom: 0.5%;
-}
-
-#col-footer3{
-    padding-left: 1%;
-    margin-top: 5%;
-    margin-bottom: 0.2%;
-}
-
-#col-footer4{
-    padding-left: 1%;
-    margin-top: 5%;
+    margin-top: 1%;
     margin-bottom: 0.5%;
 }
 
@@ -55,19 +37,19 @@
 @media screen and (min-width: 601px) {
     #col-footer2{
         padding-left: 2%;
-        margin-top: 5%;
+        margin-top: 1%;
         margin-bottom: 0.5%;
     }
     
     #col-footer3{
         padding-left: 3%;
-        margin-top: 5%;
+        margin-top: 1%;
         margin-bottom: 0.5%;
     }
     
     #col-footer4{
         padding-left: 2%;
-        margin-top: 5%;
+        margin-top: 1%;
         margin-bottom: 0.5%;
     }
     #header-footer{
@@ -95,12 +77,16 @@
         justify-content: center;
     }
     #descript-footer1{
-        margin-bottom: 10%;
+        margin-bottom: 5%;
         font-size: 13px;
     }
     #descript-footer2{
         font-size: 14px;
-        margin-bottom: 10%;
+        margin-bottom: 5%;
+    }
+    
+    #descript-footer3{
+        font-size: 14px;
     }
 }
 
@@ -136,7 +122,10 @@
     }
     #descript-footer2{
         font-size: 6px;
-        margin-bottom: 10%;
+        margin-bottom: 5%;
+    }
+    #descript-footer3{
+        font-size: 6px;
     }
 }
 
@@ -173,7 +162,11 @@
     }
     #descript-footer2{
         font-size: 6px;
-        margin-bottom: 10%;
+        margin-bottom: 5%;
+    }
+    
+    #descript-footer3{
+        font-size: 6px;
     }
 }
 
@@ -210,7 +203,10 @@
     }
     #descript-footer2{
         font-size: 6px;
-        margin-bottom: 10%;
+        margin-bottom: 5%;
+    }
+    #descript-footer3{
+        font-size: 6px;
     }
 }
 

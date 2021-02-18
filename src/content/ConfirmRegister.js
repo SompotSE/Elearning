@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Image, Button } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { Row, Spin } from 'antd';
+import { Row, Spin, Result, Button } from 'antd';
 import letter from "../img/letter.png"
 import '../css/ConfirmRegister.css';
 import axios from 'axios';
@@ -61,11 +61,19 @@ export default class ConfirmRegister extends Component {
                 {
                     (this.state.lodestatus) ?
                         <>
-                            <Row id="Row-Modal-Img">
+                            {/* <Row id="Row-Modal-Img">
                                 <Image src={letter} fluid />
                             </Row>
                             <Row id="Modal-cfMail-CF">ยืนยัน Email สำเร็จ</Row>
-                            <Row id="Modal-cfMail-CF1"><NavLink to="/"><Button type="primary" id="btn-sty">เว็บไซต์</Button></NavLink ></Row>
+                            <Row id="Modal-cfMail-CF1"><NavLink to="/"><Button type="primary" id="btn-sty">เว็บไซต์</Button></NavLink ></Row> */}
+                            <Result
+                                status="success"
+                                title="ยืนยัน Email สำเร็จ"
+                                // subTitle=""
+                                extra={[
+                                    <NavLink to="/"><Button type="primary" id="btn-sty">เว็บไซต์</Button></NavLink >
+                                ]}
+                            />
                         </>
                         :
                         <Row id="row-spin-slide-CF">

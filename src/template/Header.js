@@ -135,7 +135,8 @@ export default withRouter(class Header extends Component {
             const user_data = {
                 userCode: login.data?.userCode,
                 name: login.data?.name,
-                phone: login.data?.phone
+                phone: login.data?.phone,
+                userRoleId: login.data?.userRoleId
             }
             cookies.set('user', JSON.stringify(user_data), { path: '/' });
             cookies.set('token_user', login.data?.token, { path: '/' });
@@ -143,7 +144,11 @@ export default withRouter(class Header extends Component {
             this.setState({
                 storedJwt: login.data?.token
             });
-            window.location.replace('/HomeUser', false);
+            if(login.data?.userRoleId === 1) {
+                window.location.replace('/Admin/Home', false);
+            } else {
+                window.location.replace('/HomeUser', false);
+            }
         } else {
             if (login?.message === "You Not Confirm Email") {
                 swal("Warning!", "กรุณายืนยัน Email ก่อนเข้าสู่ระบบ", "warning").then((value) => {
@@ -300,17 +305,48 @@ export default withRouter(class Header extends Component {
                                             <UserOutlined /> <span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span> | <span style={{ paddingRight: "5%" }}></span>
                                             <Dropdown overlay={
                                                 <Menu>
-                                                    <Menu.Item key="0">
-                                                        {window.innerWidth >= 684 ?
-                                                            <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                    {
+                                                        (this.state.user?.userRoleId === 1) ?
+                                                            <>
+                                                                <Menu.Item key="0">
+                                                                    <NavLink to="/Admin/Home"><Button type="primary" id="btn-sty" >หน้าหลัก</Button></NavLink>
+                                                                </Menu.Item>
+                                                                <Menu.Divider />
+                                                                <Menu.Item key="1">
+                                                                    <NavLink to="/Admin/TopScore"><Button type="primary" id="btn-sty">คะแนนสูงสุด</Button></NavLink >
+                                                                </Menu.Item>
+                                                                <Menu.Divider />
+                                                                <Menu.Item key="2">
+                                                                    <NavLink to="/Admin/Statistic"><Button type="primary" id="btn-sty">สถิติ</Button></NavLink >
+                                                                </Menu.Item>
+                                                                <Menu.Divider />
+                                                                <Menu.Item key="3">
+                                                                    {window.innerWidth >= 684 ?
+                                                                        <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                        :
+                                                                        <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                    }
+                                                                </Menu.Item>
+                                                                <Menu.Divider />
+                                                                <Menu.Item key="4">
+                                                                    <NavLink to="/Logout"><Button type="primary" id="btn-sty">ออกจากระบบ</Button></NavLink >
+                                                                </Menu.Item>
+                                                            </>
                                                             :
-                                                            <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
-                                                        }
-                                                    </Menu.Item>
-                                                    <Menu.Divider />
-                                                    <Menu.Item key="1">
-                                                        <NavLink to="/Logout"><Button type="primary" id="btn-sty">ออกจากระบบ</Button></NavLink >
-                                                    </Menu.Item>
+                                                            <>
+                                                                <Menu.Item key="0">
+                                                                    {window.innerWidth >= 684 ?
+                                                                        <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                        :
+                                                                        <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                    }
+                                                                </Menu.Item>
+                                                                <Menu.Divider />
+                                                                <Menu.Item key="1">
+                                                                    <NavLink to="/Logout"><Button type="primary" id="btn-sty">ออกจากระบบ</Button></NavLink >
+                                                                </Menu.Item>
+                                                            </>
+                                                    }
                                                 </Menu>
                                             } placement="topRight" arrow>
                                                 <Button>menu</Button>

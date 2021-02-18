@@ -51,7 +51,8 @@ export default class Login extends Component {
             const user_data = {
                 userCode: login.data?.userCode,
                 name: login.data?.name,
-                phone: login.data?.phone
+                phone: login.data?.phone,
+                userRoleId: login.data?.userRoleId
             }
             cookies.set('user', JSON.stringify(user_data), { path: '/' });
             cookies.set('token_user', login.data?.token, { path: '/' });
@@ -59,7 +60,11 @@ export default class Login extends Component {
             this.setState({
                 storedJwt: login.data?.token
             });
-            window.location.replace('/HomeUser', false);
+            if(login.data?.userRoleId === 1) {
+                window.location.replace('/Admin/Home', false);
+            } else {
+                window.location.replace('/HomeUser', false);
+            }
         } else {
             if(login?.message === "You Not Confirm Email") {
                 swal("Warning!", "กรุณายืนยัน Email ก่อนเข้าสู่ระบบ", "warning").then((value) => {

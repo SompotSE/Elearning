@@ -17,7 +17,7 @@ const cookies = new Cookies();
 
 const ip = config.ipServer;
 const CourseCode = "COURSE1001";
-const Num = 5;
+const Num = 10;
 
 const ExamCodePost = "EXAM10002";
 

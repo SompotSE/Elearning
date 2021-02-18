@@ -92,6 +92,10 @@
         padding-top: 5%;
         padding-left: 3%;
     }
+    #font-detail2 {
+        font-size: 16px;
+        padding-left: 3%;
+    }
     #font-detail1 {
         font-size: 16px;
         padding-top: 3%;
@@ -156,6 +160,10 @@
     #font-detail {
         font-size: 16px;
         padding-top: 5%;
+        padding-left: 3%;
+    }
+    #font-detail2 {
+        font-size: 16px;
         padding-left: 3%;
     }
     #font-detail1 {
@@ -224,6 +232,10 @@
         padding-top: 5%;
         padding-left: 3%;
     }
+    #font-detail2 {
+        font-size: 12px;
+        padding-left: 3%;
+    }
     #font-detail1 {
         font-size: 12px;
         padding-top: 3%;
@@ -288,6 +300,10 @@
     #font-detail {
         font-size: 12px;
         padding-top: 5%;
+        padding-left: 3%;
+    }
+    #font-detail2 {
+        font-size: 12px;
         padding-left: 3%;
     }
     #font-detail1 {

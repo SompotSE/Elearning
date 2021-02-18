@@ -28,6 +28,7 @@ import course5 from '../../img/course5.png';
 import testV1 from '../../video/test.mp4';
 
 import { config } from '../../config/config';
+// import banner from '../../img/banner.png';
 
 const { Panel } = Collapse;
 const cookies = new Cookies();
@@ -367,6 +368,9 @@ export default withRouter(class Course1 extends Component {
     render() {
         return (
             <Container fluid id="bg-course">
+                {/* <Row>
+                    <Image src={banner} fluid></Image>
+                </Row> */}
                 <Row id="row-headercourse">
                     <Breadcrumb>
                         <Breadcrumb.Item>
@@ -384,6 +388,12 @@ export default withRouter(class Course1 extends Component {
                     <Col xs={24} md={12} xl={12}>
                         <Row id="font-header">รายละเอียด</Row>
                         <Row id="font-detail">กล่าวถึงวัตถุประสงค์ของมาตรฐาน ชี้แจงแนวคิดของมาตรฐาน พื้นฐานแนวคิดตามมาตรฐานระบบคุณภาพ</Row>
+                        <Row id="font-header">วัตถุประสงค์</Row>
+                        <Row id="font-detail2">1. .......</Row>
+                        <Row id="font-detail2">2. .......</Row>
+                        <Row id="font-detail2">3. .......</Row>
+                        <Row id="font-detail2">4. .......</Row>
+                        <Row id="font-detail2">5. .......</Row>
                     </Col>
                 </Row>
 
@@ -401,25 +411,41 @@ export default withRouter(class Course1 extends Component {
                     <Col xs={24} md={12} xl={12}>
                         <Row>
                             <Row id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Row>
-                            <Col xs={16} md={16} xl={16}>  
-                                <Row id="font-detail">หลักสูตร ISO 13485:2016</Row>
+                            <Col xs={16} md={16} xl={16}>
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
-                                            <Row  id="btn-certificate"><Button>ข้อมูลการรับใบ Certificate</Button></Row>
-                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
+                                            <Row id="btn-certificate"><Button>ข้อมูลการรับใบ Certificate</Button></Row>
                                         </>
                                         :
                                         <>
-                                            <Row  id="btn-certificate"><Button disabled={true}>ข้อมูลการรับใบ Certificate</Button></Row>
-                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
-                                            <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
+                                            <Row id="btn-certificate"><Button disabled={true}>ข้อมูลการรับใบ Certificate</Button></Row>
                                         </>
                                 }
                             </Col>
                             <Col xs={8} md={8} xl={8} id="progress-course">
-                                <Progress type="circle" percent={this.state.percentExamPost} strokeColor={(this.state.percentExamPost >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={100}/>
+                                <Progress type="circle" percent={this.state.percentExamPost} strokeColor={(this.state.percentExamPost >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
                             </Col>
+                            {
+                                (this.state.percentExamPost >= 80) ?
+                                    <>
+                                        <Col xs={16} md={16} xl={16}></Col>
+                                        <Col xs={8} md={8} xl={8} id="progress-course">
+                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
+                                        </Col>
+                                    </>
+                                    :
+                                    <>
+                                        <Col xs={16} md={16} xl={16}></Col>
+                                        <Col xs={8} md={8} xl={8} id="progress-course">
+                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
+                                        </Col>
+                                        <Col xs={16} md={16} xl={16}></Col>
+                                        <Col xs={8} md={8} xl={8} id="progress-course">
+                                            <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
+                                        </Col>
+                                    </>
+                            }
                         </Row>
                     </Col>
                 </Row>
@@ -428,7 +454,7 @@ export default withRouter(class Course1 extends Component {
                     <Col xs={24} md={24} xl={24} id="course-header">เนื้อหาของหลักสูตร</Col>
                     <Col xs={24} md={24} xl={24} id="all-collapse">
                         <Collapse
-                            expandIcon={({ isActive }) => <RightCircleTwoTone rotate={isActive ? 90 : 0} style={{ fontSize: '150%',display: 'flex', alignItems: "center" }} twoToneColor="#32A0CE"/>}
+                            expandIcon={({ isActive }) => <RightCircleTwoTone rotate={isActive ? 90 : 0} style={{ fontSize: '150%', display: 'flex', alignItems: "center" }} twoToneColor="#32A0CE" />}
                             defaultActiveKey={['1', '2', '3', '4']}
                             ghost
                         >
@@ -583,7 +609,7 @@ export default withRouter(class Course1 extends Component {
                                     <Image src={course2} id="img-course" fluid></Image>
                                 </Row>
                                 <Row id="course-tomenu">
-                                    <AiFillPlayCircle id="img-play"/>
+                                    <AiFillPlayCircle id="img-play" />
                                     <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                                 </Row>
                             </Col>
@@ -592,7 +618,7 @@ export default withRouter(class Course1 extends Component {
                                     <Image src={course3} id="img-course" fluid></Image>
                                 </Row>
                                 <Row id="course-tomenu">
-                                    <AiFillPlayCircle id="img-play"/>
+                                    <AiFillPlayCircle id="img-play" />
                                     <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                                 </Row>
                             </Col>
@@ -601,7 +627,7 @@ export default withRouter(class Course1 extends Component {
                                     <Image src={course4} id="img-course" fluid></Image>
                                 </Row>
                                 <Row id="course-tomenu">
-                                    <AiFillPlayCircle id="img-play"/>
+                                    <AiFillPlayCircle id="img-play" />
                                     <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                                 </Row>
                             </Col>
@@ -610,7 +636,7 @@ export default withRouter(class Course1 extends Component {
                                     <Image src={course5} id="img-course" fluid></Image>
                                 </Row>
                                 <Row id="course-tomenu">
-                                    <AiFillPlayCircle id="img-play"/>
+                                    <AiFillPlayCircle id="img-play" />
                                     <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
                                 </Row>
                             </Col>

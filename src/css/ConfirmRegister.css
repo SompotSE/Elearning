@@ -1,0 +1,29 @@
+#Row-Modal-Img {
+    margin-top: 2%;
+    justify-content: center;
+    display: flex;
+}
+
+#Modal-cfMail-CF {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#Modal-cfMail-CF1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    margin-bottom: 7%;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#row-spin-slide-CF {
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}

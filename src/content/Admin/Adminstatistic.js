@@ -90,6 +90,8 @@ export default class AdminTopScore extends Component {
                         </Row>
                         <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 2</Col>
                     </Col>
+                </Row>
+                <Row id="row-statistic">
                     <Col md={7} xl={5} id="col-statictic">
                         <Row>
                             <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course3}</Col>
@@ -110,6 +112,13 @@ export default class AdminTopScore extends Component {
                             <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon"/></Col>
                         </Row>
                         <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 5</Col>
+                    </Col>
+                    <Col md={7} xl={6} id="col-statictic">
+                        <Row>
+                            <Col md={10} xl={10} id="statistic-number">1200</Col>
+                            <Col md={10} xl={10} id="icon-statistic"><UserOutlined id="statistic-icon" /></Col>
+                        </Row>
+                        <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานครบหลักสูตรและผ่านการทดสอบ</Col>
                     </Col>
                 </Row>
             </Container>

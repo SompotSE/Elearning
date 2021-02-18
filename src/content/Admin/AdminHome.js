@@ -7,6 +7,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import { config } from '../../config/config';
+import { EyeTwoTone } from '@ant-design/icons';
 
 const cookies = new Cookies();
 
@@ -64,11 +65,11 @@ export default class AdminHome extends Component {
 
     detailPercenTopic(detail) {
         return <>
-            <Col md={5} xl={5} id="progress-AdminHome"><Progress type="circle" percent={parseInt(detail[0].percen)} width={50} strokeWidth={13} /></Col>
-            <Col md={4} xl={4} id="progress-AdminHome"><Progress type="circle" percent={parseInt(detail[1].percen)} width={50} strokeWidth={13} /></Col>
-            <Col md={5} xl={5} id="progress-AdminHome"><Progress type="circle" percent={parseInt(detail[2].percen)} width={50} strokeWidth={13} /></Col>
-            <Col md={4} xl={4} id="progress-AdminHome"><Progress type="circle" percent={parseInt(detail[3].percen)} width={50} strokeWidth={13} /></Col>
-            <Col md={5} xl={5} id="progress-AdminHome"><Progress type="circle" percent={parseInt(detail[4].percen)} width={50} strokeWidth={13} /></Col>
+            <Col md={5} xl={5} id="progress-AdminHome"><Progress type="circle" percent={parseInt(detail[0].percen)} width={55} strokeWidth={13} /></Col>
+            <Col md={4} xl={4} id="progress-AdminHome"><Progress type="circle" percent={parseInt(detail[1].percen)} width={55} strokeWidth={13} /></Col>
+            <Col md={5} xl={5} id="progress-AdminHome"><Progress type="circle" percent={parseInt(detail[2].percen)} width={55} strokeWidth={13} /></Col>
+            <Col md={4} xl={4} id="progress-AdminHome"><Progress type="circle" percent={parseInt(detail[3].percen)} width={55} strokeWidth={13} /></Col>
+            <Col md={5} xl={5} id="progress-AdminHome"><Progress type="circle" percent={parseInt(detail[4].percen)} width={55} strokeWidth={13} /></Col>
         </>
     }
 
@@ -91,9 +92,9 @@ export default class AdminHome extends Component {
                 </Row>
                 <Col md={24} xl={24} id="row-table-AdminHome">
                     <Row>
-                        <Col md={2} xl={2} id="header-table-AdminHome">ลำดับ</Col>
-                        <Col md={3} xl={3} id="header-table-AdminHome">ชื่อ - นามสกุล</Col>
-                        <Col md={4} xl={4} id="header-table-AdminHome">ชื่อบริษัท</Col>
+                        <Col md={1} xl={1} id="header-table-AdminHome">ลำดับ</Col>
+                        <Col md={5} xl={5} id="header-table-AdminHome">ชื่อ - นามสกุล</Col>
+                        <Col md={6} xl={6} id="header-table-AdminHome">ชื่อบริษัท</Col>
                         <Col span={10}>
                             <Col md={24} xl={24} id="header-table-AdminHome1">ความคืบหน้าการใช้งาน</Col>
                             <Row style={{ display: "flex", justifyContent: "space-between" }}>
@@ -104,7 +105,7 @@ export default class AdminHome extends Component {
                                 <Col md={5} xl={5} id="header-table-AdminHome1">หลักสูตรที่5</Col>
                             </Row>
                         </Col>
-                        <Col md={4} xl={4} id="header-table-AdminHome">รายละเอียดเพิ่มเติม</Col>
+                        <Col md={1} xl={1} id="header-table-AdminHome">เพิ่มเติม</Col>
                     </Row>
                     {
                         (this.state.statuslode) ?
@@ -115,16 +116,16 @@ export default class AdminHome extends Component {
                                             {
                                                 this.state.useradmin?.slice(this.state.startdetail, this.state.enddetail).map((admin, i) => {
                                                     return <Row>
-                                                        <Col md={2} xl={2} id="user-table-AdminHome">{this.state.startdetail + i + 1}</Col>
-                                                        <Col md={3} xl={3} id="user-table-AdminHome">{admin.name}</Col>
-                                                        <Col md={4} xl={4} id="user-table-AdminHome">{admin.nameCompany}</Col>
+                                                        <Col md={1} xl={1} id="user-table-AdminHome">{this.state.startdetail + i + 1}</Col>
+                                                        <Col md={5} xl={5} id="user-table-AdminHome">{admin.name}</Col>
+                                                        <Col md={6} xl={6} id="user-table-AdminHome">{admin.nameCompany}</Col>
                                                         <Col span={10}>
                                                             <Col md={24} xl={24} id="user-table-AdminHome"></Col>
                                                             <Row style={{ display: "flex", justifyContent: "space-between" }}>
                                                                 {this.detailPercenTopic(admin?.detailTop)}
                                                             </Row>
                                                         </Col>
-                                                        <Col md={4} xl={4} id="user-table-AdminHome"><NavLink to={"/Admin/Detail/" + admin.userId}>รายละเอียดเพิ่มเติม</NavLink></Col>
+                                                        <Col md={1} xl={1} id="user-table-AdminHome"><NavLink to={"/Admin/Detail/" + admin.userId}><EyeTwoTone id="icon-detail" twoToneColor="#eb2f96"/></NavLink></Col>
                                                     </Row>
                                                 })
                                             }

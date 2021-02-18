@@ -312,7 +312,7 @@ export default class Register extends Component {
                     footer={null}
                     visible={this.state.isModalVisible}
                     onCancel={this.handleCancelLogin}
-                    width={450}
+                    width={550}
                 >
                     <Form onFinish={this.onLogin}>
                         <Row>

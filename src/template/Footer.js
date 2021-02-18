@@ -20,13 +20,13 @@ export default class Footer extends Component {
             <Container fluid>
                 <Row id="row-footer">
                     <Col xs={13} md={6} xl={5} id="col-footer1">
-                        <Col xs={24} md={24} xl={24}><Image  style={{width: "70%", height: "70%", marginBottom: "5%"}} src={iFooter} /></Col>
-                        <Col xs={24} md={24} xl={24} id="header-footer">
+                        <Col xs={24} md={24} xl={24}><Image  style={{width: "70%", height: "70%", marginBottom: "7%"}} src={iFooter} /></Col>
+                        {/* <Col xs={24} md={24} xl={24} id="header-footer">
                             <Row>
                                 <Col xs={12} md={11} xl={9} id="descript1-footer">Term of Service</Col>
                                 <Col xs={12} md={10} xl={12} id="descript2-footer">Privacy Policy</Col>
                             </Row> 
-                        </Col>
+                        </Col> */}
                         <Col id="descript-footer1">สถาบันพัฒนาบุคลากรแห่งอนาคต สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (สวทช.)</Col>
                         <Col xs={24} md={24} xl={24} id="descript-footer1">© 2020 NSTDA. All Rights Reserved.</Col>
                         {/* <Col xs={24} md={24} xl={24} id="descript-footer1">เปลี่ยนคุณเป็นคนใหม่ที่ทุกๆ องค์กรต้องการตัวเข้ามาเรียนรู้กับ Career 4 Future e-Learning</Col> */}
@@ -35,12 +35,13 @@ export default class Footer extends Component {
                         <Col xs={24} md={24} xl={24} id="header-footer">สิทธิประโยชน์ที่ท่านจะได้รับ</Col>
                         <Col xs={24} md={24} xl={24} id="descript-footer2"><BsFillPeopleFill style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>เข้าร่วมอบรม E-learning for Health Technology 5 หลักสูตร</Col>
                         <Col xs={24} md={24} xl={24} id="descript-footer2"><BsFillPeopleFill style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>Gap Analysis เตรียมความพร้อมสู่การออกเชิงพาณิชย์</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer2"><BsFillPeopleFill style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>ผู้ผ่านการคัดเลือกรอบสุดท้าย ได้เข้าร่วมกิจกรรม Digital Health-Tech Coaching & Acceleration Program พร้อมรับเงินทุนสนับสนุน 280,000 บาท และขยายผลจริงในโรงพยาบาล</Col>
+                        {/* <Col xs={24} md={24} xl={24} id="descript-footer2"><BsFillPeopleFill style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>ผู้ผ่านการคัดเลือกรอบสุดท้าย ได้เข้าร่วมกิจกรรม Digital Health-Tech Coaching & Acceleration Program พร้อมรับเงินทุนสนับสนุน 280,000 บาท และขยายผลจริงในโรงพยาบาล</Col> */}
                         {/* <Col xs={24} md={24} xl={24} id="descript-footer2">วิธีการเข้าชมคอร์สเรียน</Col> */}
                     </Col>
                     <Col xs={13} md={6} xl={7} id="col-footer3">
                         <Col xs={24} md={24} xl={24} id="header-footer1">ติดตามและข้อมูลเพิ่มเติม</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer2"><FaFacebookF style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>www.facebook.com/THAILANDSCIENCEPARK</Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer3"><FaFacebookF style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>อุทยานวิทยาศาสตร์ประเทศไทย</Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer2">Thailand Science Park -TSP</Col>
                         <Col xs={24} md={24} xl={24} id="descript-footer2"><BiMessageRoundedEdit style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>https://bit.ly/38AlM86  </Col>
                         {/* <Col xs={24} md={24} xl={24} id="descript-footer2"><FaTwitter style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>Twitter</Col> */}
                     </Col>

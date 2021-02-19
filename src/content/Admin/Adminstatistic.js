@@ -8,6 +8,7 @@ import { VscBook } from "react-icons/vsc";
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
+import Chart from 'react-apexcharts'
 import { config } from '../../config/config';
 
 const cookies = new Cookies();
@@ -22,9 +23,14 @@ export default class AdminTopScore extends Component {
             email: "",
             header: [],
             viwe: [],
-            statuslode: false
+            statuslode: false,
+            options: {},
+            series: [44, 55 ],
+            
+            labels: ['A', 'B' ]
         }
     }
+
 
     componentWillMount() {
         this.setState({
@@ -61,11 +67,82 @@ export default class AdminTopScore extends Component {
     render() {
         return (
             <Container id="bg-AdminStatistic" fluid>
+                <Row id="row-chart">
+                    <Col md={24} xl={11}>
+                        <Row>
+                        <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่1</Col>
+                        <Col md={24} xl={24} id="chart-col">
+                            <Chart 
+                                options={this.state.options} 
+                                series={this.state.series} 
+                                type="donut" 
+                                width="400" 
+                                apexcharts-legend={null}/>
+                        </Col> 
+                        </Row>  
+                    </Col>
+                    <Col md={24} xl={11}>
+                        <Row>
+                        <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่2</Col>
+                        <Col md={24} xl={24} id="chart-col">
+                            <Chart 
+                                options={this.state.options} 
+                                series={this.state.series} 
+                                type="donut" 
+                                width="400" 
+                                apexcharts-legend={null}/>
+                        </Col> 
+                        </Row>  
+                    </Col>
+                </Row>
+                <Row id="row-chart">
+                    <Col md={24} xl={11}>
+                        <Row>
+                        <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่3</Col>
+                        <Col md={24} xl={24} id="chart-col">
+                            <Chart 
+                                options={this.state.options} 
+                                series={this.state.series} 
+                                type="donut" 
+                                width="400" 
+                                apexcharts-legend={null}/>
+                        </Col> 
+                        </Row>  
+                    </Col>
+                    <Col md={24} xl={11}>
+                        <Row>
+                        <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่4</Col>
+                        <Col md={24} xl={24} id="chart-col">
+                            <Chart 
+                                options={this.state.options} 
+                                series={this.state.series} 
+                                type="donut" 
+                                width="400" 
+                                apexcharts-legend={null}/>
+                        </Col> 
+                        </Row>  
+                    </Col>
+                </Row>
+                <Row id="row-chart">
+                    <Col md={24} xl={11}>
+                        <Row>
+                        <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่3</Col>
+                        <Col md={24} xl={24} id="chart-col">
+                            <Chart 
+                                options={this.state.options} 
+                                series={this.state.series} 
+                                type="donut" 
+                                width="400" 
+                                apexcharts-legend={null}/>
+                        </Col> 
+                        </Row>  
+                    </Col>
+                </Row>
                 <Row id="row-statistic">
                     <Col md={7} xl={5} id="col-statictic">
                         <Row>
                             <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.userall}</Col>
-                            <Col md={10} xl={10} id="icon-statistic"><BsClipboardData id="statistic-icon"/></Col>
+                            <Col md={10} xl={10} id="icon-statistic"><BsClipboardData id="statistic-icon" /></Col>
                         </Row>
                         <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ลงทะเบียน</Col>
                     </Col>
@@ -79,14 +156,14 @@ export default class AdminTopScore extends Component {
                     <Col md={7} xl={5} id="col-statictic">
                         <Row>
                             <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course1}</Col>
-                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon"/></Col>
+                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
                         </Row>
                         <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 1</Col>
                     </Col>
                     <Col md={7} xl={5} id="col-statictic">
                         <Row>
                             <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course2}</Col>
-                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon"/></Col>
+                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
                         </Row>
                         <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 2</Col>
                     </Col>
@@ -95,21 +172,21 @@ export default class AdminTopScore extends Component {
                     <Col md={7} xl={5} id="col-statictic">
                         <Row>
                             <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course3}</Col>
-                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon"/></Col>
+                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
                         </Row>
                         <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 3</Col>
                     </Col>
                     <Col md={7} xl={5} id="col-statictic">
                         <Row>
                             <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course4}</Col>
-                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon"/></Col>
+                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
                         </Row>
                         <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 4</Col>
                     </Col>
                     <Col md={7} xl={5} id="col-statictic">
                         <Row>
                             <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course5}</Col>
-                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon"/></Col>
+                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
                         </Row>
                         <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 5</Col>
                     </Col>

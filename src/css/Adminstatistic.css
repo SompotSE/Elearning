@@ -13,6 +13,13 @@
 
 /* notebook */
 @media screen and (min-width: 601px) {
+    #header-chart-col{
+        display: flex;
+        padding-left: 36%;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 1%;
+    }
     #statistic-number{
         font-size: 40px;
         font-weight: bold;
@@ -42,10 +49,29 @@
         padding-top: 1%;
         padding-bottom: 1%;
     }
+    #row-chart{
+        display: flex;
+        padding-left: 4%;
+        padding-right: 4%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+    #chart-col{
+        display: flex;
+        justify-content: center;
+        margin-top: 2%;
+    }
 }
 
 /* ipad */
 @media screen and (max-width: 768px) {
+    #header-chart-col{
+        display: flex;
+        padding-left: 38%;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 1%;
+    }
     #row-statistic{
         display: flex;
         justify-content: left;
@@ -74,5 +100,17 @@
         padding-bottom: 1.5%;
         margin-bottom: 4%;
         margin-right: 2%;
+    }
+    #row-chart{
+        display: flex;
+        padding-left: 4%;
+        padding-right: 4%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+    #chart-col{
+        display: flex;
+        justify-content: center;
+        margin-top: 2%;
     }
 }

@@ -154,25 +154,25 @@ export default withRouter(class ExamPost extends Component {
 
     render() {
         return (
-            <Container fluid>
+            <Container fluid id="bg-ExamPost">
                 {
                     (!this.state.ansResultStatus) ?
                         <div id="body-exam-post">
                             <Row id="head-exam-post">แบบทดสอบหลังเรียน</Row>
                             <Row id="box-exam">
-                                <Col xs={12} md={12} xl={12}> {this.state.exam[this.state.current_page - 1]?.examinationlistText} </Col>
-                                <Col xs={12} md={12} xl={12}>
+                                <Col xs={24} md={24} xl={24} id="exam-header"> {this.state.exam[this.state.current_page - 1]?.examinationlistText} </Col>
+                                <Col xs={24} md={24} xl={24} id="exam-choice">
                                     <Radio.Group onChange={this.onChangeAns} value={this.state.exam[this.state.current_page - 1]?.answer}>
                                         {
                                             this.state.exam[this.state.current_page - 1]?.answerlist.map((anslist, i) => {
-                                                return <Col xs={24} md={24} xl={24}><Radio value={anslist.answerlistCode}>{anslist.answerlistText}</Radio></Col>
+                                                return <Col xs={24} md={24} xl={24}><Radio value={anslist.answerlistCode} id="exam-choice">{anslist.answerlistText}</Radio></Col>
                                             })
                                         }
                                     </Radio.Group>
                                 </Col>
                             </Row>
                             <Row id="pagination">
-                                <Col xs={22} md={22} xl={22}>
+                                <Col xs={22} md={22} xl={22} id="col-pagination">
                                     <Pagination
                                         current={this.state.current_page}
                                         pageSize={1}
@@ -182,7 +182,7 @@ export default withRouter(class ExamPost extends Component {
                                     />
                                 </Col>
                                 <Col xs={2} md={2} xl={2}>
-                                    <Button disabled={this.state.current_page === Num ? false : true} onClick={this.onSendExam}>ส่งแบบทดสอบ</Button>
+                                    {/* <Button disabled={this.state.current_page === Num ? false : true} onClick={this.onSendExam}>ส่งแบบทดสอบ</Button> */}
                                 </Col>
                             </Row>
                         </div>

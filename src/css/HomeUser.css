@@ -7,6 +7,14 @@
     margin-right: 6%;
 }
 
+#row-coverhomeUser{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 3%;
+}
+
 #row-userheader {
     padding-top: 3%;
     margin-left: 6%;
@@ -183,6 +191,14 @@
         color: #DD403B;
         margin-right: 1%;
     }
+    #row-coverhomeUser{
+        display: flex;
+        justify-content: space-between;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 3%;
+    }
+    
 }
 
 #btn-tocourse{

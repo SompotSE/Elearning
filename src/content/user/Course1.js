@@ -12,7 +12,7 @@ import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
-import { AiFillPlayCircle } from "react-icons/ai";
+// import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';
 // import v2 from '../../img/V2.png';
 // import v3 from '../../img/V3.png';
@@ -410,8 +410,8 @@ export default withRouter(class Course1 extends Component {
 
                     <Col xs={24} md={12} xl={12}>
                         <Row>
-                            <Row id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Row>
-                            <Col xs={16} md={16} xl={16}>
+                            <Col xs={24} md={24} xl={24} id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Col>
+                            <Col xs={24} md={24} xl={12}>
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
@@ -423,25 +423,25 @@ export default withRouter(class Course1 extends Component {
                                         </>
                                 }
                             </Col>
-                            <Col xs={8} md={8} xl={8} id="progress-course">
+                            <Col xs={24} md={24} xl={12} id="progress-course">
                                 <Progress type="circle" percent={this.state.percentExamPost} strokeColor={(this.state.percentExamPost >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
                             </Col>
                             {
                                 (this.state.percentExamPost >= 80) ?
                                     <>
-                                        <Col xs={16} md={16} xl={16}></Col>
-                                        <Col xs={8} md={8} xl={8} id="progress-course">
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course1">
                                             <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
                                         </Col>
                                     </>
                                     :
                                     <>
-                                        <Col xs={16} md={16} xl={16}></Col>
-                                        <Col xs={8} md={8} xl={8} id="progress-course">
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course1">
                                             <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
                                         </Col>
-                                        <Col xs={16} md={16} xl={16}></Col>
-                                        <Col xs={8} md={8} xl={8} id="progress-course">
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course1">
                                             <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
                                         </Col>
                                     </>
@@ -459,11 +459,11 @@ export default withRouter(class Course1 extends Component {
                             ghost
                         >
                             <Panel header="เอกสารประกอบการเรียน" key="1">
-                                <Row>
-                                    <Col xs={22} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={this.onDownlode}> - ดาวน์โหลดเอกสาร </Col>
+                                <Row  id="row-iconcheck">
+                                    <Col xs={20} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={this.onDownlode}> - ดาวน์โหลดเอกสาร </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.course?.downlodeDoc === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                            (this.state.course?.downlodeDoc === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -471,11 +471,11 @@ export default withRouter(class Course1 extends Component {
 
 
                             <Panel header="บทเรียน" key="2">
-                                <Row>
-                                    <Col xs={22} md={22} xl={22} id="sub-header"> 1. ขอบเขต เป็นบททั่วไป และการประยุกต์ใช้ ISO 13485: 2016 </Col>
+                                <Row id="row-iconcheck">
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 1. ขอบเขต เป็นบททั่วไป และการประยุกต์ใช้ ISO 13485: 2016 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -503,11 +503,11 @@ export default withRouter(class Course1 extends Component {
                                     </Col>
                                 </Row>
 
-                                <Row>
-                                    <Col xs={22} md={22} xl={22} id="sub-header"> 2. มาตรฐานอ้างอิง อธิบายถึงการอ้างอิงข้อกำหนดของมาตรฐาน ISO 9001:2015 </Col>
+                                <Row id="row-iconcheck">
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 2. มาตรฐานอ้างอิง อธิบายถึงการอ้างอิงข้อกำหนดของมาตรฐาน ISO 9001:2015 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -535,11 +535,11 @@ export default withRouter(class Course1 extends Component {
                                     </Col>
                                 </Row>
 
-                                <Row>
-                                    <Col xs={22} md={22} xl={22} id="sub-header"> 3. คำศัพท์และคำนิยาม อธิบายคำศัพท์และนิยาม ทั้งในส่วนของข้อกำหนดระบบบริหารคุณภาพทั่วไป และสำหรับเครื่องมือแพทย์ ซี่งอ้างอิงตาม ISO 9001:2015 </Col>
+                                <Row id="row-iconcheck">
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 3. คำศัพท์และคำนิยาม อธิบายคำศัพท์และนิยาม ทั้งในส่วนของข้อกำหนดระบบบริหารคุณภาพทั่วไป และสำหรับเครื่องมือแพทย์ ซี่งอ้างอิงตาม ISO 9001:2015 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -568,11 +568,11 @@ export default withRouter(class Course1 extends Component {
                             </Panel>
 
                             <Panel header="แบบทดสอบท้ายบทเรียน" key="3">
-                                <Row>
-                                    <Col xs={22} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={() => { this.onExamPost() }}> - ทำแบบทดสอบ </Col>
+                                <Row id="row-iconcheck"> 
+                                    <Col xs={20} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={() => { this.onExamPost() }}> - ทำแบบทดสอบ </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.examPost.length > 0) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                            (this.state.examPost.length > 0) ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -604,40 +604,42 @@ export default withRouter(class Course1 extends Component {
                     <Col xs={24} md={24} xl={24} id="course-header">หลักสูตรที่เกี่ยวข้อง</Col>
                     <Col xs={24} md={24} xl={24} id="font-header">
                         <Row>
-                            <Col xs={12} md={6} xl={6} id="course-menu">
-                                <Row id="course-menu">
+                            <Col xs={1} md={2} xl={2}></Col>
+                            <Col xs={10} md={4} xl={4} id="course-menu">
+                                <Row id="course1-menu">
                                     <Image src={course2} id="img-course" fluid></Image>
                                 </Row>
-                                <Row id="course-tomenu">
-                                    <AiFillPlayCircle id="img-play" />
-                                    <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
+                                <Row id="row-btn-coursedetail">
+                                    <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
-                            <Col xs={12} md={6} xl={6} id="course-menu">
-                                <Row id="course-menu">
+                            <Col xs={1} md={1} xl={1}></Col>
+                            <Col xs={10} md={4} xl={4} id="course-menu">
+                                <Row id="course1-menu">
                                     <Image src={course3} id="img-course" fluid></Image>
                                 </Row>
-                                <Row id="course-tomenu">
-                                    <AiFillPlayCircle id="img-play" />
-                                    <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
+                                <Row id="row-btn-coursedetail">
+                                    <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
-                            <Col xs={12} md={6} xl={6} id="course-menu">
-                                <Row id="course-menu">
+                            <Col xs={1} md={0} xl={0}></Col>
+                            <Col xs={1} md={0} xl={0}></Col>
+                            <Col xs={1} md={1} xl={1}></Col>
+                            <Col xs={10} md={4} xl={4} id="course-menu">
+                                <Row id="course1-menu">
                                     <Image src={course4} id="img-course" fluid></Image>
                                 </Row>
-                                <Row id="course-tomenu">
-                                    <AiFillPlayCircle id="img-play" />
-                                    <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
+                                <Row id="row-btn-coursedetail">
+                                    <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
-                            <Col xs={12} md={6} xl={6} id="course-menu">
-                                <Row id="course-menu">
+                            <Col xs={1} md={1} xl={1}></Col>
+                            <Col xs={10} md={4} xl={4} id="course-menu">
+                                <Row id="course1-menu">
                                     <Image src={course5} id="img-course" fluid></Image>
                                 </Row>
-                                <Row id="course-tomenu">
-                                    <AiFillPlayCircle id="img-play" />
-                                    <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
+                                <Row id="row-btn-coursedetail">
+                                    <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                         </Row>

@@ -8,13 +8,14 @@ import swal from 'sweetalert';
 import '../../css/HomeUser.css';
 import ReactPlayer from 'react-player';
 import testV1 from '../../video/test.mp4';
+import cover1 from '../../img/Cover1.png';
 import { AiFillPlayCircle } from "react-icons/ai";
 
-import course1 from '../../img/course1.png';
-import course2 from '../../img/course2.png';
-import course3 from '../../img/course3.png';
-import course4 from '../../img/course4.png';
-import course5 from '../../img/course5.png';
+// import course1 from '../../img/course1.png';
+// import course2 from '../../img/course2.png';
+// import course3 from '../../img/course3.png';
+// import course4 from '../../img/course4.png';
+// import course5 from '../../img/course5.png';
 
 // import incourse2 from '../../img/incourse2.svg';
 
@@ -177,57 +178,48 @@ export default withRouter(class HomeUser extends Component {
                         </Row>
                     </Col>
                 </Row>
-                    
-                <Row id="row-imgcourse">
-                    {/* <Col xs={0} md={0} xl={0} id="course-menu">
-                    </Col> */}
-                    <Col xs={10} md={4} xl={4} id="course-menu">
-                        <Row id="course-menu">
-                            <Image src={course1} id="img-course" fluid style={{ cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>
-                        </Row>
-                        <Row id="course-menu1">
-                            <AiFillPlayCircle id="img-play" onClick={() => { this.onClicktoCourse(CourseCode1) }}/>
-                            <Button id="btn-tocourse" onClick={() => { this.onClicktoCourse(CourseCode1) }}>เข้าสู่หลักสูตร</Button>
-                        </Row>
-                    </Col>
-                    <Col xs={10} md={4} xl={4} id="course-menu">
-                        <Row id="course-menu">
-                            <Image src={course2} id="img-course" fluid style={{ cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode2) }}></Image>
-                        </Row>
-                        <Row id="course-menu1">
-                            <AiFillPlayCircle id="img-play" onClick={() => { this.onClicktoCourse(CourseCode2) }}/>
-                            <Button id="btn-tocourse" onClick={() => { this.onClicktoCourse(CourseCode2) }}>เข้าสู่หลักสูตร</Button>
-                        </Row>
-                    </Col>
-                    <Col xs={10} md={4} xl={4} id="course-menu">
-                        <Row id="course-menu">
-                            <Image src={course3} id="img-course" fluid></Image>
-                        </Row>
-                        <Row id="course-menu1">
-                            <AiFillPlayCircle id="img-play"/>
-                            <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
-                        </Row>
-                    </Col>
-                    <Col xs={10} md={4} xl={4} id="course-menu">
-                        <Row id="course-menu">
-                            <Image src={course4} id="img-course" fluid></Image>
-                        </Row>
-                        <Row id="course-menu1">
-                            <AiFillPlayCircle id="img-play"/>
-                            <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
-                        </Row>
-                    </Col>
-                    <Col xs={10} md={4} xl={4} id="course-menu">
-                        <Row id="course-menu">
-                            <Image src={course5} id="img-course" fluid></Image>
-                        </Row>
-                        <Row id="course-menu1">
-                            <AiFillPlayCircle id="img-play"/>
-                            <Button id="btn-tocourse">เข้าสู่หลักสูตร</Button>
-                        </Row>
-                    </Col>
-                    {/* <Col xs={0} md={0} xl={0} id="course-menu">
-                    </Col> */}
+
+                <Row id="row-coverhomeUser">
+                        <Col xs={10} md={4} xl={4} >
+                            <Row id="row-img-coursedetail">
+                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>   
+                            </Row>
+                            <Row id="row-btn-coursedetail">
+                                <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button>
+                            </Row>
+                        </Col>
+                        <Col xs={10} md={4} xl={4}>
+                            <Row  id="row-img-coursedetail">
+                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode2) }}></Image>   
+                            </Row>
+                            <Row id="row-btn-coursedetail">
+                                <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode2) }}>รายละเอียดหลักสูตร</Button>
+                            </Row>
+                        </Col>
+                        <Col xs={10} md={4} xl={4}>
+                            <Row  id="row-img-coursedetail">
+                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} fluid></Image>   
+                            </Row>
+                            <Row id="row-btn-coursedetail">
+                                <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                            </Row>
+                        </Col>
+                        <Col xs={10} md={4} xl={4}>
+                            <Row  id="row-img-coursedetail">
+                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} fluid></Image>   
+                            </Row>
+                            <Row id="row-btn-coursedetail">
+                                <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                            </Row>
+                        </Col>
+                        <Col xs={10} md={4} xl={4}>
+                            <Row  id="row-img-coursedetail">
+                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} fluid></Image>   
+                            </Row>
+                            <Row id="row-btn-coursedetail">
+                                <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                            </Row>
+                        </Col>
                 </Row>
                 
             </Container>

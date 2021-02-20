@@ -81,6 +81,7 @@ export default class AdminTopScore extends Component {
             });
 
             Modal.info({
+                width: 700,
                 title:
                     (courseCode === CourseCode1 ? "หลักสูตรที่ 1 " :
                         courseCode === CourseCode2 ? "หลักสูตรที่ 2 " :

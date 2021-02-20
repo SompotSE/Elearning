@@ -363,7 +363,7 @@ export default withRouter(class Header extends Component {
                     footer={null}
                     visible={this.state.isModalVisible}
                     onCancel={this.handleCancelLogin}
-                    width={550}
+                    width={700}
                 >
                     <Form onFinish={this.onLogin}>
                         <Row>
@@ -421,7 +421,7 @@ export default withRouter(class Header extends Component {
                     footer={null}
                     visible={this.state.isModalForgetPass}
                     onCancel={this.handleCancelForgetPass}
-                    width={560}>
+                    width={700}>
                     <Form onFinish={this.onForgetPass}>
                         <Row>
                             <Col xs={3} md={3} xl={3}></Col>
@@ -462,7 +462,7 @@ export default withRouter(class Header extends Component {
                     footer={null}
                     visible={this.state.isModalchangePass}
                     onCancel={this.handleCancelChangePass}
-                    width={450}>
+                    width={700}>
                     <Form onFinish={this.onChangePass}>
                         <Row id="row-CP">
                             <Col xs={4} md={4} xl={4}></Col>
@@ -543,7 +543,7 @@ export default withRouter(class Header extends Component {
                     title={null}
                     footer={null}
                     visible={this.state.isModalConfirmMail}
-                    width={450}>
+                    width={700}>
                     <Row id="Modal-Chanepass">
                         <Col xs={4} md={4} xl={4}></Col>
                         <Col xs={16} md={16} xl={16}>
@@ -557,7 +557,7 @@ export default withRouter(class Header extends Component {
                             </Row>
                         </Col>
                         <Col xs={4} md={4} xl={4}></Col>
-                        <Col xs={24} md={24} xl={24} id="ft-footer"><QuestionCircleOutlined style={{ fontSize: "10px", display: "flex", alignItems: "center", marginRight: "0.5%" }} />หากไม่ได้รับอีเมลล์? โปรดตรวจสอบอีเมลล์ของคุณหรือลองใช้ที่อยู่อีเมลล์อื่น</Col>
+                        <Col xs={24} md={24} xl={24} id="ft-footer"><QuestionCircleOutlined style={{ fontSize: "14px", display: "flex", alignItems: "center", marginRight: "0.5%" }} />หากไม่ได้รับอีเมลล์? โปรดตรวจสอบอีเมลล์ของคุณหรือลองใช้ที่อยู่อีเมลล์อื่น</Col>
                     </Row>
                 </Modal>
             </Container>

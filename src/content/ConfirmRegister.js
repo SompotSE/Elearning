@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Image } from 'react-bootstrap';
+import { Container, } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { Row, Spin, Result, Button } from 'antd';
-import letter from "../img/letter.png"
+// import letter from "../img/letter.png"
 import '../css/ConfirmRegister.css';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
@@ -38,7 +38,7 @@ export default class ConfirmRegister extends Component {
     async componentDidMount() {
         const confirmRegister = {
             confirmRegisterKey: this.props.match.params.ConfirmRegisterKey
-        };
+        }
 
         var url_confirm_register = ip + "/User/ConfirmRegister";
         const confirm_register = await (await axios.put(url_confirm_register, confirmRegister)).data;

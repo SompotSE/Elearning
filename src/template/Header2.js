@@ -16,9 +16,9 @@ export default withRouter(class Header2 extends Component {
     render() {
         return (
             <Container fluid>
-                <Row>
+                {/* <Row>
                     <Image src={banner} fluid></Image>
-                </Row>
+                </Row> */}
             </Container>
         )
     }

@@ -262,3 +262,7 @@
     justify-content: center;
     align-items: center;
 }
+
+#img-logo{
+    height: max-content;
+}

@@ -156,6 +156,10 @@
         justify-content: flex-start;
         align-items: center;
     }
+    #certifi{
+        font-size: 20px;
+        margin-top: 3%;
+    }
 }
 
 /* ipad pro */

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Image } from 'react-bootstrap';
-import { Row, Col, Breadcrumb, Progress, Collapse, Button } from 'antd';
+import { Row, Col, Breadcrumb, Progress, Collapse, Button, Modal } from 'antd';
 import { HomeOutlined, SnippetsOutlined, RightCircleTwoTone, BorderOutlined } from '@ant-design/icons';
 import { withRouter } from "react-router-dom";
 import { AiFillCheckSquare } from "react-icons/ai";
@@ -12,6 +12,7 @@ import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
+import banner from "../../img/banner.png";
 // import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';
 // import v2 from '../../img/V2.png';
@@ -65,7 +66,9 @@ export default withRouter(class Course1 extends Component {
             playingTopic3: false,
 
             examPost: [],
-            percentExamPost: 0
+            percentExamPost: 0,
+
+            isModaldetailCertificate: false,
         };
 
         this.onDownlode = this.onDownlode.bind(this);
@@ -77,6 +80,7 @@ export default withRouter(class Course1 extends Component {
         this.onEndedVedio = this.onEndedVedio.bind(this);
         this.playingVedio = this.playingVedio.bind(this);
         this.updateTimeTopic = this.updateTimeTopic.bind(this);
+        this.info = this.info.bind(this);
     }
 
     componentWillMount() {
@@ -365,12 +369,29 @@ export default withRouter(class Course1 extends Component {
         }
     }
 
+    showdetailCertificate() {
+        this.setState({ isModaldetailCertificate: true });
+    }
+
+    info(){
+    Modal.info({
+        title: 'ข้อมูลการรับใบ Certificate',
+        width: "500px",
+        content: (
+          <div>
+            <p id="certifi">สามารถติดต่อขอรับใบ Certificate ได้ที่หน่วยงานต้นสังกัด</p>
+          </div>
+        ),
+        onOk() {},
+      });
+    }
+
     render() {
         return (
             <Container fluid id="bg-course">
-                {/* <Row>
+                <Row>
                     <Image src={banner} fluid></Image>
-                </Row> */}
+                </Row>
                 <Row id="row-headercourse">
                     <Breadcrumb>
                         <Breadcrumb.Item>
@@ -415,7 +436,7 @@ export default withRouter(class Course1 extends Component {
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
-                                            <Row id="btn-certificate"><Button>ข้อมูลการรับใบ Certificate</Button></Row>
+                                            <Row id="btn-certificate"><Button onClick={this.info}>ข้อมูลการรับใบ Certificate</Button></Row>
                                         </>
                                         :
                                         <>
@@ -645,6 +666,7 @@ export default withRouter(class Course1 extends Component {
                         </Row>
                     </Col>
                 </Row>
+
             </Container>
         );
     }

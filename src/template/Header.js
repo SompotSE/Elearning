@@ -11,7 +11,8 @@ import { QuestionCircleOutlined, UserOutlined } from '@ant-design/icons';
 import { config } from '../config/config';
 import { FaCheckCircle } from "react-icons/fa";
 import letter from "../img/letter.png";
-// import MHESI from "../img/logo-MHESI.png"
+import BIC from "../img/logoBIC.png";
+import NECTEC from "../img/logoNECTEC.png";
 
 const cookies = new Cookies();
 
@@ -278,10 +279,12 @@ export default withRouter(class Header extends Component {
 
         return (
             <Container fluid id="conflu">
-
                 <Row id="row-header">
                     <Col xs={18} md={18} xl={18}>
-                        {/* <Col xs={2} md={2} xl={2}><Image src={MHESI} style={{height: "30%"}}fluid ></Image></Col> */}
+                        <Row>
+                            <Col md={5} xl={5}><Image src={BIC} id="img-logo" fluid></Image></Col>
+                            <Col md={5} xl={5}><Image src={NECTEC} fluid  id="img-logo"></Image></Col>
+                        </Row>
                     </Col>
                     <Col xs={6} md={6} xl={6}>
                         <Row style={{ justifyContent: "space-between" }}>

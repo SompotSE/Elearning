@@ -283,6 +283,14 @@ export default withRouter(class Header extends Component {
         window.location.replace('/Home', false);
     }
 
+    LoginButton() {
+        this.props.history.push("/Login");
+    }
+
+    RegisterButton() {
+        this.props.history.push("/Register");
+    }
+
     render() {
 
         return (
@@ -290,178 +298,182 @@ export default withRouter(class Header extends Component {
                 <Row id="row-header1">
                     {
                         (window.innerWidth >= 768) ?
-                        <>
-                            <Col xs={17} md={19} xl={19}>
-                                <Row style={{ display: "flex", justifyContent: "space-between", paddingRight: "3%" }}>
-                                    <Image src={onde} fluid id="img-logo"></Image>
-                                    <Image src={DE} fluid id="img-logo"></Image>
-                                    <Image src={mhesi} fluid id="img-logo"></Image>
-                                    <Image src={nstda} fluid id="img-logo"></Image>
-                                    <Image src={TMC} fluid id="img-logo"></Image>
-                                    <Image src={TSP} fluid id="img-logo"></Image>
-                                    <Image src={SP} fluid id="img-logo"></Image>
-                                    <Image src={BIC} id="img-logo" fluid></Image>
-                                    <Image src={NECTEC} fluid id="img-logo"></Image>
-                                    <Image src={PTEC} fluid id="img-logo"></Image>
-                                </Row>
-                            </Col>
-                            <Col xs={8} md={5} xl={5}>
-                        <Row style={{ justifyContent: "space-between" }}>
-                            <Col xs={24} md={24} xl={24} id="btn-header">
-                                {
-                                    (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
-                                        <>
-                                            {window.innerWidth >= 684 ?
-                                                <Button type="primary" id="btn-sty" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button>
-                                                :
-                                                <NavLink to="/Login"><Button type="primary" id="btn-sty">เข้าสู่ระบบ</Button></NavLink>
-                                            }
-                                            {window.innerWidth >= 1200 ?
-                                                <Button type="primary" id="btn-sty1" onClick={() => this.onClickRegister()}>สมัครสมาชิก</Button>
-                                                :
-                                                <NavLink to="/Register"><Button type="primary" id="btn-sty1">สมัครสมาชิก</Button></NavLink>
-                                            }
-                                        </>
-                                        :
-                                        <>
-                                            <UserOutlined /> <span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span> | <span style={{ paddingRight: "5%" }}></span>
-                                            <Dropdown overlay={
-                                                <Menu>
-                                                    {
-                                                        (this.state.user?.userRoleId === 1) ?
-                                                            <>
-                                                                <Menu.Item key="0">
-                                                                    <NavLink to="/Admin/Home"><Button type="primary" id="btn-sty" >หน้าหลัก</Button></NavLink>
-                                                                </Menu.Item>
-                                                                <Menu.Divider />
-                                                                <Menu.Item key="1">
-                                                                    <NavLink to="/Admin/TopScore"><Button type="primary" id="btn-sty">คะแนนสูงสุด</Button></NavLink >
-                                                                </Menu.Item>
-                                                                <Menu.Divider />
-                                                                <Menu.Item key="2">
-                                                                    <NavLink to="/Admin/Statistic"><Button type="primary" id="btn-sty">สถิติ</Button></NavLink >
-                                                                </Menu.Item>
-                                                                <Menu.Divider />
-                                                                <Menu.Item key="3">
-                                                                    {window.innerWidth >= 684 ?
-                                                                        <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
-                                                                        :
-                                                                        <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
-                                                                    }
-                                                                </Menu.Item>
-                                                                <Menu.Divider />
-                                                                <Menu.Item key="4">
-                                                                    <NavLink to="/Logout"><Button type="primary" id="btn-sty">ออกจากระบบ</Button></NavLink >
-                                                                </Menu.Item>
-                                                            </>
-                                                            :
-                                                            <>
-                                                                <Menu.Item key="0">
-                                                                    {window.innerWidth >= 684 ?
-                                                                        <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
-                                                                        :
-                                                                        <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
-                                                                    }
-                                                                </Menu.Item>
-                                                                <Menu.Divider />
-                                                                <Menu.Item key="1">
-                                                                    <NavLink to="/Logout"><Button type="primary" id="btn-sty">ออกจากระบบ</Button></NavLink >
-                                                                </Menu.Item>
-                                                            </>
-                                                    }
-                                                </Menu>
-                                            } placement="topRight" arrow>
-                                                <Button>menu</Button>
-                                            </Dropdown>
-
-                                        </>
-                                }
-                            </Col>
-                        </Row>
-                    </Col>
-                        </>
-                            :
                             <>
-                            <Row>
-                                <Col xs={24} style={{ padding: "1.5%" }}>
-                                    <Row id="logo-layout">
+                                <Col xs={17} md={19} xl={19}>
+                                    <Row style={{ display: "flex", justifyContent: "space-between", paddingRight: "3%" }}>
                                         <Image src={onde} fluid id="img-logo"></Image>
                                         <Image src={DE} fluid id="img-logo"></Image>
                                         <Image src={mhesi} fluid id="img-logo"></Image>
                                         <Image src={nstda} fluid id="img-logo"></Image>
                                         <Image src={TMC} fluid id="img-logo"></Image>
                                         <Image src={TSP} fluid id="img-logo"></Image>
-                                    </Row>
-                                </Col>
-                                <Col xs={24} style={{ padding: "1.5%" }}>
-                                    <Row id="logo-layout">
                                         <Image src={SP} fluid id="img-logo"></Image>
                                         <Image src={BIC} id="img-logo" fluid></Image>
                                         <Image src={NECTEC} fluid id="img-logo"></Image>
                                         <Image src={PTEC} fluid id="img-logo"></Image>
                                     </Row>
                                 </Col>
-                            </Row>
-                            <Col xs={24}>
-                                <Row style={{ padding: "1.5%", justifyContent: "flex-end" }}>
-                                    <Button type="primary" id="btn-sty" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button>
-                                    <Button type="primary" id="btn-sty" onClick={() => this.onClickRegister()}>สมัครสมาชิก</Button>
-                                </Row>
-                                <Row style={{ padding: "1.5%", display: "flex", alignItems: "center" }}>
-                                    <UserOutlined id="logo-user"/> <span style={{ paddingRight: "5%" }}> Sompot</span> | <span style={{ paddingRight: "5%" }}></span>
-                                    <Dropdown id="btn-dropdown" overlay={
-                                                <Menu>
-                                                    {
-                                                        (this.state.user?.userRoleId === 1) ?
-                                                            <>
-                                                                <Menu.Item key="0">
-                                                                    <NavLink to="/Admin/Home"><Button type="primary" id="btn-dropdown" >หน้าหลัก</Button></NavLink>
-                                                                </Menu.Item>
-                                                                <Menu.Divider />
-                                                                <Menu.Item key="1">
-                                                                    <NavLink to="/Admin/TopScore"><Button type="primary" id="btn-dropdown">คะแนนสูงสุด</Button></NavLink >
-                                                                </Menu.Item>
-                                                                <Menu.Divider />
-                                                                <Menu.Item key="2">
-                                                                    <NavLink to="/Admin/Statistic"><Button type="primary" id="btn-dropdown">สถิติ</Button></NavLink >
-                                                                </Menu.Item>
-                                                                <Menu.Divider />
-                                                                <Menu.Item key="3">
-                                                                    {window.innerWidth >= 684 ?
-                                                                        <Button type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
-                                                                        :
-                                                                        <NavLink to="/ChangePass"><Button type="primary" id="btn-dropdown" >เปลี่ยนรหัสผ่าน</Button></NavLink>
-                                                                    }
-                                                                </Menu.Item>
-                                                                <Menu.Divider />
-                                                                <Menu.Item key="4">
-                                                                    <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
-                                                                </Menu.Item>
-                                                            </>
+                                <Col xs={8} md={5} xl={5}>
+                                    <Row style={{ justifyContent: "space-between" }}>
+                                        <Col xs={24} md={24} xl={24} id="btn-header">
+                                            {
+                                                (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
+                                                    <>
+                                                        {window.innerWidth >= 684 ?
+                                                            <Button type="primary" id="btn-sty" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button>
                                                             :
-                                                            <>
-                                                                <Menu.Item key="0">
-                                                                    {window.innerWidth >= 684 ?
-                                                                        <Button type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                            <NavLink to="/Login"><Button type="primary" id="btn-sty">เข้าสู่ระบบ</Button></NavLink>
+                                                        }
+                                                        {window.innerWidth >= 1200 ?
+                                                            <Button type="primary" id="btn-sty1" onClick={() => this.onClickRegister()}>สมัครสมาชิก</Button>
+                                                            :
+                                                            <NavLink to="/Register"><Button type="primary" id="btn-sty1">สมัครสมาชิก</Button></NavLink>
+                                                        }
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <UserOutlined /> <span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span> | <span style={{ paddingRight: "5%" }}></span>
+                                                        <Dropdown overlay={
+                                                            <Menu>
+                                                                {
+                                                                    (this.state.user?.userRoleId === 1) ?
+                                                                        <>
+                                                                            <Menu.Item key="0">
+                                                                                <NavLink to="/Admin/Home"><Button type="primary" id="btn-sty" >หน้าหลัก</Button></NavLink>
+                                                                            </Menu.Item>
+                                                                            <Menu.Divider />
+                                                                            <Menu.Item key="1">
+                                                                                <NavLink to="/Admin/TopScore"><Button type="primary" id="btn-sty">คะแนนสูงสุด</Button></NavLink >
+                                                                            </Menu.Item>
+                                                                            <Menu.Divider />
+                                                                            <Menu.Item key="2">
+                                                                                <NavLink to="/Admin/Statistic"><Button type="primary" id="btn-sty">สถิติ</Button></NavLink >
+                                                                            </Menu.Item>
+                                                                            <Menu.Divider />
+                                                                            <Menu.Item key="3">
+                                                                                {window.innerWidth >= 684 ?
+                                                                                    <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                                    :
+                                                                                    <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                                }
+                                                                            </Menu.Item>
+                                                                            <Menu.Divider />
+                                                                            <Menu.Item key="4">
+                                                                                <NavLink to="/Logout"><Button type="primary" id="btn-sty">ออกจากระบบ</Button></NavLink >
+                                                                            </Menu.Item>
+                                                                        </>
                                                                         :
-                                                                        <NavLink to="/ChangePass"><Button type="primary" id="btn-dropdown" >เปลี่ยนรหัสผ่าน</Button></NavLink>
-                                                                    }
-                                                                </Menu.Item>
-                                                                <Menu.Divider />
-                                                                <Menu.Item key="1">
-                                                                    <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
-                                                                </Menu.Item>
-                                                            </>
-                                                    }
-                                                </Menu>
-                                            } placement="topRight" arrow>
-                                                <Button>menu</Button>
-                                            </Dropdown>
+                                                                        <>
+                                                                            <Menu.Item key="0">
+                                                                                {window.innerWidth >= 684 ?
+                                                                                    <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                                    :
+                                                                                    <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                                }
+                                                                            </Menu.Item>
+                                                                            <Menu.Divider />
+                                                                            <Menu.Item key="1">
+                                                                                <NavLink to="/Logout"><Button type="primary" id="btn-sty">ออกจากระบบ</Button></NavLink >
+                                                                            </Menu.Item>
+                                                                        </>
+                                                                }
+                                                            </Menu>
+                                                        } placement="topRight" arrow>
+                                                            <Button>menu</Button>
+                                                        </Dropdown>
+
+                                                    </>
+                                            }
+                                        </Col>
+                                    </Row>
+                                </Col>
+                            </>
+                            :
+                            <>
+                                <Row>
+                                    <Col xs={24} style={{ padding: "1.5%" }}>
+                                        <Row id="logo-layout">
+                                            <Image src={onde} fluid id="img-logo"></Image>
+                                            <Image src={DE} fluid id="img-logo"></Image>
+                                            <Image src={mhesi} fluid id="img-logo"></Image>
+                                            <Image src={nstda} fluid id="img-logo"></Image>
+                                            <Image src={TMC} fluid id="img-logo"></Image>
+                                            <Image src={TSP} fluid id="img-logo"></Image>
+                                        </Row>
+                                    </Col>
+                                    <Col xs={24} style={{ padding: "1.5%" }}>
+                                        <Row id="logo-layout">
+                                            <Image src={SP} fluid id="img-logo"></Image>
+                                            <Image src={BIC} id="img-logo" fluid></Image>
+                                            <Image src={NECTEC} fluid id="img-logo"></Image>
+                                            <Image src={PTEC} fluid id="img-logo"></Image>
+                                        </Row>
+                                    </Col>
                                 </Row>
-                            </Col>
+                                <Col xs={24}>
+                                    {
+                                        (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
+                                            <Row style={{ padding: "1.5%", justifyContent: "flex-end" }}>
+                                                <Button type="primary" id="btn-sty" onClick={() => this.LoginButton()}>เข้าสู่ระบบ</Button>
+                                                <Button type="primary" id="btn-sty" onClick={() => this.RegisterButton()}>สมัครสมาชิก</Button>
+                                            </Row>
+                                            :
+                                            <Row style={{ padding: "1.5%",  justifyContent: "flex-end" }}>
+                                                <UserOutlined id="logo-user" /> <span style={{ paddingRight: "5%" }}> Sompot</span> | <span style={{ paddingRight: "5%" }}></span>
+                                                <Dropdown id="btn-dropdown" overlay={
+                                                    <Menu>
+                                                        {
+                                                            (this.state.user?.userRoleId === 1) ?
+                                                                <>
+                                                                    <Menu.Item key="0">
+                                                                        <NavLink to="/Admin/Home"><Button type="primary" id="btn-dropdown" >หน้าหลัก</Button></NavLink>
+                                                                    </Menu.Item>
+                                                                    <Menu.Divider />
+                                                                    <Menu.Item key="1">
+                                                                        <NavLink to="/Admin/TopScore"><Button type="primary" id="btn-dropdown">คะแนนสูงสุด</Button></NavLink >
+                                                                    </Menu.Item>
+                                                                    <Menu.Divider />
+                                                                    <Menu.Item key="2">
+                                                                        <NavLink to="/Admin/Statistic"><Button type="primary" id="btn-dropdown">สถิติ</Button></NavLink >
+                                                                    </Menu.Item>
+                                                                    <Menu.Divider />
+                                                                    <Menu.Item key="3">
+                                                                        {window.innerWidth >= 684 ?
+                                                                            <Button type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                            :
+                                                                            <NavLink to="/ChangePass"><Button type="primary" id="btn-dropdown" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                        }
+                                                                    </Menu.Item>
+                                                                    <Menu.Divider />
+                                                                    <Menu.Item key="4">
+                                                                        <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
+                                                                    </Menu.Item>
+                                                                </>
+                                                                :
+                                                                <>
+                                                                    <Menu.Item key="0">
+                                                                        {window.innerWidth >= 684 ?
+                                                                            <Button type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                            :
+                                                                            <NavLink to="/ChangePass"><Button type="primary" id="btn-dropdown" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                        }
+                                                                    </Menu.Item>
+                                                                    <Menu.Divider />
+                                                                    <Menu.Item key="1">
+                                                                        <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
+                                                                    </Menu.Item>
+                                                                </>
+                                                        }
+                                                    </Menu>
+                                                } placement="topRight" arrow>
+                                                    <Button>menu</Button>
+                                                </Dropdown>
+                                            </Row>
+                                    }
+                                </Col>
                             </>
                     }
-                    
+
                 </Row>
                 <Modal
                     title={null}

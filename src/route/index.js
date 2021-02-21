@@ -11,6 +11,7 @@ import Form from "../content/Form";
 import ConfirmRegister from "../content/ConfirmRegister";
 
 import Course1 from "../content/user/Course1";
+import Course4 from "../content/user/Course4";
 import HomeUser from "../content/user/HomeUser";
 import ExamPre from "../content/user/ExamPre";
 import ExamPost from "../content/user/ExamPost";
@@ -28,6 +29,7 @@ export default class Index extends Component {
 
                 <Route exact path="/HomeUser" component={HomeUser} />
                 <Route exact path="/Course1" component={Course1} />
+                <Route exact path="/Course4" component={Course4} />
                 <Route exact path="/ExamPre" component={ExamPre} />
                 <Route exact path="/ExamPost" component={ExamPost} />
                 <Route exact path="/ChangePass" component={ChangePass} />

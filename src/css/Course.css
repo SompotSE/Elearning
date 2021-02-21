@@ -104,12 +104,13 @@
     }
     #font-detail {
         font-size: 16px;
-        padding-top: 5%;
+        padding-top: 2%;
         padding-left: 3%;
     }
     #font-detail2 {
         font-size: 16px;
         padding-left: 3%;
+        margin-top: 1%;
     }
     #font-detail1 {
         font-size: 16px;

@@ -9,7 +9,7 @@ const radioStyle = {
     height: '30px',
     lineHeight: '30px',
   };
-      
+
 const { TextArea } = Input;
 export default class AdminHome extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ export default class AdminHome extends Component {
         this.state = {
             value: 1,
             source: 0,
-            source1: 0,
+            source1: [],
             source2: 0,
             source3: 0,
             source4: 0,
@@ -65,9 +65,12 @@ export default class AdminHome extends Component {
         });
       };
 
-    onChange1(value) {
-        console.log(value);
-    }
+    onChange1 = (e) => {
+        console.log('radio checked', e.target.value);
+        this.setState({
+            source1: e.target.value,
+        });
+      };
 
     onChange2(value) {
         console.log(value);
@@ -171,22 +174,22 @@ export default class AdminHome extends Component {
                                         </Radio>
                                     </Col>
                                     <Col xs={12} md={4} xl={4} id="radio-source">
-                                        <Radio style={radioStyle} value={1}>
+                                        <Radio style={radioStyle} value={2}>
                                             Brochure
                                         </Radio>
                                     </Col>
                                     <Col xs={12} md={4} xl={4} id="radio-source">
-                                        <Radio style={radioStyle} value={2}>
+                                        <Radio style={radioStyle} value={3}>
                                             Website
                                         </Radio>
                                     </Col>
                                     <Col xs={12} md={5} xl={5} id="radio-source">
-                                        <Radio style={radioStyle} value={3}>
+                                        <Radio style={radioStyle} value={4}>
                                             Colleagues
                                         </Radio>
                                     </Col>
                                     <Col xs={12} md={4} xl={4} id="radio-source">
-                                        <Radio style={radioStyle} value={4}>
+                                        <Radio style={radioStyle} value={5}>
                                             Other (Please specify) {this.state.source === 4 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
                                         </Radio>
                                     </Col>
@@ -242,19 +245,20 @@ export default class AdminHome extends Component {
                             </Row>
                         </Col>
                         <Col xs={24} md={12} xl={12}>
+                            
                             <RadioGroup aria-label="gender" name="gender1" value={this.state.source1} onChange={this.onChange1}>
                                 <Row>
                                     <Col xs={6} md={6} xl={6} id="row-radio">
-                                        <FormControlLabel value="4" control={<Radio />}  />
+                                        <FormControlLabel value={4} control={<Radio />}  />
                                     </Col>  
                                     <Col xs={6} md={6} xl={6} id="row-radio">
-                                        <FormControlLabel value="3" control={<Radio />}  />
+                                        <FormControlLabel value={3} control={<Radio />}  />
                                     </Col>
                                     <Col xs={6} md={6} xl={6} id="row-radio">
-                                        <FormControlLabel value="2" control={<Radio />} />
+                                        <FormControlLabel value={2} control={<Radio />} />
                                     </Col> 
                                     <Col xs={6} md={6} xl={6} id="row-radio"s>
-                                        <FormControlLabel value="1" control={<Radio />} />
+                                        <FormControlLabel value={1} control={<Radio />} />
                                     </Col>                      
                                 </Row>
                             </RadioGroup>

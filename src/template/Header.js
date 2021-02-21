@@ -11,8 +11,16 @@ import { QuestionCircleOutlined, UserOutlined } from '@ant-design/icons';
 import { config } from '../config/config';
 import { FaCheckCircle } from "react-icons/fa";
 import letter from "../img/letter.png";
-import BIC from "../img/logoBIC.png";
-import NECTEC from "../img/logoNECTEC.png";
+import BIC from "../img/1.png";
+import NECTEC from "../img/7.png";
+import nstda from "../img/8.png";
+import onde from "../img/9.png";
+import PTEC from "../img/10.png";
+import mhesi from "../img/5.png";
+import SP from "../img/11.png";
+import TMC from "../img/12.png";
+import TSP from "../img/13.png";
+import DE from "../img/3.png";
 
 const cookies = new Cookies();
 
@@ -145,7 +153,7 @@ export default withRouter(class Header extends Component {
             this.setState({
                 storedJwt: login.data?.token
             });
-            if(login.data?.userRoleId === 1) {
+            if (login.data?.userRoleId === 1) {
                 window.location.replace('/Admin/Home', false);
             } else {
                 window.location.replace('/HomeUser', false);
@@ -279,14 +287,25 @@ export default withRouter(class Header extends Component {
 
         return (
             <Container fluid id="conflu">
-                <Row id="row-header">
-                    <Col xs={18} md={18} xl={18}>
-                        <Row>
-                            <Col md={5} xl={5}><Image src={BIC} id="img-logo" fluid></Image></Col>
-                            <Col md={5} xl={5}><Image src={NECTEC} fluid  id="img-logo"></Image></Col>
-                        </Row>
-                    </Col>
-                    <Col xs={6} md={6} xl={6}>
+                <Row id="row-header1">
+                    {
+                        (window.innerWidth >= 768) ?
+                        <>
+                            <Col xs={17} md={19} xl={19}>
+                                <Row style={{ display: "flex", justifyContent: "space-between", paddingRight: "3%" }}>
+                                    <Image src={onde} fluid id="img-logo"></Image>
+                                    <Image src={DE} fluid id="img-logo"></Image>
+                                    <Image src={mhesi} fluid id="img-logo"></Image>
+                                    <Image src={nstda} fluid id="img-logo"></Image>
+                                    <Image src={TMC} fluid id="img-logo"></Image>
+                                    <Image src={TSP} fluid id="img-logo"></Image>
+                                    <Image src={SP} fluid id="img-logo"></Image>
+                                    <Image src={BIC} id="img-logo" fluid></Image>
+                                    <Image src={NECTEC} fluid id="img-logo"></Image>
+                                    <Image src={PTEC} fluid id="img-logo"></Image>
+                                </Row>
+                            </Col>
+                            <Col xs={8} md={5} xl={5}>
                         <Row style={{ justifyContent: "space-between" }}>
                             <Col xs={24} md={24} xl={24} id="btn-header">
                                 {
@@ -360,6 +379,89 @@ export default withRouter(class Header extends Component {
                             </Col>
                         </Row>
                     </Col>
+                        </>
+                            :
+                            <>
+                            <Row>
+                                <Col xs={24} style={{ padding: "1.5%" }}>
+                                    <Row id="logo-layout">
+                                        <Image src={onde} fluid id="img-logo"></Image>
+                                        <Image src={DE} fluid id="img-logo"></Image>
+                                        <Image src={mhesi} fluid id="img-logo"></Image>
+                                        <Image src={nstda} fluid id="img-logo"></Image>
+                                        <Image src={TMC} fluid id="img-logo"></Image>
+                                        <Image src={TSP} fluid id="img-logo"></Image>
+                                    </Row>
+                                </Col>
+                                <Col xs={24} style={{ padding: "1.5%" }}>
+                                    <Row id="logo-layout">
+                                        <Image src={SP} fluid id="img-logo"></Image>
+                                        <Image src={BIC} id="img-logo" fluid></Image>
+                                        <Image src={NECTEC} fluid id="img-logo"></Image>
+                                        <Image src={PTEC} fluid id="img-logo"></Image>
+                                    </Row>
+                                </Col>
+                            </Row>
+                            <Col xs={24}>
+                                <Row style={{ padding: "1.5%", justifyContent: "flex-end" }}>
+                                    <Button type="primary" id="btn-sty" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button>
+                                    <Button type="primary" id="btn-sty" onClick={() => this.onClickRegister()}>สมัครสมาชิก</Button>
+                                </Row>
+                                <Row style={{ padding: "1.5%", display: "flex", alignItems: "center" }}>
+                                    <UserOutlined id="logo-user"/> <span style={{ paddingRight: "5%" }}> Sompot</span> | <span style={{ paddingRight: "5%" }}></span>
+                                    <Dropdown id="btn-dropdown" overlay={
+                                                <Menu>
+                                                    {
+                                                        (this.state.user?.userRoleId === 1) ?
+                                                            <>
+                                                                <Menu.Item key="0">
+                                                                    <NavLink to="/Admin/Home"><Button type="primary" id="btn-dropdown" >หน้าหลัก</Button></NavLink>
+                                                                </Menu.Item>
+                                                                <Menu.Divider />
+                                                                <Menu.Item key="1">
+                                                                    <NavLink to="/Admin/TopScore"><Button type="primary" id="btn-dropdown">คะแนนสูงสุด</Button></NavLink >
+                                                                </Menu.Item>
+                                                                <Menu.Divider />
+                                                                <Menu.Item key="2">
+                                                                    <NavLink to="/Admin/Statistic"><Button type="primary" id="btn-dropdown">สถิติ</Button></NavLink >
+                                                                </Menu.Item>
+                                                                <Menu.Divider />
+                                                                <Menu.Item key="3">
+                                                                    {window.innerWidth >= 684 ?
+                                                                        <Button type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                        :
+                                                                        <NavLink to="/ChangePass"><Button type="primary" id="btn-dropdown" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                    }
+                                                                </Menu.Item>
+                                                                <Menu.Divider />
+                                                                <Menu.Item key="4">
+                                                                    <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
+                                                                </Menu.Item>
+                                                            </>
+                                                            :
+                                                            <>
+                                                                <Menu.Item key="0">
+                                                                    {window.innerWidth >= 684 ?
+                                                                        <Button type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                        :
+                                                                        <NavLink to="/ChangePass"><Button type="primary" id="btn-dropdown" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                    }
+                                                                </Menu.Item>
+                                                                <Menu.Divider />
+                                                                <Menu.Item key="1">
+                                                                    <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
+                                                                </Menu.Item>
+                                                            </>
+                                                    }
+                                                </Menu>
+                                            } placement="topRight" arrow>
+                                                <Button>menu</Button>
+                                            </Dropdown>
+                                </Row>
+                            </Col>
+                            </>
+                    }
+                    
                 </Row>
                 <Modal
                     title={null}

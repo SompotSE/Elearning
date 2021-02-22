@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Row, Col, Spin } from 'antd';
+import { Row, Col, Spin, Result } from 'antd';
 import '../../css/Adminstatistic.css';
 import { BsClipboardData } from "react-icons/bs";
 import { UserOutlined } from '@ant-design/icons';
@@ -29,7 +29,6 @@ export default class AdminTopScore extends Component {
             course3: [],
             course4: [],
             course5: [],
-            series: [44, 55, 13, 43, 22],
             statuslode: false,
             options: { labels: ['ผ่าน', 'ไม่ผ่าน'] }
         }
@@ -79,7 +78,7 @@ export default class AdminTopScore extends Component {
                 window.location.replace('/Login', false);
             });
         } else {
-            console.log(exam.data , " exam.data")
+            console.log(exam.data, " exam.data")
             var tempcourse1 = [];
             var tempcourse2 = [];
             var tempcourse3 = [];
@@ -113,144 +112,153 @@ export default class AdminTopScore extends Component {
         return (
             <Container id="bg-AdminStatistic" fluid>
                 {
-                    (this.state.statuslode) ?
-                        <>
-                            <Row id="row-chart">
-                                <Col md={24} xl={11}>
-                                    <Row>
-                                        <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่1</Col>
-                                        <Col md={24} xl={24} id="chart-col">
-                                            <Chart
-                                                options={this.state.options}
-                                                series={this.state.course1}
-                                                type="donut"
-                                                width="400"
-                                                apexcharts-legend={null} />
-                                        </Col>
-                                    </Row>
-                                </Col>
-                                <Col md={24} xl={11}>
-                                    <Row>
-                                        <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่2</Col>
-                                        <Col md={24} xl={24} id="chart-col">
-                                            <Chart
-                                                options={this.state.options}
-                                                series={this.state.course2}
-                                                type="donut"
-                                                width="400"
-                                                apexcharts-legend={null} />
-                                        </Col>
-                                    </Row>
-                                </Col>
+
+                    (window.innerWidth >= 768) ?
+                        (this.state.statuslode) ?
+                            <>
+                                <Row id="row-chart">
+                                    <Col md={24} xl={11}>
+                                        <Row>
+                                            <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่1</Col>
+                                            <Col md={24} xl={24} id="chart-col">
+                                                <Chart
+                                                    options={this.state.options}
+                                                    series={this.state.course1}
+                                                    type="donut"
+                                                    width="400"
+                                                    apexcharts-legend={null} />
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                    <Col md={24} xl={11}>
+                                        <Row>
+                                            <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่2</Col>
+                                            <Col md={24} xl={24} id="chart-col">
+                                                <Chart
+                                                    options={this.state.options}
+                                                    series={this.state.course2}
+                                                    type="donut"
+                                                    width="400"
+                                                    apexcharts-legend={null} />
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                                <Row id="row-chart">
+                                    <Col md={24} xl={11}>
+                                        <Row>
+                                            <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่3</Col>
+                                            <Col md={24} xl={24} id="chart-col">
+                                                <Chart
+                                                    options={this.state.options}
+                                                    series={this.state.course3}
+                                                    type="donut"
+                                                    width="400"
+                                                    apexcharts-legend={null} />
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                    <Col md={24} xl={11}>
+                                        <Row>
+                                            <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่4</Col>
+                                            <Col md={24} xl={24} id="chart-col">
+                                                <Chart
+                                                    options={this.state.options}
+                                                    series={this.state.course4}
+                                                    type="donut"
+                                                    width="400"
+                                                    apexcharts-legend={null} />
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                                <Row id="row-chart">
+                                    <Col md={24} xl={11}>
+                                        <Row>
+                                            <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่5</Col>
+                                            <Col md={24} xl={24} id="chart-col">
+                                                <Chart
+                                                    options={this.state.options}
+                                                    series={this.state.course5}
+                                                    type="donut"
+                                                    width="400"
+                                                    apexcharts-legend={null} />
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                                <Row id="row-statistic">
+                                    <Col md={11} xl={5} id="col-statictic">
+                                        <Row>
+                                            <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.userall}</Col>
+                                            <Col md={10} xl={10} id="icon-statistic"><BsClipboardData id="statistic-icon" /></Col>
+                                        </Row>
+                                        <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ลงทะเบียน</Col>
+                                    </Col>
+                                    <Col md={11} xl={5} id="col-statictic">
+                                        <Row>
+                                            <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.courseuser}</Col>
+                                            <Col md={10} xl={10} id="icon-statistic"><UserOutlined id="statistic-icon" /></Col>
+                                        </Row>
+                                        <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตรทั้งหมด</Col>
+                                    </Col>
+                                    <Col md={11} xl={5} id="col-statictic">
+                                        <Row>
+                                            <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course1}</Col>
+                                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
+                                        </Row>
+                                        <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 1</Col>
+                                    </Col>
+                                    <Col md={11} xl={5} id="col-statictic">
+                                        <Row>
+                                            <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course2}</Col>
+                                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
+                                        </Row>
+                                        <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 2</Col>
+                                    </Col>
+                                </Row>
+                                <Row id="row-statistic">
+                                    <Col md={11} xl={5} id="col-statictic">
+                                        <Row>
+                                            <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course3}</Col>
+                                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
+                                        </Row>
+                                        <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 3</Col>
+                                    </Col>
+                                    <Col md={11} xl={5} id="col-statictic">
+                                        <Row>
+                                            <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course4}</Col>
+                                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
+                                        </Row>
+                                        <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 4</Col>
+                                    </Col>
+                                    <Col md={11} xl={5} id="col-statictic">
+                                        <Row>
+                                            <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course5}</Col>
+                                            <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
+                                        </Row>
+                                        <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 5</Col>
+                                    </Col>
+                                    <Col md={11} xl={5} id="col-statictic">
+                                        <Row>
+                                            <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course6}</Col>
+                                            <Col md={10} xl={10} id="icon-statistic"><UserOutlined id="statistic-icon" /></Col>
+                                        </Row>
+                                        <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ที่ผ่านการทดสอบทุกหลักสูตร</Col>
+                                    </Col>
+                                </Row>
+                            </>
+                            :
+                            <Row id="row-spin-slide">
+                                <Spin size="large" />
                             </Row>
-                            <Row id="row-chart">
-                                <Col md={24} xl={11}>
-                                    <Row>
-                                        <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่3</Col>
-                                        <Col md={24} xl={24} id="chart-col">
-                                            <Chart
-                                                options={this.state.options}
-                                                series={this.state.course3}
-                                                type="donut"
-                                                width="400"
-                                                apexcharts-legend={null} />
-                                        </Col>
-                                    </Row>
-                                </Col>
-                                <Col md={24} xl={11}>
-                                    <Row>
-                                        <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่4</Col>
-                                        <Col md={24} xl={24} id="chart-col">
-                                            <Chart
-                                                options={this.state.options}
-                                                series={this.state.course4}
-                                                type="donut"
-                                                width="400"
-                                                apexcharts-legend={null} />
-                                        </Col>
-                                    </Row>
-                                </Col>
-                            </Row>
-                            <Row id="row-chart">
-                                <Col md={24} xl={11}>
-                                    <Row>
-                                        <Col md={24} xl={24} id="header-chart-col">หลักสูตรที่5</Col>
-                                        <Col md={24} xl={24} id="chart-col">
-                                            <Chart
-                                                options={this.state.options}
-                                                series={this.state.course5}
-                                                type="donut"
-                                                width="400"
-                                                apexcharts-legend={null} />
-                                        </Col>
-                                    </Row>
-                                </Col>
-                            </Row>
-                            <Row id="row-statistic">
-                                <Col md={11} xl={5} id="col-statictic">
-                                    <Row>
-                                        <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.userall}</Col>
-                                        <Col md={10} xl={10} id="icon-statistic"><BsClipboardData id="statistic-icon" /></Col>
-                                    </Row>
-                                    <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ลงทะเบียน</Col>
-                                </Col>
-                                <Col md={11} xl={5} id="col-statictic">
-                                    <Row>
-                                        <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.courseuser}</Col>
-                                        <Col md={10} xl={10} id="icon-statistic"><UserOutlined id="statistic-icon" /></Col>
-                                    </Row>
-                                    <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตรทั้งหมด</Col>
-                                </Col>
-                                <Col md={11} xl={5} id="col-statictic">
-                                    <Row>
-                                        <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course1}</Col>
-                                        <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
-                                    </Row>
-                                    <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 1</Col>
-                                </Col>
-                                <Col md={11} xl={5} id="col-statictic">
-                                    <Row>
-                                        <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course2}</Col>
-                                        <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
-                                    </Row>
-                                    <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 2</Col>
-                                </Col>
-                            </Row>
-                            <Row id="row-statistic">
-                                <Col md={11} xl={5} id="col-statictic">
-                                    <Row>
-                                        <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course3}</Col>
-                                        <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
-                                    </Row>
-                                    <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 3</Col>
-                                </Col>
-                                <Col md={11} xl={5} id="col-statictic">
-                                    <Row>
-                                        <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course4}</Col>
-                                        <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
-                                    </Row>
-                                    <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 4</Col>
-                                </Col>
-                                <Col md={11} xl={5} id="col-statictic">
-                                    <Row>
-                                        <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course5}</Col>
-                                        <Col md={10} xl={10} id="icon-statistic"><VscBook id="statistic-icon" /></Col>
-                                    </Row>
-                                    <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ใช้งานหลักสูตร 5</Col>
-                                </Col>
-                                <Col md={11} xl={5} id="col-statictic">
-                                    <Row>
-                                        <Col md={10} xl={10} id="statistic-number">{this.state.viwe?.course6}</Col>
-                                        <Col md={10} xl={10} id="icon-statistic"><UserOutlined id="statistic-icon" /></Col>
-                                    </Row>
-                                    <Col md={24} xl={24} id="statistic-detail">จำนวนผู้ที่ผ่านการทดสอบทุกหลักสูตร</Col>
-                                </Col>
-                            </Row>
-                        </>
                         :
-                        <Row id="row-spin-slide">
-                            <Spin size="large" />
-                        </Row>
+                        <Result
+                            status="error"
+                            title="เว็บไซต์ไม่รองรับการแสดงผลในขนาดหน้าจอของคุณ"
+                            subTitle="กรุณาใช้งานในอุปกรณ์ที่มีหน้าจอขนาดใหญ่ขึ้น"
+                        >
+                        </Result>
                 }
             </Container>
         )

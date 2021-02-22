@@ -413,19 +413,22 @@ export default withRouter(class Header extends Component {
                                 <Col xs={24}>
                                     {
                                         (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
-                                            <Row style={{ padding: "1.5%", justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignItems: "center"  }}>
+                                            <Row style={{ padding: "1.5%", justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignItems: "center" }}>
                                                 <Button type="primary" id="btn-sty" onClick={() => this.LoginButton()}>เข้าสู่ระบบ</Button>
                                                 <Button type="primary" id="btn-sty" onClick={() => this.RegisterButton()}>สมัครสมาชิก</Button>
                                             </Row>
                                             :
                                             <Row style={{ justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignContent: "center", alignItems: "center" }}>
                                                 <UserOutlined id="logo-user" /> <span style={{ paddingRight: "5%" }}> Sompot</span> | <span style={{ paddingRight: "5%" }}></span>
-                                                <Dropdown id="btn-dropdown" overlay={
-                                                    <Menu>
-                                                        {
-                                                            (this.state.user?.userRoleId === 1) ?
-                                                                <>
-                                                                    <Menu.Item key="0">
+                                                {
+                                                    (this.state.user?.userRoleId === 1) ? <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink > :
+
+                                                        <Dropdown id="btn-dropdown" overlay={
+                                                            <Menu>
+                                                                {
+                                                                    (this.state.user?.userRoleId === 1) ?
+                                                                        <>
+                                                                            {/* <Menu.Item key="0">
                                                                         <NavLink to="/Admin/Home"><Button type="primary" id="btn-dropdown" >หน้าหลัก</Button></NavLink>
                                                                     </Menu.Item>
                                                                     <Menu.Divider />
@@ -447,27 +450,28 @@ export default withRouter(class Header extends Component {
                                                                     <Menu.Divider />
                                                                     <Menu.Item key="4">
                                                                         <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
-                                                                    </Menu.Item>
-                                                                </>
-                                                                :
-                                                                <>
-                                                                    <Menu.Item key="0">
-                                                                        {window.innerWidth >= 684 ?
-                                                                            <Button type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
-                                                                            :
-                                                                            <NavLink to="/ChangePass"><Button type="primary" id="btn-dropdown" >เปลี่ยนรหัสผ่าน</Button></NavLink>
-                                                                        }
-                                                                    </Menu.Item>
-                                                                    <Menu.Divider />
-                                                                    <Menu.Item key="1">
-                                                                        <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
-                                                                    </Menu.Item>
-                                                                </>
-                                                        }
-                                                    </Menu>
-                                                } placement="topRight" arrow>
-                                                    <Button>menu</Button>
-                                                </Dropdown>
+                                                                    </Menu.Item> */}
+                                                                        </>
+                                                                        :
+                                                                        <>
+                                                                            <Menu.Item key="0">
+                                                                                {window.innerWidth >= 684 ?
+                                                                                    <Button type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                                    :
+                                                                                    <NavLink to="/ChangePass"><Button type="primary" id="btn-dropdown" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                                }
+                                                                            </Menu.Item>
+                                                                            <Menu.Divider />
+                                                                            <Menu.Item key="1">
+                                                                                <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
+                                                                            </Menu.Item>
+                                                                        </>
+                                                                }
+                                                            </Menu>
+                                                        } placement="topRight" arrow>
+                                                            <Button>menu</Button>
+                                                        </Dropdown>
+                                                }
                                             </Row>
                                     }
                                 </Col>

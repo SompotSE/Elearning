@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Row, Col, Progress, Spin, Empty } from 'antd';
+import { Row, Col, Progress, Spin, Empty, Result } from 'antd';
 import '../../css/AdminTopScore.css';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
@@ -73,63 +73,76 @@ export default class AdminTopScore extends Component {
     render() {
         return (
             <Container id="bg-AdminTopScore" fluid>
-                <Row id="row-header-topscore">ข้อมูลคะแนนสอบสูงสุด</Row>
+
                 {
-                    (this.state.statuslode) ?
+                    (window.innerWidth >= 768) ?
                         <>
+                            <Row id="row-header-topscore">ข้อมูลคะแนนสอบสูงสุด</Row>
                             {
-                                this.state.topscore.length > 0 ?
+                                (this.state.statuslode) ?
                                     <>
-                                        <Row id="row-table-AdminTopScore">
-                                            <Col md={5} xl={5} id="header-table-AdminTopScore">ชื่อหลักสูตร</Col>
-                                            <Col md={5} xl={4} id="header-table-AdminTopScore">ผลคะแนน (ร้อยละ)</Col>
-                                            <Col md={6} xl={7} id="header-table-AdminTopScore">ชื่อ - นามสกุล</Col>
-                                            <Col md={7} xl={7} id="header-table-AdminTopScore">ชื่อบริษัท</Col>
-                                        </Row>
+                                        {
+                                            this.state.topscore.length > 0 ?
+                                                <>
+                                                    <Row id="row-table-AdminTopScore">
+                                                        <Col md={5} xl={5} id="header-table-AdminTopScore">ชื่อหลักสูตร</Col>
+                                                        <Col md={5} xl={4} id="header-table-AdminTopScore">ผลคะแนน (ร้อยละ)</Col>
+                                                        <Col md={6} xl={7} id="header-table-AdminTopScore">ชื่อ - นามสกุล</Col>
+                                                        <Col md={7} xl={7} id="header-table-AdminTopScore">ชื่อบริษัท</Col>
+                                                    </Row>
 
-                                        <Row id="row-table-AdminTopScore1">
-                                            <Col md={5} xl={5} id="TopScore">หลักสูตรที่1</Col>
-                                            <Col md={5} xl={4} id="TopScore"><Progress type="circle" percent={this.state.topscore1[0]?.percenScore} width={50} strokeWidth={13} strokeColor={(parseInt(this.state.topscore1[0]?.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
-                                            <Col md={6} xl={7} id="TopScore1">{this.state.topscore1[0]?.name}</Col>
-                                            <Col md={7} xl={7} id="TopScore1">{this.state.topscore1[0]?.nameCompany}</Col>
-                                        </Row>
+                                                    <Row id="row-table-AdminTopScore1">
+                                                        <Col md={5} xl={5} id="TopScore">หลักสูตรที่1</Col>
+                                                        <Col md={5} xl={4} id="TopScore"><Progress type="circle" percent={this.state.topscore1[0]?.percenScore} width={50} strokeWidth={13} strokeColor={(parseInt(this.state.topscore1[0]?.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
+                                                        <Col md={6} xl={7} id="TopScore1">{this.state.topscore1[0]?.name}</Col>
+                                                        <Col md={7} xl={7} id="TopScore1">{this.state.topscore1[0]?.nameCompany}</Col>
+                                                    </Row>
 
-                                        <Row id="row-table-AdminTopScore1">
-                                            <Col md={5} xl={5} id="TopScore">หลักสูตรที่2</Col>
-                                            <Col md={5} xl={4} id="TopScore"><Progress type="circle" percent={this.state.topscore2[0]?.percenScore} width={50} strokeWidth={13} strokeColor={(parseInt(this.state.topscore2[0]?.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
-                                            <Col md={6} xl={7} id="TopScore1">{this.state.topscore2[0]?.name}</Col>
-                                            <Col md={7} xl={7} id="TopScore1">{this.state.topscore2[0]?.nameCompany}</Col>
-                                        </Row>
+                                                    <Row id="row-table-AdminTopScore1">
+                                                        <Col md={5} xl={5} id="TopScore">หลักสูตรที่2</Col>
+                                                        <Col md={5} xl={4} id="TopScore"><Progress type="circle" percent={this.state.topscore2[0]?.percenScore} width={50} strokeWidth={13} strokeColor={(parseInt(this.state.topscore2[0]?.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
+                                                        <Col md={6} xl={7} id="TopScore1">{this.state.topscore2[0]?.name}</Col>
+                                                        <Col md={7} xl={7} id="TopScore1">{this.state.topscore2[0]?.nameCompany}</Col>
+                                                    </Row>
 
-                                        <Row id="row-table-AdminTopScore1">
-                                            <Col md={5} xl={5} id="TopScore">หลักสูตรที่3</Col>
-                                            <Col md={5} xl={4} id="TopScore"><Progress type="circle" percent={this.state.topscore3[0]?.percenScore} width={50} strokeWidth={13} strokeColor={(parseInt(this.state.topscore3[0]?.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
-                                            <Col md={6} xl={7} id="TopScore1">{this.state.topscore3[0]?.name}</Col>
-                                            <Col md={7} xl={7} id="TopScore1">{this.state.topscore3[0]?.nameCompany}</Col>
-                                        </Row>
+                                                    <Row id="row-table-AdminTopScore1">
+                                                        <Col md={5} xl={5} id="TopScore">หลักสูตรที่3</Col>
+                                                        <Col md={5} xl={4} id="TopScore"><Progress type="circle" percent={this.state.topscore3[0]?.percenScore} width={50} strokeWidth={13} strokeColor={(parseInt(this.state.topscore3[0]?.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
+                                                        <Col md={6} xl={7} id="TopScore1">{this.state.topscore3[0]?.name}</Col>
+                                                        <Col md={7} xl={7} id="TopScore1">{this.state.topscore3[0]?.nameCompany}</Col>
+                                                    </Row>
 
-                                        <Row id="row-table-AdminTopScore1">
-                                            <Col md={5} xl={5} id="TopScore">หลักสูตรที่4</Col>
-                                            <Col md={5} xl={4} id="TopScore"><Progress type="circle" percent={this.state.topscore4[0]?.percenScore} width={50} strokeWidth={13} strokeColor={(parseInt(this.state.topscore4[0]?.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
-                                            <Col md={6} xl={7} id="TopScore1">{this.state.topscore4[0]?.name}</Col>
-                                            <Col md={7} xl={7} id="TopScore1">{this.state.topscore4[0]?.nameCompany}</Col>
-                                        </Row>
+                                                    <Row id="row-table-AdminTopScore1">
+                                                        <Col md={5} xl={5} id="TopScore">หลักสูตรที่4</Col>
+                                                        <Col md={5} xl={4} id="TopScore"><Progress type="circle" percent={this.state.topscore4[0]?.percenScore} width={50} strokeWidth={13} strokeColor={(parseInt(this.state.topscore4[0]?.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
+                                                        <Col md={6} xl={7} id="TopScore1">{this.state.topscore4[0]?.name}</Col>
+                                                        <Col md={7} xl={7} id="TopScore1">{this.state.topscore4[0]?.nameCompany}</Col>
+                                                    </Row>
 
-                                        <Row id="row-table-AdminTopScore1">
-                                            <Col md={5} xl={5} id="TopScore">หลักสูตรที่5</Col>
-                                            <Col md={5} xl={4} id="TopScore"><Progress type="circle" percent={this.state.topscore5[0]?.percenScore} width={50} strokeWidth={13} strokeColor={(parseInt(this.state.topscore5[0]?.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
-                                            <Col md={6} xl={7} id="TopScore1">{this.state.topscore5[0]?.name}</Col>
-                                            <Col md={7} xl={7} id="TopScore1">{this.state.topscore5[0]?.nameCompany}</Col>
-                                        </Row>
+                                                    <Row id="row-table-AdminTopScore1">
+                                                        <Col md={5} xl={5} id="TopScore">หลักสูตรที่5</Col>
+                                                        <Col md={5} xl={4} id="TopScore"><Progress type="circle" percent={this.state.topscore5[0]?.percenScore} width={50} strokeWidth={13} strokeColor={(parseInt(this.state.topscore5[0]?.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
+                                                        <Col md={6} xl={7} id="TopScore1">{this.state.topscore5[0]?.name}</Col>
+                                                        <Col md={7} xl={7} id="TopScore1">{this.state.topscore5[0]?.nameCompany}</Col>
+                                                    </Row>
+                                                </>
+                                                :
+                                                <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                                        }
                                     </>
                                     :
-                                    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                                    <Row id="row-spin-slide">
+                                        <Spin size="large" />
+                                    </Row>
                             }
                         </>
                         :
-                        <Row id="row-spin-slide">
-                            <Spin size="large" />
-                        </Row>
+                        <Result
+                            status="error"
+                            title="เว็บไซต์ไม่รองรับการแสดงผลในขนาดหน้าจอของคุณ"
+                            subTitle="กรุณาใช้งานในอุปกรณ์ที่มีหน้าจอขนาดใหญ่ขึ้น"
+                        >
+                        </Result>
                 }
             </Container>
         )

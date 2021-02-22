@@ -314,7 +314,7 @@ export default withRouter(class Header extends Component {
                                     </Row>
                                 </Col>
                                 <Col xs={8} md={5} xl={5}>
-                                    <Row style={{ justifyContent: "space-between" }}>
+                                    <Row style={{ justifyContent: "space-between", alignItems: "center" }}>
                                         <Col xs={24} md={24} xl={24} id="btn-header">
                                             {
                                                 (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
@@ -379,7 +379,7 @@ export default withRouter(class Header extends Component {
                                                                 }
                                                             </Menu>
                                                         } placement="topRight" arrow>
-                                                            <Button>menu</Button>
+                                                            <Button >menu</Button>
                                                         </Dropdown>
 
                                                     </>
@@ -413,12 +413,12 @@ export default withRouter(class Header extends Component {
                                 <Col xs={24}>
                                     {
                                         (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
-                                            <Row style={{ padding: "1.5%", justifyContent: "flex-end" }}>
+                                            <Row style={{ padding: "1.5%", justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignItems: "center"  }}>
                                                 <Button type="primary" id="btn-sty" onClick={() => this.LoginButton()}>เข้าสู่ระบบ</Button>
                                                 <Button type="primary" id="btn-sty" onClick={() => this.RegisterButton()}>สมัครสมาชิก</Button>
                                             </Row>
                                             :
-                                            <Row style={{ padding: "1.5%",  justifyContent: "flex-end" }}>
+                                            <Row style={{ justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignContent: "center", alignItems: "center" }}>
                                                 <UserOutlined id="logo-user" /> <span style={{ paddingRight: "5%" }}> Sompot</span> | <span style={{ paddingRight: "5%" }}></span>
                                                 <Dropdown id="btn-dropdown" overlay={
                                                     <Menu>

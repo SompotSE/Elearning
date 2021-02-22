@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Row, Col, Form, Input, Radio as RadioAntd } from 'antd';
+import { Row, Col, Form, Input, Radio as RadioAntd, Button } from 'antd';
 import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 
 import '../css/Form.css';
@@ -16,7 +16,7 @@ export default class AdminHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 1,
+            value: 1, 
             source: 0,
             source1: [],
             source2: 0,
@@ -216,35 +216,27 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={24} xl={24} id="header-form">ท่านทราบข่าวสัมมนาจากแหล่งใด Source of Information</Col>
                         <Col xs={24} md={24} xl={24}>
-                            <RadioAntd.Group onChange={this.onChange} value={this.state.source} style={{fontSize: "10px"}}>
+                            <RadioGroup onChange={this.onChange} value={this.state.source} style={{fontSize: "10px"}}>
                                 <Row>
-                                    <Col xs={12} md={3} xl={4} id="radio-source">
-                                        <RadioAntd style={radioStyle} value={1}>
-                                            <div id="antd-group">Email</div>
-                                        </RadioAntd>
+                                    <Col xs={24} md={4} xl={2} id="radio-source">
+                                        <FormControlLabel value="1" control={<Radio />}  />Email
                                     </Col>
-                                    <Col xs={12} md={4} xl={4} id="radio-source">
-                                        <RadioAntd style={radioStyle} value={2}>
-                                            <div id="antd-group">Brochure</div>
-                                        </RadioAntd>
+                                    <Col xs={24} md={4} xl={2} id="radio-source">
+                                    <   FormControlLabel value="2" control={<Radio />}  />Brochure
                                     </Col>
-                                    <Col xs={12} md={4} xl={4} id="radio-source">
-                                        <RadioAntd style={radioStyle} value={3}>
-                                            <div id="antd-group">Website</div>
-                                        </RadioAntd>
+                                    <Col xs={24} md={4} xl={2} id="radio-source">
+                                        <FormControlLabel value="3" control={<Radio />}  />Website
                                     </Col>
-                                    <Col xs={12} md={5} xl={5} id="radio-source">
-                                        <RadioAntd style={radioStyle} value={4}>
-                                            <div id="antd-group">Colleagues</div>
-                                        </RadioAntd>
+                                    <Col xs={24} md={5} xl={2} id="radio-source">
+                                        <FormControlLabel value="4" control={<Radio />}  />Colleagues
                                     </Col>
-                                    <Col xs={12} md={4} xl={4} id="radio-source">
-                                        <RadioAntd style={radioStyle} value={5}>
-                                            <span id="antd-group">Other (Please specify)</span> {this.state.source === 5 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
-                                        </RadioAntd>
+                                    <Col xs={24} md={7} xl={4} id="radio-source">
+                                        <FormControlLabel value="5" control={<Radio />}  />
+                                            Other (Please specify) 
+                                            {this.state.source === 5 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
                                     </Col>
                                 </Row>    
-                            </RadioAntd.Group>    
+                            </RadioGroup>    
                         </Col>
                     </Row>
 
@@ -274,8 +266,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={10}>ท่านมีความรู้ความเข้าใจเพิ่มมากขึ้นเพียงใด</Col>
-                                <Col xs={24} md={24} xl={12}>Level of understanding</Col>
+                                <Col xs={24} md={24} xl={10} id="kate-header">ท่านมีความรู้ความเข้าใจเพิ่มมากขึ้นเพียงใด</Col>
+                                <Col xs={24} md={24} xl={12} id="kate-header">Level of understanding</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -319,8 +311,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={13}>ท่านสามารถนำความรู้ที่ได้รับไปใช้ประโยชน์ได้เพียงใด</Col>
-                                <Col xs={24} md={24} xl={11}>Practical and Applicable to your work</Col>
+                                <Col xs={24} md={24} xl={13} id="kate-header">ท่านสามารถนำความรู้ที่ได้รับไปใช้ประโยชน์ได้เพียงใด</Col>
+                                <Col xs={24} md={24} xl={11} id="kate-header">Practical and Applicable to your work</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -363,8 +355,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={11}>1. เนื้อหามีประโยชน์ต่อการปฏิบัติงานของท่าน /</Col>
-                                <Col xs={24} md={24} xl={11}> Applicable of knowledge to your current job</Col>
+                                <Col xs={24} md={24} xl={11} id="kate-header">1. เนื้อหามีประโยชน์ต่อการปฏิบัติงานของท่าน /</Col>
+                                <Col xs={24} md={24} xl={11} id="kate-header"> Applicable of knowledge to your current job</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -406,8 +398,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={24}>2. เนื้อหามีความเหมาะสมและสอดคล้องกับวัตถุประสงค์ /</Col>
-                                <Col xs={24} md={24} xl={24}>Relevance of the content to the seminar objectives</Col>
+                                <Col xs={24} md={24} xl={24} id="kate-header">2. เนื้อหามีความเหมาะสมและสอดคล้องกับวัตถุประสงค์ /</Col>
+                                <Col xs={24} md={24} xl={24} id="kate-header">Relevance of the content to the seminar objectives</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -448,8 +440,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={9}>3. ความเหมาะสมของหัวข้อโดยรวม /</Col>
-                                <Col xs={24} md={24} xl={10}>Overall of the topic</Col>
+                                <Col xs={24} md={24} xl={9} id="kate-header">3. ความเหมาะสมของหัวข้อโดยรวม /</Col>
+                                <Col xs={24} md={24} xl={10} id="kate-header">Overall of the topic</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -490,8 +482,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={7}>4. ความเหมาะสมของสถานที่/</Col>
-                                <Col xs={24} md={24} xl={10}>Suitable of the venue</Col>
+                                <Col xs={24} md={24} xl={7} id="kate-header">4. ความเหมาะสมของสถานที่/</Col>
+                                <Col xs={24} md={24} xl={10} id="kate-header">Suitable of the venue</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -532,8 +524,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={8}>5. ความเหมาะสมของระยะเวลา /</Col>
-                                <Col xs={24} md={24} xl={10}>Suitable of the course length</Col>
+                                <Col xs={24} md={24} xl={8} id="kate-header">5. ความเหมาะสมของระยะเวลา /</Col>
+                                <Col xs={24} md={24} xl={10} id="kate-header">Suitable of the course length</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -574,8 +566,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={10}>6. ความพึงพอใจโดยรวมต่องานสัมมนา /</Col>
-                                <Col xs={24} md={24} xl={10}>Overall satisfaction of the seminar</Col>
+                                <Col xs={24} md={24} xl={10} id="kate-header">6. ความพึงพอใจโดยรวมต่องานสัมมนา /</Col>
+                                <Col xs={24} md={24} xl={10} id="kate-header">Overall satisfaction of the seminar</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -645,8 +637,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={10}>1. ความรู้ ประสบการณ์ในเรื่องที่บรรยาย /</Col>
-                                <Col xs={24} md={24} xl={10}>Knowledge of the topic</Col>
+                                <Col xs={24} md={24} xl={10} id="kate-header">1. ความรู้ ประสบการณ์ในเรื่องที่บรรยาย /</Col>
+                                <Col xs={24} md={24} xl={10} id="kate-header">Knowledge of the topic</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -687,8 +679,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={24}>2. เทคนิคในการนำเสนอและการถ่ายทอดโดยรวม /</Col>
-                                <Col xs={24} md={24} xl={24}>Overall presentation techniques and teaching methodology</Col>
+                                <Col xs={24} md={24} xl={24} id="kate-header">2. เทคนิคในการนำเสนอและการถ่ายทอดโดยรวม </Col>
+                                <Col xs={24} md={24} xl={24} id="kate-header">/ Overall presentation techniques and teaching methodology</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -729,8 +721,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={24}>3. สร้างความสนใจและกระตุ้นให้เกิดการเรียนรู้ /</Col>
-                                <Col xs={24} md={24} xl={24}>Generate your attention and motivation to learn</Col>
+                                <Col xs={24} md={24} xl={24} id="kate-header">3. สร้างความสนใจและกระตุ้นให้เกิดการเรียนรู้ /</Col>
+                                <Col xs={24} md={24} xl={24} id="kate-header">Generate your attention and motivation to learn</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -771,8 +763,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={8}>4. บริหารเวลาได้อย่างเหมาะสม /</Col>
-                                <Col xs={24} md={24} xl={10}>Manage time effectively</Col>
+                                <Col xs={24} md={24} xl={8} id="kate-header">4. บริหารเวลาได้อย่างเหมาะสม /</Col>
+                                <Col xs={24} md={24} xl={10} id="kate-header">Manage time effectively</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -813,8 +805,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={24}>5. ความเหมาะสมของผู้บรรยาย / วิทยากรโดยรวม</Col>
-                                <Col xs={24} md={24} xl={24}>Overall of the instructor / speaker</Col>
+                                <Col xs={24} md={24} xl={24} id="kate-header">5. ความเหมาะสมของผู้บรรยาย / วิทยากรโดยรวม</Col>
+                                <Col xs={24} md={24} xl={24} id="kate-header">Overall of the instructor / speaker</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -861,34 +853,37 @@ export default class AdminHome extends Component {
                     <Row>
                         <Col xs={24} md={24} xl={24} id="row-header-choice1">
                             <Row>
-                                1. การให้บริการตามข้อตกลงการให้บริการ (Service Level Agreement – SLA) ของหน่วยงาน <div id="color-font">(ใส่นิยาม SLA ของหน่วยงานถ้ามี) </div> ท่านพึงพอใจกับ SLA ที่หน่วยงานได้กำหนดไว้เพื่อให้บริการ ณ ปัจจุบัน
+                                <Col xs={24} md={24} xl={24} id="kate-header">
+                                    1. การให้บริการตามข้อตกลงการให้บริการ (Service Level Agreement – SLA) ของหน่วยงาน <span id="color-font">(ใส่นิยาม SLA ของหน่วยงานถ้ามี) </span> ท่านพึงพอใจกับ SLA ที่หน่วยงานได้กำหนดไว้เพื่อให้บริการ ณ ปัจจุบัน
+                                </Col>
                             </Row>
-                            <Col xs={24} md={24} xl={24}>
-                                <RadioAntd.Group onChange={this.onChangepor} value={this.state.sourcepor}>
-                                    <Row>
-                                        <Col xs={24} md={24} xl={24} id="radio-source">
-                                            <RadioAntd style={radioStyle} value={1}>
-                                                <span id="antd-group">พอใจ เนื่องจาก</span> {this.state.sourcepor === 1 ? <Input id="Service-input" placeholder="โปรดกรอกข้อมูล" style={{ width: 100, marginLeft: 10 }}/> : null}
-                                            </RadioAntd>
-                                        </Col>
+                            <Col xs={24} md={24} xl={24} style={{marginTop: "1%"}}>
+                                <RadioGroup onChange={this.onChangepor} value={this.state.sourcepor}>
+                                    <Row id="row-por">
+                                            <Col xs={24} md={24} xl={4} id="radio-source">
+                                                <FormControlLabel value="1" control={<Radio />} />พอใจ เนื่องจาก
+                                            </Col>
+                                    </Row>
+                                    <Row id="row-por">
+                                            <Col xs={24} md={24} xl={4} id="radio-source">
+                                                <FormControlLabel value="2" control={<Radio />} />ไม่พอใจ เนื่องจาก
+                                            </Col>
                                     </Row>
                                     <Row>
-                                        <Col xs={24} md={24} xl={24}>
-                                            <RadioAntd style={radioStyle} value={2}>
-                                                <span id="antd-group">ไม่พอใจ เนื่องจาก</span> {this.state.sourcepor === 2 ? <Input id="Service-input" placeholder="โปรดกรอกข้อมูล" style={{ width: 100, marginLeft: 10 }}/> : null}
-                                            </RadioAntd>
+                                        <Col xs={24} md={24} xl={12}>
+                                            <Input id="Service-input" placeholder="โปรดกรอกข้อมูล" id="input-por"/>
                                         </Col>
                                     </Row>
-                                </RadioAntd.Group>
+                                </RadioGroup>
                             </Col>
                         </Col>
 
                         <Col xs={24} md={24} xl={24} id="row-header-choice1">
                             <Row>
-                                <Col xs={24} md={24} xl={24}>
+                                <Col xs={24} md={24} xl={24} id="kate-header">
                                 2. ท่านจะแนะนำการบริการของ สวทช. ให้กับเพื่อนหรือคนที่รู้จักหรือไม่ / ท่านจะกลับมาใช้บริการหรือผลิตภัณฑ์ สวทช.ซ้ำหรือไม่ ?
                                 </Col>
-                                <Col xs={24} md={24} xl={24}>
+                                <Col xs={24} md={24} xl={24}  id="kate-header">
                                 (Net Promoter Score) : Would you recommend NSTDA products or another services to the others?
                                 </Col>
                             </Row>
@@ -896,21 +891,21 @@ export default class AdminHome extends Component {
                         <Col xs={24} md={24} xl={24} style={{marginBottom: "3%"}}>
                             <RadioGroup aria-label="gender" name="gender1" value={this.state.source14} onChange={this.onChange14}>
                                 <Row id="row-header-form1">
-                                    <Col xs={24} md={12} xl={12}>กลับมาใช้บริการอย่างแน่นอน / แนะนำอย่างแน่นอน Definitely Recommend</Col> 
+                                    <Col xs={24} md={12} xl={12} id="kate-header">กลับมาใช้บริการอย่างแน่นอน / แนะนำอย่างแน่นอน Definitely Recommend</Col> 
                                     <Col xs={24} md={12} xl={12} id="Promoter-radio">
                                         <Col xs={24} md={24} xl={6}><FormControlLabel value="10" control={<Radio />} />10</Col>
                                         <Col xs={24} md={24} xl={6}><FormControlLabel value="9" control={<Radio />} />9</Col>  
                                     </Col>
                                 </Row>
                                 <Row id="row-header-form2">
-                                    <Col xs={24} md={12} xl={12} style={{borderTop: "none"}}>อาจจะใช้บริการซ้ำหรือไม่ใช้บริการ / อาจจะแนะนำหรือไม่แนะนำ : Would recommend</Col> 
+                                    <Col xs={24} md={12} xl={12} style={{borderTop: "none"}} id="kate-header">อาจจะใช้บริการซ้ำหรือไม่ใช้บริการ / อาจจะแนะนำหรือไม่แนะนำ : Would recommend</Col> 
                                     <Col xs={24} md={12} xl={12} id="Promoter-radio">
                                         <Col xs={24} md={24} xl={24}><FormControlLabel value="8" control={<Radio />} />8</Col>
                                         <Col xs={24} md={24} xl={24}><FormControlLabel value="7" control={<Radio />} />7</Col>  
                                     </Col>
                                 </Row>
                                 <Row id="row-header-form2">
-                                    <Col xs={24} md={12} xl={12}>อาจจะใช้บริการซ้ำ หรือไม่ใช้บริการ / อาจจะแนะนำหรือไม่แนะนำ Would not recommend</Col> 
+                                    <Col xs={24} md={12} xl={12} id="kate-header">อาจจะใช้บริการซ้ำ หรือไม่ใช้บริการ / อาจจะแนะนำหรือไม่แนะนำ Would not recommend</Col> 
                                     <Col xs={24} md={12} xl={12} id="Promoter-radio">
                                         <Col xs={24} md={24} xl={24}><FormControlLabel value="6" control={<Radio />} />6</Col>
                                         <Col xs={24} md={24} xl={24}><FormControlLabel value="5" control={<Radio />} />5</Col>
@@ -950,8 +945,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={18}>3. เจ้าหน้าที่ให้บริการอย่างเอาใจใส่ รวดเร็ว และให้บริการด้วยความเต็มใจ / </Col>
-                                <Col xs={24} md={24} xl={6}>Service minded</Col>
+                                <Col xs={24} md={24} xl={18} id="kate-header">3. เจ้าหน้าที่ให้บริการอย่างเอาใจใส่ รวดเร็ว และให้บริการด้วยความเต็มใจ / </Col>
+                                <Col xs={24} md={24} xl={6} id="kate-header">Service minded</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -992,8 +987,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={14}>4. คุณภาพของงานที่ส่งมอบถูกต้อง ครบถ้วน และทันเวลา /</Col>
-                                <Col xs={24} md={24} xl={6}> Quality of the work </Col>
+                                <Col xs={24} md={24} xl={14} id="kate-header">4. คุณภาพของงานที่ส่งมอบถูกต้อง ครบถ้วน และทันเวลา /</Col>
+                                <Col xs={24} md={24} xl={6} id="kate-header"> Quality of the work </Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -1034,8 +1029,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={14}>5. เจ้าหน้าที่ที่ให้บริการมีความรู้ และทักษะในการให้บริการ /</Col>
-                                <Col xs={24} md={24} xl={8}> Competence to the services</Col>
+                                <Col xs={24} md={24} xl={14} id="kate-header">5. เจ้าหน้าที่ที่ให้บริการมีความรู้ และทักษะในการให้บริการ /</Col>
+                                <Col xs={24} md={24} xl={8} id="kate-header"> Competence to the services</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -1076,8 +1071,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={13}>6. ขั้นตอนมีความชัดเจนและสะดวกในการใช้บริการ /</Col>
-                                <Col xs={24} md={24} xl={8}>Clear process and work system</Col>
+                                <Col xs={24} md={24} xl={13} id="kate-header">6. ขั้นตอนมีความชัดเจนและสะดวกในการใช้บริการ /</Col>
+                                <Col xs={24} md={24} xl={8} id="kate-header">Clear process and work system</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -1118,8 +1113,8 @@ export default class AdminHome extends Component {
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
-                                <Col xs={24} md={24} xl={7}>7. ความพึงพอใจโดยรวม /</Col>
-                                <Col xs={24} md={24} xl={8}> Overall satisfaction</Col>
+                                <Col xs={24} md={24} xl={7} id="kate-header">7. ความพึงพอใจโดยรวม /</Col>
+                                <Col xs={24} md={24} xl={8} id="kate-header"> Overall satisfaction</Col>
                             </Row>
                         </Col>
                         <Col xs={24} md={0} xl={0}>
@@ -1160,6 +1155,12 @@ export default class AdminHome extends Component {
 
                     <Row id="row-header-choice1">ข้อเสนอแนะอื่นๆ Other comments / suggestions</Row>
                     <Row id="textxarea-input"><TextArea rows={2} id="row-placeholder" placeholder="โปรดกรอกข้อเสนอแนะเพิ่มเติม" /></Row>
+
+                    <Row>
+                        <Col xs={24} md={24} xl={24} id="row-confirmform">
+                            <Button id="btn-confirmform">ส่งแบบประเมิน</Button>
+                        </Col>
+                    </Row>
 
                     <Row xs={24} md={24} xl={24} id="row-thank">ขอขอบคุณสำหรับความร่วมมือในการกรอกแบบประเมิน</Row>
                     <Row xs={24} md={24} xl={24} id="row-thank" style={{ paddingBottom: "3%" }}>Thank you for your cooperation to complete the evaluation form.</Row>

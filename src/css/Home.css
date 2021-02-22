@@ -50,9 +50,6 @@
     border-radius: 1.5mm;
 }
 
-.ant-image-preview-img {
-    max-width: 200% !important;
-}
 
 
 /* notebook */
@@ -67,6 +64,10 @@
         display: flex;
         justify-content: flex-end;
     }
+    .ant-image-preview-img {
+        width: 30%;
+    }
+    
 }
 
 /* ipad pro */
@@ -79,6 +80,9 @@
         font-size: 12px;
         padding-left: 6%;
         padding-right: 6%;
+    }
+    .ant-image-preview-img {
+        width: 70%;
     }
 }
 
@@ -98,6 +102,9 @@
         font-size: 18px;
         font-weight: bold;
         color: #6F6AFA;
+    }
+    .ant-image-preview-img {
+        width: 70%;
     }
 }
 
@@ -128,6 +135,10 @@
         font-weight: bold;
         color: #6F6AFA;
     }
+    .ant-image-preview-img {
+        width: 90%;
+    }
+    
 }
 
 #home-video{

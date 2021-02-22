@@ -36,6 +36,8 @@ export default class AdminHome extends Component {
             source16: 0,
             source17: 0,
             source18: 0,
+            source19: 0,
+            sourcepor: 0,
         }
 
         this.onChange = this.onChange.bind(this);
@@ -57,6 +59,9 @@ export default class AdminHome extends Component {
         this.onChange16 = this.onChange16.bind(this);
         this.onChange17 = this.onChange17.bind(this);
         this.onChange18 = this.onChange18.bind(this);
+        this.onChange19 = this.onChange19.bind(this);
+
+        this.onChangepor = this.onChangepor.bind(this);
     }
 
     onChange(e){
@@ -71,72 +76,118 @@ export default class AdminHome extends Component {
         });
     };
 
-    onChange2(value) {
-        console.log(value);
+    onChange2(e) {
+        this.setState({
+            source2: e.target.value,
+        });
     }
 
-    onChange3(value) {
-        console.log(value);
+    onChange3(e) {
+        this.setState({
+            source3: e.target.value,
+        });
     }
 
-    onChange4(value) {
-        console.log(value);
+    onChange4(e) {
+        this.setState({
+            source4: e.target.value,
+        });
     }
 
-    onChange5(value) {
-        console.log(value);
+    onChange5(e) {
+        this.setState({
+            source5: e.target.value,
+        });
     }
 
-    onChange6(value) {
-        console.log(value);
+    onChange6(e) {
+        this.setState({
+            source6: e.target.value,
+        });
     }
 
-    onChange7(value) {
-        console.log(value);
+    onChange7(e) {
+        this.setState({
+            source7: e.target.value,
+        });
     }
 
-    onChange8(value) {
-        console.log(value);
+    onChange8(e) {
+        this.setState({
+            source8: e.target.value,
+        });
     }
 
-    onChange9(value) {
-        console.log(value);
+    onChange9(e) {
+        this.setState({
+            source9: e.target.value,
+        });
     }
 
-    onChange10(value) {
-        console.log(value);
+    onChange10(e) {
+        this.setState({
+            source10: e.target.value,
+        });
     }
 
-    onChange11(value) {
-        console.log(value);
+    onChange11(e) {
+        this.setState({
+            source11: e.target.value,
+        });
     }
 
-    onChange12(value) {
-        console.log(value);
+    onChange12(e) {
+        this.setState({
+            source12: e.target.value,
+        });
     }
 
-    onChange13(value) {
-        console.log(value);
+    onChange13(e) {
+        this.setState({
+            source13: e.target.value,
+        });
     }
 
-    onChange14(value) {
-        console.log(value);
+    onChangepor(e) {
+        this.setState({
+            sourcepor: e.target.value,
+        });
     }
 
-    onChange15(value) {
-        console.log(value);
+    onChange14(e) {
+        this.setState({
+            source14: e.target.value,
+        });
     }
 
-    onChange16(value) {
-        console.log(value);
+    onChange15(e) {
+        this.setState({
+            source15: e.target.value,
+        });
     }
 
-    onChange17(value) {
-        console.log(value);
+    onChange16(e) {
+        this.setState({
+            source16: e.target.value,
+        });
     }
 
-    onChange18(value) {
-        console.log(value);
+    onChange17(e) {
+        this.setState({
+            source17: e.target.value,
+        });
+    }
+
+    onChange18(e) {
+        this.setState({
+            source18: e.target.value,
+        });
+    }
+
+    onChange19(e) {
+        this.setState({
+            source19: e.target.value,
+        });
     }
 
     render() {
@@ -163,33 +214,33 @@ export default class AdminHome extends Component {
                         </Col>
                     </Row>
                     <Row id="row-form">
-                        <Col xs={24} md={24} xl={24}>ท่านทราบข่าวสัมมนาจากแหล่งใด Source of Information</Col>
+                        <Col xs={24} md={24} xl={24} id="header-form">ท่านทราบข่าวสัมมนาจากแหล่งใด Source of Information</Col>
                         <Col xs={24} md={24} xl={24}>
-                            <RadioAntd.Group onChange={this.onChange} value={this.state.source}>
+                            <RadioAntd.Group onChange={this.onChange} value={this.state.source} style={{fontSize: "10px"}}>
                                 <Row>
                                     <Col xs={12} md={3} xl={4} id="radio-source">
                                         <RadioAntd style={radioStyle} value={1}>
-                                            Email
+                                            <div id="antd-group">Email</div>
                                         </RadioAntd>
                                     </Col>
                                     <Col xs={12} md={4} xl={4} id="radio-source">
                                         <RadioAntd style={radioStyle} value={2}>
-                                            Brochure
+                                            <div id="antd-group">Brochure</div>
                                         </RadioAntd>
                                     </Col>
                                     <Col xs={12} md={4} xl={4} id="radio-source">
                                         <RadioAntd style={radioStyle} value={3}>
-                                            Website
+                                            <div id="antd-group">Website</div>
                                         </RadioAntd>
                                     </Col>
                                     <Col xs={12} md={5} xl={5} id="radio-source">
                                         <RadioAntd style={radioStyle} value={4}>
-                                            Colleagues
+                                            <div id="antd-group">Colleagues</div>
                                         </RadioAntd>
                                     </Col>
                                     <Col xs={12} md={4} xl={4} id="radio-source">
                                         <RadioAntd style={radioStyle} value={5}>
-                                            Other (Please specify) {this.state.source === 5 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+                                            <span id="antd-group">Other (Please specify)</span> {this.state.source === 5 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
                                         </RadioAntd>
                                     </Col>
                                 </Row>    
@@ -351,7 +402,7 @@ export default class AdminHome extends Component {
                             </RadioGroup>
                         </Col>
                     </Row>
-                    {/*
+                    
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12}>
                             <Row>
@@ -810,33 +861,25 @@ export default class AdminHome extends Component {
                     <Row>
                         <Col xs={24} md={24} xl={24} id="row-header-choice1">
                             <Row>
-                                <Col xs={24} md={24} xl={24}>
-                                    1. การให้บริการตามข้อตกลงการให้บริการ (Service Level Agreement – SLA) ของหน่วยงาน <a id="color-font">(ใส่นิยาม SLA ของหน่วยงานถ้ามี</a>) ท่านพึงพอใจกับ SLA ที่หน่วยงานได้กำหนดไว้เพื่อให้บริการ ณ ปัจจุบัน
-                                </Col>
+                                1. การให้บริการตามข้อตกลงการให้บริการ (Service Level Agreement – SLA) ของหน่วยงาน <div id="color-font">(ใส่นิยาม SLA ของหน่วยงานถ้ามี) </div> ท่านพึงพอใจกับ SLA ที่หน่วยงานได้กำหนดไว้เพื่อให้บริการ ณ ปัจจุบัน
                             </Row>
                             <Col xs={24} md={24} xl={24}>
-                                <Radio.Group onChange={this.onChange} value={this.state.source1}>
+                                <RadioAntd.Group onChange={this.onChangepor} value={this.state.sourcepor}>
                                     <Row>
-                                        <Col xs={24} md={24} xl={24}>
-                                            <Radio style={radioStyle} value={4}>
-                                                พอใจ เนื่องจาก 
-                                            </Radio>
-                                        </Col>
-                                        <Col>
-                                            {this.state.source === 4 ? <TextArea  rows={1} id="Service-input" placeholder="โปรดกรอกข้อมูล"/> : null}
+                                        <Col xs={24} md={24} xl={24} id="radio-source">
+                                            <RadioAntd style={radioStyle} value={1}>
+                                                <span id="antd-group">พอใจ เนื่องจาก</span> {this.state.sourcepor === 1 ? <Input id="Service-input" placeholder="โปรดกรอกข้อมูล" style={{ width: 100, marginLeft: 10 }}/> : null}
+                                            </RadioAntd>
                                         </Col>
                                     </Row>
                                     <Row>
                                         <Col xs={24} md={24} xl={24}>
-                                            <Radio style={radioStyle} value={5}>
-                                                ไม่พอใจ เนื่องจาก
-                                            </Radio>
-                                        </Col>
-                                        <Col>
-                                            {this.state.source === 5 ? <TextArea  rows={1} id="Service-input" placeholder="โปรดกรอกข้อมูล"/> : null}
+                                            <RadioAntd style={radioStyle} value={2}>
+                                                <span id="antd-group">ไม่พอใจ เนื่องจาก</span> {this.state.sourcepor === 2 ? <Input id="Service-input" placeholder="โปรดกรอกข้อมูล" style={{ width: 100, marginLeft: 10 }}/> : null}
+                                            </RadioAntd>
                                         </Col>
                                     </Row>
-                                </Radio.Group>
+                                </RadioAntd.Group>
                             </Col>
                         </Col>
 
@@ -855,31 +898,31 @@ export default class AdminHome extends Component {
                                 <Row id="row-header-form1">
                                     <Col xs={24} md={12} xl={12}>กลับมาใช้บริการอย่างแน่นอน / แนะนำอย่างแน่นอน Definitely Recommend</Col> 
                                     <Col xs={24} md={12} xl={12} id="Promoter-radio">
-                                        <Col xs={24} md={24} xl={6}><FormControlLabel value="1" control={<Radio />} />10</Col>
-                                        <Col xs={24} md={24} xl={6}><FormControlLabel value="2" control={<Radio />} />9</Col>  
+                                        <Col xs={24} md={24} xl={6}><FormControlLabel value="10" control={<Radio />} />10</Col>
+                                        <Col xs={24} md={24} xl={6}><FormControlLabel value="9" control={<Radio />} />9</Col>  
                                     </Col>
                                 </Row>
                                 <Row id="row-header-form2">
                                     <Col xs={24} md={12} xl={12} style={{borderTop: "none"}}>อาจจะใช้บริการซ้ำหรือไม่ใช้บริการ / อาจจะแนะนำหรือไม่แนะนำ : Would recommend</Col> 
                                     <Col xs={24} md={12} xl={12} id="Promoter-radio">
-                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="1" control={<Radio />} />8</Col>
-                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="2" control={<Radio />} />7</Col>  
+                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="8" control={<Radio />} />8</Col>
+                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="7" control={<Radio />} />7</Col>  
                                     </Col>
                                 </Row>
                                 <Row id="row-header-form2">
                                     <Col xs={24} md={12} xl={12}>อาจจะใช้บริการซ้ำ หรือไม่ใช้บริการ / อาจจะแนะนำหรือไม่แนะนำ Would not recommend</Col> 
                                     <Col xs={24} md={12} xl={12} id="Promoter-radio">
-                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="1" control={<Radio />} />6</Col>
-                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="2" control={<Radio />} />5</Col>
-                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="1" control={<Radio />} />4</Col>
-                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="2" control={<Radio />} />3</Col>
-                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="1" control={<Radio />} />2</Col>
-                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="2" control={<Radio />} />1</Col>  
+                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="6" control={<Radio />} />6</Col>
+                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="5" control={<Radio />} />5</Col>
+                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="4" control={<Radio />} />4</Col>
+                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="3" control={<Radio />} />3</Col>
+                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="2" control={<Radio />} />2</Col>
+                                        <Col xs={24} md={24} xl={24}><FormControlLabel value="1" control={<Radio />} />1</Col>  
                                     </Col>
                                 </Row>
                             </RadioGroup> 
                         </Col> 
-                    </Row>
+                    </Row> 
 
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12} id="kate">เกณฑ์การประเมิน Criteria</Col>
@@ -1012,7 +1055,7 @@ export default class AdminHome extends Component {
                             </Row>
                         </Col>
                         <Col xs={24} md={12} xl={12}>
-                            <RadioGroup aria-label="gender" name="gender1" value={this.state.source16} onChange={this.onChange16}>
+                            <RadioGroup aria-label="gender" name="gender1" value={this.state.source17} onChange={this.onChange17}>
                                 <Row>
                                     <Col xs={6} md={6} xl={6} id="row-radio">
                                         <FormControlLabel value="4" control={<Radio />}  />
@@ -1054,7 +1097,7 @@ export default class AdminHome extends Component {
                             </Row>
                         </Col>
                         <Col xs={24} md={12} xl={12}>
-                            <RadioGroup aria-label="gender" name="gender1" value={this.state.source17} onChange={this.onChange17}>
+                            <RadioGroup aria-label="gender" name="gender1" value={this.state.source18} onChange={this.onChange18}>
                                 <Row>
                                     <Col xs={6} md={6} xl={6} id="row-radio">
                                         <FormControlLabel value="4" control={<Radio />}  />
@@ -1096,7 +1139,7 @@ export default class AdminHome extends Component {
                             </Row>
                         </Col>
                         <Col xs={24} md={12} xl={12}>
-                            <RadioGroup aria-label="gender" name="gender1" value={this.state.source18} onChange={this.onChange18}>
+                            <RadioGroup aria-label="gender" name="gender1" value={this.state.source19} onChange={this.onChange19}>
                                 <Row>
                                     <Col xs={6} md={6} xl={6} id="row-radio">
                                         <FormControlLabel value="4" control={<Radio />}  />
@@ -1113,7 +1156,7 @@ export default class AdminHome extends Component {
                                 </Row>
                             </RadioGroup>
                         </Col>
-                    </Row> */}
+                    </Row>
 
                     <Row id="row-header-choice1">ข้อเสนอแนะอื่นๆ Other comments / suggestions</Row>
                     <Row id="textxarea-input"><TextArea rows={2} id="row-placeholder" placeholder="โปรดกรอกข้อเสนอแนะเพิ่มเติม" /></Row>

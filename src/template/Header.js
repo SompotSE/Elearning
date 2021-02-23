@@ -40,6 +40,8 @@ axios.interceptors.request.use(
         return Promise.reject(error);
     }
 );
+
+const active = {fontSize: "14px", color: "#000000", alignItems: "center", borderBottom: "3px solid #000000", textDecoration: "auto", paddingBottom: "2%" };
 export default withRouter(class Header extends Component {
     constructor(props) {
         super(props);
@@ -403,9 +405,15 @@ export default withRouter(class Header extends Component {
                                 </Col>
                             </Row>
                             <Col xs={24}>
-                                <Row style={{ padding: "1.5%", justifyContent: "flex-end" }}>
-                                    <Button type="primary" id="btn-sty" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button>
-                                    <Button type="primary" id="btn-sty" onClick={() => this.onClickRegister()}>สมัครสมาชิก</Button>
+                                <Row id="colbtn-sty">
+                                    <Col xs={12} md={12} xl={12} id="rowbtn-sty" activeStyle={active}>
+                                        {/* <Button type="primary" id="btn-sty" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button> */}
+                                        <NavLink to="/Login" id="btn-sty" activeStyle={active} style={{fontSize: "14px" , color: "#000000"}}>เข้าสู่ระบบ</NavLink >
+                                    </Col>
+                                    <Col xs={12} md={12} xl={12} id="rowbtn-sty">
+                                        {/* <Button type="primary" id="btn-sty" onClick={() => this.onClickRegister()}>สมัครสมาชิก</Button> */}
+                                        <NavLink to="/Register" id="btn-sty" activeStyle={active} style={{fontSize: "14px" , color: "#000000"}}>สมัครสมาชิก</NavLink >
+                                    </Col>
                                 </Row>
                                 <Row style={{ padding: "1.5%", display: "flex", alignItems: "center" }}>
                                     <UserOutlined id="logo-user"/> <span style={{ paddingRight: "5%" }}> Sompot</span> | <span style={{ paddingRight: "5%" }}></span>

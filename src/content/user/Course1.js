@@ -12,7 +12,7 @@ import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
-import banner from "../../img/banner.png";
+import banner from "../../img/banner1.png";
 // import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';
 // import v2 from '../../img/V2.png';
@@ -432,7 +432,7 @@ export default withRouter(class Course1 extends Component {
                     <Col xs={24} md={12} xl={12}>
                         <Row>
                             <Col xs={24} md={24} xl={24} id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Col>
-                            <Col xs={24} md={24} xl={12}>
+                            <Col xs={24} md={24} xl={12}  id="certi-note1">
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
@@ -463,6 +463,72 @@ export default withRouter(class Course1 extends Component {
                                         </Col>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
+                                            <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
+                                        </Col>
+                                    </>
+                            }
+                        </Row>
+                    </Col>
+                </Row>
+                <Row id="row-headercourse">
+                    <Col xs={24} md={12} xl={12}>
+                        <Row>
+                            <Col  xs={24} md={24} xl={24} id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Col>
+                            <Col xs={24} md={24} xl={24}>
+                                <Row id="teacher">
+                                    <Col xs={24} md={8} xl={6} id="teacher1"><Image src={userprofile} width={100} fluid></Image></Col>
+                                    <Col xs={24} md={12} xl={16} id="teacher2">ผศ.ดร.สมโภชน์ สระทองแง๊ก</Col>
+                                </Row>
+                            </Col>
+                            <Col xs={24} md={24} xl={24}>
+                                <Row id="teacher">
+                                    <Col xs={24} md={8} xl={6} id="teacher1"><Image src={userprofile} width={100} fluid></Image></Col>
+                                    <Col xs={24} md={12} xl={16} id="teacher2">ผศ.ดร.สมโภชน์ สระทองแง๊ก</Col>
+                                </Row>
+                            </Col>
+                            <Col xs={24} md={24} xl={24}>
+                                <Row id="teacher">
+                                    <Col xs={24} md={8} xl={6} id="teacher1"><Image src={userprofile} width={100} fluid></Image></Col>
+                                    <Col xs={24} md={12} xl={16} id="teacher2">ผศ.ดร.สมโภชน์ สระทองแง๊ก</Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Col>
+
+                    <Col xs={24} md={12} xl={12}>
+                        <Row>
+                            <Col xs={24} md={24} xl={24} id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Col>
+                            <Col xs={24} md={24} xl={12} id="certi-note">
+                                {
+                                    (this.state.percentExamPost >= 80) ?
+                                        <>
+                                            <Row id="btn-certificate"><Button onClick={this.info}>ข้อมูลการรับใบ Certificate</Button></Row>
+                                        </>
+                                        :
+                                        <>
+                                            <Row id="btn-certificate"><Button disabled={true}>ข้อมูลการรับใบ Certificate</Button></Row>
+                                        </>
+                                }
+                            </Col>
+                            <Col xs={24} md={24} xl={12} id="progress-course2">
+                                <Progress type="circle" percent={this.state.percentExamPost} strokeColor={(this.state.percentExamPost >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
+                            </Col>
+                            {
+                                (this.state.percentExamPost >= 80) ?
+                                    <>
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course3">
+                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
+                                        </Col>
+                                    </>
+                                    :
+                                    <>
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course3">
+                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
+                                        </Col>
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course3">
                                             <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
                                         </Col>
                                     </>

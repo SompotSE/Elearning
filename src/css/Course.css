@@ -96,6 +96,7 @@
         font-weight: bold;
         padding-top: 2%;
         padding-left: 3%;
+        margin-bottom: 1%;
     }
     #course-header{
         font-size: 20px;
@@ -157,9 +158,37 @@
         justify-content: flex-start;
         align-items: center;
     }
+    #progress-course2{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    #progress-course3{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
     #certifi{
         font-size: 20px;
         margin-top: 3%;
+    }
+    
+    #teacher2{
+        display: flex;
+        justify-content: center;
+        font-size: 18px;
+        padding-top: 3%;
+    }
+    #teacher2{
+        display: flex;
+        justify-content: flex-start;
+        font-size: 18px;
+        padding-top: 3%;
+    }
+    #certi-note{
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 3%;
     }
 }
 
@@ -244,6 +273,19 @@
         align-items: center;
         margin-top: 1%;
     }
+    #progress-course2{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-top: 3%;
+        padding-left: 20%;
+    }
+    #progress-course3{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 1%;
+    }
     .ant-collapse > .ant-collapse-item > .ant-collapse-header {
         font-size: 16px;
         border-radius: 3mm;
@@ -256,6 +298,17 @@
         padding-bottom: 0;
         padding-left: 0;
         font-size: 12px;
+    }
+    #teacher2{
+        display: flex;
+        justify-content: center;
+        font-size: 16px;
+        padding-top: 3%;
+    }
+    #certi-note{
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 3%;
     }
 }
 
@@ -272,6 +325,7 @@
         font-weight: bold;
         padding-top: 2%;
         padding-left: 3%;
+        margin-bottom: 1%;
     }
     #course-header{
         font-size: 20px;
@@ -336,9 +390,24 @@
     }
     #progress-course1{
         display: flex;
-        justify-content: flex-start;
+        justify-content: left;
         align-items: center;
         margin-top: 3%;
+        padding-left: 20%;
+    }
+    #progress-course2{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-top: 3%;
+        padding-left: 20%;
+    }
+    #progress-course3{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-top: 3%;
+        padding-left: 20%;
     }
     .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
         /* padding: 10px 16px !important; */
@@ -346,6 +415,23 @@
         padding-bottom: 0;
         padding-left: 0;
         font-size: 12px;
+    }
+    #teacher2{
+        display: flex;
+        justify-content: center;
+        font-size: 16px;
+        padding-top: 3%;
+    }
+    #teacher2{
+        display: flex;
+        justify-content: flex-start;
+        font-size: 12px;
+        padding-top: 3%;
+    }
+    #certi-note{
+        margin-top: 3%;
+        margin-bottom: 2%;
+        padding-left: 3%;
     }
 }
 
@@ -362,6 +448,7 @@
         font-weight: bold;
         margin-top: 4%;
         padding-left: 3%;
+        margin-bottom: 1%;
     } 
     #course-header{
         font-size: 20px;
@@ -423,7 +510,28 @@
         justify-content: left;
         align-items: center;
         margin-top: 3%;
-        padding-left: 20%;
+        padding-left: 31%;
+    }
+    #progress-course1{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-top: 3%;
+        padding-left: 35%;
+    }
+    #progress-course2{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-top: 3%;
+        padding-left: 31%;
+    }
+    #progress-course3{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-top: 3%;
+        padding-left: 35%;
     }
     .ant-collapse > .ant-collapse-item > .ant-collapse-header {
         position: relative;
@@ -434,6 +542,36 @@
         font-size: 18px !important;
         border-radius: 3mm;
         /* margin-bottom: 1%; */
+    }
+    #teacher{
+        display: grid;
+        justify-content: center;
+    }
+    #teacher1{
+        display: flex;
+        justify-content: center;
+    }
+    #teacher2{
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+        padding-top: 3%;
+    }
+    #teacher2{
+        display: flex;
+        justify-content: flex-start;
+        font-size: 12px;
+        padding-top: 3%;
+    }
+    #certi-note{
+        display: flex;
+        justify-content: center;
+        padding-top: 3%;
+    }
+    #certi-note1{
+        display: flex;
+        justify-content: center;
+        padding-top: 3%;
     }
 }
 
@@ -491,4 +629,8 @@
     align-items: center;
     margin-right: 6%;
     margin-top: 1%;
+}
+
+#teacher{
+    margin-top: 2%;
 }

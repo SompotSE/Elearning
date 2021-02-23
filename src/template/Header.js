@@ -40,6 +40,8 @@ axios.interceptors.request.use(
         return Promise.reject(error);
     }
 );
+
+// const active = {fontSize: "14px", color: "#000000", alignItems: "center", borderBottom: "3px solid #000000", textDecoration: "auto", paddingBottom: "2%" };
 export default withRouter(class Header extends Component {
     constructor(props) {
         super(props);

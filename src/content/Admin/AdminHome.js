@@ -12,8 +12,8 @@ import { EyeTwoTone } from '@ant-design/icons';
 const cookies = new Cookies();
 
 const ip = config.ipServer;
-const { Search } = Input;
-const onSearch = value => console.log(value);
+// const { Search } = Input;
+// const onSearch = value => console.log(value);
 
 export default class AdminHome extends Component {
     constructor(props) {
@@ -90,19 +90,26 @@ export default class AdminHome extends Component {
     }
 
     onSearchFild(value) {
-        console.log(value, " value")
+        // console.log(value, " value")
         var dataSearch = [];
+        dataSearch.splice(0);
         let name = this.state.useradminall.filter(useradmin => useradmin.name.toUpperCase().includes(value.toUpperCase()));
-        let company = this.state.useradmin.filter(useradmin => useradmin.nameCompany.toUpperCase().includes(value.toUpperCase()));
+        let company = this.state.useradminall.filter(useradmin => useradmin.nameCompany.toUpperCase().includes(value.toUpperCase()));
         dataSearch.push(...name);
         dataSearch.push(...company);
 
+        const key = 'userId';
+
+        const dataSearchfilter = [...new Map(dataSearch.map(item =>
+            [item[key], item])).values()];
+
         this.setState({
-            useradmin: dataSearch
+            useradmin: dataSearchfilter
         })
-        console.log(name, " value");
-        console.log(company, " value");
-        console.log(dataSearch, " value");
+        // console.log(name, " name");
+        // console.log(company, " company");
+        // console.log(dataSearch, " dataSearch");
+        // console.log(dataSearchfilter, " dataSearchfilter");
     }
 
     render() {

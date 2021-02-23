@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Row, Col, Button, Modal, Progress, Empty, Spin } from 'antd';
+import { Row, Col, Button, Modal, Progress, Empty, Spin, Result } from 'antd';
 import '../../css/AdminDetail.css';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
@@ -139,54 +139,63 @@ export default class AdminTopScore extends Component {
         return (
             <Container id="bg-AdminDetail" fluid>
                 {
-                    (this.state.statuslode) ?
-                        <>
-                            <Row id="Header-AdminDetail">{this.state.usercourse[0]?.name + " " + this.state.usercourse[0]?.nameCompany + " (สมาชิก)"}</Row>
-                            {
-                                this.state.usercourse[0]?.userCourse.length > 0 ?
-                                    this.state.usercourse[0]?.userCourse.map((admin, i) => {
-                                        return <Row id="row-table-AdminDetail">
-                                            <Col md={24} xl={24} id="header-table-AdminDetail">
+                    (window.innerWidth >= 768) ?
+                        (this.state.statuslode) ?
+                            <>
+                                <Row id="Header-AdminDetail">{this.state.usercourse[0]?.name + " " + this.state.usercourse[0]?.nameCompany + " (สมาชิก)"}</Row>
+                                {
+                                    this.state.usercourse[0]?.userCourse.length > 0 ?
+                                        this.state.usercourse[0]?.userCourse.map((admin, i) => {
+                                            return <Row id="row-table-AdminDetail">
+                                                <Col md={24} xl={24} id="header-table-AdminDetail">
+                                                    {
+                                                        (admin.courseCode === CourseCode1 ? "หลักสูตรที่ 1 " :
+                                                            admin.courseCode === CourseCode2 ? "หลักสูตรที่ 2 " :
+                                                                admin.courseCode === CourseCode3 ? "หลักสูตรที่ 3 " :
+                                                                    admin.courseCode === CourseCode4 ? "หลักสูตรที่ 4 " :
+                                                                        admin.courseCode === CourseCode5 ? "หลักสูตรที่ 5 " : "") + "หลักสูตร " + admin.courseName
+                                                    }
+                                                </Col>
+                                                <Col md={5} xl={5} id="header-table-AdminDetail">รายการ</Col>
+                                                <Col md={13} xl={13} id="header-table-AdminDetail">เวลา</Col>
+                                                <Col md={5} xl={5} id="header-table-AdminDetail">รายละเอียด</Col>
+
+                                                <Col md={5} xl={5} id="header-table-AdminDetail">เวลาในการใช้งานหลักสูตร</Col>
+                                                <Col md={13} xl={13} id="detail-table-AdminDetail">{this.seconds_to_days_hours_mins_secs_str(admin?.topic?.reduce((prev, cur) => prev + parseInt(cur.time), 0))}</Col>
+                                                <Col md={5} xl={5} id="Button-table-AdminDetail"><Button id="button-AdminDetail" onClick={() => this.info(admin.courseCode)}>รายละเอียดเพิ่มเติม</Button></Col>
+
+
+                                                <Col md={5} xl={5} id="header-table-AdminDetail">ผลการสอบ</Col>
+                                                <Col md={9} xl={9} id="header-table-AdminDetail">เปอร์เซ็นต์คะแนน</Col>
+                                                <Col md={9} xl={9} id="header-table-AdminDetail">เวลา</Col>
+
                                                 {
-                                                    (admin.courseCode === CourseCode1 ? "หลักสูตรที่ 1 " :
-                                                        admin.courseCode === CourseCode2 ? "หลักสูตรที่ 2 " :
-                                                            admin.courseCode === CourseCode3 ? "หลักสูตรที่ 3 " :
-                                                                admin.courseCode === CourseCode4 ? "หลักสูตรที่ 4 " :
-                                                                    admin.courseCode === CourseCode5 ? "หลักสูตรที่ 5 " : "") + "หลักสูตร " + admin.courseName
+                                                    admin.exam.map((exam, i) => {
+                                                        return <>
+                                                            <Col md={5} xl={5} id="header1-table-AdminDetail">{"ครั้งที่ " + exam.seq}</Col>
+                                                            <Col md={9} xl={9} id="detail-table-AdminDetail"><Progress type="circle" percent={parseInt(exam.percenScore)} width={50} strokeWidth={13} strokeColor={(parseInt(exam.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
+                                                            <Col md={9} xl={9} id="detail-table-AdminDetail">{this.seconds_to_days_hours_mins_secs_str(exam.time)}</Col>
+                                                        </>
+                                                    })
                                                 }
-                                            </Col>
-                                            <Col md={5} xl={5} id="header-table-AdminDetail">รายการ</Col>
-                                            <Col md={13} xl={13} id="header-table-AdminDetail">เวลา</Col>
-                                            <Col md={5} xl={5} id="header-table-AdminDetail">รายละเอียด</Col>
+                                            </Row>
+                                        })
+                                        :
+                                        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                                }
+                            </>
+                            :
+                            <Row id="row-spin-slide">
+                                <Spin size="large" />
+                            </Row>
 
-                                            <Col md={5} xl={5} id="header-table-AdminDetail">เวลาในการใช้งานหลักสูตร</Col>
-                                            <Col md={13} xl={13} id="detail-table-AdminDetail">{this.seconds_to_days_hours_mins_secs_str(admin?.topic?.reduce((prev, cur) => prev + parseInt(cur.time), 0))}</Col>
-                                            <Col md={5} xl={5} id="Button-table-AdminDetail"><Button id="button-AdminDetail" onClick={() => this.info(admin.courseCode)}>รายละเอียดเพิ่มเติม</Button></Col>
-
-
-                                            <Col md={5} xl={5} id="header-table-AdminDetail">ผลการสอบ</Col>
-                                            <Col md={9} xl={9} id="header-table-AdminDetail">เปอร์เซ็นต์คะแนน</Col>
-                                            <Col md={9} xl={9} id="header-table-AdminDetail">เวลา</Col>
-
-                                            {
-                                                admin.exam.map((exam, i) => {
-                                                    return <>
-                                                        <Col md={5} xl={5} id="header1-table-AdminDetail">{"ครั้งที่ " + exam.seq}</Col>
-                                                        <Col md={9} xl={9} id="detail-table-AdminDetail"><Progress type="circle" percent={parseInt(exam.percenScore)} width={50} strokeWidth={13} strokeColor={(parseInt(exam.percenScore)) >= 80 ? "#006633" : "#CC0000"} /></Col>
-                                                        <Col md={9} xl={9} id="detail-table-AdminDetail">{this.seconds_to_days_hours_mins_secs_str(exam.time)}</Col>
-                                                    </>
-                                                })
-                                            }
-                                        </Row>
-                                    })
-                                    :
-                                    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-                            }
-                        </>
                         :
-                        <Row id="row-spin-slide">
-                            <Spin size="large" />
-                        </Row>
+                        <Result
+                            status="error"
+                            title="เว็บไซต์ไม่รองรับการแสดงผลในขนาดหน้าจอของคุณ"
+                            subTitle="กรุณาใช้งานในอุปกรณ์ที่มีหน้าจอขนาดใหญ่ขึ้น"
+                        >
+                        </Result>
                 }
             </Container>
         )

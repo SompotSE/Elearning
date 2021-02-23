@@ -41,19 +41,14 @@
 #row-form{
     padding-left: 6%;
     padding-right: 6%;
-    padding-bottom: 2%;
+    /* padding-bottom: 2%; */
+    margin-bottom: 1%;
 }
 
 #col-header-form{
     padding-top: 2%;
     padding-bottom: 2%;
 }
-
-#radio-source{
-    padding-left: 1.5%;
-    font-size: 10px;
-}
-
 #choice-score{
     display: flex;
     justify-content: center;
@@ -110,6 +105,17 @@
     width: fit-content;
 }
 
+.MuiFormControlLabel-root {
+    cursor: pointer;
+    display: contents;
+    align-items: center;
+    margin-left: -11px;
+    margin-right: 0px !important;
+    vertical-align: middle;
+    font-size: 16px !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
 /* notebook */
 @media screen and (min-width: 601px) {
     #col-header-form{
@@ -139,24 +145,63 @@
         padding-right: 6%;
         font-size: 18px;
         font-weight: bold;
-        padding-bottom: 1%;
+        /* padding-bottom: 1%; */
     }
     #row-header-choice1{
         padding-left: 6%;
         padding-right: 6%;
-        font-size: 14px;
+        font-size: 18px;
         padding-bottom: 1%;
+        margin-top: 1.5%;
     }
     #Service-input{
         width: 1000px;
         font-size: 14px;
         margin: 2%;
         padding: 1%;
+        margin-top: 2%;
     }
     #antd-group{
         padding-right: 8px;
         padding-left: 8px;
         font-size: 16px;
+    }
+    #row-confirmform{
+        padding-left: 6%;
+        padding-right: 6%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2%;
+    }
+    #btn-confirmform{
+        height: fit-content;
+        background-color: #32A0CE;
+        border-radius: 2mm;
+        width: 100%;
+        color: #ffffff;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+    }
+    #radio-source{
+        padding-left: 1.5%;
+        font-size: 16px;
+        padding-bottom: 0% !important;
+    }
+    #kate-header{
+        font-size: 18px;
+    }
+    #kate{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #E2F1FF;
+        font-size: 20px;
+    }
+    #input-por{
+        width: 100%;
+        margin-left: 2%;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
     }
 }
 
@@ -182,19 +227,56 @@
         padding-right: 6%;
         font-size: 18px;
         font-weight: bold;
-        padding-bottom: 1%;
+        /* padding-bottom: 1%; */
     }
     #row-header-choice1{
         padding-left: 6%;
         padding-right: 6%;
-        font-size: 14px;
+        font-size: 18px;
         padding-bottom: 1%;
+        margin-top: 1.5%;
     }
     #Service-input{
         width: 700px;
         font-size: 14px;
         margin: 2%;
         padding: 2%;
+    }
+    #row-confirmform{
+        padding-left: 6%;
+        padding-right: 6%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2%;
+    }
+    #btn-confirmform{
+        height: fit-content;
+        background-color: #32A0CE;
+        border-radius: 2mm;
+        width: 100%;
+        color: #ffffff;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+    }
+    #radio-source{
+        padding-left: 1.5%;
+        font-size: 16px;
+        padding-bottom: 0% !important;
+    }
+    #kate-header{
+        font-size: 16px;
+    }#kate{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #E2F1FF;
+        font-size: 18px;
+    }
+    #input-por{
+        width: 100%;
+        margin-left: 2%;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
     }
 }
 
@@ -220,13 +302,14 @@
         padding-right: 6%;
         font-size: 14px;
         font-weight: bold;
-        padding-bottom: 1%;
+        /* padding-bottom: 1%; */
     }
     #row-header-choice1{
         padding-left: 6%;
         padding-right: 6%;
         font-size: 14px;
         padding-bottom: 1%;
+        margin-top: 1.5%;
     }
     #Service-input{
         width: 500px;
@@ -234,6 +317,44 @@
         margin: 2%;
         padding: 2%;
     }
+    #row-confirmform{
+        padding-left: 6%;
+        padding-right: 6%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2%;
+    }
+    #btn-confirmform{
+        height: fit-content;
+        background-color: #32A0CE;
+        border-radius: 2mm;
+        width: 100%;
+        color: #ffffff;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+    }
+    #radio-source{
+        padding-left: 1.5%;
+        font-size: 14px;
+        padding-bottom: 0% !important;
+    }
+    #kate-header{
+        font-size: 16px;
+    }
+    #kate{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #E2F1FF;
+        font-size: 18px;
+    }
+    #input-por{
+        width: 100%;
+        margin-left: 2%;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+    }
+    
 }
 
 /* telephone */
@@ -250,7 +371,7 @@
     #row-radio{
         display: flex;
         justify-content: center;
-        padding-left: 12%;
+        padding-left: 4%;
         align-items: center;
     }
     #row-header-choice{
@@ -265,6 +386,7 @@
         padding-right: 6%;
         font-size: 14px;
         padding-bottom: 1%;
+        margin-top: 1.5%;
     }
     #input-pleased{
         width: 150;
@@ -289,9 +411,67 @@
         margin: 2%;
         padding: 2%;
     }
+    #row-confirmform{
+        padding-left: 6%;
+        padding-right: 6%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2%;
+    }
+    #btn-confirmform{
+        height: fit-content;
+        background-color: #32A0CE;
+        border-radius: 2mm;
+        width: 100%;
+        color: #ffffff;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+    }
+    #radio-source{
+        padding-left: 1.5%;
+        font-size: 12px;
+        padding-bottom: 0% !important;
+    }
+    #kate-header{
+        font-size: 14px;
+    }
+    #row-form{
+        padding-left: 6%;
+        padding-right: 6%;
+        /* padding-bottom: 2%; */
+        margin-bottom: 1.5%;
+    }
+    #kate{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #E2F1FF;
+        font-size: 16px;
+    }
+    #input-por{
+        width: 100%;
+        margin-left: 2%;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+    }
+    
 }
 
 .ant-radio-inner {
     color: #000000 !important;
 }
 
+label {
+    display: inline-block;
+    margin-bottom: 0rem !important;
+}
+
+#row-por{
+    align-items: baseline;
+}
+
+.MuiFormGroup-root {
+    display: flex;
+    flex-wrap: inherit !important;
+    flex-direction: column;
+}

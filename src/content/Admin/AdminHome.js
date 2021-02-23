@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Row, Col, Input, Progress, Pagination, Spin, Empty } from 'antd';
+import { Row, Col, Input, Progress, Pagination, Spin, Empty, Result, AutoComplete } from 'antd';
 import '../../css/AdminHome.css';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
@@ -26,10 +26,17 @@ export default class AdminHome extends Component {
             startdetail: 0,
             enddetail: 10,
             useradmin: [],
-            statuslode: false
+            useradminall: [],
+            statuslode: false,
+            options: [
+                { value: 'Burns Bay Road' },
+                { value: 'Downing Street' },
+                { value: 'Wall Street' }
+            ]
         }
 
         this.onChangePage = this.onChangePage.bind(this);
+        this.onSearchFild = this.onSearchFild.bind(this);
     }
 
     componentWillMount() {
@@ -58,6 +65,7 @@ export default class AdminHome extends Component {
         } else {
             this.setState({
                 useradmin: user.data,
+                useradminall: user.data,
                 statuslode: true
             });
         }
@@ -81,76 +89,115 @@ export default class AdminHome extends Component {
         });
     }
 
+    onSearchFild(value) {
+        console.log(value, " value")
+        var dataSearch = [];
+        let name = this.state.useradminall.filter(useradmin => useradmin.name.toUpperCase().includes(value.toUpperCase()));
+        let company = this.state.useradmin.filter(useradmin => useradmin.nameCompany.toUpperCase().includes(value.toUpperCase()));
+        dataSearch.push(...name);
+        dataSearch.push(...company);
+
+        this.setState({
+            useradmin: dataSearch
+        })
+        console.log(name, " value");
+        console.log(company, " value");
+        console.log(dataSearch, " value");
+    }
+
     render() {
         return (
             <Container id="bg-AdminHome" fluid>
-                <Row id="row-header-AdminHome">
-                    <Col md={12} xl={12} id="Header-AdminHome">ข้อมูลการใช้งานสมาชิก</Col>
-                    <Col md={12} xl={12} id="Search-AdminHome">
-                        <Search placeholder="ค้นหาชื่อผู้ใช้งาน" onSearch={onSearch} style={{ width: 250 }} />
-                    </Col>
-                </Row>
-                <Col md={24} xl={24} id="row-table-AdminHome">
-                    <Row>
-                        <Col md={1} xl={1} id="header-table-AdminHome">ลำดับ</Col>
-                        <Col md={5} xl={5} id="header-table-AdminHome">ชื่อ - นามสกุล</Col>
-                        <Col md={6} xl={6} id="header-table-AdminHome">ชื่อบริษัท</Col>
-                        <Col span={10}>
-                            <Col md={24} xl={24} id="header-table-AdminHome1">ความคืบหน้าการใช้งาน</Col>
-                            <Row style={{ display: "flex", justifyContent: "space-between" }}>
-                                <Col md={5} xl={5} id="header-table-AdminHome1">หลักสูตรที่1</Col>
-                                <Col md={4} xl={4} id="header-table-AdminHome1">หลักสูตรที่5</Col>
-                                <Col md={5} xl={5} id="header-table-AdminHome1">หลักสูตรที่3</Col>
-                                <Col md={4} xl={4} id="header-table-AdminHome1">หลักสูตรที่4</Col>
-                                <Col md={5} xl={5} id="header-table-AdminHome1">หลักสูตรที่5</Col>
+                {
+                    (window.innerWidth >= 768) ?
+                        <>
+                            <Row id="row-header-AdminHome">
+                                <Col md={12} xl={12} id="Header-AdminHome">ข้อมูลการใช้งานสมาชิก</Col>
+                                <Col md={12} xl={12} id="Search-AdminHome">
+                                    <AutoComplete
+                                        style={{ width: "70%" }}
+                                        options={this.state.useradmin}
+                                        filterOption={(inputValue, option) =>
+                                            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                        }
+                                        mode="tags"
+                                        onSearch={this.onSearchFild}
+                                        onSelect={this.onSearchFild}
+                                    >
+                                        <Input.Search style={{ width: '100%' }} placeholder="ค้นหา" onSearch={this.onSearch} />
+                                    </AutoComplete>
+                                </Col>
                             </Row>
-                        </Col>
-                        <Col md={1} xl={1} id="header-table-AdminHome">เพิ่มเติม</Col>
-                    </Row>
-                    {
-                        (this.state.statuslode) ?
-                            <>
+                            <Col md={24} xl={24} id="row-table-AdminHome">
+                                <Row>
+                                    <Col md={1} xl={1} id="header-table-AdminHome">ลำดับ</Col>
+                                    <Col md={5} xl={5} id="header-table-AdminHome">ชื่อ - นามสกุล</Col>
+                                    <Col md={6} xl={6} id="header-table-AdminHome">ชื่อบริษัท</Col>
+                                    <Col span={10}>
+                                        <Col md={24} xl={24} id="header-table-AdminHome1">ความคืบหน้าการใช้งาน</Col>
+                                        <Row style={{ display: "flex", justifyContent: "space-between" }}>
+                                            <Col md={5} xl={5} id="header-table-AdminHome1">หลักสูตรที่1</Col>
+                                            <Col md={4} xl={4} id="header-table-AdminHome1">หลักสูตรที่5</Col>
+                                            <Col md={5} xl={5} id="header-table-AdminHome1">หลักสูตรที่3</Col>
+                                            <Col md={4} xl={4} id="header-table-AdminHome1">หลักสูตรที่4</Col>
+                                            <Col md={5} xl={5} id="header-table-AdminHome1">หลักสูตรที่5</Col>
+                                        </Row>
+                                    </Col>
+                                    <Col md={1} xl={1} id="header-table-AdminHome">เพิ่มเติม</Col>
+                                </Row>
                                 {
-                                    this.state.useradmin.length > 0 ?
+                                    (this.state.statuslode) ?
                                         <>
                                             {
-                                                this.state.useradmin?.slice(this.state.startdetail, this.state.enddetail).map((admin, i) => {
-                                                    return <Row>
-                                                        <Col md={1} xl={1} id="user-table-AdminHome">{this.state.startdetail + i + 1}</Col>
-                                                        <Col md={5} xl={5} id="user-table-AdminHome">{admin.name}</Col>
-                                                        <Col md={6} xl={6} id="user-table-AdminHome">{admin.nameCompany}</Col>
-                                                        <Col span={10}>
-                                                            <Col md={24} xl={24} id="user-table-AdminHome"></Col>
-                                                            <Row style={{ display: "flex", justifyContent: "space-between" }}>
-                                                                {this.detailPercenTopic(admin?.detailTop)}
-                                                            </Row>
-                                                        </Col>
-                                                        <Col md={1} xl={1} id="user-table-AdminHome"><NavLink to={"/Admin/Detail/" + admin.userId}><EyeTwoTone id="icon-detail" twoToneColor="#eb2f96"/></NavLink></Col>
-                                                    </Row>
-                                                })
+                                                this.state.useradmin.length > 0 ?
+                                                    <>
+                                                        {
+                                                            this.state.useradmin?.slice(this.state.startdetail, this.state.enddetail).map((admin, i) => {
+                                                                return <Row>
+                                                                    <Col md={1} xl={1} id="user-table-AdminHome">{this.state.startdetail + i + 1}</Col>
+                                                                    <Col md={5} xl={5} id="user-table-AdminHome">{admin.name}</Col>
+                                                                    <Col md={6} xl={6} id="user-table-AdminHome">{admin.nameCompany}</Col>
+                                                                    <Col span={10}>
+                                                                        <Col md={24} xl={24} id="user-table-AdminHome"></Col>
+                                                                        <Row style={{ display: "flex", justifyContent: "space-between" }}>
+                                                                            {this.detailPercenTopic(admin?.detailTop)}
+                                                                        </Row>
+                                                                    </Col>
+                                                                    <Col md={1} xl={1} id="user-table-AdminHome"><NavLink to={"/Admin/Detail/" + admin.userId}><EyeTwoTone id="icon-detail" twoToneColor="#eb2f96" /></NavLink></Col>
+                                                                </Row>
+                                                            })
+                                                        }
+                                                    </>
+                                                    :
+                                                    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
                                             }
                                         </>
                                         :
-                                        <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                                        <Row id="row-spin-slide">
+                                            <Spin size="large" />
+                                        </Row>
                                 }
-                            </>
-                            :
-                            <Row id="row-spin-slide">
-                                <Spin size="large" />
-                            </Row>
-                    }
 
-                    <Row>
-                        <Pagination
-                            current={this.state.current_page}
-                            pageSize={10}
-                            responsive={true}
-                            total={this.state.useradmin?.length}
-                            onChange={this.onChangePage}
-                        />
-                    </Row>
+                                <Row>
+                                    <Pagination
+                                        current={this.state.current_page}
+                                        pageSize={10}
+                                        responsive={true}
+                                        total={this.state.useradmin?.length}
+                                        onChange={this.onChangePage}
+                                    />
+                                </Row>
 
-                </Col>
+                            </Col>
+                        </>
+                        :
+                        <Result
+                            status="error"
+                            title="เว็บไซต์ไม่รองรับการแสดงผลในขนาดหน้าจอของคุณ"
+                            subTitle="กรุณาใช้งานในอุปกรณ์ที่มีหน้าจอขนาดใหญ่ขึ้น"
+                        >
+                        </Result>
+                }
             </Container>
         );
     }

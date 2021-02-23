@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Image } from 'react-bootstrap';
-import { Row } from 'antd';
+import { Container } from 'react-bootstrap'; //Image
+// import { Row } from 'antd';
 import { withRouter } from "react-router-dom";
 import '../css/Header.css';
-import banner from '../img/banner.png';
+// import banner from '../img/banner.png';
 
 export default withRouter(class Header2 extends Component {
     constructor(props) {

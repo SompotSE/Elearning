@@ -35,7 +35,17 @@ export default class Home extends Component {
                 <Row id="row-coverhome">
                         <Col xs={10} md={4} xl={4} >
                             <Row id="row-img-coursedetail">
-                                <Image style={{width: "100%"}} src={cover1} placeholder={false} fluid></Image>   
+                            <Image
+                                style={{width: "100%"}}
+                                src={cover1}
+                                placeholder={
+                                <Image
+                                    preview={false}
+                                    src={cover1}
+                                    width={200}
+                                />
+                                }
+                            />  
                             </Row>
                             <Row id="row-btn-coursedetail">
                                 <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>

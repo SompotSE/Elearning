@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Row, Col, Input, Progress, Pagination, Spin, Empty, Result } from 'antd';
+import { Row, Col, Input, Progress, Pagination, Spin, Empty, Result, AutoComplete } from 'antd';
 import '../../css/AdminHome.css';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
@@ -26,10 +26,17 @@ export default class AdminHome extends Component {
             startdetail: 0,
             enddetail: 10,
             useradmin: [],
-            statuslode: false
+            useradminall: [],
+            statuslode: false,
+            options: [
+                { value: 'Burns Bay Road' },
+                { value: 'Downing Street' },
+                { value: 'Wall Street' }
+            ]
         }
 
         this.onChangePage = this.onChangePage.bind(this);
+        this.onSearchFild = this.onSearchFild.bind(this);
     }
 
     componentWillMount() {
@@ -58,6 +65,7 @@ export default class AdminHome extends Component {
         } else {
             this.setState({
                 useradmin: user.data,
+                useradminall: user.data,
                 statuslode: true
             });
         }
@@ -81,6 +89,22 @@ export default class AdminHome extends Component {
         });
     }
 
+    onSearchFild(value) {
+        console.log(value, " value")
+        var dataSearch = [];
+        let name = this.state.useradminall.filter(useradmin => useradmin.name.toUpperCase().includes(value.toUpperCase()));
+        let company = this.state.useradmin.filter(useradmin => useradmin.nameCompany.toUpperCase().includes(value.toUpperCase()));
+        dataSearch.push(...name);
+        dataSearch.push(...company);
+
+        this.setState({
+            useradmin: dataSearch
+        })
+        console.log(name, " value");
+        console.log(company, " value");
+        console.log(dataSearch, " value");
+    }
+
     render() {
         return (
             <Container id="bg-AdminHome" fluid>
@@ -90,7 +114,18 @@ export default class AdminHome extends Component {
                             <Row id="row-header-AdminHome">
                                 <Col md={12} xl={12} id="Header-AdminHome">ข้อมูลการใช้งานสมาชิก</Col>
                                 <Col md={12} xl={12} id="Search-AdminHome">
-                                    <Search placeholder="ค้นหาชื่อผู้ใช้งาน" onSearch={onSearch} style={{ width: 250 }} />
+                                    <AutoComplete
+                                        style={{ width: "70%" }}
+                                        options={this.state.useradmin}
+                                        filterOption={(inputValue, option) =>
+                                            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                        }
+                                        mode="tags"
+                                        onSearch={this.onSearchFild}
+                                        onSelect={this.onSearchFild}
+                                    >
+                                        <Input.Search style={{ width: '100%' }} placeholder="ค้นหา" onSearch={this.onSearch} />
+                                    </AutoComplete>
                                 </Col>
                             </Row>
                             <Col md={24} xl={24} id="row-table-AdminHome">

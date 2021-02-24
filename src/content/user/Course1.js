@@ -60,6 +60,7 @@ export default withRouter(class Course1 extends Component {
             header: [],
             course: [],
             topicAll: [],
+            form: [],
 
             playingTopic1: false,
             playingTopic2: false,
@@ -74,6 +75,7 @@ export default withRouter(class Course1 extends Component {
         this.onDownlode = this.onDownlode.bind(this);
         this.onCreateTopic = this.onCreateTopic.bind(this);
         this.onExamPost = this.onExamPost.bind(this);
+        this.onForm = this.onForm.bind(this);
         this.onProgressVedioTopic1 = this.onProgressVedioTopic1.bind(this);
         this.onProgressVedioTopic2 = this.onProgressVedioTopic2.bind(this);
         this.onProgressVedioTopic3 = this.onProgressVedioTopic3.bind(this);
@@ -161,6 +163,22 @@ export default withRouter(class Course1 extends Component {
         } else {
             this.setState({
                 topicAll: topic.data
+            });
+        }
+
+        var url_assessment_course = ip + "/UserAssessment/find/" + CourseCode ;
+        const assessment_course = await (await axios.get(url_assessment_course, { headers: this.state.header })).data;
+        if (!assessment_course?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
+        } else {
+            this.setState({
+                form: assessment_course.data?.assessment
             });
         }
 
@@ -365,6 +383,15 @@ export default withRouter(class Course1 extends Component {
             this.props.history.push("/ExamPost");
         } else {
             swal("Warning!", "จำนวนครั้งในการทำข้อสอบครบแล้ว", "warning").then((value) => {
+            });
+        }
+    }
+
+    onForm() {
+        if (this.state.form.length === 0) {
+            this.props.history.push("/Form/" + CourseCode);
+        } else {
+            swal("Warning!", "คุณทำแบบประเมินหลักสูตรนี้แล้ว", "warning").then((value) => {
             });
         }
     }
@@ -668,12 +695,10 @@ export default withRouter(class Course1 extends Component {
                                 (this.state.examPost.length > 0) ?
                                     <Panel header="แบบประเมิน" key="4">
                                         <Row>
-                                            <Col xs={22} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }}
-                                            //onClick={() => { this.onExamPost() }}
-                                            > - ทำแบบประเมิน </Col>
+                                            <Col xs={22} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={() => { this.onForm() }}> - ทำแบบประเมิน </Col>
                                             <Col xs={2} md={2} xl={2} id="icon-chack">
                                                 {
-                                                    (1 === 2) ? <AiFillCheckSquare style={{ fontSize: '400%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '400%', color: '#DDDDDD' }} />
+                                                    (this.state.form.length > 0) ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                                 }
                                             </Col>
                                         </Row>

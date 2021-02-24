@@ -117,7 +117,7 @@ export default withRouter(class HomeUser extends Component {
             } else if(course === CourseCode3) {
                 // this.props.history.push("/Course3");
             } else if(course === CourseCode4) {
-                // this.props.history.push("/Course4");
+                this.props.history.push("/Course4");
             } else if(course === CourseCode5) {
                 // this.props.history.push("/Course5");
             }
@@ -198,26 +198,26 @@ export default withRouter(class HomeUser extends Component {
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} fluid></Image>   
+                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode3) }}></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                                <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} fluid></Image>   
+                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode4) }}></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                                <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode4) }}>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} fluid></Image>   
+                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode5) }}></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                                <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                 </Row>

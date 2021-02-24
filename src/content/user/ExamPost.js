@@ -29,6 +29,7 @@ export default withRouter(class ExamPost extends Component {
             email: "",
             header: [],
             exam: [],
+            form: [],
             current_page: 1,
             countAns: 0,
             startDate: null,
@@ -42,6 +43,7 @@ export default withRouter(class ExamPost extends Component {
         this.onChangePage = this.onChangePage.bind(this);
         this.onChangeAns = this.onChangeAns.bind(this);
         this.onSendExam = this.onSendExam.bind(this);
+        this.onClicktoForm = this.onClicktoForm.bind(this);
     }
 
     componentWillMount() {
@@ -89,6 +91,22 @@ export default withRouter(class ExamPost extends Component {
             this.setState({
                 exam: exam.data
             })
+        }
+
+        var url_assessment_course = ip + "/UserAssessment/find/" + CourseCode;
+        const assessment_course = await (await axios.get(url_assessment_course, { headers: this.state.header })).data;
+        if (!assessment_course?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
+        } else {
+            this.setState({
+                form: assessment_course.data?.assessment
+            });
         }
 
         this.setState({
@@ -152,6 +170,13 @@ export default withRouter(class ExamPost extends Component {
         }
     }
 
+    onClicktoForm() {
+        this.props.history.push("/Form/" + CourseCode);
+    }
+    onClicktoAdminHome() {
+        this.props.history.push("/HomeUser");
+    }
+
     render() {
         return (
             <Container fluid id="bg-ExamPost">
@@ -172,7 +197,7 @@ export default withRouter(class ExamPost extends Component {
                                 </Col>
                             </Row>
                             <Row id="pagination">
-                                <Col xs={22} md={22} xl={22} id="col-pagination">
+                                <Col xs={24} md={24} xl={24} id="col-pagination">
                                     <Pagination
                                         current={this.state.current_page}
                                         pageSize={1}
@@ -181,8 +206,8 @@ export default withRouter(class ExamPost extends Component {
                                         onChange={this.onChangePage}
                                     />
                                 </Col>
-                                <Col xs={2} md={2} xl={2}>
-                                    {/* <Button disabled={this.state.current_page === Num ? false : true} onClick={this.onSendExam}>ส่งแบบทดสอบ</Button> */}
+                                <Col xs={24} md={24} xl={24} id="col-pagination">
+                                    <Button disabled={this.state.current_page === Num ? false : true} onClick={this.onSendExam}>ส่งแบบทดสอบ</Button>
                                 </Col>
                             </Row>
                         </div>
@@ -194,7 +219,7 @@ export default withRouter(class ExamPost extends Component {
                                 <Col xs={12} md={12} xl={12}>{this.state.ansScore + " / " + this.state.ansNum}</Col>
                                 <Col xs={12} md={12} xl={12}>
                                     <Row>
-                                        <Progress type="circle" percent={this.state.ansPercen} strokeWidth={13} width={100} />
+                                        <Progress type="circle" percent={this.state.ansPercen} strokeColor={(this.state.ansPercen >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={100} />
                                     </Row>
                                     <Row>
                                         {(this.state.ansPercen >= 80) ? "ผ่านการทดสอบ" : "ไม่ผ่านการทดสอบ"}
@@ -202,8 +227,14 @@ export default withRouter(class ExamPost extends Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <Button>ทำแบบประเมิน</Button>
+                                {
+                                    (this.state.form.length >= 1) ?
+                                        <Button onClick={() => { this.onClicktoAdminHome() }}>กลับหน้าหลัก</Button>
+                                        :
+                                        <Button onClick={() => { this.onClicktoForm() }}>ทำแบบประเมิน</Button>
+                                }
                             </Row>
+
                         </div>
                 }
             </Container>

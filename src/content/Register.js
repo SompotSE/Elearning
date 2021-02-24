@@ -86,7 +86,7 @@ export default class Register extends Component {
             var url_register = ip + "/User/Register";
             const register = await (await axios.post(url_register, data)).data;
             if (register?.status) {
-                swal("Success!", "สมัครสมาชิดสำเร็จ กรุณายืนยัน email เพื่อลงเชื่อเข้าใช้", "success").then((value) => {
+                swal("Success!", "สมัครสมาชิกสำเร็จ กรุณายืนยัน email เพื่อลงเชื่อเข้าใช้", "success").then((value) => {
                     window.location.replace('/Home', false);
                 });
             } else {

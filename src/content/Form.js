@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
-import { Row, Col, Form, Input, Radio as RadioAntd, Button } from 'antd';
+import { Row, Col, Form, Input, Button } from 'antd';
 import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 
 import '../css/Form.css';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+import swal from 'sweetalert';
+// import renderHTML from 'react-render-html';
 
-const radioStyle = {
-    display: 'block',
-    height: '30px',
-    lineHeight: '30px',
-};
+import { config } from '../config/config';
+
+const cookies = new Cookies();
+
+const ip = config.ipServer;
+// const radioStyle = {
+//     display: 'block',
+//     height: '30px',
+//     lineHeight: '30px',
+// };
 
 const { TextArea } = Input;
 export default class AdminHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            token: "",
+            email: "",
+            header: [],
+            nameCourse: "",
             value: 1, 
             source: 0,
             source1: [],
@@ -38,6 +51,11 @@ export default class AdminHome extends Component {
             source18: 0,
             source19: 0,
             sourcepor: 0,
+            knowOther: "",
+            comment1: "",
+            comment2: "",
+            comment3: "",
+            sourceporDesc: ""
         }
 
         this.onChange = this.onChange.bind(this);
@@ -62,6 +80,19 @@ export default class AdminHome extends Component {
         this.onChange19 = this.onChange19.bind(this);
 
         this.onChangepor = this.onChangepor.bind(this);
+        this.onChangeKnowOther = this.onChangeKnowOther.bind(this);
+        this.sendAssessment = this.sendAssessment.bind(this);
+    }
+
+    componentWillMount() {
+        this.setState({
+            token: cookies.get('token_user', { path: '/' }),
+            email: cookies.get('email', { path: '/' }),
+            header: {
+                token: cookies.get('token_user', { path: '/' }),
+                key: cookies.get('email', { path: '/' })
+            }
+        });
     }
 
     onChange(e){
@@ -190,6 +221,93 @@ export default class AdminHome extends Component {
         });
     }
 
+    onChangeKnowOther(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    async componentDidMount() {
+        var url_assessment_course = ip + "/UserAssessment/find/" + this.props.match.params.courseCode ;
+        const assessment_course = await (await axios.get(url_assessment_course, { headers: this.state.header })).data;
+        if (!assessment_course?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
+        } else {
+            if (assessment_course.data?.assessment.length >= 1) {
+                swal("Warning!", "คุณทำแบบประเมินหลักสูตรนี้แล้ว", "warning").then((value) => {
+                    this.props.history.push("/HomeUser");
+                });
+            } else {
+                if(assessment_course.data?.course.length < 1) {
+                    swal("Warning!", "ไม่พบหลักสูตร", "warning").then((value) => {
+                        this.props.history.push("/HomeUser");
+                    });
+                } else {
+                    this.setState({
+                        nameCourse: assessment_course.data?.course[0]?.courseName
+                    })
+                }
+            }
+        }
+    }
+
+    async sendAssessment() {
+        var dataSave = {
+            time: new Date(),
+            place: "",
+            know: this.state.source,
+            knowOther: this.state.knowOther,
+            source1: this.state.source1,
+            source2: this.state.source2,
+            source3: this.state.source3,
+            source4: this.state.source4,
+            source5: this.state.source5,
+            source6: this.state.source6,
+            source7: this.state.source7,
+            source8: this.state.source8,
+            comment3: this.state.comment3,
+            source9: this.state.source9,
+            source10: this.state.source10,
+            source11: this.state.source11,
+            source12: this.state.source12,
+            source13: this.state.source13,
+            comment1: this.state.comment1,
+            sourcepor: this.state.sourcepor,
+            sourceporDesc: this.state.sourceporDesc,
+            source14: this.state.source14,
+            source15: this.state.source15,
+            source16: this.state.source16,
+            source17: this.state.source17,
+            source18: this.state.source18,
+            source19: this.state.source19,
+            comment2: this.state.comment2,
+            recStatus: "A",
+            courseCode: this.props.match.params.courseCode
+        }
+
+        var url_assessment = ip + "/UserAssessment/create";
+        const assessment = await (await axios.post(url_assessment, dataSave, { headers: this.state.header })).data;
+        if (!assessment?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/Login', false);
+            });
+        } else {
+            swal("Success!", "สำเร็จ", "success").then((value) => {
+                window.location.replace('/HomeUser', false);
+            });
+        }
+    }
+
     render() {
         return (
             <Container id="bg-form" fluid>
@@ -204,7 +322,7 @@ export default class AdminHome extends Component {
                 <Form>
                     <Row id="row-form">
                         <Col xs={24} md={24} xl={24} id="col-header-form">
-                            <Col xs={24} md={24} xl={24} id="header-form">ชื่อหัวข้อ (Siminar Topic) :</Col>
+                            <Col xs={24} md={24} xl={24} id="header-form">ชื่อหัวข้อ (Siminar Topic) : {this.state.nameCourse}</Col>
                             <Row>
                                 <Col xs={24} md={10} xl={10} id="header-form">วันที่ (Date) / เวลา (Time) :</Col>
                                 <Col xs={24} md={12} xl={12} id="header-form">สถานที่ (Venue) :</Col>
@@ -230,10 +348,10 @@ export default class AdminHome extends Component {
                                     <Col xs={24} md={5} xl={2} id="radio-source">
                                         <FormControlLabel value="4" control={<Radio />}  />Colleagues
                                     </Col>
-                                    <Col xs={24} md={7} xl={4} id="radio-source">
+                                    <Col xs={24} md={7} xl={6} id="radio-source">
                                         <FormControlLabel value="5" control={<Radio />}  />
                                             Other (Please specify) 
-                                            {this.state.source === 5 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+                                            {this.state.source === "5" ? <Input style={{ width: 100, marginLeft: 10 }} name="knowOther" value={this.state.knowOther} onChange={this.onChangeKnowOther}/> : null}
                                     </Col>
                                 </Row>    
                             </RadioGroup>    
@@ -607,7 +725,7 @@ export default class AdminHome extends Component {
                     </Row>
 
                     <Row id="row-header-choice1">ความคิดเห็น / ข้อเสนอแนะเพิ่มเติมต่องานสัมมนา Additional comments about the seminar</Row>
-                    <Row id="textxarea-input"><TextArea rows={2} id="row-placeholder" placeholder="โปรดกรอกข้อเสนอแนะเพิ่มเติม"/></Row>
+                    <Row id="textxarea-input"><TextArea rows={2} id="row-placeholder" placeholder="โปรดกรอกข้อเสนอแนะเพิ่มเติม" name="comment3" value={this.state.comment3} onChange={this.onChangeKnowOther}/></Row>
 
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12} id="kate">เกณฑ์การประเมิน Criteria</Col>
@@ -846,7 +964,7 @@ export default class AdminHome extends Component {
                     </Row>
 
                     <Row id="row-header-choice1">ความคิดเห็น / ข้อเสนอแนะเพิ่มเติมสำหรับวิทยากร Additional comments about the instructor / speaker</Row>
-                    <Row id="textxarea-input"><TextArea rows={2} id="row-placeholder" placeholder="โปรดกรอกข้อเสนอแนะเพิ่มเติม"/></Row>
+                    <Row id="textxarea-input"><TextArea rows={2} id="row-placeholder" placeholder="โปรดกรอกข้อเสนอแนะเพิ่มเติม" name="comment1" value={this.state.comment1} onChange={this.onChangeKnowOther}/></Row>
 
                     
                     <Row id="row-header-choice">บริการอื่นๆ / Services</Row>
@@ -871,7 +989,7 @@ export default class AdminHome extends Component {
                                     </Row>
                                     <Row>
                                         <Col xs={24} md={24} xl={12}>
-                                            <Input id="Service-input" placeholder="โปรดกรอกข้อมูล" id="input-por"/>
+                                            <Input placeholder="โปรดกรอกข้อมูล" id="input-por" name="sourceporDesc" value={this.state.sourceporDesc} onChange={this.onChangeKnowOther}/>
                                         </Col>
                                     </Row>
                                 </RadioGroup>
@@ -1154,11 +1272,11 @@ export default class AdminHome extends Component {
                     </Row>
 
                     <Row id="row-header-choice1">ข้อเสนอแนะอื่นๆ Other comments / suggestions</Row>
-                    <Row id="textxarea-input"><TextArea rows={2} id="row-placeholder" placeholder="โปรดกรอกข้อเสนอแนะเพิ่มเติม" /></Row>
+                    <Row id="textxarea-input"><TextArea rows={2} id="row-placeholder" placeholder="โปรดกรอกข้อเสนอแนะเพิ่มเติม" name="comment2" value={this.state.comment2} onChange={this.onChangeKnowOther}/></Row>
 
                     <Row>
                         <Col xs={24} md={24} xl={24} id="row-confirmform">
-                            <Button id="btn-confirmform">ส่งแบบประเมิน</Button>
+                            <Button id="btn-confirmform" onClick={this.sendAssessment}>ส่งแบบประเมิน</Button>
                         </Col>
                     </Row>
 

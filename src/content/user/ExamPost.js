@@ -213,27 +213,34 @@ export default withRouter(class ExamPost extends Component {
                         </div>
                         :
                         <div id="body-exam-post">
-                            <Row >ผลการทดสอบหลังเรียน</Row>
-                            <Row >หลักสูตรที่ 1</Row>
-                            <Row>
-                                <Col xs={12} md={12} xl={12}>{this.state.ansScore + " / " + this.state.ansNum}</Col>
-                                <Col xs={12} md={12} xl={12}>
+                            <Row id="border-score">
+                                <Col xs={24} md={24} xl={24} id="header-Examport">ผลการทดสอบหลังเรียน</Col>
+                                <Col xs={24} md={24} xl={24} id="header-Examport">หลักสูตรที่ 1</Col>
+                                <Col xs={24} md={24} xl={24}>
                                     <Row>
-                                        <Progress type="circle" percent={this.state.ansPercen} strokeColor={(this.state.ansPercen >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={100} />
-                                    </Row>
-                                    <Row>
-                                        {(this.state.ansPercen >= 80) ? "ผ่านการทดสอบ" : "ไม่ผ่านการทดสอบ"}
+                                        <Col xs={24} md={12} xl={12} id="score-Exampost">{this.state.ansScore + " / " + this.state.ansNum}</Col>
+                                        <Col xs={24} md={12} xl={12}>
+                                            <Col xs={24} md={24} xl={24} id="progess-Examepost">
+                                                <Progress type="circle" percent={this.state.ansPercen} strokeColor={(this.state.ansPercen >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
+                                                
+                                            </Col>
+                                            <Col xs={24} md={24} xl={24} id="pass-Exampost">
+                                                {(this.state.ansPercen >= 80) ? "ผ่านการทดสอบ" : "ไม่ผ่านการทดสอบ"}
+                                            </Col>
+                                        </Col>
                                     </Row>
                                 </Col>
+                            
+                                <Col  xs={24} md={24} xl={24} id="rowbtn-Exampost">
+                                    {
+                                        (this.state.form.length >= 1) ?
+                                            <Button onClick={() => { this.onClicktoAdminHome() }} id="btnpass-Exampost">กลับหน้าหลัก</Button>
+                                            :
+                                            <Button onClick={() => { this.onClicktoForm() }} id="btnpass-Exampost">ทำแบบประเมิน</Button>
+                                    }
+                                </Col>
                             </Row>
-                            <Row>
-                                {
-                                    (this.state.form.length >= 1) ?
-                                        <Button onClick={() => { this.onClicktoAdminHome() }}>กลับหน้าหลัก</Button>
-                                        :
-                                        <Button onClick={() => { this.onClicktoForm() }}>ทำแบบประเมิน</Button>
-                                }
-                            </Row>
+                                
 
                         </div>
                 }

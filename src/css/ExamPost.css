@@ -39,8 +39,8 @@
 /* notebook */
 @media screen and (min-width: 601px) {
     #body-exam-post {
-        margin-left: 25%;
-        margin-right: 25%;
+        margin-left: 15%;
+        margin-right: 15%;
     }
     #head-exam-post {
         background-color: #32A0CE;
@@ -106,13 +106,57 @@
     .anticon svg {
         display: block;
     }
+    #header-Examport{
+        font-size: 28px;
+        justify-content: center;
+        display: flex;
+        margin-bottom: 2%;
+        font-weight: bold;
+    }
+    #score-Exampost{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        font-weight: bold;
+        margin-bottom: 2%;
+    }
+    #progess-Examepost{
+        justify-content: center;
+        display: flex;
+        padding-top: 3%;
+        margin-top: 7%;
+    }
+    #pass-Exampost{
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+    }
+    #btnpass-Exampost{
+        font-size: 16px;
+        height: fit-content;
+        /* padding: 15%; */
+        border-radius: 8.5mm;
+        border: 5px solid #7CC9FD;
+        color: #0098FF;
+        font-weight: bold;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+    #rowbtn-Exampost{
+        display: flex;
+        justify-content: center;
+        margin-top: 7%;
+        margin-bottom: 3%;
+    }
 }
 
 /* ipad pro */
 @media screen and (max-width: 1025px) {
     #body-exam-post {
-        margin-left: 15%;
-        margin-right: 15%;
+        margin-left: 5%;
+        margin-right: 5%;
     }    
     #head-exam-post {
         background-color: #32A0CE;
@@ -148,13 +192,38 @@
     .ant-pagination-item {
         border-radius: 4mm !important;
     }
+    #header-Examport{
+        font-size: 30px;
+        justify-content: center;
+        display: flex;
+        margin-bottom: 2%;
+        font-weight: bold;
+    }
+    #score-Exampost{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        font-weight: bold;
+    }
+    #progess-Examepost{
+        justify-content: center;
+        display: flex;
+        padding-top: 3%;
+    }
+    #rowbtn-Exampost{
+        display: flex;
+        justify-content: center;
+        margin-top: 7%;
+        margin-bottom: 3%;
+    }
 }
 
 /* ipad */
 @media screen and (max-width: 768px) {
     #body-exam-post {
-        margin-left: 15%;
-        margin-right: 15%;
+        margin-left: 5%;
+        margin-right: 5%;
     }   
     #head-exam-post {
         background-color: #32A0CE;
@@ -189,6 +258,33 @@
     }
     .ant-pagination-item {
         border-radius: 4mm !important;
+    }
+    #border-score{
+        margin-bottom: 3%;
+        margin-top: 3%;
+        padding-top: 4%;
+        padding-bottom: 4%;
+        background-color: #ffffff;
+        border-radius: 5mm;
+        box-shadow: 0 10px 10px rgba(0,0,0,.2);
+    }
+    #header-Examport{
+        font-size: 24px;
+        justify-content: center;
+        display: flex;
+        margin-bottom: 2%;
+        font-weight: bold;
+    }
+    #progess-Examepost{
+        justify-content: center;
+        display: flex;
+        padding-top: 3%;
+    }
+    #rowbtn-Exampost{
+        display: flex;
+        justify-content: center;
+        margin-top: 7%;
+        margin-bottom: 3%;
     }
 }
 
@@ -230,4 +326,62 @@
     #exam-choice{
         padding-left: 5%;
     }
+    #border-score{
+        margin-left: 8%;
+        margin-right: 8%;
+        margin-bottom: 3%;
+        margin-top: 3%;
+        padding-top: 4%;
+        padding-bottom: 4%;
+        background-color: #ffffff;
+        border-radius: 5mm;
+        box-shadow: 0 10px 10px rgba(0,0,0,.2);
+    }
+    #header-Examport{
+        font-size: 18px;
+        justify-content: center;
+        display: flex;
+        margin-bottom: 2%;
+        font-weight: bold;
+    }
+    #progess-Examepost{
+        justify-content: center;
+        display: flex;
+        padding-top: 3%;
+    }
+    #pass-Exampost{
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+    }
+    #btnpass-Exampost{
+        font-size: 16px;
+        height: fit-content;
+        /* padding: 15%; */
+        border-radius: 8.5mm;
+        border: 5px solid #7CC9FD;
+        color: #0098FF;
+        font-weight: bold;
+        padding-top: 3%;
+        padding-bottom: 3%;
+    }
+    #rowbtn-Exampost{
+        display: flex;
+        justify-content: center;
+        margin-top: 15%;
+        margin-bottom: 3%;
+    }
+}
+
+#border-score{
+    margin-left: 12%;
+    margin-right: 12%;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    background-color: #ffffff;
+    border-radius: 5mm;
+    box-shadow: 0 10px 10px rgba(0,0,0,.2);
 }

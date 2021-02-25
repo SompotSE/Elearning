@@ -36,6 +36,10 @@
     background-color: #ffffff;
 }
 
+#text-img {
+    text-align: center;
+}
+
 /* notebook */
 @media screen and (min-width: 601px) {
     #body-exam-post {

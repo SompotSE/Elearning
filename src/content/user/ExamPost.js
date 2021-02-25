@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
-import { Row, Col, Pagination, Radio, Button, Progress } from 'antd';
+import { Container, Image } from 'react-bootstrap';
+import { Row, Col, Pagination, Button, Progress } from 'antd';
 // import { HomeOutlined, SnippetsOutlined, RightCircleTwoTone, BorderOutlined } from '@ant-design/icons';
 // import { AiFillCheckSquare } from "react-icons/ai";
 import { withRouter } from "react-router-dom";
@@ -9,15 +9,21 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import '../../css/ExamPost.css';
-// import renderHTML from 'react-render-html';
+import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import renderHTML from 'react-render-html';
+
+import img3_5 from '../../img/CourseExam/Course4/COURSE1004_3_5.png'
+import img10 from '../../img/CourseExam/Course4/COURSE1004_10.png'
+import img11 from '../../img/CourseExam/Course4/COURSE1004_11.png'
+import img12 from '../../img/CourseExam/Course4/COURSE1004_12.png'
 
 import { config } from '../../config/config';
 
 const cookies = new Cookies();
 
 const ip = config.ipServer;
-const CourseCode = "COURSE1001";
-const Num = 10;
+const CourseCode = "COURSE1004";
+const Num = 22;
 
 const ExamCodePost = "EXAM10002";
 
@@ -29,7 +35,9 @@ export default withRouter(class ExamPost extends Component {
             email: "",
             header: [],
             exam: [],
+            statusexam: false,
             form: [],
+            nameCourse: "",
             current_page: 1,
             countAns: 0,
             startDate: null,
@@ -87,9 +95,9 @@ export default withRouter(class ExamPost extends Component {
                 window.location.replace('/Login', false);
             });
         } else {
-            console.log(exam.data, " exam.data");
             this.setState({
-                exam: exam.data
+                exam: exam.data,
+                statusexam: true
             })
         }
 
@@ -105,7 +113,8 @@ export default withRouter(class ExamPost extends Component {
             });
         } else {
             this.setState({
-                form: assessment_course.data?.assessment
+                form: assessment_course.data?.assessment,
+                nameCourse: assessment_course.data?.course[0]?.courseName
             });
         }
 
@@ -177,72 +186,112 @@ export default withRouter(class ExamPost extends Component {
         this.props.history.push("/HomeUser");
     }
 
+    showImg() {
+        if ((this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001003") ||
+            (this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001004") ||
+            (this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001005")) {
+            return <>
+                <Col xs={24} md={24} xl={24} id="exam-header"><Image src={img3_5} fluid></Image></Col>
+                <Col xs={24} md={24} xl={24} id="text-img">รูปที่ 1</Col>
+            </>
+        } else if (this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001010") {
+            return <>
+                <Col xs={24} md={24} xl={24} id="exam-header"><Image src={img10} fluid></Image></Col>
+            </>
+        } else if (this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001011") {
+            return <>
+                <Col xs={24} md={24} xl={24} id="exam-header"><Image src={img11} fluid></Image></Col>
+            </>
+        } else if (this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001012") {
+            return <>
+                <Col xs={24} md={24} xl={24} id="exam-header"><Image src={img12} fluid></Image></Col>
+            </>
+        }
+    }
+
     render() {
         return (
             <Container fluid id="bg-ExamPost">
                 {
-                    (!this.state.ansResultStatus) ?
-                        <div id="body-exam-post">
-                            <Row id="head-exam-post">แบบทดสอบหลังเรียน</Row>
-                            <Row id="box-exam">
-                                <Col xs={24} md={24} xl={24} id="exam-header"> {this.state.exam[this.state.current_page - 1]?.examinationlistText} </Col>
-                                <Col xs={24} md={24} xl={24} id="exam-choice">
-                                    <Radio.Group onChange={this.onChangeAns} value={this.state.exam[this.state.current_page - 1]?.answer}>
-                                        {
-                                            this.state.exam[this.state.current_page - 1]?.answerlist.map((anslist, i) => {
-                                                return <Col xs={24} md={24} xl={24}><Radio value={anslist.answerlistCode} id="exam-choice">{anslist.answerlistText}</Radio></Col>
-                                            })
-                                        }
-                                    </Radio.Group>
-                                </Col>
-                            </Row>
-                            <Row id="pagination">
-                                <Col xs={24} md={24} xl={24} id="col-pagination">
-                                    <Pagination
-                                        current={this.state.current_page}
-                                        pageSize={1}
-                                        responsive={true}
-                                        total={Num}
-                                        onChange={this.onChangePage}
-                                    />
-                                </Col>
-                                <Col xs={24} md={24} xl={24} id="col-pagination">
-                                    <Button disabled={this.state.current_page === Num ? false : true} onClick={this.onSendExam}>ส่งแบบทดสอบ</Button>
-                                </Col>
-                            </Row>
-                        </div>
-                        :
-                        <div id="body-exam-post">
-                            <Row id="border-score">
-                                <Col xs={24} md={24} xl={24} id="header-Examport">ผลการทดสอบหลังเรียน</Col>
-                                <Col xs={24} md={24} xl={24} id="header-Examport">หลักสูตรที่ 1</Col>
-                                <Col xs={24} md={24} xl={24}>
-                                    <Row>
-                                        <Col xs={24} md={12} xl={12} id="score-Exampost">{this.state.ansScore + " / " + this.state.ansNum}</Col>
-                                        <Col xs={24} md={12} xl={12}>
-                                            <Col xs={24} md={24} xl={24} id="progess-Examepost">
-                                                <Progress type="circle" percent={this.state.ansPercen} strokeColor={(this.state.ansPercen >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
-                                                
-                                            </Col>
-                                            <Col xs={24} md={24} xl={24} id="pass-Exampost">
-                                                {(this.state.ansPercen >= 80) ? "ผ่านการทดสอบ" : "ไม่ผ่านการทดสอบ"}
-                                            </Col>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                            
-                                <Col  xs={24} md={24} xl={24} id="rowbtn-Exampost">
-                                    {
-                                        (this.state.form.length >= 1) ?
-                                            <Button onClick={() => { this.onClicktoAdminHome() }} id="btnpass-Exampost">กลับหน้าหลัก</Button>
-                                            :
-                                            <Button onClick={() => { this.onClicktoForm() }} id="btnpass-Exampost">ทำแบบประเมิน</Button>
-                                    }
-                                </Col>
-                            </Row>
-                                
+                    (this.state.statusexam) ?
+                        (!this.state.ansResultStatus) ?
+                            <div id="body-exam-post">
+                                <Row id="head-exam-post">แบบทดสอบหลังเรียน</Row>
+                                <Row id="box-exam">
+                                    <Col xs={24} md={24} xl={24} id="exam-header">
+                                        {/* {renderHTML('ข้อใด  <b><u>ถูกต้อง</b></u>  <div>1)	Testing เป็นเทคนิคที่ใช้ใน Verification และ validation</div> <div>2)	Review <b><u>ไม่</u></b>เป็นเทคนิคที่ใช้ใน Verification และ validation</div>')} */}
+                                        <div>{renderHTML(this.state.exam[this.state.current_page - 1]?.examinationlistText)} </div>
 
-                        </div>
+                                    </Col>
+                                    {/* <Col xs={24} md={24} xl={24} id="exam-choice">
+                                        <Radio.Group onChange={this.onChangeAns} value={this.state.exam[this.state.current_page - 1]?.answer}>
+                                            {
+                                                this.state.exam[this.state.current_page - 1]?.answerlist.map((anslist, i) => {
+                                                    return <Col xs={24} md={24} xl={24}><Radio value={anslist.answerlistCode} id="exam-choice"><div>{anslist.answerlistText}</div></Radio></Col>
+                                                })
+                                            }
+                                            <Radio value="555" id="exam-choice"><Col xs={18} md={18} xl={18}>trttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</Col></Radio>
+                                        </Radio.Group>
+                                    </Col> */}
+                                    {this.showImg()}
+                                    <Col xs={24} md={24} xl={24} id="exam-choice">
+                                        <RadioGroup aria-label="gender" name="ans" value={this.state.exam[this.state.current_page - 1]?.answer} onChange={this.onChangeAns}>
+                                            {
+                                                this.state.exam[this.state.current_page - 1]?.answerlist.map((anslist, i) => {
+                                                    return <Col xs={24} md={24} xl={24}><FormControlLabel value={anslist.answerlistCode} id="exam-choice" control={<Radio />} /><span>{anslist.answerlistText}</span></Col>
+                                                })
+                                            }
+                                            {/* <Radio value="555" id="exam-choice"><Col xs={18} md={18} xl={18}>trttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</Col></Radio> */}
+                                        </RadioGroup>
+                                    </Col>
+                                </Row>
+                                <Row id="pagination">
+                                    <Col xs={24} md={24} xl={24} id="col-pagination">
+                                        <Pagination
+                                            current={this.state.current_page}
+                                            pageSize={1}
+                                            responsive={true}
+                                            total={Num}
+                                            onChange={this.onChangePage}
+                                        />
+                                    </Col>
+                                    <Col xs={24} md={24} xl={24} id="col-pagination">
+                                        <Button disabled={this.state.current_page === Num ? false : true} onClick={this.onSendExam}>ส่งแบบทดสอบ</Button>
+                                    </Col>
+                                </Row>
+                            </div>
+                            :
+                            <div id="body-exam-post">
+                                <Row id="border-score">
+                                    <Col xs={24} md={24} xl={24} id="header-Examport">ผลการทดสอบหลังเรียน</Col>
+                                    <Col xs={24} md={24} xl={24} id="header-Examport">{this.state.nameCourse}</Col>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Row>
+                                            <Col xs={24} md={12} xl={12} id="score-Exampost">{this.state.ansScore + " / " + this.state.ansNum}</Col>
+                                            <Col xs={24} md={12} xl={12}>
+                                                <Col xs={24} md={24} xl={24} id="progess-Examepost">
+                                                    <Progress type="circle" percent={this.state.ansPercen} strokeColor={(this.state.ansPercen >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
+
+                                                </Col>
+                                                <Col xs={24} md={24} xl={24} id="pass-Exampost">
+                                                    {(this.state.ansPercen >= 80) ? "ผ่านการทดสอบ" : "ไม่ผ่านการทดสอบ"}
+                                                </Col>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+
+                                    <Col xs={24} md={24} xl={24} id="rowbtn-Exampost">
+                                        {
+                                            (this.state.form.length >= 1) ?
+                                                <Button onClick={() => { this.onClicktoAdminHome() }} id="btnpass-Exampost">กลับหน้าหลัก</Button>
+                                                :
+                                                <Button onClick={() => { this.onClicktoForm() }} id="btnpass-Exampost">ทำแบบประเมิน</Button>
+                                        }
+                                    </Col>
+                                </Row>
+                            </div>
+                        :
+                        <></>
                 }
             </Container>
         );

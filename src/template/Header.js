@@ -7,7 +7,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import '../css/Header.css';
-import { QuestionCircleOutlined, UserOutlined } from '@ant-design/icons';
+import { QuestionCircleOutlined, UserOutlined, MenuOutlined } from '@ant-design/icons';
 import { config } from '../config/config';
 import { FaCheckCircle } from "react-icons/fa";
 import letter from "../img/letter.png";
@@ -59,6 +59,7 @@ export default withRouter(class Header extends Component {
             isModalchangePass: false,
             isModalCPSuccess: false,
             isModalConfirmMail: false,
+            isModallogout: false,
         }
 
         this.showModal = this.showModal.bind(this);
@@ -75,6 +76,9 @@ export default withRouter(class Header extends Component {
         this.onLoginAgain = this.onLoginAgain.bind(this);
         this.onForgetPass = this.onForgetPass.bind(this);
         this.confirmMailClose = this.confirmMailClose.bind(this);
+        this.logout = this.logout.bind(this);
+        this.logoutOK = this.logoutOK.bind(this);
+        this.canclelogout = this.canclelogout.bind(this);
     }
 
     componentWillMount() {
@@ -125,6 +129,20 @@ export default withRouter(class Header extends Component {
     confirmMailClose() {
         this.setState({ isModalConfirmMail: false });
         window.location.replace('/Home', false);
+    }
+
+    logout(){
+        this.setState({ isModallogout: true });
+        // window.location.replace('/logout', false);
+    }
+
+    logoutOK(){
+        this.setState({ isModallogout: false });
+        window.location.replace('/logout', false);
+    }
+
+    canclelogout(){
+        this.setState({ isModallogout: false });
     }
 
     // handleCancelCPSuccessPass() {
@@ -287,6 +305,7 @@ export default withRouter(class Header extends Component {
 
     LoginButton() {
         this.props.history.push("/Login");
+
     }
 
     RegisterButton() {
@@ -294,7 +313,8 @@ export default withRouter(class Header extends Component {
     }
 
     render() {
-
+        console.log(window.location.pathname, " window");
+        console.log(this.props.history, " this.props.history")
         return (
             <Container fluid id="conflu">
                 <Row id="row-header1">
@@ -316,15 +336,15 @@ export default withRouter(class Header extends Component {
                                     </Row>
                                 </Col>
                                 <Col xs={8} md={5} xl={5}>
-                                    <Row style={{ justifyContent: "space-between", alignItems: "center" }}>
+                                    <Row>
                                         <Col xs={24} md={24} xl={24} id="btn-header">
                                             {
                                                 (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
                                                     <>
                                                         {window.innerWidth >= 684 ?
-                                                            <Button type="primary" id="btn-sty" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button>
+                                                            <Button type="primary" id="btn-sty1" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button>
                                                             :
-                                                            <NavLink to="/Login"><Button type="primary" id="btn-sty">เข้าสู่ระบบ</Button></NavLink>
+                                                            <NavLink to="/Login"><Button type="primary" id="btn-sty1">เข้าสู่ระบบ</Button></NavLink>
                                                         }
                                                         {window.innerWidth >= 1200 ?
                                                             <Button type="primary" id="btn-sty1" onClick={() => this.onClickRegister()}>สมัครสมาชิก</Button>
@@ -334,7 +354,7 @@ export default withRouter(class Header extends Component {
                                                     </>
                                                     :
                                                     <>
-                                                        <UserOutlined /> <span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span> | <span style={{ paddingRight: "5%" }}></span>
+                                                        <UserOutlined id="logo-user" /> <span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span> | <span style={{ paddingRight: "5%" }}></span>
                                                         <Dropdown overlay={
                                                             <Menu>
                                                                 {
@@ -367,21 +387,24 @@ export default withRouter(class Header extends Component {
                                                                         :
                                                                         <>
                                                                             <Menu.Item key="0">
+                                                                                <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                            </Menu.Item>
+                                                                            <Menu.Item key="1">
                                                                                 {window.innerWidth >= 684 ?
-                                                                                    <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                                    <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                                     :
-                                                                                    <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                                    <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                                 }
                                                                             </Menu.Item>
-                                                                            <Menu.Divider />
-                                                                            <Menu.Item key="1">
-                                                                                <NavLink to="/Logout"><Button type="primary" id="btn-sty">ออกจากระบบ</Button></NavLink >
+                                                                            <Menu.Item key="2">
+                                                                                <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
                                                                             </Menu.Item>
+
                                                                         </>
                                                                 }
                                                             </Menu>
                                                         } placement="topRight" arrow>
-                                                            <Button >menu</Button>
+                                                            <MenuOutlined />
                                                         </Dropdown>
 
                                                     </>
@@ -415,18 +438,28 @@ export default withRouter(class Header extends Component {
                                 <Col xs={24}>
                                     {
                                         (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
-                                            <Row style={{ padding: "1.5%", justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignItems: "center" }}>
-                                                <Button type="primary" id="btn-sty" onClick={() => this.LoginButton()}>เข้าสู่ระบบ</Button>
-                                                <Button type="primary" id="btn-sty" onClick={() => this.RegisterButton()}>สมัครสมาชิก</Button>
-                                            </Row>
+                                            <Col xs={24} md={24} xl={24} id="row-btnsty">
+                                                <Row>
+                                                    <Col xs={12} md={12} xl={12}>
+                                                        <span type="primary" id={(window.location.pathname === "/Login") || (window.location.pathname === "/login") ? "active-header" : "btn-sty"} onClick={() => this.LoginButton()}>เข้าสู่ระบบ</span>
+                                                    </Col>
+                                                    <Col xs={12} md={12} xl={12}>
+                                                        <span type="primary" id={(window.location.pathname === "/Register") || (window.location.pathname === "/register") ? "active-header" : "btn-sty"} onClick={() => this.RegisterButton()}>สมัครสมาชิก</span>
+                                                    </Col>
+                                                </Row>
+                                            </Col>
                                             :
-                                            <Row style={{ justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignContent: "center", alignItems: "center" }}>
-                                                <UserOutlined id="logo-user" /> <span style={{ paddingRight: "5%" }}> Sompot</span> | <span style={{ paddingRight: "5%" }}></span>
-                                                {
-                                                    (this.state.user?.userRoleId === 1) ? <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink > :
-
-                                                        <Dropdown id="btn-dropdown" overlay={
-                                                            <Menu>
+                                            <Col style={{ justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignContent: "center", alignItems: "center" }}>
+                                                
+                                                    <Col xs={24}>
+                                                        <Row style={{ marginBottom: "2%",paddingTop: "2%", paddingLeft: "3%" }}>
+                                                            <UserOutlined id="logo-user" /><span style={{ paddingRight: "5%" }}> Sompot</span> 
+                                                        </Row>
+                                                    </Col>
+                                                    <Row>
+                                                    {
+                                                        (this.state.user?.userRoleId === 1) ? <NavLink to="/Logout"><span type="primary" id="btn-dropdown">ออกจากระบบ</span></NavLink > :
+                                                            <>
                                                                 {
                                                                     (this.state.user?.userRoleId === 1) ?
                                                                         <>
@@ -456,31 +489,42 @@ export default withRouter(class Header extends Component {
                                                                         </>
                                                                         :
                                                                         <>
-                                                                            <Menu.Item key="0">
+                                                                            <Col xs={6}>
+                                                                                <NavLink to="/"><span type="primary" id={(window.location.pathname === "/") || (window.location.pathname === "/") ? "active-header" : "btn-sty"}>หน้าหลัก</span></NavLink >
+                                                                            </Col>
+                                                                            <Col xs={10}>
                                                                                 {window.innerWidth >= 684 ?
-                                                                                    <Button type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                                    <span type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                                     :
-                                                                                    <NavLink to="/ChangePass"><Button type="primary" id="btn-dropdown" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                                    <NavLink to="/ChangePass"><span type="primary" id={(window.location.pathname === "/ChangePass") || (window.location.pathname === "/ChangePass") ? "active-header" : "btn-sty"} >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                                 }
-                                                                            </Menu.Item>
-                                                                            <Menu.Divider />
-                                                                            <Menu.Item key="1">
-                                                                                <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
-                                                                            </Menu.Item>
+                                                                            </Col>
+                                                                            <Col xs={8}>
+                                                                                <span type="primary" id={(window.location.pathname === "/Logout") || (window.location.pathname === "/Logout") ? "active-header" : "btn-sty"} onClick={() => this.logout()}>ออกจากระบบ</span>
+                                                                            </Col>
                                                                         </>
                                                                 }
-                                                            </Menu>
-                                                        } placement="topRight" arrow>
-                                                            <Button>menu</Button>
-                                                        </Dropdown>
-                                                }
-                                            </Row>
+                                                            </>
+
+                                                    }
+                                                </Row>
+                                            </Col>
                                     }
                                 </Col>
                             </>
                     }
 
                 </Row>
+
+                <Modal
+                    title={null}
+                    visible={this.state.isModallogout}
+                    onOk={this.logoutOK}
+                    onCancel={this.canclelogout}
+                    width={250}>
+                    คุณต้องการออกจากระบบหรือไม่ ?
+                </Modal>
+                
                 <Modal
                     title={null}
                     footer={null}

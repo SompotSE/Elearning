@@ -92,7 +92,7 @@ export default class Login extends Component {
                         <Col xs={20} md={20} xl={20}>
                             <Col xs={24} md={24} xl={24} id="LoginHeader">เข้าสู่ระบบ</Col>
                             <Col xs={24} md={24} xl={24} id="LoginDescrip">เมื่อคุณเข้าสู่ระบบคุณได้ทำตาม<span id="LoginDescrip-si">ข้อตกลงผู้ใช้</span></Col>
-                            <Row id="login-header">อีเมลล์</Row>
+                            <Row id="login-headermobile">อีเมลล์</Row>
                             <Col xs={24} md={24} xl={24}>
                                 <Form.Item
                                     name="email"

@@ -355,33 +355,31 @@ export default withRouter(class Header extends Component {
                                                     :
                                                     <>
                                                         <UserOutlined id="logo-user" /> <span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span> | <span style={{ paddingRight: "5%" }}></span>
-                                                        <Dropdown overlay={
+                                                        <Dropdown 
+                                                            width={150}
+                                                            overlay={
                                                             <Menu>
                                                                 {
                                                                     (this.state.user?.userRoleId === 1) ?
                                                                         <>
                                                                             <Menu.Item key="0">
-                                                                                <NavLink to="/Admin/Home"><Button type="primary" id="btn-sty" >หน้าหลัก</Button></NavLink>
+                                                                                <NavLink to="/Admin/Home"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
                                                                             </Menu.Item>
-                                                                            <Menu.Divider />
                                                                             <Menu.Item key="1">
-                                                                                <NavLink to="/Admin/TopScore"><Button type="primary" id="btn-sty">คะแนนสูงสุด</Button></NavLink >
+                                                                                <NavLink to="/Admin/TopScore"><span type="primary" id="btn-sty">คะแนนสูงสุด</span></NavLink >
                                                                             </Menu.Item>
-                                                                            <Menu.Divider />
                                                                             <Menu.Item key="2">
-                                                                                <NavLink to="/Admin/Statistic"><Button type="primary" id="btn-sty">สถิติ</Button></NavLink >
+                                                                                <NavLink to="/Admin/Statistic"><span type="primary" id="btn-sty">สถิติ</span></NavLink >
                                                                             </Menu.Item>
-                                                                            <Menu.Divider />
                                                                             <Menu.Item key="3">
                                                                                 {window.innerWidth >= 684 ?
-                                                                                    <Button type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                                    <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                                     :
-                                                                                    <NavLink to="/ChangePass"><Button type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</Button></NavLink>
+                                                                                    <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                                 }
                                                                             </Menu.Item>
-                                                                            <Menu.Divider />
                                                                             <Menu.Item key="4">
-                                                                                <NavLink to="/Logout"><Button type="primary" id="btn-sty">ออกจากระบบ</Button></NavLink >
+                                                                                <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
                                                                             </Menu.Item>
                                                                         </>
                                                                         :

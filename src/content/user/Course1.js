@@ -500,7 +500,7 @@ export default withRouter(class Course1 extends Component {
                 <Row id="row-headercourse">
                     <Col xs={24} md={12} xl={12}>
                         <Row>
-                            <Col  xs={24} md={24} xl={24} id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Col>
+                            <Col  xs={24} md={24} xl={24} id="font-header1">ผู้สอน</Col>
                             <Col xs={24} md={24} xl={24}>
                                 <Row id="teacher">
                                     <Col xs={24} md={8} xl={6} id="teacher1"><Image src={userprofile} width={100} fluid></Image></Col>

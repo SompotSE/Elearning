@@ -43,7 +43,7 @@
     }
     #row-statistic{
         display: flex;
-        justify-content: left;
+        justify-content: center;
         padding-left: 4%;
         padding-right: 4%;
         padding-top: 1%;
@@ -74,7 +74,7 @@
     }
     #row-statistic{
         display: flex;
-        justify-content: left;
+        justify-content: center;
         padding-left: 4%;
         padding-right: 4%;
         padding-top: 1%;

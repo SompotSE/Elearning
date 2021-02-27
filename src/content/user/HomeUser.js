@@ -114,13 +114,13 @@ export default withRouter(class HomeUser extends Component {
             if(course === CourseCode1) {
                 this.props.history.push("/Course1");
             } else if(course === CourseCode2) {
-                // this.props.history.push("/Course2");
+                this.props.history.push("/Course2");
             } else if(course === CourseCode3) {
-                // this.props.history.push("/Course3");
+                this.props.history.push("/Course3");
             } else if(course === CourseCode4) {
                 this.props.history.push("/Course4");
             } else if(course === CourseCode5) {
-                // this.props.history.push("/Course5");
+                this.props.history.push("/Course5");
             }
             
         }

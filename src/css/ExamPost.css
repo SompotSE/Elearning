@@ -40,6 +40,11 @@
     text-align: center;
 }
 
+#img-exam {
+    display: flex;
+    justify-content: center;
+}
+
 /* notebook */
 @media screen and (min-width: 601px) {
     #body-exam-post {

@@ -20,7 +20,7 @@ export default class Logout extends Component {
             user: cookies.remove('user', { path: '/' }),
             email: cookies.remove('email', { path: '/' })
         });
-        window.location.replace('/Home', false); 
+        window.location.replace('/', false); 
       }
 
     render() {

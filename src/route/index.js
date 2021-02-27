@@ -11,10 +11,13 @@ import Form from "../content/Form";
 import ConfirmRegister from "../content/ConfirmRegister";
 
 import Course1 from "../content/user/Course1";
+import Course2 from "../content/user/Course2";
+import Course3 from "../content/user/Course3";
 import Course4 from "../content/user/Course4";
+import Course5 from "../content/user/Course5";
 import HomeUser from "../content/user/HomeUser";
 import ExamPre from "../content/user/ExamPre";
-import ExamPost from "../content/user/ExamPost";
+import ExamPostCourse4 from "../content/user/ExamPostCourse4";
 
 import AdminHome from "../content/Admin/AdminHome";
 import AdminTopScore from "../content/Admin/AdminTopScore";
@@ -29,9 +32,12 @@ export default class Index extends Component {
 
                 <Route exact path="/HomeUser" component={HomeUser} />
                 <Route exact path="/Course1" component={Course1} />
+                <Route exact path="/Course2" component={Course2} />
+                <Route exact path="/Course3" component={Course3} />
                 <Route exact path="/Course4" component={Course4} />
+                <Route exact path="/Course5" component={Course5} />
                 <Route exact path="/ExamPre" component={ExamPre} />
-                <Route exact path="/ExamPost" component={ExamPost} />
+                <Route exact path="/ExamPostCourse4" component={ExamPostCourse4} />
                 <Route exact path="/ChangePass" component={ChangePass} />
                 <Route exact path="/Form/:courseCode" component={Form} />
                 <Route exact path="/ConfirmRegister/:ConfirmRegisterKey" component={ConfirmRegister} />

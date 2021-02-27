@@ -12,13 +12,13 @@ import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
+import unit2 from '../../img/unit2.png';
 import banner from "../../img/Banner/Course1.png";
 // import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';
 // import v2 from '../../img/V2.png';
 // import v3 from '../../img/V3.png';
 
-import course2 from '../../img/course2.png';
 import course3 from '../../img/course3.png';
 import course4 from '../../img/course4.png';
 import course5 from '../../img/course5.png';
@@ -72,6 +72,7 @@ export default withRouter(class Course1 extends Component {
             percentExamPost: 0,
 
             isModaldetailCertificate: false,
+            isModalCertificate: false,
         };
 
         this.onDownlode = this.onDownlode.bind(this);
@@ -84,7 +85,8 @@ export default withRouter(class Course1 extends Component {
         this.onEndedVedio = this.onEndedVedio.bind(this);
         this.playingVedio = this.playingVedio.bind(this);
         this.updateTimeTopic = this.updateTimeTopic.bind(this);
-        this.info = this.info.bind(this);
+        this.showCertificate = this.showCertificate.bind(this);
+        this.showCertificateOK = this.showCertificateOK.bind(this);
     }
 
     componentWillMount() {
@@ -404,21 +406,12 @@ export default withRouter(class Course1 extends Component {
         }
     }
 
-    showdetailCertificate() {
-        this.setState({ isModaldetailCertificate: true });
+    showCertificate() {
+        this.setState({ isModalCertificate: true });
     }
-
-    info() {
-        Modal.info({
-            title: 'ข้อมูลการรับใบ Certificate',
-            width: "500px",
-            content: (
-                <div>
-                    <p id="certifi">สามารถติดต่อขอรับใบ Certificate ได้ที่หน่วยงานต้นสังกัด</p>
-                </div>
-            ),
-            onOk() { },
-        });
+    showCertificateOK() {
+        console.log("OK")
+        this.setState({ isModalCertificate: false });
     }
 
     render() {
@@ -471,7 +464,7 @@ export default withRouter(class Course1 extends Component {
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
-                                            <Row id="btn-certificate"><Button onClick={this.info}>ข้อมูลการรับใบ Certificate</Button></Row>
+                                            <Row id="btn-certificate"><Button  onClick={() => this.showCertificate()}>ข้อมูลการรับใบ Certificate</Button></Row>
                                         </>
                                         :
                                         <>
@@ -537,7 +530,7 @@ export default withRouter(class Course1 extends Component {
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
-                                            <Row id="btn-certificate"><Button onClick={this.info}>ข้อมูลการรับใบ Certificate</Button></Row>
+                                            <Row id="btn-certificate"><Button onClick={() => this.showCertificate()}>ข้อมูลการรับใบ Certificate</Button></Row>
                                         </>
                                         :
                                         <>
@@ -727,7 +720,7 @@ export default withRouter(class Course1 extends Component {
                             <Col xs={1} md={2} xl={2}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course2} id="img-course" fluid></Image>
+                                    <Image src={unit2} id="img-course" fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
@@ -766,7 +759,21 @@ export default withRouter(class Course1 extends Component {
                     </Col>
                 </Row>
 
+                <Modal
+                    title="ข้อมูลการรับใบ Certificate"
+                    footer={[
+                        <Button key="submit" type="primary" onClick={this.showCertificateOK}>
+                          ตกลง
+                        </Button>,
+                      ]}
+                    // onOk={this.showCertificateOK}
+                    visible={this.state.isModalCertificate}
+                    width={500}>
+                        โปรดติดต่อรับใบ Certificate ที่ต้นสังกัดของท่าน
+                </Modal>
+
             </Container>
+
         );
     }
 })

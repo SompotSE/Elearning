@@ -10,6 +10,7 @@ import ReactPlayer from 'react-player';
 import testV1 from '../../video/test.mp4';
 import cover1 from '../../img/Cover1.png';
 import { AiFillPlayCircle } from "react-icons/ai";
+import unit2 from '../../img/unit2.png';
 
 // import course1 from '../../img/course1.png';
 // import course2 from '../../img/course2.png';
@@ -182,7 +183,7 @@ export default withRouter(class HomeUser extends Component {
                 <Row id="row-coverhomeUser">
                         <Col xs={10} md={4} xl={4} >
                             <Row id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>   
+                                <Image style={{width: "100%", cursor: "pointer"}} src={unit2} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
                                 <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button>

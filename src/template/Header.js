@@ -385,7 +385,7 @@ export default withRouter(class Header extends Component {
                                                                         :
                                                                         <>
                                                                             <Menu.Item key="0">
-                                                                                <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                                <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
                                                                             </Menu.Item>
                                                                             <Menu.Item key="1">
                                                                                 {window.innerWidth >= 684 ?
@@ -401,7 +401,7 @@ export default withRouter(class Header extends Component {
                                                                         </>
                                                                 }
                                                             </Menu>
-                                                        } placement="topRight" arrow>
+                                                        } placement="bottomRight" >
                                                             <MenuOutlined />
                                                         </Dropdown>
 
@@ -454,8 +454,9 @@ export default withRouter(class Header extends Component {
                                                             <UserOutlined id="logo-user" /><span style={{ paddingRight: "5%" }}> Sompot</span> 
                                                         </Row>
                                                     </Col>
-                                                    <Col xs={4}>
+                                                    <Col xs={4} id="menu-header">
                                                     <Dropdown 
+                                                        id="btn-dropdown"
                                                         width={150}
                                                         overlay={
                                                         <Menu>
@@ -500,7 +501,7 @@ export default withRouter(class Header extends Component {
                                                                         </>
                                                             }
                                                                     </Menu>
-                                                            } placement="topRight" arrow>
+                                                            } placement="bottomRight" >
                                                                 <MenuOutlined />
                                                     </Dropdown>
                                                     </Col>

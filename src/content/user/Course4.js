@@ -10,9 +10,9 @@ import swal from 'sweetalert';
 import ReactPlayer from 'react-player';
 import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
-import userprofile from '../../img/userprofile.png';
+import TeacherCourse4 from '../../img/Teacher/TeacherCourse4.png';
 import { NavLink } from 'react-router-dom';
-import banner from "../../img/banner.png";
+import banner from "../../img/Banner/Course4.png";
 // import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';
 // import v2 from '../../img/V2.png';
@@ -36,6 +36,8 @@ const cookies = new Cookies();
 
 const ip = config.ipServer;
 const CourseCode = "COURSE1004";
+
+const TopicCount = 9;
 
 const TopicCode1 = "TOP400001";
 const TopicCode2 = "TOP400002";
@@ -170,7 +172,7 @@ export default withRouter(class Course4 extends Component {
             });
         }
 
-        var url_assessment_course = ip + "/UserAssessment/find/" + CourseCode ;
+        var url_assessment_course = ip + "/UserAssessment/find/" + CourseCode;
         const assessment_course = await (await axios.get(url_assessment_course, { headers: this.state.header })).data;
         if (!assessment_course?.status) {
             swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
@@ -458,10 +460,15 @@ export default withRouter(class Course4 extends Component {
     }
 
     onExamPost() {
-        if (this.state.examPost.length !== 3) {
-            this.props.history.push("/ExamPost");
+        if (this.state.topicAll.length >= TopicCount) {
+            if (this.state.examPost.length !== 3) {
+                this.props.history.push("/ExamPostCourse4");
+            } else {
+                swal("Warning!", "จำนวนครั้งในการทำข้อสอบครบแล้ว", "warning").then((value) => {
+                });
+            }
         } else {
-            swal("Warning!", "จำนวนครั้งในการทำข้อสอบครบแล้ว", "warning").then((value) => {
+            swal("Warning!", "กรุณาเรียนให้ครบทุกบทเรียน", "warning").then((value) => {
             });
         }
     }
@@ -504,7 +511,7 @@ export default withRouter(class Course4 extends Component {
                             <NavLink to="/HomeUser"><HomeOutlined /><span>Home</span></NavLink>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
-                            <SnippetsOutlined /><span>หลักสูตรที่ 4 หลักสูตร IEC 62304 มาตรฐาน Life Cycle ของการพัฒนาซอฟต์แวร์สำหรับอุปกรณ์การแพทย์และ ซอฟต์แวร์ด้านการแพทย์</span>
+                            <SnippetsOutlined /><span>หลักสูตร IEC 62304 มาตรฐาน Life Cycle ของการพัฒนาซอฟต์แวร์สำหรับอุปกรณ์การแพทย์และ ซอฟต์แวร์ด้านการแพทย์</span>
                         </Breadcrumb.Item>
                     </Breadcrumb>
                 </Row>
@@ -526,7 +533,7 @@ export default withRouter(class Course4 extends Component {
                 <Row id="row-headercourse">
                     <Col xs={24} md={12} xl={12}>
                         <Row>
-                            <Col xs={7} md={7} xl={7}><Image src={userprofile} fluid></Image></Col>
+                            <Col xs={7} md={7} xl={7}><Image src={TeacherCourse4} id="teacher-img" fluid></Image></Col>
                             <Col xs={17} md={17} xl={17}>
                                 <Row id="font-header">ผู้สอน</Row>
                                 <Row id="font-detail">ดร. พนิตา  เมนะเนตร</Row>

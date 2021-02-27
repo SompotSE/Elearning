@@ -12,7 +12,7 @@ import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
-import banner from "../../img/banner1.png";
+import banner from "../../img/Banner/Course1.png";
 // import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';
 // import v2 from '../../img/V2.png';
@@ -456,7 +456,7 @@ export default withRouter(class Course1 extends Component {
                 <Row id="row-headercourse">
                     <Col xs={24} md={12} xl={12}>
                         <Row>
-                            <Col xs={7} md={7} xl={7}><Image src={userprofile} fluid></Image></Col>
+                            <Col xs={7} md={7} xl={7}><Image src={userprofile} id="teacher-img" fluid></Image></Col>
                             <Col xs={17} md={17} xl={17}>
                                 <Row id="font-header">ผู้สอน</Row>
                                 <Row id="font-detail">กล่าวถึงวัตถุประสงค์ของมาตรฐาน ชี้แจงแนวคิดของมาตรฐาน พื้นฐานแนวคิดตามมาตรฐานระบบคุณภาพ</Row>

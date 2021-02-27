@@ -83,6 +83,10 @@
     align-items: center;
 }
 
+#teacher-img {
+    border-radius: 50%;
+}
+
 /* notebook */
 @media screen and (min-width: 601px) { 
     #font-header {

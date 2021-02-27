@@ -13,23 +13,17 @@ import imgcourse from '../../img/userhome.png';
 import TeacherCourse4 from '../../img/Teacher/TeacherCourse4.png';
 import { NavLink } from 'react-router-dom';
 import banner from "../../img/Banner/Course4.png";
-// import { AiFillPlayCircle } from "react-icons/ai";
-// import v1 from '../../img/V1.png';
-// import v2 from '../../img/V2.png';
-// import v3 from '../../img/V3.png';
 
 import course2 from '../../img/course2.png';
 import course3 from '../../img/course3.png';
 import course4 from '../../img/course4.png';
 import course5 from '../../img/course5.png';
 
-// import incourse1 from '../../img/incourse1.svg';
-// import incourse2 from '../../img/incourse2.svg';
+import pdf from "../../pdf/Course4.pdf"
 
 import testV1 from '../../video/test.mp4';
 
 import { config } from '../../config/config';
-// import banner from '../../img/banner.png';
 
 const { Panel } = Collapse;
 const cookies = new Cookies();
@@ -86,6 +80,7 @@ export default withRouter(class Course4 extends Component {
             percentExamPost: 0,
 
             isModaldetailCertificate: false,
+            isModalCertificate: false,
         };
 
         this.onDownlode = this.onDownlode.bind(this);
@@ -104,7 +99,8 @@ export default withRouter(class Course4 extends Component {
         this.onEndedVedio = this.onEndedVedio.bind(this);
         this.playingVedio = this.playingVedio.bind(this);
         this.updateTimeTopic = this.updateTimeTopic.bind(this);
-        this.info = this.info.bind(this);
+        this.showCertificate = this.showCertificate.bind(this);
+        this.showCertificateOK = this.showCertificateOK.bind(this);
     }
 
     componentWillMount() {
@@ -187,7 +183,6 @@ export default withRouter(class Course4 extends Component {
                 form: assessment_course.data?.assessment
             });
         }
-
     }
 
     async onDownlode() {
@@ -227,6 +222,13 @@ export default withRouter(class Course4 extends Component {
                 }
             }
         }
+
+        const save = document.createElement('a');
+        save.href = pdf;
+        save.target = '_blank';
+        save.rel = "noopener noreferrer";
+        save.download = "IEC62304.pdf";
+        save.click();
     }
 
     playingVedio(topicCode) {
@@ -482,21 +484,11 @@ export default withRouter(class Course4 extends Component {
         }
     }
 
-    showdetailCertificate() {
-        this.setState({ isModaldetailCertificate: true });
+    showCertificate() {
+        this.setState({ isModalCertificate: true });
     }
-
-    info() {
-        Modal.info({
-            title: 'ข้อมูลการรับใบ Certificate',
-            width: "500px",
-            content: (
-                <div>
-                    <p id="certifi">สามารถติดต่อขอรับใบ Certificate ได้ที่หน่วยงานต้นสังกัด</p>
-                </div>
-            ),
-            onOk() { },
-        });
+    showCertificateOK() {
+        this.setState({ isModalCertificate: false });
     }
 
     render() {
@@ -550,7 +542,7 @@ export default withRouter(class Course4 extends Component {
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
-                                            <Row id="btn-certificate"><Button onClick={this.info}>ข้อมูลการรับใบ Certificate</Button></Row>
+                                            <Row id="btn-certificate"><Button onClick={() => this.showCertificate()}>ข้อมูลการรับใบ Certificate</Button></Row>
                                         </>
                                         :
                                         <>
@@ -595,7 +587,9 @@ export default withRouter(class Course4 extends Component {
                         >
                             <Panel header="เอกสารประกอบการเรียน" key="1">
                                 <Row id="row-iconcheck">
+
                                     <Col xs={20} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={this.onDownlode}> - ดาวน์โหลดเอกสาร </Col>
+
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.course?.downlodeDoc === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -968,6 +962,18 @@ export default withRouter(class Course4 extends Component {
                         </Row>
                     </Col>
                 </Row>
+
+                <Modal
+                    title="ข้อมูลการรับใบ Certificate"
+                    footer={[
+                        <Button key="submit" type="primary" onClick={this.showCertificateOK}>
+                          ตกลง
+                        </Button>,
+                      ]}
+                    visible={this.state.isModalCertificate}
+                    width={500}>
+                        โปรดติดต่อรับใบ Certificate ที่ต้นสังกัดของท่าน
+                </Modal>
 
             </Container>
         );

@@ -1,5 +1,5 @@
 export var config = {
-    // "ipServer": "https://www.hitsthai.com/API",
-    "ipServer": "http://localhost:5000"
+    "ipServer": "http://178.128.57.150:5000",
+    // "ipServer": "http://localhost:5000"
   }
   

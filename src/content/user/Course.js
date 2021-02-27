@@ -10,20 +10,26 @@ import swal from 'sweetalert';
 import ReactPlayer from 'react-player';
 import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
-import TeacherCourse1 from '../../img/Teacher/TeacherCourse1.png';
+import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
 import unit2 from '../../img/unit2.png';
 import banner from "../../img/Banner/Course1.png";
+// import { AiFillPlayCircle } from "react-icons/ai";
+// import v1 from '../../img/V1.png';
+// import v2 from '../../img/V2.png';
+// import v3 from '../../img/V3.png';
 
 import course3 from '../../img/course3.png';
 import course4 from '../../img/course4.png';
 import course5 from '../../img/course5.png';
 
-import pdf from "../../pdf/Course1.pdf"
+// import incourse1 from '../../img/incourse1.svg';
+// import incourse2 from '../../img/incourse2.svg';
 
 import testV1 from '../../video/test.mp4';
 
 import { config } from '../../config/config';
+// import banner from '../../img/banner.png';
 
 const { Panel } = Collapse;
 const cookies = new Cookies();
@@ -34,28 +40,18 @@ const CourseCode = "COURSE1001";
 const TopicCode1 = "TOP100001";
 const TopicCode2 = "TOP100002";
 const TopicCode3 = "TOP100003";
-const TopicCode4 = "TOP100004";
-const TopicCode5 = "TOP100005";
-const TopicCode6 = "TOP100006";
-const TopicCode7 = "TOP100007";
-const TopicCode8 = "TOP100008";
-const TopicCode9 = "TOP100009";
-const TopicCode10 = "TOP100010";
+// const TopicCode4 = "TOP100004";
+// const TopicCode5 = "TOP100005";
+// const TopicCode6 = "TOP100006";
 
+// const ExamCodePre = "EXAM10001";
 const ExamCodePost = "EXAM10002";
 
-const TopicCount = 10;
+const TopicCount = 3;
 
 var timeTopic1 = 0;
 var timeTopic2 = 0;
 var timeTopic3 = 0;
-var timeTopic4 = 0;
-var timeTopic5 = 0;
-var timeTopic6 = 0;
-var timeTopic7 = 0;
-var timeTopic8 = 0;
-var timeTopic9 = 0;
-var timeTopic10 = 0;
 
 export default withRouter(class Course1 extends Component {
     constructor(props) {
@@ -71,13 +67,6 @@ export default withRouter(class Course1 extends Component {
             playingTopic1: false,
             playingTopic2: false,
             playingTopic3: false,
-            playingTopic4: false,
-            playingTopic5: false,
-            playingTopic6: false,
-            playingTopic7: false,
-            playingTopic8: false,
-            playingTopic9: false,
-            playingTopic10: false,
 
             examPost: [],
             percentExamPost: 0,
@@ -90,18 +79,9 @@ export default withRouter(class Course1 extends Component {
         this.onCreateTopic = this.onCreateTopic.bind(this);
         this.onExamPost = this.onExamPost.bind(this);
         this.onForm = this.onForm.bind(this);
-
         this.onProgressVedioTopic1 = this.onProgressVedioTopic1.bind(this);
         this.onProgressVedioTopic2 = this.onProgressVedioTopic2.bind(this);
         this.onProgressVedioTopic3 = this.onProgressVedioTopic3.bind(this);
-        this.onProgressVedioTopic4 = this.onProgressVedioTopic4.bind(this);
-        this.onProgressVedioTopic5 = this.onProgressVedioTopic5.bind(this);
-        this.onProgressVedioTopic6 = this.onProgressVedioTopic6.bind(this);
-        this.onProgressVedioTopic7 = this.onProgressVedioTopic7.bind(this);
-        this.onProgressVedioTopic8 = this.onProgressVedioTopic8.bind(this);
-        this.onProgressVedioTopic9 = this.onProgressVedioTopic9.bind(this);
-        this.onProgressVedioTopic10 = this.onProgressVedioTopic10.bind(this);
-
         this.onEndedVedio = this.onEndedVedio.bind(this);
         this.playingVedio = this.playingVedio.bind(this);
         this.updateTimeTopic = this.updateTimeTopic.bind(this);
@@ -121,6 +101,23 @@ export default withRouter(class Course1 extends Component {
     }
 
     async componentDidMount() {
+        // var url_exam_pre = ip + "/UserExamination/find/" + CourseCode + "/" + ExamCodePre;
+        // const exam_pre = await (await axios.get(url_exam_pre, { headers: this.state.header })).data;
+        // if (!exam_pre?.status) {
+        //     swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+        //         this.setState({
+        //             token: cookies.remove('token_user', { path: '/' }),
+        //             user: cookies.remove('user', { path: '/' }),
+        //             email: cookies.remove('email', { path: '/' })
+        //         });
+        //         window.location.replace('/Login', false);
+        //     });
+        // } else {
+        //     if (exam_pre.data.length <= 0) {
+        //         this.props.history.push("/ExamPre");
+        //     }
+        // }
+
         var url_exam_post = ip + "/UserExamination/find/" + CourseCode + "/" + ExamCodePost;
         const exam_post = await (await axios.get(url_exam_post, { headers: this.state.header })).data;
         if (!exam_post?.status) {
@@ -188,7 +185,36 @@ export default withRouter(class Course1 extends Component {
                 form: assessment_course.data?.assessment
             });
         }
+
+        // this.updateTimer = setInterval(() => this.timeCourse(), 10000);
+
     }
+
+    // componentWillUnmount() {
+    //     clearInterval(this.updateTimer);
+    // }
+
+    // async timeCourse() {
+    //     const updateTime = {
+    //         time: 10
+    //     };
+
+    //     var url_update_time = ip + "/UserCourse/update/time/" + CourseCode;
+    //     const update_time = await (await axios.put(url_update_time, updateTime, { headers: this.state.header })).data;
+
+    //     if (!update_time?.status) {
+    //         swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+    //             this.setState({
+    //                 token: cookies.remove('token_user', { path: '/' }),
+    //                 user: cookies.remove('user', { path: '/' }),
+    //                 email: cookies.remove('email', { path: '/' })
+    //             });
+    //             window.location.replace('/Login', false);
+    //         });
+    //     } else {
+
+    //     }
+    // }
 
     async onDownlode() {
         if (this.state.course?.downlodeDoc !== "A") {
@@ -227,48 +253,20 @@ export default withRouter(class Course1 extends Component {
                 }
             }
         }
-
-        const save = document.createElement('a');
-        save.href = pdf;
-        save.target = '_blank';
-        save.rel = "noopener noreferrer";
-        save.download = "ISO 13485.pdf";
-        save.click();
     }
 
     playingVedio(topicCode) {
         var playTopic1 = false;
         var playTopic2 = false;
         var playTopic3 = false;
-        var playTopic4 = false;
-        var playTopic5 = false;
-        var playTopic6 = false;
-        var playTopic7 = false;
-        var playTopic8 = false;
-        var playTopic9 = false;
-        var playTopic10 = false;
         if (topicCode === TopicCode1) { playTopic1 = true }
         else if (topicCode === TopicCode2) { playTopic2 = true }
         else if (topicCode === TopicCode3) { playTopic3 = true }
-        else if (topicCode === TopicCode4) { playTopic4 = true }
-        else if (topicCode === TopicCode5) { playTopic5 = true }
-        else if (topicCode === TopicCode6) { playTopic6 = true }
-        else if (topicCode === TopicCode7) { playTopic7 = true }
-        else if (topicCode === TopicCode8) { playTopic8 = true }
-        else if (topicCode === TopicCode9) { playTopic9 = true }
-        else if (topicCode === TopicCode10) { playTopic10 = true }
 
         this.setState({
             playingTopic1: playTopic1,
             playingTopic2: playTopic2,
-            playingTopic3: playTopic3,
-            playingTopic4: playTopic4,
-            playingTopic5: playTopic5,
-            playingTopic6: playTopic6,
-            playingTopic7: playTopic7,
-            playingTopic8: playTopic8,
-            playingTopic9: playTopic9,
-            playingTopic10: playTopic10
+            playingTopic3: playTopic3
         })
     }
 
@@ -342,69 +340,6 @@ export default withRouter(class Course1 extends Component {
         }
     }
 
-    onProgressVedioTopic4(state) {
-        // state is time in vedio play
-        if (this.state.playingTopic4) { timeTopic4 += 1; }
-        if (timeTopic4 === 10) {
-            this.updateTimeTopic(TopicCode4, timeTopic4);
-            timeTopic4 = 0;
-        }
-    }
-
-    onProgressVedioTopic5(state) {
-        // state is time in vedio play
-        if (this.state.playingTopic5) { timeTopic5 += 1; }
-        if (timeTopic5 === 10) {
-            this.updateTimeTopic(TopicCode5, timeTopic5);
-            timeTopic5 = 0;
-        }
-    }
-
-    onProgressVedioTopic6(state) {
-        // state is time in vedio play
-        if (this.state.playingTopic6) { timeTopic6 += 1; }
-        if (timeTopic6 === 10) {
-            this.updateTimeTopic(TopicCode6, timeTopic6);
-            timeTopic6 = 0;
-        }
-    }
-
-    onProgressVedioTopic7(state) {
-        // state is time in vedio play
-        if (this.state.playingTopic7) { timeTopic7 += 1; }
-        if (timeTopic7 === 10) {
-            this.updateTimeTopic(TopicCode7, timeTopic7);
-            timeTopic7 = 0;
-        }
-    }
-
-    onProgressVedioTopic8(state) {
-        // state is time in vedio play
-        if (this.state.playingTopic8) { timeTopic8 += 1; }
-        if (timeTopic8 === 10) {
-            this.updateTimeTopic(TopicCode8, timeTopic8);
-            timeTopic8 = 0;
-        }
-    }
-
-    onProgressVedioTopic9(state) {
-        // state is time in vedio play
-        if (this.state.playingTopic9) { timeTopic9 += 1; }
-        if (timeTopic9 === 10) {
-            this.updateTimeTopic(TopicCode9, timeTopic9);
-            timeTopic9 = 0;
-        }
-    }
-
-    onProgressVedioTopic10(state) {
-        // state is time in vedio play
-        if (this.state.playingTopic10) { timeTopic10 += 1; }
-        if (timeTopic10 === 10) {
-            this.updateTimeTopic(TopicCode10, timeTopic10);
-            timeTopic10 = 0;
-        }
-    }
-
     onEndedVedio(Topic) {
         var time = 0;
         if (Topic === TopicCode1) {
@@ -421,41 +356,6 @@ export default withRouter(class Course1 extends Component {
             time = timeTopic3;
             timeTopic3 = 0;
             this.setState({ playingTopic3: false })
-        }
-        else if (Topic === TopicCode4) {
-            time = timeTopic4;
-            timeTopic4 = 0;
-            this.setState({ playingTopic4: false })
-        }
-        else if (Topic === TopicCode5) {
-            time = timeTopic5;
-            timeTopic5 = 0;
-            this.setState({ playingTopic5: false })
-        }
-        else if (Topic === TopicCode6) {
-            time = timeTopic6;
-            timeTopic6 = 0;
-            this.setState({ playingTopic6: false })
-        }
-        else if (Topic === TopicCode7) {
-            time = timeTopic7;
-            timeTopic7 = 0;
-            this.setState({ playingTopic7: false })
-        }
-        else if (Topic === TopicCode8) {
-            time = timeTopic8;
-            timeTopic8 = 0;
-            this.setState({ playingTopic8: false })
-        }
-        else if (Topic === TopicCode9) {
-            time = timeTopic9;
-            timeTopic9 = 0;
-            this.setState({ playingTopic9: false })
-        }
-        else if (Topic === TopicCode10) {
-            time = timeTopic10;
-            timeTopic10 = 0;
-            this.setState({ playingTopic10: false })
         }
 
         this.updateTimeTopic(Topic, time);
@@ -494,6 +394,7 @@ export default withRouter(class Course1 extends Component {
             swal("Warning!", "กรุณาเรียนให้ครบทุกบทเรียน", "warning").then((value) => {
             });
         }
+
     }
 
     onForm() {
@@ -509,6 +410,7 @@ export default withRouter(class Course1 extends Component {
         this.setState({ isModalCertificate: true });
     }
     showCertificateOK() {
+        console.log("OK")
         this.setState({ isModalCertificate: false });
     }
 
@@ -524,7 +426,7 @@ export default withRouter(class Course1 extends Component {
                             <NavLink to="/HomeUser"><HomeOutlined /><span>Home</span></NavLink>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
-                            <SnippetsOutlined /><span>ISO 13485:2016 ระบบบริหารงานคุณภาพสำหรับเครื่องมือแพทย์ (Medical Devices – Quality Management System: MDMS)</span>
+                            <SnippetsOutlined /><span>หลักสูตรที่ 1</span>
                         </Breadcrumb.Item>
                     </Breadcrumb>
                 </Row>
@@ -534,23 +436,23 @@ export default withRouter(class Course1 extends Component {
                     </Col>
                     <Col xs={24} md={12} xl={12}>
                         <Row id="font-header">รายละเอียด</Row>
-                        <Row id="font-detail">ISO 13485:2016 ระบบบริหารงานคุณภาพสำหรับเครื่องมือแพทย์ (Medical Devices – Quality Management System: MDMS)</Row>
+                        <Row id="font-detail">กล่าวถึงวัตถุประสงค์ของมาตรฐาน ชี้แจงแนวคิดของมาตรฐาน พื้นฐานแนวคิดตามมาตรฐานระบบคุณภาพ</Row>
                         <Row id="font-header">วัตถุประสงค์</Row>
-                        <Row id="font-detail2">1. เพื่อให้ได้รับความรู้และความเข้าใจในมาตรฐาน ISO 13485:2016</Row>
-                        <Row id="font-detail2">2. เพื่อให้มีทักษะในการจัดทำระบบมาตรฐาน ISO 13485:2016</Row>
-                        <Row id="font-detail2">3. เพื่อให้มีทัศนคติที่ดีในการจัดทำระบบซึ่งจะเป็นประโยชน์กับทุกคน</Row>
+                        <Row id="font-detail2">1. .......</Row>
+                        <Row id="font-detail2">2. .......</Row>
+                        <Row id="font-detail2">3. .......</Row>
+                        <Row id="font-detail2">4. .......</Row>
+                        <Row id="font-detail2">5. .......</Row>
                     </Col>
                 </Row>
 
                 <Row id="row-headercourse">
                     <Col xs={24} md={12} xl={12}>
                         <Row>
-                            <Col xs={7} md={7} xl={7}><Image src={TeacherCourse1} id="teacher-img" fluid></Image></Col>
+                            <Col xs={7} md={7} xl={7}><Image src={userprofile} id="teacher-img" fluid></Image></Col>
                             <Col xs={17} md={17} xl={17}>
                                 <Row id="font-header">ผู้สอน</Row>
-                                <Row id="font-detail">ดร.บัญญัติ บุญญา</Row>
-                                <Row id="font-header">หน่วยงานหลัก</Row>
-                                <Row id="font-detail">สมาคมนักธุรกิจอาเซียน</Row>
+                                <Row id="font-detail">กล่าวถึงวัตถุประสงค์ของมาตรฐาน ชี้แจงแนวคิดของมาตรฐาน พื้นฐานแนวคิดตามมาตรฐานระบบคุณภาพ</Row>
                             </Col>
                         </Row>
                     </Col>
@@ -596,6 +498,72 @@ export default withRouter(class Course1 extends Component {
                         </Row>
                     </Col>
                 </Row>
+                <Row id="row-headercourse">
+                    <Col xs={24} md={12} xl={12}>
+                        <Row>
+                            <Col xs={24} md={24} xl={24} id="font-header1">ผู้สอน</Col>
+                            <Col xs={24} md={24} xl={24}>
+                                <Row id="teacher">
+                                    <Col xs={24} md={8} xl={6} id="teacher1"><Image src={userprofile} width={100} fluid></Image></Col>
+                                    <Col xs={24} md={12} xl={16} id="teacher2">ผศ.ดร.สมโภชน์ สระทองแง๊ก</Col>
+                                </Row>
+                            </Col>
+                            <Col xs={24} md={24} xl={24}>
+                                <Row id="teacher">
+                                    <Col xs={24} md={8} xl={6} id="teacher1"><Image src={userprofile} width={100} fluid></Image></Col>
+                                    <Col xs={24} md={12} xl={16} id="teacher2">ผศ.ดร.สมโภชน์ สระทองแง๊ก</Col>
+                                </Row>
+                            </Col>
+                            <Col xs={24} md={24} xl={24}>
+                                <Row id="teacher">
+                                    <Col xs={24} md={8} xl={6} id="teacher1"><Image src={userprofile} width={100} fluid></Image></Col>
+                                    <Col xs={24} md={12} xl={16} id="teacher2">ผศ.ดร.สมโภชน์ สระทองแง๊ก</Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Col>
+
+                    <Col xs={24} md={12} xl={12}>
+                        <Row>
+                            <Col xs={24} md={24} xl={24} id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Col>
+                            <Col xs={24} md={24} xl={12} id="certi-note">
+                                {
+                                    (this.state.percentExamPost >= 80) ?
+                                        <>
+                                            <Row id="btn-certificate"><Button onClick={() => this.showCertificate()}>ข้อมูลการรับใบ Certificate</Button></Row>
+                                        </>
+                                        :
+                                        <>
+                                            <Row id="btn-certificate"><Button disabled={true}>ข้อมูลการรับใบ Certificate</Button></Row>
+                                        </>
+                                }
+                            </Col>
+                            <Col xs={24} md={24} xl={12} id="progress-course2">
+                                <Progress type="circle" percent={this.state.percentExamPost} strokeColor={(this.state.percentExamPost >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
+                            </Col>
+                            {
+                                (this.state.percentExamPost >= 80) ?
+                                    <>
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course3">
+                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
+                                        </Col>
+                                    </>
+                                    :
+                                    <>
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course3">
+                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
+                                        </Col>
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course3">
+                                            <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
+                                        </Col>
+                                    </>
+                            }
+                        </Row>
+                    </Col>
+                </Row>
 
                 <Row id="row-headercourse">
                     <Col xs={24} md={24} xl={24} id="course-header">เนื้อหาของหลักสูตร</Col>
@@ -619,7 +587,7 @@ export default withRouter(class Course1 extends Component {
 
                             <Panel header="บทเรียน" key="2">
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 1. ภาพรวมของมาตรฐาน ISO 13485:2016 </Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 1. ขอบเขต เป็นบททั่วไป และการประยุกต์ใช้ ISO 13485: 2016 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -628,6 +596,7 @@ export default withRouter(class Course1 extends Component {
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
+                                        {/* <Image src={v1} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode1) }}></Image> */}
                                         <ReactPlayer
                                             url={testV1}
                                             className='react-player'
@@ -645,12 +614,12 @@ export default withRouter(class Course1 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ISO 13485:2016 Medical devices — Quality management systems Requirements for regulatory purposes สามารถประยุกต์ใช้ได้สำหรับองค์กรที่อยู่ในห่วงโซ่การผลิตและการบริการ เช่น ผู้ผลิตวัตถุดิบ ชิ้นส่วน ส่วนประกอบ ผู้ให้การบริการติดตั้ง ขนส่ง การเก็บรักษา เป็นต้น และผู้ที่สนใจในการนำมาตรฐานนี้ไปประยุกต์ใช้ โดยแนวทางของข้อกำหนดนี้ ยังคงใช้โครงสร้างข้อกำหนดตามมาตรฐาน ISO 9001:2008 ซึ่งประกอบด้วยข้อกำหนดหลักข้อที่ 4-8 ในการประยุกต์ใช้ </Row>
+                                        <Row id="unit-detail">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 2. การตีความข้อกำหนด ข้อที่ 1-3 </Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 2. มาตรฐานอ้างอิง อธิบายถึงการอ้างอิงข้อกำหนดของมาตรฐาน ISO 9001:2015 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -659,6 +628,7 @@ export default withRouter(class Course1 extends Component {
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
+                                        {/* <Image src={v2} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode2) }}></Image> */}
                                         <ReactPlayer
                                             url={testV1}
                                             className='react-player'
@@ -676,12 +646,12 @@ export default withRouter(class Course1 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ขอบเขตของมาตรฐาน การอ้างอิงกฎเกณฑ์ คำศัพท์และความหมาย</Row>
+                                        <Row id="unit-detail">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 3. การตีความข้อกำหนดที่ 4</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 3. คำศัพท์และคำนิยาม อธิบายคำศัพท์และนิยาม ทั้งในส่วนของข้อกำหนดระบบบริหารคุณภาพทั่วไป และสำหรับเครื่องมือแพทย์ ซี่งอ้างอิงตาม ISO 9001:2015 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -707,227 +677,9 @@ export default withRouter(class Course1 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ระบบการจัดการคุณภาพอุปกรณ์การแพทย์ เงื่อนไขทั่วไป ข้อกำหนดด้านเอกสาร (ทั่วไป, คู่มือคุณภาพ, การตรวจสอบเอกสาร, การตรวจสอบบันทึก)</Row>
+                                        <Row id="unit-detail">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world. </Row>
                                     </Col>
                                 </Row>
-
-                                <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 4. การตีความข้อกำหนดที่ 5</Col>
-                                    <Col xs={2} md={2} xl={2} id="icon-chack">
-                                        {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode4)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
-                                        }
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-course1">
-                                        <ReactPlayer
-                                            url={testV1}
-                                            className='react-player'
-                                            width='100%'
-                                            height='100%'
-                                            controls={true}
-                                            playsinline={true}
-                                            playIcon={true}
-                                            pip={false}
-                                            playing={this.state.playingTopic4}
-                                            onProgress={this.onProgressVedioTopic4}
-                                            onEnded={() => { this.onEndedVedio(TopicCode4) }}
-                                            onPlay={() => { this.onCreateTopic(TopicCode4) }}
-                                            fluid />
-                                    </Col>
-                                    <Col xs={24} md={10} xl={10}>
-                                        <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ความรับผิดชอบการจัดการ ความมุ่งมั่นของ Management มุ่งเน้นลูกค้า นโยบายคุณภาพ การวางแผน ความรับผิดชอบอำนาจและการสื่อสาร รีวิวการจัดการ</Row>
-                                    </Col>
-                                </Row>
-
-                                <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 5. การตีความข้อกำหนดที่ 6</Col>
-                                    <Col xs={2} md={2} xl={2} id="icon-chack">
-                                        {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode5)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
-                                        }
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-course1">
-                                        <ReactPlayer
-                                            url={testV1}
-                                            className='react-player'
-                                            width='100%'
-                                            height='100%'
-                                            controls={true}
-                                            playsinline={true}
-                                            playIcon={true}
-                                            pip={false}
-                                            playing={this.state.playingTopic5}
-                                            onProgress={this.onProgressVedioTopic5}
-                                            onEnded={() => { this.onEndedVedio(TopicCode5) }}
-                                            onPlay={() => { this.onCreateTopic(TopicCode5) }}
-                                            fluid />
-                                    </Col>
-                                    <Col xs={24} md={10} xl={10}>
-                                        <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">การจัดการทรัพยากร การให้ทรัพยากร ทรัพยากรมนุษย์  โครงสร้างพื้นฐาน สภาพแวดล้อมกาทำงาน</Row>
-                                    </Col>
-                                </Row>
-
-                                <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 6. การตีความข้อกำหนดที่ 7</Col>
-                                    <Col xs={2} md={2} xl={2} id="icon-chack">
-                                        {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode6)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
-                                        }
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-course1">
-                                        <ReactPlayer
-                                            url={testV1}
-                                            className='react-player'
-                                            width='100%'
-                                            height='100%'
-                                            controls={true}
-                                            playsinline={true}
-                                            playIcon={true}
-                                            pip={false}
-                                            playing={this.state.playingTopic6}
-                                            onProgress={this.onProgressVedioTopic6}
-                                            onEnded={() => { this.onEndedVedio(TopicCode6) }}
-                                            onPlay={() => { this.onCreateTopic(TopicCode6) }}
-                                            fluid />
-                                    </Col>
-                                    <Col xs={24} md={10} xl={10}>
-                                        <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ก่อให้เกิดผลิตภัณฑ์ การวางแผนการทำให้เกิดผลิตภัณฑ์ กระบวนการที่เกี่ยวข้องกับลูกค้า การออกแบบและพัฒนา การจัดซื้อ การผลิตและการส่งมอบบริการ ตรวจสอบและควบคุมอุปกรณ์วัด</Row>
-                                    </Col>
-                                </Row>
-
-                                <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 7. การตีความข้อกำหนดที่ 8</Col>
-                                    <Col xs={2} md={2} xl={2} id="icon-chack">
-                                        {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode7)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
-                                        }
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-course1">
-                                        <ReactPlayer
-                                            url={testV1}
-                                            className='react-player'
-                                            width='100%'
-                                            height='100%'
-                                            controls={true}
-                                            playsinline={true}
-                                            playIcon={true}
-                                            pip={false}
-                                            playing={this.state.playingTopic7}
-                                            onProgress={this.onProgressVedioTopic7}
-                                            onEnded={() => { this.onEndedVedio(TopicCode7) }}
-                                            onPlay={() => { this.onCreateTopic(TopicCode7) }}
-                                            fluid />
-                                    </Col>
-                                    <Col xs={24} md={10} xl={10}>
-                                        <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">การวัดการวิเคราะห์และการปรับปรุง ตั้งแต่เรื่อง ทั่วไป การตรวจสอบและการวัด การควบคุมผลิตภัณฑ์ที่ไม่เหมาะสม  การวิเคราะห์ข้อมูล การดำเนินการแก้ไขและป้องกัน</Row>
-                                    </Col>
-                                </Row>
-
-                                <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 8. การทำความเข้าใจกับเรื่องที่เกี่ยวข้องกับมาตรฐาน ISO 13485</Col>
-                                    <Col xs={2} md={2} xl={2} id="icon-chack">
-                                        {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode8)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
-                                        }
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-course1">
-                                        <ReactPlayer
-                                            url={testV1}
-                                            className='react-player'
-                                            width='100%'
-                                            height='100%'
-                                            controls={true}
-                                            playsinline={true}
-                                            playIcon={true}
-                                            pip={false}
-                                            playing={this.state.playingTopic8}
-                                            onProgress={this.onProgressVedioTopic8}
-                                            onEnded={() => { this.onEndedVedio(TopicCode8) }}
-                                            onPlay={() => { this.onCreateTopic(TopicCode8) }}
-                                            fluid />
-                                    </Col>
-                                    <Col xs={24} md={10} xl={10}>
-                                        <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">คำศัพท์ทางการแทพย์ การวินิจฉัย จัดประเภทเครื่องมือแพทย์</Row>
-                                    </Col>
-                                </Row>
-
-                                <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 9. ความรู้เรื่องหลักเกณฑ์เครื่องมือแพทย์ ที่เกี่ยวข้องกับมาตรฐาน ISO 13485</Col>
-                                    <Col xs={2} md={2} xl={2} id="icon-chack">
-                                        {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode9)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
-                                        }
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-course1">
-                                        <ReactPlayer
-                                            url={testV1}
-                                            className='react-player'
-                                            width='100%'
-                                            height='100%'
-                                            controls={true}
-                                            playsinline={true}
-                                            playIcon={true}
-                                            pip={false}
-                                            playing={this.state.playingTopic9}
-                                            onProgress={this.onProgressVedioTopic9}
-                                            onEnded={() => { this.onEndedVedio(TopicCode9) }}
-                                            onPlay={() => { this.onCreateTopic(TopicCode9) }}
-                                            fluid />
-                                    </Col>
-                                    <Col xs={24} md={10} xl={10}>
-                                        <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">การใช้งานเครื่องมือแพทย์ หลักเกณฑ์ต่างๆและประเภทเครื่องมือแพทย์</Row>
-                                    </Col>
-                                </Row>
-
-                                <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 10. บทสรุป มาตรฐาน ISO 13485</Col>
-                                    <Col xs={2} md={2} xl={2} id="icon-chack">
-                                        {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode10)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
-                                        }
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col xs={24} md={12} xl={12} id="video-course1">
-                                        <ReactPlayer
-                                            url={testV1}
-                                            className='react-player'
-                                            width='100%'
-                                            height='100%'
-                                            controls={true}
-                                            playsinline={true}
-                                            playIcon={true}
-                                            pip={false}
-                                            playing={this.state.playingTopic10}
-                                            onProgress={this.onProgressVedioTopic10}
-                                            onEnded={() => { this.onEndedVedio(TopicCode10) }}
-                                            onPlay={() => { this.onCreateTopic(TopicCode10) }}
-                                            fluid />
-                                    </Col>
-                                    <Col xs={24} md={10} xl={10}>
-                                        <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">มาตรฐาน ISO 13485 ไม่ได้ต้องการให้แค่องค์กรทำเพื่อให้ได้ใบ Certificate แต่ต้องการให้องค์กรประยุกต์ใช้ข้อกำหนดที่เกี่ยวข้องกับองค์กรให้ครบถ้วนและถูกต้อง เพื่อให้องค์กรมีระบบการจัดการคุณภาพเครื่องมือแพทย์ ซึ่งสอดคล้องกับสถานการณ์ในปัจจุบันที่มีการแพร่ระบาดของเชื้อไวรัสโคโรนา หรือ โควิด 19 องค์กรที่ได้รับการรับรองมาตรฐานนี้ นอกจากจะสร้างภาพลักษณ์ที่ดีให้กับองค์กรแล้ว สิ่งสำคัญคือสามารถสร้างความมั่นใจให้กับผู้บริโภคในการเลือกใช้สินค้าที่ดี มีคุณภาพ มีความปลอดภัย และปลอดโรคอีกด้วย</Row>
-                                    </Col>
-                                </Row>
-
                             </Panel>
 
                             <Panel header="แบบทดสอบท้ายบทเรียน" key="3">
@@ -1014,6 +766,7 @@ export default withRouter(class Course1 extends Component {
                           ตกลง
                         </Button>,
                       ]}
+                    // onOk={this.showCertificateOK}
                     visible={this.state.isModalCertificate}
                     width={500}>
                         โปรดติดต่อรับใบ Certificate ที่ต้นสังกัดของท่าน

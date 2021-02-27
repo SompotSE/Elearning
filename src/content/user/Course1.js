@@ -47,6 +47,8 @@ const TopicCode3 = "TOP100003";
 // const ExamCodePre = "EXAM10001";
 const ExamCodePost = "EXAM10002";
 
+const TopicCount = 3;
+
 var timeTopic1 = 0;
 var timeTopic2 = 0;
 var timeTopic3 = 0;
@@ -166,7 +168,7 @@ export default withRouter(class Course1 extends Component {
             });
         }
 
-        var url_assessment_course = ip + "/UserAssessment/find/" + CourseCode ;
+        var url_assessment_course = ip + "/UserAssessment/find/" + CourseCode;
         const assessment_course = await (await axios.get(url_assessment_course, { headers: this.state.header })).data;
         if (!assessment_course?.status) {
             swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
@@ -379,12 +381,18 @@ export default withRouter(class Course1 extends Component {
     }
 
     onExamPost() {
-        if (this.state.examPost.length !== 3) {
-            this.props.history.push("/ExamPost");
+        if (this.state.topicAll.length >= TopicCount) {
+            if (this.state.examPost.length !== 3) {
+                this.props.history.push("/ExamPost");
+            } else {
+                swal("Warning!", "จำนวนครั้งในการทำข้อสอบครบแล้ว", "warning").then((value) => {
+                });
+            }
         } else {
-            swal("Warning!", "จำนวนครั้งในการทำข้อสอบครบแล้ว", "warning").then((value) => {
+            swal("Warning!", "กรุณาเรียนให้ครบทุกบทเรียน", "warning").then((value) => {
             });
         }
+
     }
 
     onForm() {
@@ -400,17 +408,17 @@ export default withRouter(class Course1 extends Component {
         this.setState({ isModaldetailCertificate: true });
     }
 
-    info(){
-    Modal.info({
-        title: 'ข้อมูลการรับใบ Certificate',
-        width: "500px",
-        content: (
-          <div>
-            <p id="certifi">สามารถติดต่อขอรับใบ Certificate ได้ที่หน่วยงานต้นสังกัด</p>
-          </div>
-        ),
-        onOk() {},
-      });
+    info() {
+        Modal.info({
+            title: 'ข้อมูลการรับใบ Certificate',
+            width: "500px",
+            content: (
+                <div>
+                    <p id="certifi">สามารถติดต่อขอรับใบ Certificate ได้ที่หน่วยงานต้นสังกัด</p>
+                </div>
+            ),
+            onOk() { },
+        });
     }
 
     render() {
@@ -459,7 +467,7 @@ export default withRouter(class Course1 extends Component {
                     <Col xs={24} md={12} xl={12}>
                         <Row>
                             <Col xs={24} md={24} xl={24} id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Col>
-                            <Col xs={24} md={24} xl={12}  id="certi-note1">
+                            <Col xs={24} md={24} xl={12} id="certi-note1">
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
@@ -500,7 +508,7 @@ export default withRouter(class Course1 extends Component {
                 <Row id="row-headercourse">
                     <Col xs={24} md={12} xl={12}>
                         <Row>
-                            <Col  xs={24} md={24} xl={24} id="font-header1">ผู้สอน</Col>
+                            <Col xs={24} md={24} xl={24} id="font-header1">ผู้สอน</Col>
                             <Col xs={24} md={24} xl={24}>
                                 <Row id="teacher">
                                     <Col xs={24} md={8} xl={6} id="teacher1"><Image src={userprofile} width={100} fluid></Image></Col>
@@ -573,7 +581,7 @@ export default withRouter(class Course1 extends Component {
                             ghost
                         >
                             <Panel header="เอกสารประกอบการเรียน" key="1">
-                                <Row  id="row-iconcheck">
+                                <Row id="row-iconcheck">
                                     <Col xs={20} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={this.onDownlode}> - ดาวน์โหลดเอกสาร </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
@@ -682,7 +690,7 @@ export default withRouter(class Course1 extends Component {
                             </Panel>
 
                             <Panel header="แบบทดสอบท้ายบทเรียน" key="3">
-                                <Row id="row-iconcheck"> 
+                                <Row id="row-iconcheck">
                                     <Col xs={20} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={() => { this.onExamPost() }}> - ทำแบบทดสอบ </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {

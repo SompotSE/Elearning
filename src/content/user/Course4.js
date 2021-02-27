@@ -164,6 +164,7 @@ export default withRouter(class Course4 extends Component {
                 window.location.replace('/Login', false);
             });
         } else {
+            console.log(topic.data, " topic.data")
             this.setState({
                 topicAll: topic.data
             });

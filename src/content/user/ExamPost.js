@@ -191,20 +191,20 @@ export default withRouter(class ExamPost extends Component {
             (this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001004") ||
             (this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001005")) {
             return <>
-                <Col xs={24} md={24} xl={24} id="exam-header"><Image src={img3_5} fluid></Image></Col>
+                <Col xs={24} md={24} xl={24} id="img-exam"><Image src={img3_5} fluid></Image></Col>
                 <Col xs={24} md={24} xl={24} id="text-img">รูปที่ 1</Col>
             </>
         } else if (this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001010") {
             return <>
-                <Col xs={24} md={24} xl={24} id="exam-header"><Image src={img10} fluid></Image></Col>
+                <Col xs={24} md={24} xl={24} id="img-exam"><Image src={img10} fluid></Image></Col>
             </>
         } else if (this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001011") {
             return <>
-                <Col xs={24} md={24} xl={24} id="exam-header"><Image src={img11} fluid></Image></Col>
+                <Col xs={24} md={24} xl={24} id="img-exam"><Image src={img11} fluid></Image></Col>
             </>
         } else if (this.state.exam[this.state.current_page - 1]?.examinationlistCode === "EX4001012") {
             return <>
-                <Col xs={24} md={24} xl={24} id="exam-header"><Image src={img12} fluid></Image></Col>
+                <Col xs={24} md={24} xl={24} id="img-exam"><Image src={img12} fluid></Image></Col>
             </>
         }
     }

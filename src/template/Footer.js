@@ -40,9 +40,9 @@ export default class Footer extends Component {
                     </Col>
                     <Col xs={13} md={6} xl={7} id="col-footer3">
                         <Col xs={24} md={24} xl={24} id="header-footer1">ติดตามและข้อมูลเพิ่มเติม</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer3"><FaFacebookF style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>อุทยานวิทยาศาสตร์ประเทศไทย</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer2">Thailand Science Park -TSP</Col>
-                        <Col xs={24} md={24} xl={24} id="descript-footer2"><BiMessageRoundedEdit style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>https://bit.ly/38AlM86  </Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer3"><FaFacebookF style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/><span onClick={() => { window.open("https://web.facebook.com/THAILANDSCIENCEPARK", "_blank"); }} style={{cursor: "pointer"}}>อุทยานวิทยาศาสตร์ประเทศไทย</span></Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer2"><span onClick={() => { window.open("https://web.facebook.com/THAILANDSCIENCEPARK", "_blank"); }} style={{cursor: "pointer"}}>Thailand Science Park -TSP</span></Col>
+                        <Col xs={24} md={24} xl={24} id="descript-footer2"><BiMessageRoundedEdit style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/><span onClick={() => { window.open("https://bit.ly/38AlM86", "_blank"); }} style={{cursor: "pointer"}}>https://bit.ly/38AlM86</span></Col>
                         {/* <Col xs={24} md={24} xl={24} id="descript-footer2"><FaTwitter style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>Twitter</Col> */}
                     </Col>
                     <Col xs={11} md={6} xl={6} id="col-footer4">

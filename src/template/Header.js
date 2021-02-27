@@ -447,64 +447,63 @@ export default withRouter(class Header extends Component {
                                                 </Row>
                                             </Col>
                                             :
-                                            <Col style={{ justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignContent: "center", alignItems: "center" }}>
-                                                
-                                                    <Col xs={24}>
+                                            <Col xs={24} style={{ justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignContent: "center", alignItems: "center" }}>
+                                                <Row>
+                                                    <Col xs={20}>
                                                         <Row style={{ marginBottom: "2%",paddingTop: "2%", paddingLeft: "3%" }}>
                                                             <UserOutlined id="logo-user" /><span style={{ paddingRight: "5%" }}> Sompot</span> 
                                                         </Row>
                                                     </Col>
-                                                    <Row>
-                                                    {
-                                                        (this.state.user?.userRoleId === 1) ? <NavLink to="/Logout"><span type="primary" id="btn-dropdown">ออกจากระบบ</span></NavLink > :
-                                                            <>
-                                                                {
-                                                                    (this.state.user?.userRoleId === 1) ?
-                                                                        <>
-                                                                            {/* <Menu.Item key="0">
-                                                                        <NavLink to="/Admin/Home"><Button type="primary" id="btn-dropdown" >หน้าหลัก</Button></NavLink>
+                                                    <Col xs={4}>
+                                                    <Dropdown 
+                                                        width={150}
+                                                        overlay={
+                                                        <Menu>
+                                                            {
+                                                                (this.state.user?.userRoleId === 1) ?
+                                                                <>
+                                                                    <Menu.Item key="0">
+                                                                        <NavLink to="/Admin/Home"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
                                                                     </Menu.Item>
-                                                                    <Menu.Divider />
                                                                     <Menu.Item key="1">
-                                                                        <NavLink to="/Admin/TopScore"><Button type="primary" id="btn-dropdown">คะแนนสูงสุด</Button></NavLink >
+                                                                        <NavLink to="/Admin/TopScore"><span type="primary" id="btn-sty">คะแนนสูงสุด</span></NavLink >
                                                                     </Menu.Item>
-                                                                    <Menu.Divider />
                                                                     <Menu.Item key="2">
-                                                                        <NavLink to="/Admin/Statistic"><Button type="primary" id="btn-dropdown">สถิติ</Button></NavLink >
+                                                                        <NavLink to="/Admin/Statistic"><span type="primary" id="btn-sty">สถิติ</span></NavLink >
                                                                     </Menu.Item>
-                                                                    <Menu.Divider />
                                                                     <Menu.Item key="3">
-                                                                        {window.innerWidth >= 684 ?
-                                                                            <Button type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</Button>
+                                                                    {window.innerWidth >= 684 ?
+                                                                        <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                             :
-                                                                            <NavLink to="/ChangePass"><Button type="primary" id="btn-dropdown" >เปลี่ยนรหัสผ่าน</Button></NavLink>
-                                                                        }
+                                                                            <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
+                                                                                }
                                                                     </Menu.Item>
-                                                                    <Menu.Divider />
                                                                     <Menu.Item key="4">
-                                                                        <NavLink to="/Logout"><Button type="primary" id="btn-dropdown">ออกจากระบบ</Button></NavLink >
-                                                                    </Menu.Item> */}
+                                                                        <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
+                                                                    </Menu.Item>
                                                                         </>
                                                                         :
                                                                         <>
-                                                                            <Col xs={6}>
-                                                                                <NavLink to="/"><span type="primary" id={(window.location.pathname === "/") || (window.location.pathname === "/") ? "active-header" : "btn-sty"}>หน้าหลัก</span></NavLink >
-                                                                            </Col>
-                                                                            <Col xs={10}>
-                                                                                {window.innerWidth >= 684 ?
-                                                                                    <span type="primary" id="btn-dropdown" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
-                                                                                    :
-                                                                                    <NavLink to="/ChangePass"><span type="primary" id={(window.location.pathname === "/ChangePass") || (window.location.pathname === "/ChangePass") ? "active-header" : "btn-sty"} >เปลี่ยนรหัสผ่าน</span></NavLink>
-                                                                                }
-                                                                            </Col>
-                                                                            <Col xs={8}>
-                                                                                <span type="primary" id={(window.location.pathname === "/Logout") || (window.location.pathname === "/Logout") ? "active-header" : "btn-sty"} onClick={() => this.logout()}>ออกจากระบบ</span>
-                                                                            </Col>
+                                                                    <Menu.Item key="0">
+                                                                        <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                    </Menu.Item>
+                                                                    <Menu.Item key="1">
+                                                                        {window.innerWidth >= 684 ?
+                                                                        <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
+                                                                        :
+                                                                        <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
+                                                                        }
+                                                                    </Menu.Item>
+                                                                    <Menu.Item key="2">
+                                                                        <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
+                                                                    </Menu.Item>
                                                                         </>
-                                                                }
-                                                            </>
-
-                                                    }
+                                                            }
+                                                                    </Menu>
+                                                            } placement="topRight" arrow>
+                                                                <MenuOutlined />
+                                                    </Dropdown>
+                                                    </Col>
                                                 </Row>
                                             </Col>
                                     }

@@ -210,7 +210,7 @@ export default withRouter(class ExamPost extends Component {
                         (!this.state.ansResultStatus) ?
                             <div id="body-exam-post">
                                 <Row id="head-exam-post">แบบทดสอบหลังเรียน</Row>
-                                <Row id="box-exam" style={{ minHeight: "600px" }}>
+                                <Row id="box-exam">
                                     <Col xs={24} md={24} xl={24} id="exam-header">
                                         <div>{renderHTML(this.state.exam[this.state.current_page - 1]?.examinationlistText)} </div>
 

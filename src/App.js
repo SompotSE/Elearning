@@ -27,7 +27,7 @@ export default class App extends Component {
               :
               <>
                 < PageHeader />
-                <PageHeader2 />
+                {/* <PageHeader2 /> */}
               </>
             }
             <Content >

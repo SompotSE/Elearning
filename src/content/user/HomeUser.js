@@ -188,26 +188,32 @@ export default withRouter(class HomeUser extends Component {
                 <Row id="row-coverhomeUser">
                         <Col xs={10} md={4} xl={4} >
                             <Row id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "pointer"}} src={unit1} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>   
+                                {/* <Image style={{width: "100%", cursor: "pointer"}} src={unit1} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>  */}
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit1} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button>
+                                {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button> */}
+                                <Button disabled>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "pointer"}} src={unit2} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode2) }}></Image>   
+                                {/* <Image style={{width: "100%", cursor: "pointer"}} src={unit2} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode2) }}></Image>    */}
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit2} placeholder={false} fluid></Image> 
                             </Row>
                             <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode2) }}>รายละเอียดหลักสูตร</Button>
+                                {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode2) }}>รายละเอียดหลักสูตร</Button> */}
+                                <Button disabled>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode3) }}></Image>   
+                                {/* <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode3) }}></Image>   */}
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={cover1} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button>
+                                {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button> */}
+                                <Button disabled>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
@@ -220,10 +226,12 @@ export default withRouter(class HomeUser extends Component {
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode5) }}></Image>   
+                                {/* <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode5) }}></Image> */}
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={cover1} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button>
+                                {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button> */}
+                                <Button disabled>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                 </Row>

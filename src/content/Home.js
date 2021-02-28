@@ -88,35 +88,27 @@ export default class Home extends Component {
                 </Row>
                 <Row id="row-coverhome">
                         <Col xs={10} md={4} xl={4}>
-                            <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%"}} src={unit1} placeholder={false} fluid></Image>   
+                            <Row id="row-img-coursedetail">
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit1} placeholder={false} preview={false} fluid></Image>   
                             </Row>
-                            <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
-                            </Row>
-                        </Col>
-                        <Col xs={10} md={4} xl={4}>
-                            <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%"}} src={unit2} placeholder={false} fluid></Image>   
-                            </Row>
-                            <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                            <Row id="row-btn-coursedetail"> 
+                                <Button disabled>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%"}} src={cover1} placeholder={false} fluid></Image>   
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit2} placeholder={false} preview={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                                <Button disabled>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%"}} src={cover1} placeholder={false} fluid></Image>   
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={cover1} placeholder={false} preview={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                                <Button disabled>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                         <Col xs={10} md={4} xl={4}>
@@ -125,6 +117,14 @@ export default class Home extends Component {
                             </Row>
                             <Row id="row-btn-coursedetail">
                                 <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                            </Row>
+                        </Col>
+                        <Col xs={10} md={4} xl={4}>
+                            <Row  id="row-img-coursedetail">
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={cover1} placeholder={false} preview={false} fluid></Image>   
+                            </Row>
+                            <Row id="row-btn-coursedetail">
+                                <Button disabled>รายละเอียดหลักสูตร</Button>
                             </Row>
                         </Col>
                 </Row>

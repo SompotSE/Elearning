@@ -496,7 +496,7 @@ export default withRouter(class Header extends Component {
                                                                         }
                                                                     </Menu.Item>
                                                                     <Menu.Item key="2">
-                                                                        <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
+                                                                        <span type="primary" id="btn-sty" onClick={() => this.logout()}>ออกจากระบบ</span>
                                                                     </Menu.Item>
                                                                         </>
                                                             }

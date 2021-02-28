@@ -9,6 +9,9 @@ import unit2 from '../img/unit2.png';
 import ReactPlayer from 'react-player';
 import testV1 from '../video/test.mp4';
 import { config } from '../config/config';
+
+import Header2 from '../template/Header2';
+
 const ip = config.ipServer;
 export default class Home extends Component {
 
@@ -21,6 +24,22 @@ export default class Home extends Component {
     render() {
         return (
             <Container fluid id="bg-home">
+                <Row>
+                    <Header2 />
+                </Row>
+                <Row id="row-headder-project">
+                    <Col xs={24} md={24} xl={24} id="header-project">
+                        โครงการพัฒนานวัตกรรมการแพทย์ดิจิทัลเพื่อต่อสู้กลุ่มโรคไม่ติดต่อเรื้อรัง (NCD)
+                    </Col>
+                    <Col xs={24} md={24} xl={24} id="header-project">
+                        สู่ระบบสาธารณสุขไทย เพื่อความยั่งยืนทางด้านสุขภาพ สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (สวทช)
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={24} md={24} xl={24} id="descrip-project">
+                        ได้รับทุนสนับสนุนจากกองทุนพัฒนาดิจิทัลเพื่อเศรษฐกิจและสังคม
+                    </Col>
+                </Row>
                 <Row>
                     <Col xs={24} md={12} xl={12} id="home-video">
                         <ReactPlayer

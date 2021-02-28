@@ -10,6 +10,7 @@ import swal from 'sweetalert';
 import '../css/Register.css';
 import { config } from '../config/config';
 import letter from "../img/letter.png";
+import Header2 from '../template/Header2';
 
 const cookies = new Cookies();
 
@@ -212,6 +213,9 @@ export default class Register extends Component {
     render() {
         return (
             <Container fluid id="Register">
+                <Row>
+                    <Header2 />
+                </Row>
                 <Form onFinish={this.onRegister}>
                     <Row>
                         <Col xs={0} md={0} xl={12}><Image src={banner} reponsive></Image></Col>

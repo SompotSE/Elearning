@@ -11,6 +11,7 @@ import testV1 from '../../video/test.mp4';
 import cover1 from '../../img/Cover1.png';
 import { AiFillPlayCircle } from "react-icons/ai";
 import unit2 from '../../img/unit2.png';
+import Header2 from '../../template/Header2';
 
 // import course1 from '../../img/course1.png';
 // import course2 from '../../img/course2.png';
@@ -129,6 +130,9 @@ export default withRouter(class HomeUser extends Component {
     render() {
         return (
             <Container fluid id="bg-HomeUser">
+                <Row>
+                    <Header2 />
+                </Row>
                 <Row id="row-userheader">
                     <Col xs={24} md={12} xl={12}>
                         <Row id="video-center">

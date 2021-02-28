@@ -23,7 +23,7 @@ import pdf from "../../pdf/Course4.pdf"
 import test from '../../video/test.mp4';
 // import Topic1 from '../../video/Course4/Course4Topic1.mp4';
 import Topic2 from '../../video/Course4/Course4Topic2.mp4';
-// import Topic3 from '../../video/Course4/Course4Topic3.mp4';
+import Topic3 from '../../video/Course4/Course4Topic3.mp4';
 // import Topic4 from '../../video/Course4/Course4Topic4.mp4';
 // import Topic5 from '../../video/Course4/Course4Topic5.mp4';
 // import Topic6 from '../../video/Course4/Course4Topic6.mp4';
@@ -735,7 +735,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={test}
+                                            url={Topic3}
                                             className='react-player'
                                             width='100%'
                                             height='100%'

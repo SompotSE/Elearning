@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 
 import Home from "../content/Home";
-import Register from "../content/Register"
+// import Register from "../content/Register"
 import Login from "../content/Login"
 import Logout from "../content/Logout"
 import ForgetPass from "../content/ForgetPass";
@@ -42,7 +42,7 @@ export default class Index extends Component {
                 <Route exact path="/Form/:courseCode" component={Form} />
                 <Route exact path="/ConfirmRegister/:ConfirmRegisterKey" component={ConfirmRegister} />
 
-                <Route exact path="/Register" component={Register} />
+                {/* <Route exact path="/Register" component={Register} /> */}
                 <Route exact path="/Login" component={Login} />
                 <Route exact path="/ForgetPass" component={ForgetPass} />
                 <Route exact path="/Logout" component={Logout} />

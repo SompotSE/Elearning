@@ -10,14 +10,14 @@ import swal from 'sweetalert';
 import ReactPlayer from 'react-player';
 import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
-import TeacherCourse5_1 from '../../img/Teacher/TeacherCourse5_1.png';
-import TeacherCourse5_2 from '../../img/Teacher/TeacherCourse5_2.png';
-import TeacherCourse5_3 from '../../img/Teacher/TeacherCourse5_3.png';
+import TeacherCourse5_1 from '../../img/Teacher/TeacherCourse5_1.webp';
+import TeacherCourse5_2 from '../../img/Teacher/TeacherCourse5_2.webp';
+import TeacherCourse5_3 from '../../img/Teacher/TeacherCourse5_3.webp';
 import { NavLink } from 'react-router-dom';
-import banner from "../../img/Banner/Course5.png";
+import banner from "../../img/Banner/Course5.webp";
 
-import course2 from '../../img/course2.png';
-import course3 from '../../img/course3.png';
+import unit1 from '../../img/unit1.webp';
+import unit2 from '../../img/unit2.webp';
 import course4 from '../../img/course4.png';
 import course5 from '../../img/course5.png';
 
@@ -1097,7 +1097,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={2} xl={2}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course2} id="img-course" fluid></Image>
+                                    <Image src={unit1} id="img-course" fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
@@ -1106,7 +1106,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course3} id="img-course" fluid></Image>
+                                    <Image src={unit2} id="img-course" fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>

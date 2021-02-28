@@ -11,16 +11,17 @@ import { QuestionCircleOutlined, UserOutlined, MenuOutlined } from '@ant-design/
 import { config } from '../config/config';
 import { FaCheckCircle } from "react-icons/fa";
 import letter from "../img/letter.png";
-import BIC from "../img/1.png";
-import NECTEC from "../img/7.png";
-import nstda from "../img/8.png";
-import onde from "../img/9.png";
-import PTEC from "../img/10.png";
-import mhesi from "../img/5.png";
-import SP from "../img/11.png";
-import TMC from "../img/12.png";
-import TSP from "../img/13.png";
-import DE from "../img/3.png";
+import BIC from "../img/1.webp";
+import DE from "../img/3.webp";
+import mhesi from "../img/5.webp";
+import NECTEC from "../img/7.webp";
+import nstda from "../img/8.webp";
+import onde from "../img/9.webp";
+import PTEC from "../img/10.webp";
+import SP from "../img/11.webp";
+import TMC from "../img/12.webp";
+import TSP from "../img/13.webp";
+
 
 const cookies = new Cookies();
 
@@ -346,11 +347,11 @@ export default withRouter(class Header extends Component {
                                                             :
                                                             <NavLink to="/Login"><Button type="primary" id="btn-sty1">เข้าสู่ระบบ</Button></NavLink>
                                                         }
-                                                        {window.innerWidth >= 1200 ?
+                                                        {/* {window.innerWidth >= 1200 ?
                                                             <Button type="primary" id="btn-sty1" onClick={() => this.onClickRegister()}>สมัครสมาชิก</Button>
                                                             :
                                                             <NavLink to="/Register"><Button type="primary" id="btn-sty1">สมัครสมาชิก</Button></NavLink>
-                                                        }
+                                                        } */}
                                                     </>
                                                     :
                                                     <>
@@ -438,12 +439,13 @@ export default withRouter(class Header extends Component {
                                         (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
                                             <Col xs={24} md={24} xl={24} id="row-btnsty">
                                                 <Row>
+                                                    <Col xs={12} md={12} xl={12}></Col>
                                                     <Col xs={12} md={12} xl={12}>
                                                         <span type="primary" id={(window.location.pathname === "/Login") || (window.location.pathname === "/login") ? "active-header" : "btn-sty"} onClick={() => this.LoginButton()}>เข้าสู่ระบบ</span>
                                                     </Col>
-                                                    <Col xs={12} md={12} xl={12}>
+                                                    {/* <Col xs={12} md={12} xl={12}>
                                                         <span type="primary" id={(window.location.pathname === "/Register") || (window.location.pathname === "/register") ? "active-header" : "btn-sty"} onClick={() => this.RegisterButton()}>สมัครสมาชิก</span>
-                                                    </Col>
+                                                    </Col> */}
                                                 </Row>
                                             </Col>
                                             :

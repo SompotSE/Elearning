@@ -12,13 +12,13 @@ import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
-import banner from "../../img/Banner/Course2.png";
+import banner from "../../img/Banner/Course2.webp";
 // import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';
 // import v2 from '../../img/V2.png';
 // import v3 from '../../img/V3.png';
 
-import course2 from '../../img/course2.png';
+import unit1 from '../../img/unit1.webp';
 import course3 from '../../img/course3.png';
 import course4 from '../../img/course4.png';
 import course5 from '../../img/course5.png';
@@ -930,7 +930,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={2} xl={2}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course2} id="img-course" fluid></Image>
+                                    <Image src={unit1} id="img-course" fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>

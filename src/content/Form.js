@@ -236,7 +236,7 @@ export default class AdminHome extends Component {
                     token: cookies.remove('token_user', { path: '/' }),
                     user: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             if (assessment_course.data?.assessment.length >= 1) {
@@ -299,7 +299,7 @@ export default class AdminHome extends Component {
                     token: cookies.remove('token_user', { path: '/' }),
                     user: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             swal("Success!", "สำเร็จ", "success").then((value) => {

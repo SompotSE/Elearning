@@ -76,7 +76,7 @@ export default class ForgrtPass extends Component {
                         user: cookies.remove('user', { path: '/' }),
                         email: cookies.remove('email', { path: '/' })
                     });
-                    window.location.replace('/Login', false);
+                    window.location.replace('/', false);
                 });
             } else {
                 swal("Error!", "เกิดข้อผิดพลาด \n กรุณาลองใหม่", "error").then((value) => {

@@ -127,7 +127,6 @@ export default class Login extends Component {
                                 </Form.Item>
                             </Col>
                             <Col xs={24} md={24} xl={24} id="row-login">
-                                {/* <Button id="btn-login">SIGN IN</Button> */}
                                 {
                                     (!this.state.statusSend) ? <Button htmlType="submit" id="btn-login">SIGN IN</Button> : <Spin />
                                 }
@@ -135,8 +134,7 @@ export default class Login extends Component {
                             <Col xs={24} md={24} xl={24} id="row-login">
                                 <NavLink to="/ForgetPass"><span id="ft-pass">ลืมรหัสผ่าน?</span></NavLink>
                             </Col>
-                            <Col xs={24} md={24} xl={24} id="row-login1"> คุณยังไม่มีบัญชี <NavLink to="/Register"><span id="link-regis">  ลงทะเบียนเข้าใช้ </span></NavLink>
-                            </Col>
+                            {/* <Col xs={24} md={24} xl={24} id="row-login1"> คุณยังไม่มีบัญชี <NavLink to="/Register"><span id="link-regis">  ลงทะเบียนเข้าใช้ </span></NavLink></Col> */}
                         </Col>
                         <Col xs={2} md={2} xl={2}></Col>
                     </Row>

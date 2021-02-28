@@ -56,7 +56,7 @@ export default class AdminTopScore extends Component {
                     user: cookies.remove('user', { path: '/' }),
                     email: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             console.log(viwe.data, " viwe.data")
@@ -75,7 +75,7 @@ export default class AdminTopScore extends Component {
                     user: cookies.remove('user', { path: '/' }),
                     email: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             console.log(exam.data, " exam.data")

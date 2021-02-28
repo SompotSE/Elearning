@@ -74,7 +74,7 @@ export default class ChangePass extends Component {
                             user: cookies.remove('user', { path: '/' }),
                             email: cookies.remove('email', { path: '/' })
                         });
-                        window.location.replace('/Login', false);
+                        window.location.replace('/', false);
                     });
                 } else {
                     swal("Error!", "เกิดข้อผิดพลาด \nกรุณาลองใหม่", "error").then((value) => {
@@ -102,7 +102,7 @@ export default class ChangePass extends Component {
             user: cookies.remove('user', { path: '/' }),
             email: cookies.remove('email', { path: '/' })
         });
-        window.location.replace('/Home', false);
+        window.location.replace('/', false);
     }
 
     render() {

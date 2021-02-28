@@ -48,7 +48,7 @@ export default class ExamPre extends Component {
                   token: cookies.remove('token_user', { path: '/' }),
                   user: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
               });
         } else {
             if(exam_pre.data.length > 0) {

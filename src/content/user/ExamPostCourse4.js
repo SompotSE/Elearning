@@ -74,7 +74,7 @@ export default withRouter(class ExamPost extends Component {
                     token: cookies.remove('token_user', { path: '/' }),
                     user: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/s', false);
             });
         } else {
             if (exam_post.data.length >= 3) {
@@ -92,7 +92,7 @@ export default withRouter(class ExamPost extends Component {
                     token: cookies.remove('token_user', { path: '/' }),
                     user: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             this.setState({
@@ -109,7 +109,7 @@ export default withRouter(class ExamPost extends Component {
                     token: cookies.remove('token_user', { path: '/' }),
                     user: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             this.setState({
@@ -165,7 +165,7 @@ export default withRouter(class ExamPost extends Component {
                         token: cookies.remove('token_user', { path: '/' }),
                         user: cookies.remove('email', { path: '/' })
                     });
-                    window.location.replace('/Login', false);
+                    window.location.replace('/', false);
                 });
             } else {
                 console.log(exam_ans.data.percenScore, " percenScore");

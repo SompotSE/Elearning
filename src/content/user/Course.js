@@ -110,7 +110,7 @@ export default withRouter(class Course1 extends Component {
         //             user: cookies.remove('user', { path: '/' }),
         //             email: cookies.remove('email', { path: '/' })
         //         });
-        //         window.location.replace('/Login', false);
+        //         window.location.replace('/', false);
         //     });
         // } else {
         //     if (exam_pre.data.length <= 0) {
@@ -127,7 +127,7 @@ export default withRouter(class Course1 extends Component {
                     user: cookies.remove('user', { path: '/' }),
                     email: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             this.setState({
@@ -145,7 +145,7 @@ export default withRouter(class Course1 extends Component {
                     user: cookies.remove('user', { path: '/' }),
                     email: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             this.setState({
@@ -162,7 +162,7 @@ export default withRouter(class Course1 extends Component {
                     user: cookies.remove('user', { path: '/' }),
                     email: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             this.setState({
@@ -178,7 +178,7 @@ export default withRouter(class Course1 extends Component {
                     token: cookies.remove('token_user', { path: '/' }),
                     user: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             this.setState({
@@ -209,7 +209,7 @@ export default withRouter(class Course1 extends Component {
     //                 user: cookies.remove('user', { path: '/' }),
     //                 email: cookies.remove('email', { path: '/' })
     //             });
-    //             window.location.replace('/Login', false);
+    //             window.location.replace('/', false);
     //         });
     //     } else {
 
@@ -232,7 +232,7 @@ export default withRouter(class Course1 extends Component {
                         user: cookies.remove('user', { path: '/' }),
                         email: cookies.remove('email', { path: '/' })
                     });
-                    window.location.replace('/Login', false);
+                    window.location.replace('/', false);
                 });
             } else {
                 var url_course = ip + "/UserCourse/find/" + CourseCode;
@@ -244,7 +244,7 @@ export default withRouter(class Course1 extends Component {
                             user: cookies.remove('user', { path: '/' }),
                             email: cookies.remove('email', { path: '/' })
                         });
-                        window.location.replace('/Login', false);
+                        window.location.replace('/', false);
                     });
                 } else {
                     this.setState({
@@ -290,7 +290,7 @@ export default withRouter(class Course1 extends Component {
                         user: cookies.remove('user', { path: '/' }),
                         email: cookies.remove('email', { path: '/' })
                     });
-                    window.location.replace('/Login', false);
+                    window.location.replace('/', false);
                 });
             } else {
                 var url_topic = ip + "/UserTopic/find/" + CourseCode;
@@ -302,7 +302,7 @@ export default withRouter(class Course1 extends Component {
                             user: cookies.remove('user', { path: '/' }),
                             email: cookies.remove('email', { path: '/' })
                         });
-                        window.location.replace('/Login', false);
+                        window.location.replace('/', false);
                     });
                 } else {
                     this.setState({
@@ -375,7 +375,7 @@ export default withRouter(class Course1 extends Component {
                     user: cookies.remove('user', { path: '/' }),
                     email: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             return update_time?.status;

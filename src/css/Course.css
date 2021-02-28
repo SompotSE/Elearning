@@ -3,7 +3,7 @@
 }
 
 #row-headercourse {
-    margin-top: 1%;
+    margin-top: 2%;
     margin-bottom: 1%;
     margin-left: 5%;
     margin-right: 5%;
@@ -650,4 +650,8 @@
 #teacher1{
     display: flex;
     justify-content: center;
+}
+
+#img-main-course {
+    margin-top: 2%;
 }

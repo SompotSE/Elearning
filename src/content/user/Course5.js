@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Image } from 'react-bootstrap';
-import { Row, Col, Breadcrumb, Progress, Collapse, Button, Modal } from 'antd';
-import { HomeOutlined, SnippetsOutlined, RightCircleTwoTone, BorderOutlined } from '@ant-design/icons';
+import { Row, Col, Progress, Collapse, Button, Modal } from 'antd'; //Breadcrumb
+import { RightCircleTwoTone, BorderOutlined } from '@ant-design/icons'; //HomeOutlined, SnippetsOutlined,
 import { withRouter } from "react-router-dom";
 import { AiFillCheckSquare } from "react-icons/ai";
 import axios from 'axios';
@@ -13,7 +13,7 @@ import imgcourse from '../../img/userhome.png';
 import TeacherCourse5_1 from '../../img/Teacher/TeacherCourse5_1.webp';
 import TeacherCourse5_2 from '../../img/Teacher/TeacherCourse5_2.webp';
 import TeacherCourse5_3 from '../../img/Teacher/TeacherCourse5_3.webp';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import banner from "../../img/Banner/Course5.webp";
 
 import unit1 from '../../img/unit1.webp';
@@ -138,7 +138,7 @@ export default withRouter(class Course4 extends Component {
                     user: cookies.remove('user', { path: '/' }),
                     email: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             this.setState({
@@ -156,7 +156,7 @@ export default withRouter(class Course4 extends Component {
                     user: cookies.remove('user', { path: '/' }),
                     email: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             this.setState({
@@ -173,7 +173,7 @@ export default withRouter(class Course4 extends Component {
                     user: cookies.remove('user', { path: '/' }),
                     email: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             console.log(topic.data, " topic.data")
@@ -190,7 +190,7 @@ export default withRouter(class Course4 extends Component {
                     token: cookies.remove('token_user', { path: '/' }),
                     user: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             this.setState({
@@ -216,7 +216,7 @@ export default withRouter(class Course4 extends Component {
                         user: cookies.remove('user', { path: '/' }),
                         email: cookies.remove('email', { path: '/' })
                     });
-                    window.location.replace('/Login', false);
+                    window.location.replace('/', false);
                 });
             } else {
                 var url_course = ip + "/UserCourse/find/" + CourseCode;
@@ -228,7 +228,7 @@ export default withRouter(class Course4 extends Component {
                             user: cookies.remove('user', { path: '/' }),
                             email: cookies.remove('email', { path: '/' })
                         });
-                        window.location.replace('/Login', false);
+                        window.location.replace('/', false);
                     });
                 } else {
                     this.setState({
@@ -309,7 +309,7 @@ export default withRouter(class Course4 extends Component {
                         user: cookies.remove('user', { path: '/' }),
                         email: cookies.remove('email', { path: '/' })
                     });
-                    window.location.replace('/Login', false);
+                    window.location.replace('/', false);
                 });
             } else {
                 var url_topic = ip + "/UserTopic/find/" + CourseCode;
@@ -321,7 +321,7 @@ export default withRouter(class Course4 extends Component {
                             user: cookies.remove('user', { path: '/' }),
                             email: cookies.remove('email', { path: '/' })
                         });
-                        window.location.replace('/Login', false);
+                        window.location.replace('/', false);
                     });
                 } else {
                     this.setState({
@@ -520,7 +520,7 @@ export default withRouter(class Course4 extends Component {
                     user: cookies.remove('user', { path: '/' }),
                     email: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/Login', false);
+                window.location.replace('/', false);
             });
         } else {
             return update_time?.status;
@@ -563,7 +563,7 @@ export default withRouter(class Course4 extends Component {
                 <Row>
                     <Image src={banner} fluid></Image>
                 </Row>
-                <Row id="row-headercourse">
+                {/* <Row id="row-headercourse">
                     <Breadcrumb>
                         <Breadcrumb.Item>
                             <NavLink to="/HomeUser"><HomeOutlined /><span>Home</span></NavLink>
@@ -572,7 +572,7 @@ export default withRouter(class Course4 extends Component {
                             <SnippetsOutlined /><span>หลักสูตร IEC 60601  Series มาตรฐานความปลอดภัยและความมีประสิทธิภาพของเครื่องมือแพทย์	ที่เกี่ยวข้องกับอุปกรณ์ไฟฟ้าอิเล็กทรอนิกส์</span>
                         </Breadcrumb.Item>
                     </Breadcrumb>
-                </Row>
+                </Row> */}
                 <Row id="row-headercourse">
                     <Col xs={24} md={12} xl={12}>
                         <Image src={imgcourse} fluid></Image>

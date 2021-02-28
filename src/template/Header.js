@@ -224,7 +224,7 @@ export default withRouter(class Header extends Component {
                             user: cookies.remove('user', { path: '/' }),
                             email: cookies.remove('email', { path: '/' })
                         });
-                        window.location.replace('/Login', false);
+                        window.location.replace('/', false);
                     });
                 } else {
                     swal("Error!", "เกิดข้อผิดพลาด \nกรุณาลองใหม่", "error").then((value) => {
@@ -274,7 +274,7 @@ export default withRouter(class Header extends Component {
                         user: cookies.remove('user', { path: '/' }),
                         email: cookies.remove('email', { path: '/' })
                     });
-                    window.location.replace('/Login', false);
+                    window.location.replace('/', false);
                 });
             } else {
                 swal("Error!", "เกิดข้อผิดพลาด \n กรุณาลองใหม่", "error").then((value) => {
@@ -301,7 +301,7 @@ export default withRouter(class Header extends Component {
             user: cookies.remove('user', { path: '/' }),
             email: cookies.remove('email', { path: '/' })
         });
-        window.location.replace('/Home', false);
+        window.location.replace('/', false);
     }
 
     LoginButton() {
@@ -576,7 +576,7 @@ export default withRouter(class Header extends Component {
                                 <Col xs={24} md={24} xl={24} id="row-login">
                                     <span id="ft-pass" onClick={() => this.showForgetPass()} style={{ cursor: "pointer" }}>ลืมรหัสผ่าน?</span>
                                 </Col>
-                                <Col xs={24} md={24} xl={24} id="row-login1">คุณยังไม่มีบัญชี <span id="link-regis" style={{ cursor: "pointer" }} onClick={() => { this.onClickRegister() }}> ลงทะเบียนเข้าใช้ </span></Col>
+                                {/* <Col xs={24} md={24} xl={24} id="row-login1">คุณยังไม่มีบัญชี <span id="link-regis" style={{ cursor: "pointer" }} onClick={() => { this.onClickRegister() }}> ลงทะเบียนเข้าใช้ </span></Col> */}
                             </Col>
                             <Col xs={4} md={4} xl={4}></Col>
                         </Row>

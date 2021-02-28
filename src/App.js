@@ -3,7 +3,7 @@ import './App.css';
 import { Layout } from 'antd';
 import PageHeader from './template/Header';
 import PageFooter from './template/Footer';
-import PageHeader2 from './template/Header2';
+// import PageHeader2 from './template/Header2';
 import Routing from "./route";
 // import Register from '../src/content/Register'
 // import Login from '../src/content/Login';

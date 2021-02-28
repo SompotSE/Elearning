@@ -10,44 +10,43 @@ import swal from 'sweetalert';
 import ReactPlayer from 'react-player';
 import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
-import userprofile from '../../img/userprofile.png';
+import TeacherCourse5_1 from '../../img/Teacher/TeacherCourse5_1.png';
+import TeacherCourse5_2 from '../../img/Teacher/TeacherCourse5_2.png';
+import TeacherCourse5_3 from '../../img/Teacher/TeacherCourse5_3.png';
 import { NavLink } from 'react-router-dom';
 import banner from "../../img/Banner/Course5.png";
-// import { AiFillPlayCircle } from "react-icons/ai";
-// import v1 from '../../img/V1.png';
-// import v2 from '../../img/V2.png';
-// import v3 from '../../img/V3.png';
 
 import course2 from '../../img/course2.png';
 import course3 from '../../img/course3.png';
 import course4 from '../../img/course4.png';
 import course5 from '../../img/course5.png';
 
-// import incourse1 from '../../img/incourse1.svg';
-// import incourse2 from '../../img/incourse2.svg';
+import pdf from "../../pdf/Course5.pdf"
 
 import testV1 from '../../video/test.mp4';
 
 import { config } from '../../config/config';
-// import banner from '../../img/banner.png';
 
 const { Panel } = Collapse;
 const cookies = new Cookies();
 
 const ip = config.ipServer;
-const CourseCode = "COURSE1004";
+const CourseCode = "COURSE1005";
 
 const TopicCount = 9;
 
-const TopicCode1 = "TOP400001";
-const TopicCode2 = "TOP400002";
-const TopicCode3 = "TOP400003";
-const TopicCode4 = "TOP400004";
-const TopicCode5 = "TOP400005";
-const TopicCode6 = "TOP400006";
-const TopicCode7 = "TOP400007";
-const TopicCode8 = "TOP400008";
-const TopicCode9 = "TOP400009";
+const TopicCode1 = "TOP500001";
+const TopicCode2 = "TOP500002";
+const TopicCode3 = "TOP500003";
+const TopicCode4 = "TOP500004";
+const TopicCode5 = "TOP500005";
+const TopicCode6 = "TOP500006";
+const TopicCode7 = "TOP500007";
+const TopicCode8 = "TOP500008";
+const TopicCode9 = "TOP500009";
+const TopicCode10 = "TOP500010";
+const TopicCode11 = "TOP500011";
+const TopicCode12 = "TOP500012";
 
 const ExamCodePost = "EXAM10002";
 
@@ -60,6 +59,9 @@ var timeTopic6 = 0;
 var timeTopic7 = 0;
 var timeTopic8 = 0;
 var timeTopic9 = 0;
+var timeTopic10 = 0;
+var timeTopic11 = 0;
+var timeTopic12 = 0;
 
 export default withRouter(class Course4 extends Component {
     constructor(props) {
@@ -81,11 +83,15 @@ export default withRouter(class Course4 extends Component {
             playingTopic7: false,
             playingTopic8: false,
             playingTopic9: false,
+            playingTopic10: false,
+            playingTopic11: false,
+            playingTopic12: false,
 
             examPost: [],
             percentExamPost: 0,
 
             isModaldetailCertificate: false,
+            isModalCertificate: false
         };
 
         this.onDownlode = this.onDownlode.bind(this);
@@ -101,10 +107,14 @@ export default withRouter(class Course4 extends Component {
         this.onProgressVedioTopic7 = this.onProgressVedioTopic7.bind(this);
         this.onProgressVedioTopic8 = this.onProgressVedioTopic8.bind(this);
         this.onProgressVedioTopic9 = this.onProgressVedioTopic9.bind(this);
+        this.onProgressVedioTopic10 = this.onProgressVedioTopic10.bind(this);
+        this.onProgressVedioTopic11 = this.onProgressVedioTopic11.bind(this);
+        this.onProgressVedioTopic12 = this.onProgressVedioTopic12.bind(this);
         this.onEndedVedio = this.onEndedVedio.bind(this);
         this.playingVedio = this.playingVedio.bind(this);
         this.updateTimeTopic = this.updateTimeTopic.bind(this);
-        this.info = this.info.bind(this);
+        this.showCertificate = this.showCertificate.bind(this);
+        this.showCertificateOK = this.showCertificateOK.bind(this);
     }
 
     componentWillMount() {
@@ -227,6 +237,13 @@ export default withRouter(class Course4 extends Component {
                 }
             }
         }
+
+        const save = document.createElement('a');
+        save.href = pdf;
+        save.target = '_blank';
+        save.rel = "noopener noreferrer";
+        save.download = "IEC60601.pdf";
+        save.click();
     }
 
     playingVedio(topicCode) {
@@ -239,6 +256,9 @@ export default withRouter(class Course4 extends Component {
         var playTopic7 = false;
         var playTopic8 = false;
         var playTopic9 = false;
+        var playTopic10 = false;
+        var playTopic11 = false;
+        var playTopic12 = false;
 
         if (topicCode === TopicCode1) { playTopic1 = true }
         else if (topicCode === TopicCode2) { playTopic2 = true }
@@ -249,6 +269,9 @@ export default withRouter(class Course4 extends Component {
         else if (topicCode === TopicCode7) { playTopic7 = true }
         else if (topicCode === TopicCode8) { playTopic8 = true }
         else if (topicCode === TopicCode9) { playTopic9 = true }
+        else if (topicCode === TopicCode10) { playTopic10 = true }
+        else if (topicCode === TopicCode11) { playTopic11 = true }
+        else if (topicCode === TopicCode12) { playTopic12 = true }
 
         this.setState({
             playingTopic1: playTopic1,
@@ -259,7 +282,10 @@ export default withRouter(class Course4 extends Component {
             playingTopic6: playTopic6,
             playingTopic7: playTopic7,
             playingTopic8: playTopic8,
-            playingTopic9: playTopic9
+            playingTopic9: playTopic9,
+            playingTopic10: playTopic10,
+            playingTopic11: playTopic11,
+            playingTopic12: playTopic12
         })
     }
 
@@ -387,6 +413,33 @@ export default withRouter(class Course4 extends Component {
         }
     }
 
+    onProgressVedioTopic10(state) {
+        // state is time in vedio play
+        if (this.state.playingTopic10) { timeTopic10 += 1; }
+        if (timeTopic10 === 10) {
+            this.updateTimeTopic(TopicCode10, timeTopic10);
+            timeTopic10 = 0;
+        }
+    }
+
+    onProgressVedioTopic11(state) {
+        // state is time in vedio play
+        if (this.state.playingTopic11) { timeTopic11 += 1; }
+        if (timeTopic11 === 10) {
+            this.updateTimeTopic(TopicCode11, timeTopic11);
+            timeTopic11 = 0;
+        }
+    }
+
+    onProgressVedioTopic12(state) {
+        // state is time in vedio play
+        if (this.state.playingTopic12) { timeTopic12 += 1; }
+        if (timeTopic12 === 10) {
+            this.updateTimeTopic(TopicCode12, timeTopic12);
+            timeTopic12 = 0;
+        }
+    }
+
     onEndedVedio(Topic) {
         var time = 0;
         if (Topic === TopicCode1) {
@@ -433,6 +486,21 @@ export default withRouter(class Course4 extends Component {
             time = timeTopic9;
             timeTopic9 = 0;
             this.setState({ playingTopic9: false })
+        }
+        else if (Topic === TopicCode10) {
+            time = timeTopic10;
+            timeTopic10 = 0;
+            this.setState({ playingTopic10: false })
+        }
+        else if (Topic === TopicCode11) {
+            time = timeTopic11;
+            timeTopic11 = 0;
+            this.setState({ playingTopic11: false })
+        }
+        else if (Topic === TopicCode12) {
+            time = timeTopic12;
+            timeTopic12 = 0;
+            this.setState({ playingTopic12: false })
         }
 
         this.updateTimeTopic(Topic, time);
@@ -482,21 +550,11 @@ export default withRouter(class Course4 extends Component {
         }
     }
 
-    showdetailCertificate() {
-        this.setState({ isModaldetailCertificate: true });
+    showCertificate() {
+        this.setState({ isModalCertificate: true });
     }
-
-    info() {
-        Modal.info({
-            title: 'ข้อมูลการรับใบ Certificate',
-            width: "500px",
-            content: (
-                <div>
-                    <p id="certifi">สามารถติดต่อขอรับใบ Certificate ได้ที่หน่วยงานต้นสังกัด</p>
-                </div>
-            ),
-            onOk() { },
-        });
+    showCertificateOK() {
+        this.setState({ isModalCertificate: false });
     }
 
     render() {
@@ -511,7 +569,7 @@ export default withRouter(class Course4 extends Component {
                             <NavLink to="/HomeUser"><HomeOutlined /><span>Home</span></NavLink>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
-                            <SnippetsOutlined /><span>หลักสูตร IEC 62304 มาตรฐาน Life Cycle ของการพัฒนาซอฟต์แวร์สำหรับอุปกรณ์การแพทย์และ ซอฟต์แวร์ด้านการแพทย์</span>
+                            <SnippetsOutlined /><span>หลักสูตร IEC 60601  Series มาตรฐานความปลอดภัยและความมีประสิทธิภาพของเครื่องมือแพทย์	ที่เกี่ยวข้องกับอุปกรณ์ไฟฟ้าอิเล็กทรอนิกส์</span>
                         </Breadcrumb.Item>
                     </Breadcrumb>
                 </Row>
@@ -521,36 +579,55 @@ export default withRouter(class Course4 extends Component {
                     </Col>
                     <Col xs={24} md={12} xl={12}>
                         <Row id="font-header">รายละเอียด</Row>
-                        <Row id="font-detail">หลักสูตร IEC 62304 มาตรฐาน Life Cycle ของการพัฒนาซอฟต์แวร์สำหรับอุปกรณ์การแพทย์และซอฟต์แวร์ด้านการแพทย์</Row>
+                        <Row id="font-detail">หลักสูตร IEC 60601  Series มาตรฐานความปลอดภัยและความมีประสิทธิภาพของเครื่องมือแพทย์	ที่เกี่ยวข้องกับอุปกรณ์ไฟฟ้าอิเล็กทรอนิกส์</Row>
                         <Row id="font-header">วัตถุประสงค์</Row>
-                        <Row id="font-detail2">1. เพื่อให้เข้าใจมาตรฐานที่เกี่ยวข้องกับซอฟต์แวร์เครื่องมือแพทย์ (ข้อกำหนดของมาตรฐาน การเชื่อมโยงระหว่างมาตรฐาน) รวมทั้งเพื่อให้เข้าใจคำนิยามต่างๆ และภาพรวมกระบวนการพัฒนาซอฟต์แวร์เครื่องมือแพทย์แบบ V-Model</Row>
-                        <Row id="font-detail2">2. เพื่อให้เข้าใจและประยุกต์การพัฒนาซอฟต์แวร์เครื่องมือแพทย์ตามหลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ให้สอดคล้องตาม มาตรฐาน IEC62304: 2006 +AMD1:2015</Row>
-                        <Row id="font-detail2">3. เพื่อให้เห็นภาพและเข้าใจการประยุกต์การพัฒนาซอฟต์แวร์เครื่องมือแพทย์ตามหลักการวิศวกรรมซอฟต์แวร์ให้สอดคล้องตาม มาตรฐาน IEC62304: 2006 +AMD1:2015 โดยการยกตัวอย่างกรณีศึกษา</Row>
-                        <Row id="font-detail2">4. เพื่อให้ทราบการประยุกต์ให้หน่วยงาน SME ที่พัฒนาซอฟต์แวร์ตามมาตรฐาน ISO/IEC 29110 ยกระดับให้เป็นมาตรฐาน ISO/IEC 62304 สำหรับการพัฒนาซอฟต์แวร์เครื่องมือแพทย์</Row>
+                        <Row id="font-detail2">1. เพื่อยกระดับฐานความรู้ของบุคลากรของภาคอุตสาหกรรม และผู้สนใจ ให้มีความรู้ ความเข้าใจถึงแนวโน้มการบังคับใช้มาตรฐานที่เกี่ยวข้องกับผลิตภัณฑ์เครื่องมือแพทย์ประเภทไฟฟ้าอิเล็กทรอนิกส์ และทราบถึงความสำคัญของมาตรฐาน การทดสอบ การทดสอบตามมาตรฐาน IEC60601 ในด้านต่างๆ อาทิ เช่น ด้านความปอดภัย ด้านความเข้ากันได้ทางแม่เหล็กไฟฟ้า EMC และด้านมาตรฐานเฉพาะของเครื่องมือแพทย์ฯ </Row>
+                        <Row id="font-detail2">2. เพื่อนำความรู้ที่ได้ไปดำเนินการวางแผนการพัฒนา ปรับปรุงประสิทธิภาพผลิตภัณฑ์เครื่องมือแพทย์เพื่อลดความเสี่ยงจากการสูญเสียเวลา ค่าใช้จ่าย และเพิ่มโอกาสทางธุรกิจ แก่การผลิตเครื่องมือแพทย์</Row>
+                        <Row id="font-detail2">3. เพื่อทราบกระบวนการในการขอเครื่องหมายรับรองทางการค้าผลิตภัณฑ์เครื่องมือแพทย์ ทั้งในตลาดสากล อาทิเช่น CE  เป็นต้น </Row>
+                        <Row id="font-detail2">4. เพื่อให้บุคลากรของภาคอุตสาหกรรม เข้าใจถึงหลักการในการทดสอบแต่ละส่วน และนำความรู้ที่ได้ไปใช้ในการควบคุมคุณภาพของกระบวนการผลิตเครื่องมือแพทย์ในโรงงานอุตสาหกรรม</Row>
+                        <Row id="font-detail2">5. เพื่อให้บุคลากรของภาคอุตสาหกรรม สามารถนำความรู้ที่ได้ไปประยุกต์ ใช้ในการวิจัยพัฒนาผลิตภัณฑ์ของหน่วยงาน ตั้งแต่กระบวนการวางแผนการออกแบบผลิตภัณฑ์ การแก้ไขปัญหาผลิตภัณฑ์การขอเครื่องหมายรับรองฯ</Row>
                     </Col>
                 </Row>
 
                 <Row id="row-headercourse">
                     <Col xs={24} md={12} xl={12}>
                         <Row>
-                            <Col xs={7} md={7} xl={7}><Image src={userprofile} id="teacher-img" fluid></Image></Col>
-                            <Col xs={17} md={17} xl={17}>
-                                <Row id="font-header">ผู้สอน</Row>
-                                <Row id="font-detail">ดร. พนิตา  เมนะเนตร</Row>
-                                <Row id="font-header">หน่วยงานหลัก</Row>
-                                <Row id="font-detail">ศูนย์ทดสอบผลิตภัณฑ์ไฟฟ้าและอิเล็กทรอนิกส์ (PTEC) สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (สวทช.) กระทรวงอุดมศึกษาวิทยาศาสตร์ วิจัยและนวัตรกรรม</Row>
+                            <Col xs={24} md={24} xl={24} id="font-header1">ผู้สอน</Col>
+                            <Col xs={24} md={24} xl={24}>
+                                <Row id="teacher">
+                                    <Col xs={24} md={8} xl={6} id="teacher1">
+                                        <Row>
+                                            <Col xs={24} md={24} xl={24} id="teacher1"><Image src={TeacherCourse5_1} width="60%" id="teacher-img" fluid></Image></Col>
+                                            <Col xs={24} md={24} xl={24} id="teacher3">ดร.ไกรสร อัญชลีวรพันธุ์</Col>
+                                        </Row>
+                                    </Col>
+                                    <Col xs={24} md={8} xl={6} id="teacher1">
+                                        <Row>
+                                            <Col xs={24} md={24} xl={24} id="teacher1"><Image src={TeacherCourse5_2} width="60%" id="teacher-img" fluid></Image></Col>
+                                            <Col xs={24} md={24} xl={24} id="teacher3">อาจารย์เรืองฤทธิ์ หนิแหนะ</Col>
+                                        </Row>
+                                    </Col>
+                                    <Col xs={24} md={8} xl={6} id="teacher1">
+                                        <Row>
+                                            <Col xs={24} md={24} xl={24} id="teacher1"><Image src={TeacherCourse5_3} width="60%" id="teacher-img" fluid></Image></Col>
+                                            <Col xs={24} md={24} xl={24} id="teacher3">อาจารย์ เอนก มีมูซอ</Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
                             </Col>
+                            <Row id="font-header">หน่วยงานหลัก</Row>
+                            <Row id="font-detail">ศูนย์ทดสอบผลิตภัณฑ์ไฟฟ้าและอิเล็กทรอนิกส์ (PTEC) สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (สวทช.) กระทรวงอุดมศึกษาวิทยาศาสตร์ วิจัยและนวัตรกรรม</Row>
                         </Row>
                     </Col>
 
                     <Col xs={24} md={12} xl={12}>
                         <Row>
                             <Col xs={24} md={24} xl={24} id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Col>
-                            <Col xs={24} md={24} xl={12}>
+                            <Col xs={24} md={24} xl={12} id="certi-note">
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
-                                            <Row id="btn-certificate"><Button onClick={this.info}>ข้อมูลการรับใบ Certificate</Button></Row>
+                                            <Row id="btn-certificate"><Button onClick={() => this.showCertificate()}>ข้อมูลการรับใบ Certificate</Button></Row>
                                         </>
                                         :
                                         <>
@@ -558,25 +635,25 @@ export default withRouter(class Course4 extends Component {
                                         </>
                                 }
                             </Col>
-                            <Col xs={24} md={24} xl={12} id="progress-course">
+                            <Col xs={24} md={24} xl={12} id="progress-course2">
                                 <Progress type="circle" percent={this.state.percentExamPost} strokeColor={(this.state.percentExamPost >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
                             </Col>
                             {
                                 (this.state.percentExamPost >= 80) ?
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
-                                        <Col xs={24} md={24} xl={12} id="progress-course1">
+                                        <Col xs={24} md={24} xl={12} id="progress-course3">
                                             <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
                                         </Col>
                                     </>
                                     :
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
-                                        <Col xs={24} md={24} xl={12} id="progress-course1">
+                                        <Col xs={24} md={24} xl={12} id="progress-course3">
                                             <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
                                         </Col>
                                         <Col xs={0} md={0} xl={12}></Col>
-                                        <Col xs={24} md={24} xl={12} id="progress-course1">
+                                        <Col xs={24} md={24} xl={12} id="progress-course3">
                                             <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
                                         </Col>
                                     </>
@@ -607,7 +684,7 @@ export default withRouter(class Course4 extends Component {
 
                             <Panel header="บทเรียน" key="2">
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 1. ภาพรวมมาตรฐานของซอฟต์แวร์เครื่องมือแพทย์ IEC60601 Cl.14 and IEC62304 </Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 1. มาตรฐานเครื่องมือแพทย์ประเภทไฟฟ้าและอิเล็กทรอนิกส์ IEC60601 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -634,15 +711,12 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะมีมาตรฐานต่างๆ ที่เกี่ยวข้อง ในบทเรียนนี้มีวัตถุประสงค์ เพื่อให้เข้าใจมาตรฐานที่เกี่ยวข้องกับซอฟต์แวร์เครื่องมือแพทย์ (ข้อกำหนดของมาตรฐาน การเชื่อมโยงระหว่างมาตรฐาน) รวมทั้งเพื่อให้เข้าใจคำนิยามต่างๆ และภาพรวมกระบวนการพัฒนาซอฟต์แวร์เครื่องมือแพทย์แบบ V-Model  </Row>
+                                        <Row id="unit-detail">แนะนำเกี่ยวกับโครงสร้างมาตรฐานเครื่องมือแพทย์ประเภทไฟฟ้าและอิเล็กทรอนิกส์ IEC60601 และมาตรฐานกลุ่ม collateral standards และ particular standards</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 2. Software Engineering Overview – Part 1
-                                    Software development Process (กระบวนการพัฒนาซอฟต์แวร์)
-                                    Software Project Management (การจัดการโครงการพัฒนาซอฟต์แวร์)
-                                    </Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 2. มาตรฐานด้านความเข้ากันได้ทางแม่เหล็กไฟฟ้าสำหรับเครื่องมือแพทย์</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -669,12 +743,12 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ เริ่มจาก Software development Process  ในบทเรียนนี้ มีวัตถุประสงค์ เพื่อเข้าใจและทราบการประยุกต์กระบวนc]tจัดการโครงการการพัฒนาซอฟต์แวร์เครื่องมือแพทย์ </Row>
+                                        <Row id="unit-detail">พื้นฐานการแพร่คลื่นแม่เหล็กไฟฟ้า แหล่งกำเนิดสัญญาณรบกวนแม่เหล็กไฟฟ้า มาตรฐานการทดสอบการแพร่คลื่นแม่เหล็กไฟฟ้าสำหรับเครื่องมือแพทย์ตามมาตรฐาน IEC60601-1-2 หัวข้อการทดสอบย่อยๆ เช่น การแพร่คลื่นแม่เหล็กไฟฟ้าทางสายตัวนำ ทางอากาศ และการทดสอบความอ่อนไหวต่อการถูกรบกวนแม่เหล็กไฟฟ้า มาตรฐานของเครื่องมือแพทย์เฉพาะ(particular standards)  อธิบายวิธีการทดสอบตามมาตรฐาน IEC60601-2-X โดยการใช้โครงสร้างมาตรฐานหลัก</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 3. Software Engineering Overview – Part 1 Software Requirement Management (การจัดการโครงการพัฒนาซอฟต์แวร์)</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 3. การขอการรับรองเครื่องมือแพทย์ในสากล</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -700,12 +774,12 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software requirement Management  ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์กระบวนการจัดการความต้องการระบบ พร้อมยกตัวอย่าง Case study : A generic insulin infusion pump ของ Zhang Y, Jones PL, Jetley R. เพื่อแสดงให้เห็นการประยุกต์ใช้วิศวกรรมซอฟต์แวร์ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์ และแสดงตัวอย่างความสอดคล้องบางข้อกำหนดใน IEC62304</Row>
+                                        <Row id="unit-detail">ตัวอย่างของการขอการรับรองเครื่องมือแพทย์: เครื่องช่วยฟังเพื่อขอเครื่องหมาย CE </Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 4. Software Engineering Overview – Part 1 Software Analysis and design (การวิเคราะห์และออกแบบซอฟต์แวร์)</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 4. โครงสร้างของมาตรฐาน IEC 60601-1</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode4)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -731,12 +805,12 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software requirement Management  ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์กระบวนการวิเคราะห์และออกแบบซอฟต์แวร์ และ ทราบลักษณะการออกแบบสถาปัตยกรรม รวมทั้ง จัดทำการประเมิน Safety Classification ได้ พร้อมยกตัวอย่าง Case study : A generic insulin infusion pump ของ Zhang Y, Jones PL, Jetley R. เพื่อแสดงให้เห็นการประยุกต์ใช้วิศวกรรมซอฟต์แวร์ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์ และแสดงตัวอย่างความสอดคล้องบางข้อกำหนดใน IEC62304</Row>
+                                        <Row id="unit-detail">องค์กรที่กำหนดมาตรฐาน โครงสร้างและชนิดของมาตรฐานเครื่องมือแพทย์ทางไฟฟ้า การแบ่งชนิดของเครื่องมือแพทย์ทางไฟฟ้าs</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 5. Software Engineering Overview – Part 2 Software Quality Management (การจัดการคุณภาพซอฟต์แวร์)</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 5. การชี้บ่งบริภัณฑ์ไฟฟ้าทางการแพทย์  การทำเครื่องหมาย และเอกสาร</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode5)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -762,12 +836,12 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software Quality Management ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์การจัดการคุณภาพซอฟต์แวร์ ได้แก่ verification and validation และ review and testing</Row>
+                                        <Row id="unit-detail">ข้อกำหนดเกี่ยวกับการทำเครื่องหมายสัญลักษณ์บนเครื่องมือแพทย์ทางไฟฟ้า ข้อกำหนดเกี่ยวกับการจัดทำคู่มือการใช้งานเครื่องมือแพทย์ทางไฟฟ้า</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 6. Software Engineering Overview – Part 2 Software Configuration Management </Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 6. การป้องกันอันตรายทางไฟฟ้า จากบริภัณฑ์ไฟฟ้าทางการแพทย์ </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode6)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -793,12 +867,12 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software Configuration Management  ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์กระบวนการ Configuration และ Change</Row>
+                                        <Row id="unit-detail">ข้อกำหนดการแยกส่วนของเครื่องมือแพทย์ทางไฟฟ้า Separation of parts การทดสอบความคงทนของฉนวน Dielectric strength test การทดสอบระยะห่างผิวฉนวนและระยะห่างอากาศ Creepage distances and Air clearances การทดสอบกระแสไฟฟ้ารั่ว Leakage currents</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 7. Software Engineering Overview – Part 2 Software Risk Management </Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 7. การป้องกันอันตรายทางกลของบริภัณฑ์ไฟฟ้าทางการแพทย์ </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode7)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -824,12 +898,12 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software Risk Management  ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์กระบวนการประเมินความเสี่ยง ตาม ISO14971 สำหรับซอฟต์แวร์เครื่องมือแพทย์ พร้อมยกตัวอย่าง Case study : A generic insulin infusion pump ของ Zhang Y, Jones PL, Jetley R. เพื่อแสดงให้เห็นการประยุกต์ใช้วิศวกรรมซอฟต์แวร์ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์ และแสดงตัวอย่างความสอดคล้องบางข้อกำหนดใน IEC62304</Row>
+                                        <Row id="unit-detail">ข้อกำหนดด้านการป้องกันอันตรายทางกล ข้อกำหนดด้านอันตรายที่เกิดจากเสียงการทำงาน และการสั่น ของเครื่องมือแพทย์ทางไฟฟ้า</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 8. Software Engineering Overview – Part 2 Software Maintenance & Re-Engineering Supporting Tools for Software Engineering</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 8. การป้องกันอันตรายที่เกิดจากการแผ่รังสีที่ไม่ต้องการและอุณหภูมิที่สูงเกินควร </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode8)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -855,12 +929,12 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software Maintenance & Re-Engineering ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์กระบวนการบำรุงรักษาซอฟต์แวร์และกระบวนการจัดการปัญหา และในส่วน Supporting Tools for Software Engineering ในบทเรียนนี้ มีวัตถุประสงค์เพื่อทราบเครื่องมือสนับสนุนการพัฒนาซอฟต์แวร์เครื่องมือแพทย์</Row>
+                                        <Row id="unit-detail">การป้องกันอันตรายที่เกิดจากการแผ่รังสี X-Radiation Alpha, beta, gamma, neutron and other particle radiation, Microwave radiation, Lasers, Infrared radiation, Ultraviolet radiation (UV) การป้องกันอุณหภูมิที่สูงเกินควรและอันตรายอื่นๆ ของบริภัณฑ์ไฟฟ้าทางการแพทย์</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 9. Applying ISO/IEC 29110 to ISO/IEC 62304 for Medical device software SME</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 9. สภาพเสี่ยงอันตรายและภาวะผิดพร่อง และ การสร้างบริภัณฑ์ไฟฟ้าทางการแพทย์</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.topicAll?.filter((item) => item.topicCode === TopicCode9)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -886,7 +960,100 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">อธิบายการประยุกต์ให้หน่วยงาน SME ที่พัฒนาซอฟต์แวร์ตามมาตรฐาน  ISO/IEC 29110 ยกระดับให้เป็นมาตรฐาน ISO/IEC 62304 สำหรับการพัฒนาซอฟต์แวร์เครื่องมือแพทย์ </Row>
+                                        <Row id="unit-detail">การจำลองภาวะผิดพร่อง fault conditions เพื่อประเมินความเสี่ยงอันตรายของเครื่องมือแพทย์ ข้อกำหนดเกี่ยวกับการออกแบบบริภัณฑ์ไฟฟ้าทางการแพทย์ การเลือกส่วนประกอบ Component และชุดประกอบทั่วไป</Row>
+                                    </Col>
+                                </Row>
+
+                                <Row id="row-iconcheck">
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 10. ประเภทของมาตรฐาน EMC</Col>
+                                    <Col xs={2} md={2} xl={2} id="icon-chack">
+                                        {
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode10)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                        }
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={24} md={12} xl={12} id="video-course1">
+                                        <ReactPlayer
+                                            url={testV1}
+                                            className='react-player'
+                                            width='100%'
+                                            height='100%'
+                                            controls={true}
+                                            playsinline={true}
+                                            playIcon={true}
+                                            pip={false}
+                                            playing={this.state.playingTopic10}
+                                            onProgress={this.onProgressVedioTopic10}
+                                            onEnded={() => { this.onEndedVedio(TopicCode10) }}
+                                            onPlay={() => { this.onCreateTopic(TopicCode10) }}
+                                            fluid />
+                                    </Col>
+                                    <Col xs={24} md={10} xl={10}>
+                                        <Row id="unit-header">รายละเอียด</Row>
+                                        <Row id="unit-detail">อธิบายถึงการจัดกลุ่มและแบ่งมาตรฐานการทดสอบทาง EMC มี 4 กลุ่ม ได้แก่ Product Standard, Product Family Standard, Generic Standard และ Basic Standard เพื่อให้ผู้เรียนได้เข้าใจและเลือกใช้มาตรฐานได้ถูกต้อง</Row>
+                                    </Col>
+                                </Row>
+
+                                <Row id="row-iconcheck">
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 11. มาตรฐานการทดสอบ IEC/EN 60601-1-2 </Col>
+                                    <Col xs={2} md={2} xl={2} id="icon-chack">
+                                        {
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode11)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                        }
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={24} md={12} xl={12} id="video-course1">
+                                        <ReactPlayer
+                                            url={testV1}
+                                            className='react-player'
+                                            width='100%'
+                                            height='100%'
+                                            controls={true}
+                                            playsinline={true}
+                                            playIcon={true}
+                                            pip={false}
+                                            playing={this.state.playingTopic11}
+                                            onProgress={this.onProgressVedioTopic11}
+                                            onEnded={() => { this.onEndedVedio(TopicCode11) }}
+                                            onPlay={() => { this.onCreateTopic(TopicCode11) }}
+                                            fluid />
+                                    </Col>
+                                    <Col xs={24} md={10} xl={10}>
+                                        <Row id="unit-header">รายละเอียด</Row>
+                                        <Row id="unit-detail">อธิบายถึงการจัดกลุ่มสภาวะแวดล้อมตามการใช้งานเครื่องมือแพทย์ ขีดจำกัดการทดสอบทาง Emission และตารางความแรงของสัญญาณในการทดสอบ Immunity ที่มาตรฐาน IEC/EN 60601-1-2 กำหนด</Row>
+                                    </Col>
+                                </Row>
+
+                                <Row id="row-iconcheck">
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 12. หัวข้อทดสอบในมาตรฐาน IEC/EN 60601-1-2 </Col>
+                                    <Col xs={2} md={2} xl={2} id="icon-chack">
+                                        {
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode12)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                        }
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={24} md={12} xl={12} id="video-course1">
+                                        <ReactPlayer
+                                            url={testV1}
+                                            className='react-player'
+                                            width='100%'
+                                            height='100%'
+                                            controls={true}
+                                            playsinline={true}
+                                            playIcon={true}
+                                            pip={false}
+                                            playing={this.state.playingTopic12}
+                                            onProgress={this.onProgressVedioTopic12}
+                                            onEnded={() => { this.onEndedVedio(TopicCode12) }}
+                                            onPlay={() => { this.onCreateTopic(TopicCode12) }}
+                                            fluid />
+                                    </Col>
+                                    <Col xs={24} md={10} xl={10}>
+                                        <Row id="unit-header">รายละเอียด</Row>
+                                        <Row id="unit-detail">อธิบายรายละเอียดในแต่ละหัวข้อทดสอบ ค่าขีดจำกัด รูปสัญญาณที่อ้างอิงจากมาตรฐานทดสอบ เครื่องมือที่ใช้ในการทดสอบ การจัดวางเครื่องมือและอุปกรณ์ประกอบการทดสอบ การจัดวางเครื่องมือแพทย์ในห้องทดสอบ และการตัดสินผลการทดสอบ</Row>
                                     </Col>
                                 </Row>
 
@@ -968,6 +1135,18 @@ export default withRouter(class Course4 extends Component {
                         </Row>
                     </Col>
                 </Row>
+
+                <Modal
+                    title="ข้อมูลการรับใบ Certificate"
+                    footer={[
+                        <Button key="submit" type="primary" onClick={this.showCertificateOK}>
+                            ตกลง
+                        </Button>,
+                    ]}
+                    visible={this.state.isModalCertificate}
+                    width={500}>
+                    โปรดติดต่อรับใบ Certificate ที่ต้นสังกัดของท่าน
+                </Modal>
 
             </Container>
         );

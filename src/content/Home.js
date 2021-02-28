@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 import { Row, Col, Image, Button } from 'antd';
+import axios from 'axios';
 import '../css/Home.css';
 import cover1 from '../img/Cover1.png';
 import unit1 from '../img/unit1.png';
 import unit2 from '../img/unit2.png';
 import ReactPlayer from 'react-player';
 import testV1 from '../video/test.mp4';
+import { config } from '../config/config';
+const ip = config.ipServer;
 export default class Home extends Component {
+
+    async componentDidMount() {
+        var url_update = ip + "/User/count";
+        const exam_post = await (await axios.put(url_update)).data;
+        console.log(exam_post);
+    }
+
     render() {
         return (
             <Container fluid id="bg-home">

@@ -637,4 +637,17 @@
 
 #teacher{
     margin-top: 2%;
+    justify-content: center;
+}
+
+#teacher3{
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    padding-top: 3%;
+}
+
+#teacher1{
+    display: flex;
+    justify-content: center;
 }

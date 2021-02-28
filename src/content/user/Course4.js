@@ -20,16 +20,16 @@ import course4 from '../../img/course4.png';
 import course5 from '../../img/course5.png';
 
 import pdf from "../../pdf/Course4.pdf"
-
+import test from '../../video/test.mp4';
 // import Topic1 from '../../video/Course4/Course4Topic1.mp4';
-import Topic2 from '../../video/Course4/Course4Topic2.mp4';
-import Topic3 from '../../video/Course4/Course4Topic3.mp4';
-import Topic4 from '../../video/Course4/Course4Topic4.mp4';
-import Topic5 from '../../video/Course4/Course4Topic5.mp4';
-import Topic6 from '../../video/Course4/Course4Topic6.mp4';
-import Topic7 from '../../video/Course4/Course4Topic7.mp4';
-import Topic8 from '../../video/Course4/Course4Topic8.mp4';
-import Topic9 from '../../video/Course4/Course4Topic9.mp4';
+// import Topic2 from '../../video/Course4/Course4Topic2.mp4';
+// import Topic3 from '../../video/Course4/Course4Topic3.mp4';
+// import Topic4 from '../../video/Course4/Course4Topic4.mp4';
+// import Topic5 from '../../video/Course4/Course4Topic5.mp4';
+// import Topic6 from '../../video/Course4/Course4Topic6.mp4';
+// import Topic7 from '../../video/Course4/Course4Topic7.mp4';
+// import Topic8 from '../../video/Course4/Course4Topic8.mp4';
+// import Topic9 from '../../video/Course4/Course4Topic9.mp4';
 
 import { config } from '../../config/config';
 
@@ -669,7 +669,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         {/* <Image src={v1} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode1) }}></Image> */}
                                         <ReactPlayer
-                                            url={Topic2}
+                                            url={test}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -704,7 +704,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         {/* <Image src={v2} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode2) }}></Image> */}
                                         <ReactPlayer
-                                            url={Topic2}
+                                            url={test}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -735,7 +735,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={Topic3}
+                                            url={test}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -766,7 +766,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={Topic4}
+                                            url={test}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -797,7 +797,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={Topic5}
+                                            url={test}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -828,7 +828,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={Topic6}
+                                            url={test}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -859,7 +859,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={Topic7}
+                                            url={test}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -890,7 +890,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={Topic8}
+                                            url={test}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -921,7 +921,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={Topic9}
+                                            url={test}
                                             className='react-player'
                                             width='100%'
                                             height='100%'

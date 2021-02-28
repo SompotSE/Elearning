@@ -12,16 +12,16 @@ import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
-import unit2 from '../../img/unit2.png';
-import banner from "../../img/Banner/Course1.png";
+import unit2 from '../../img/unit2.webp';
+import banner from "../../img/Banner/Course1.webp";
 // import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';
 // import v2 from '../../img/V2.png';
 // import v3 from '../../img/V3.png';
 
-import course3 from '../../img/course3.png';
-import course4 from '../../img/course4.png';
-import course5 from '../../img/course5.png';
+import course3 from '../../img/Course3.webp';
+import course4 from '../../img/Course4.webp';
+import course5 from '../../img/Course5.webp';
 
 // import incourse1 from '../../img/incourse1.svg';
 // import incourse2 from '../../img/incourse2.svg';

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Image } from 'react-bootstrap';
 import { Row, Col, Pagination, Button, Progress } from 'antd';
-// import { HomeOutlined, SnippetsOutlined, RightCircleTwoTone, BorderOutlined } from '@ant-design/icons';
-// import { AiFillCheckSquare } from "react-icons/ai";
 import { withRouter } from "react-router-dom";
 import BoxExam from './BoxExam';
 import axios from 'axios';
@@ -23,7 +21,7 @@ const cookies = new Cookies();
 
 const ip = config.ipServer;
 const CourseCode = "COURSE1004";
-const Num = 22;
+const Num = 20;
 
 const ExamCodePost = "EXAM10002";
 
@@ -74,7 +72,7 @@ export default withRouter(class ExamPost extends Component {
                     token: cookies.remove('token_user', { path: '/' }),
                     user: cookies.remove('email', { path: '/' })
                 });
-                window.location.replace('/s', false);
+                window.location.replace('/', false);
             });
         } else {
             if (exam_post.data.length >= 3) {
@@ -125,7 +123,6 @@ export default withRouter(class ExamPost extends Component {
 
     list_exam() {
         return this.state.exam.map((exam, key) => {
-            console.log(key, " key");
             return <BoxExam exam={exam} />
         });
     }
@@ -151,10 +148,7 @@ export default withRouter(class ExamPost extends Component {
             });
         } else {
             var endDate = new Date();
-            console.log(this.state.startDate, " this.state.startDate")
-            console.log(endDate, " endDate")
             var diff = (endDate.getTime() - this.state.startDate.getTime()) / 1000;
-            // diff /= 60;
             var time = Math.abs(Math.round(diff));
 
             var url_exam_ans = ip + "/Examination/Send/Answer/ExamPost/" + CourseCode + "/" + time;
@@ -168,7 +162,6 @@ export default withRouter(class ExamPost extends Component {
                     window.location.replace('/', false);
                 });
             } else {
-                console.log(exam_ans.data.percenScore, " percenScore");
                 this.setState({
                     ansScore: exam_ans.data.score,
                     ansPercen: exam_ans.data.percenScore,
@@ -217,22 +210,11 @@ export default withRouter(class ExamPost extends Component {
                         (!this.state.ansResultStatus) ?
                             <div id="body-exam-post">
                                 <Row id="head-exam-post">แบบทดสอบหลังเรียน</Row>
-                                <Row id="box-exam" style={{minHeight: "600px"}}>
+                                <Row id="box-exam" style={{ minHeight: "600px" }}>
                                     <Col xs={24} md={24} xl={24} id="exam-header">
-                                        {/* {renderHTML('ข้อใด  <b><u>ถูกต้อง</b></u>  <div>1)	Testing เป็นเทคนิคที่ใช้ใน Verification และ validation</div> <div>2)	Review <b><u>ไม่</u></b>เป็นเทคนิคที่ใช้ใน Verification และ validation</div>')} */}
                                         <div>{renderHTML(this.state.exam[this.state.current_page - 1]?.examinationlistText)} </div>
 
                                     </Col>
-                                    {/* <Col xs={24} md={24} xl={24} id="exam-choice">
-                                        <Radio.Group onChange={this.onChangeAns} value={this.state.exam[this.state.current_page - 1]?.answer}>
-                                            {
-                                                this.state.exam[this.state.current_page - 1]?.answerlist.map((anslist, i) => {
-                                                    return <Col xs={24} md={24} xl={24}><Radio value={anslist.answerlistCode} id="exam-choice"><div>{anslist.answerlistText}</div></Radio></Col>
-                                                })
-                                            }
-                                            <Radio value="555" id="exam-choice"><Col xs={18} md={18} xl={18}>trttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</Col></Radio>
-                                        </Radio.Group>
-                                    </Col> */}
                                     {this.showImg()}
                                     <Col xs={24} md={24} xl={24} id="exam-choice">
                                         <RadioGroup aria-label="gender" name="ans" value={this.state.exam[this.state.current_page - 1]?.answer} onChange={this.onChangeAns}>
@@ -241,7 +223,6 @@ export default withRouter(class ExamPost extends Component {
                                                     return <Col xs={24} md={24} xl={24}><FormControlLabel value={anslist.answerlistCode} id="exam-choice" control={<Radio />} /><span>{anslist.answerlistText}</span></Col>
                                                 })
                                             }
-                                            {/* <Radio value="555" id="exam-choice"><Col xs={18} md={18} xl={18}>trttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</Col></Radio> */}
                                         </RadioGroup>
                                     </Col>
                                 </Row>

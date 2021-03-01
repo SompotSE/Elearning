@@ -61,6 +61,11 @@ var timeTopic7 = 0;
 var timeTopic8 = 0;
 var timeTopic9 = 0;
 
+const CourseCode1 = "COURSE1001";
+const CourseCode2 = "COURSE1002";
+const CourseCode3 = "COURSE1003";
+const CourseCode4 = "COURSE1004";
+const CourseCode5 = "COURSE1005";
 export default withRouter(class Course4 extends Component {
     constructor(props) {
         super(props);
@@ -86,6 +91,11 @@ export default withRouter(class Course4 extends Component {
             percentExamPost: 0,
 
             isModaldetailCertificate: false,
+            course1: [],
+            course2: [],
+            course3: [],
+            course4: [],
+            course5: [],
         };
 
         this.onDownlode = this.onDownlode.bind(this);
@@ -105,6 +115,7 @@ export default withRouter(class Course4 extends Component {
         this.playingVedio = this.playingVedio.bind(this);
         this.updateTimeTopic = this.updateTimeTopic.bind(this);
         this.info = this.info.bind(this);
+        this.onClicktoCourse = this.onClicktoCourse.bind(this);
     }
 
     componentWillMount() {
@@ -497,6 +508,42 @@ export default withRouter(class Course4 extends Component {
             ),
             onOk() { },
         });
+    }
+
+    async onClicktoCourse(course) {
+        const createTopic = {
+            courseCode: course,
+            downlodeDoc: "N",
+            time: 0,
+            recStatus: "A"
+        };
+
+        var url_create_course = ip + "/UserCourse/create";
+        const create_course = await (await axios.post(url_create_course, createTopic, { headers: this.state.header })).data;
+        
+        if (!create_course?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('user', { path: '/' }),
+                    email: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/', false);
+            });
+        } else {
+            if(course === CourseCode1) {
+                this.props.history.push("/Course1");
+            } else if(course === CourseCode2) {
+                this.props.history.push("/Course2");
+            } else if(course === CourseCode3) {
+                this.props.history.push("/Course3");
+            } else if(course === CourseCode4) {
+                this.props.history.push("/Course4");
+            } else if(course === CourseCode5) {
+                this.props.history.push("/Course5");
+            }
+            
+        }
     }
 
     render() {
@@ -930,19 +977,19 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={2} xl={2}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit1} id="img-course" fluid></Image>
+                                    <Image src={unit1} style={{width: "100%", cursor: "pointer"}} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode1) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course3} id="img-course" fluid></Image>
+                                    <Image src={course3} style={{width: "100%", cursor: "pointer"}} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode3) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={1} md={0} xl={0}></Col>
@@ -950,19 +997,19 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course4} id="img-course" fluid></Image>
+                                    <Image src={course4} style={{width: "100%", cursor: "pointer"}} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode4) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode4) }}>รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course5} id="img-course" fluid></Image>
+                                    <Image src={course5} style={{width: "100%", cursor: "pointer"}} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode5) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
+                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                         </Row>

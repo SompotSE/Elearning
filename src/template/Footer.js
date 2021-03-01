@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Image } from 'react-bootstrap';
 import { Row, Col } from 'antd';
 import '../css/Footer.css';
-import iFooter from '../img/footer.webp';
+import iFooter from '../img/8.png';
 import { FaFacebookF } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
 import { IoIosMailOpen } from "react-icons/io";

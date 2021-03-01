@@ -13,7 +13,7 @@ import imgcourse from '../../img/userhome.png';
 import TeacherCourse1 from '../../img/Teacher/TeacherCourse1.webp';
 // import { NavLink } from 'react-router-dom';
 import unit2 from '../../img/unit2.webp';
-import banner from "../../img/Banner/Course1.webp";
+import banner from "../../img/Banner/Course1.jpg";
 
 import course3 from '../../img/course3.png';
 import course4 from '../../img/course4.png';
@@ -21,9 +21,11 @@ import course5 from '../../img/course5.png';
 
 import pdf from "../../pdf/Course1.pdf"
 
-import testV1 from '../../video/test.mp4';
+// import testV1 from '../../video/test.mp4';
+// const testV1 = 'https://www.youtube.com/watch?v=40KVVVgshcE';
 
 import { config } from '../../config/config';
+const testV1 = 'https://www.youtube.com/watch?v=40KVVVgshcE';
 
 const { Panel } = Collapse;
 const cookies = new Cookies();
@@ -626,14 +628,14 @@ export default withRouter(class Course1 extends Component {
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
-                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณผ่านการทดสอบ</Row>
                                         </Col>
                                     </>
                                     :
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
-                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณไม่ผ่านการทดสอบ</Row>
                                         </Col>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
@@ -1053,6 +1055,13 @@ export default withRouter(class Course1 extends Component {
                             </Col>
                         </Row>
                     </Col>
+                </Row>
+
+                <Row>
+                    <ReactPlayer 
+                        url='https://www.dailymotion.com/video/x5e9eog' 
+                        control={false}
+                    />
                 </Row>
 
                 <Modal

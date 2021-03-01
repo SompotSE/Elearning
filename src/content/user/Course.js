@@ -480,14 +480,14 @@ export default withRouter(class Course1 extends Component {
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
-                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณผ่านการทดสอบ</Row>
                                         </Col>
                                     </>
                                     :
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
-                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณไม่ผ่านการทดสอบ</Row>
                                         </Col>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
@@ -546,14 +546,14 @@ export default withRouter(class Course1 extends Component {
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course3">
-                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณผ่านการทดสอบ</Row>
                                         </Col>
                                     </>
                                     :
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course3">
-                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณไม่ผ่านการทดสอบ</Row>
                                         </Col>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course3">

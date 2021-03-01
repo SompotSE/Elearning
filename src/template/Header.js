@@ -11,16 +11,16 @@ import { QuestionCircleOutlined, UserOutlined, MenuOutlined } from '@ant-design/
 import { config } from '../config/config';
 import { FaCheckCircle } from "react-icons/fa";
 import letter from "../img/letter.png";
-import BIC from "../img/1.webp";
-import DE from "../img/3.webp";
-import mhesi from "../img/5.webp";
-import NECTEC from "../img/7.webp";
-import nstda from "../img/8.webp";
-import onde from "../img/9.webp";
-import PTEC from "../img/10.webp";
-import SP from "../img/11.webp";
-import TMC from "../img/12.webp";
-import TSP from "../img/13.webp";
+import BIC from "../img/1.jpeg";
+import DE from "../img/3.jpeg";
+import mhesi from "../img/5.jpeg";
+import NECTEC from "../img/7.jpeg";
+import nstda from "../img/8.jpeg";
+import onde from "../img/9.jpeg";
+import PTEC from "../img/10.jpeg";
+import SP from "../img/11.jpeg";
+import TMC from "../img/12.jpeg";
+import TSP from "../img/13.jpeg";
 
 
 const cookies = new Cookies();
@@ -488,7 +488,7 @@ export default withRouter(class Header extends Component {
                                                                         :
                                                                         <>
                                                                     <Menu.Item key="0">
-                                                                        <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                        <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
                                                                     </Menu.Item>
                                                                     <Menu.Item key="1">
                                                                         {window.innerWidth >= 684 ?

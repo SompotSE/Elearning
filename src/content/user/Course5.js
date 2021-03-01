@@ -14,7 +14,7 @@ import TeacherCourse5_1 from '../../img/Teacher/TeacherCourse5_1.webp';
 import TeacherCourse5_2 from '../../img/Teacher/TeacherCourse5_2.webp';
 import TeacherCourse5_3 from '../../img/Teacher/TeacherCourse5_3.webp';
 // import { NavLink } from 'react-router-dom';
-import banner from "../../img/Banner/Course5.webp";
+import banner from "../../img/Banner/Course5.jpg";
 
 import unit1 from '../../img/unit1.webp';
 import unit2 from '../../img/unit2.webp';
@@ -691,14 +691,14 @@ export default withRouter(class Course4 extends Component {
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course3">
-                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณผ่านการทดสอบ</Row>
                                         </Col>
                                     </>
                                     :
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course3">
-                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณไม่ผ่านการทดสอบ</Row>
                                         </Col>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course3">

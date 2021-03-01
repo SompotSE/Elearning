@@ -58,6 +58,17 @@
     background: rgb(0 0 0 / 0%) !important;
 }
 
+#img-row2{
+    display: flex;
+    justify-content: center;
+}
+
+#textHeader-row2{
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
 #row-btn-coursedetail{
     display: flex;
     justify-content: flex-end;

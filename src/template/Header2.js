@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Image } from 'react-bootstrap'; //Image
-import { Row, Carousel } from 'antd';
+import { Carousel } from 'antd';
 import { withRouter } from "react-router-dom";
 import '../css/Header.css';
-import banner1 from '../img/Banner/Course1.webp';
-import banner2 from '../img/Banner/Course2.webp';
-import banner3 from '../img/Banner/Course3.webp';
-import banner4 from '../img/Banner/Course4.webp';
-import banner5 from '../img/Banner/Course5.webp';
+import banner1 from '../img/Banner/Course1.jpg';
+import banner2 from '../img/Banner/Course2.jpg';
+import banner3 from '../img/Banner/Course3.jpg';
+import banner4 from '../img/Banner/Course4.jpg';
+import banner5 from '../img/Banner/Course5.jpg';
 
 // import { withWidth } from '@material-ui/core';
 export default withRouter(class Header2 extends Component {

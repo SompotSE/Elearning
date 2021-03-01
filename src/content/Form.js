@@ -316,17 +316,17 @@ export default class AdminHome extends Component {
                         <Col xs={24} md={24} xl={24} id="col-header-form">Siminar Evaluation</Col>
                         <Col xs={24} md={24} xl={24} id="col-header-form">แบบประเมินผลงานสัมนา</Col>
                     </Col>
-                    <Col xs={4} md={12} xl={12} id="logo-header-form">โลโก้</Col>
+                    {/* <Col xs={4} md={12} xl={12} id="logo-header-form">โลโก้</Col> */}
                 </Row>
 
                 <Form>
                     <Row id="row-form">
                         <Col xs={24} md={24} xl={24} id="col-header-form">
                             <Col xs={24} md={24} xl={24} id="header-form">ชื่อหัวข้อ (Siminar Topic) : {this.state.nameCourse}</Col>
-                            <Row>
+                            {/* <Row>
                                 <Col xs={24} md={10} xl={10} id="header-form">วันที่ (Date) / เวลา (Time) :</Col>
                                 <Col xs={24} md={12} xl={12} id="header-form">สถานที่ (Venue) :</Col>
-                            </Row>
+                            </Row> */}
                             <Col xs={24} md={24} xl={24} id="header-form">กรุณาแสดงความคิดเห็นของท่านโดยการทำเครื่องหมาย “√“ ลงในช่องว่าง พร้อมให้ข้อเสนอแนะเพื่อนำไปใช้ประโยชน์ในการพัฒนางานสัมมนา</Col>
                             <Col xs={24} md={24} xl={24} id="header-form">Please use “√” to indicate the level of your satisfaction and provide comments / recommendations to improve the future seminar</Col>
                         </Col>

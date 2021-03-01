@@ -21,12 +21,12 @@ import course5 from '../../img/course5.png';
 
 import pdf from "../../pdf/Course4.pdf"
 import test from '../../video/test.mp4';
-// import Topic1 from '../../video/Course4/Course4Topic1.mp4';
+import Topic1 from '../../video/Course4/Course4Topic1.mp4';
 import Topic2 from '../../video/Course4/Course4Topic2.mp4';
-// import Topic3 from '../../video/Course4/Course4Topic3.mp4';
-// import Topic4 from '../../video/Course4/Course4Topic4.mp4';
-// import Topic5 from '../../video/Course4/Course4Topic5.mp4';
-// import Topic6 from '../../video/Course4/Course4Topic6.mp4';
+import Topic3 from '../../video/Course4/Course4Topic3.mp4';
+import Topic4 from '../../video/Course4/Course4Topic4.mp4';
+import Topic5 from '../../video/Course4/Course4Topic5.mp4';
+import Topic6 from '../../video/Course4/Course4Topic6.mp4';
 // import Topic7 from '../../video/Course4/Course4Topic7.mp4';
 // import Topic8 from '../../video/Course4/Course4Topic8.mp4';
 // import Topic9 from '../../video/Course4/Course4Topic9.mp4';
@@ -522,7 +522,7 @@ export default withRouter(class Course4 extends Component {
 
         var url_create_course = ip + "/UserCourse/create";
         const create_course = await (await axios.post(url_create_course, createTopic, { headers: this.state.header })).data;
-        
+
         if (!create_course?.status) {
             swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                 this.setState({
@@ -533,18 +533,18 @@ export default withRouter(class Course4 extends Component {
                 window.location.replace('/', false);
             });
         } else {
-            if(course === CourseCode1) {
+            if (course === CourseCode1) {
                 this.props.history.push("/Course1");
-            } else if(course === CourseCode2) {
+            } else if (course === CourseCode2) {
                 this.props.history.push("/Course2");
-            } else if(course === CourseCode3) {
+            } else if (course === CourseCode3) {
                 this.props.history.push("/Course3");
-            } else if(course === CourseCode4) {
+            } else if (course === CourseCode4) {
                 this.props.history.push("/Course4");
-            } else if(course === CourseCode5) {
+            } else if (course === CourseCode5) {
                 this.props.history.push("/Course5");
             }
-            
+
         }
     }
 
@@ -569,8 +569,8 @@ export default withRouter(class Course4 extends Component {
                         <Image src={imgcourse} fluid></Image>
                     </Col>
                     <Col xs={24} md={12} xl={12}>
-                        <Row id="font-header">รายละเอียด</Row>
-                        <Row id="font-detail">หลักสูตร IEC 62304 มาตรฐาน Life Cycle ของการพัฒนาซอฟต์แวร์สำหรับอุปกรณ์การแพทย์และซอฟต์แวร์ด้านการแพทย์</Row>
+                        {/* <Row id="font-header">รายละเอียด</Row>
+                        <Row id="font-detail">หลักสูตร IEC 62304 มาตรฐาน Life Cycle ของการพัฒนาซอฟต์แวร์สำหรับอุปกรณ์การแพทย์และซอฟต์แวร์ด้านการแพทย์</Row> */}
                         <Row id="font-header">วัตถุประสงค์</Row>
                         <Row id="font-detail2">1. เพื่อให้เข้าใจมาตรฐานที่เกี่ยวข้องกับซอฟต์แวร์เครื่องมือแพทย์ (ข้อกำหนดของมาตรฐาน การเชื่อมโยงระหว่างมาตรฐาน) รวมทั้งเพื่อให้เข้าใจคำนิยามต่างๆ และภาพรวมกระบวนการพัฒนาซอฟต์แวร์เครื่องมือแพทย์แบบ V-Model</Row>
                         <Row id="font-detail2">2. เพื่อให้เข้าใจและประยุกต์การพัฒนาซอฟต์แวร์เครื่องมือแพทย์ตามหลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ให้สอดคล้องตาม มาตรฐาน IEC62304: 2006 +AMD1:2015</Row>
@@ -669,7 +669,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         {/* <Image src={v1} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode1) }}></Image> */}
                                         <ReactPlayer
-                                            url={test}
+                                            url={Topic1}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -677,6 +677,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic1}
                                             onProgress={this.onProgressVedioTopic1}
                                             onEnded={() => { this.onEndedVedio(TopicCode1) }}
@@ -712,6 +719,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic2}
                                             onProgress={this.onProgressVedioTopic2}
                                             onEnded={() => { this.onEndedVedio(TopicCode2) }}
@@ -735,7 +749,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={test}
+                                            url={Topic3}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -743,6 +757,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic3}
                                             onProgress={this.onProgressVedioTopic3}
                                             onEnded={() => { this.onEndedVedio(TopicCode3) }}
@@ -766,7 +787,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={test}
+                                            url={Topic4}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -774,6 +795,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic4}
                                             onProgress={this.onProgressVedioTopic4}
                                             onEnded={() => { this.onEndedVedio(TopicCode4) }}
@@ -797,7 +825,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={test}
+                                            url={Topic5}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -805,6 +833,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic5}
                                             onProgress={this.onProgressVedioTopic5}
                                             onEnded={() => { this.onEndedVedio(TopicCode5) }}
@@ -828,7 +863,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={test}
+                                            url={Topic6}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -836,6 +871,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic6}
                                             onProgress={this.onProgressVedioTopic6}
                                             onEnded={() => { this.onEndedVedio(TopicCode6) }}
@@ -867,6 +909,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic7}
                                             onProgress={this.onProgressVedioTopic7}
                                             onEnded={() => { this.onEndedVedio(TopicCode7) }}
@@ -898,6 +947,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic8}
                                             onProgress={this.onProgressVedioTopic8}
                                             onEnded={() => { this.onEndedVedio(TopicCode8) }}
@@ -929,6 +985,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic9}
                                             onProgress={this.onProgressVedioTopic9}
                                             onEnded={() => { this.onEndedVedio(TopicCode9) }}
@@ -981,7 +1044,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={2} xl={2}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit1} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} fluid></Image>
+                                    <Image src={unit1} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button> */}
@@ -991,7 +1054,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit2} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} fluid></Image>
+                                    <Image src={unit2} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode2) }}>รายละเอียดหลักสูตร</Button> */}
@@ -1003,7 +1066,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course4} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} fluid></Image>
+                                    <Image src={course4} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button> */}
@@ -1013,7 +1076,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course5} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} fluid></Image>
+                                    <Image src={course5} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button> */}
@@ -1028,12 +1091,12 @@ export default withRouter(class Course4 extends Component {
                     title="ข้อมูลการรับใบ Certificate"
                     footer={[
                         <Button key="submit" type="primary" onClick={this.showCertificateOK}>
-                          ตกลง
+                            ตกลง
                         </Button>,
-                      ]}
+                    ]}
                     visible={this.state.isModalCertificate}
                     width={500}>
-                        โปรดติดต่อรับใบ Certificate ที่ต้นสังกัดของท่าน
+                    โปรดติดต่อรับใบ Certificate ที่ต้นสังกัดของท่าน
                 </Modal>
 
             </Container>

@@ -23,13 +23,13 @@ import pdf from "../../pdf/Course4.pdf"
 // import test from '../../video/test.mp4';
 import Topic1 from '../../video/Course4/Course4Topic1.mp4';
 import Topic2 from '../../video/Course4/Course4Topic2.mp4';
-import Topic3 from '../../video/Course4/Course4Topic3.mp4';
-import Topic4 from '../../video/Course4/Course4Topic4.mp4';
-import Topic5 from '../../video/Course4/Course4Topic5.mp4';
-import Topic6 from '../../video/Course4/Course4Topic6.mp4';
-import Topic7 from '../../video/Course4/Course4Topic7.mp4';
-import Topic8 from '../../video/Course4/Course4Topic8.mp4';
-import Topic9 from '../../video/Course4/Course4Topic9.mp4';
+import Topic3 from '../../video/test.mp4';
+import Topic4 from '../../video/test.mp4';
+import Topic5 from '../../video/test.mp4';
+import Topic6 from '../../video/test.mp4';
+import Topic7 from '../../video/test.mp4';
+import Topic8 from '../../video/test.mp4';
+import Topic9 from '../../video/test.mp4';
 
 import { config } from '../../config/config';
 

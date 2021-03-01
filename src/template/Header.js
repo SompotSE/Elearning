@@ -314,8 +314,6 @@ export default withRouter(class Header extends Component {
     }
 
     render() {
-        console.log(window.location.pathname, " window");
-        console.log(this.props.history, " this.props.history")
         return (
             <Container fluid id="conflu">
                 <Row id="row-header1">
@@ -388,13 +386,13 @@ export default withRouter(class Header extends Component {
                                                                             <Menu.Item key="0">
                                                                                 <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
                                                                             </Menu.Item>
-                                                                            <Menu.Item key="1">
+                                                                            {/* <Menu.Item key="1">
                                                                                 {window.innerWidth >= 684 ?
                                                                                     <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                                     :
                                                                                     <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                                 }
-                                                                            </Menu.Item>
+                                                                            </Menu.Item> */}
                                                                             <Menu.Item key="2">
                                                                                 <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
                                                                             </Menu.Item>
@@ -490,13 +488,13 @@ export default withRouter(class Header extends Component {
                                                                     <Menu.Item key="0">
                                                                         <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
                                                                     </Menu.Item>
-                                                                    <Menu.Item key="1">
+                                                                    {/* <Menu.Item key="1">
                                                                         {window.innerWidth >= 684 ?
                                                                         <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                         :
                                                                         <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                         }
-                                                                    </Menu.Item>
+                                                                    </Menu.Item> */}
                                                                     <Menu.Item key="2">
                                                                         <span type="primary" id="btn-sty" onClick={() => this.logout()}>ออกจากระบบ</span>
                                                                     </Menu.Item>
@@ -600,10 +598,10 @@ export default withRouter(class Header extends Component {
                                     <Form.Item
                                         name="email"
                                         rules={[
-                                            {
-                                                type: 'email',
-                                                message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
-                                            },
+                                            // {
+                                            //     type: 'email',
+                                            //     message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
+                                            // },
                                             {
                                                 required: true,
                                                 message: 'กรุณากรอกอีเมลล์',

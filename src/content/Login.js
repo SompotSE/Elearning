@@ -101,10 +101,10 @@ export default class Login extends Component {
                                 <Form.Item
                                     name="email"
                                     rules={[
-                                        {
-                                            type: 'email',
-                                            message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
-                                        },
+                                        // {
+                                        //     type: 'email',
+                                        //     message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
+                                        // },
                                         {
                                             required: true,
                                             message: 'กรุณากรอกอีเมลล์',

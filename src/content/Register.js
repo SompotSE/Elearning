@@ -228,7 +228,8 @@ export default class Register extends Component {
                                     <Col xs={24} md={24} xl={24}>
                                         <Form.Item
                                             name="name"
-                                            rules={[{ required: true, message: 'กรุณากรอกชื่อ - นามสกุล!' }]}>
+                                            // rules={[{ required: true, message: 'กรุณากรอกชื่อ - นามสกุล!' }]}
+                                            >
                                             <Input placeholder="ชื่อ - นามสกุล" style={{ width: '100%' }} id="form-input" />
                                         </Form.Item>
                                     </Col>
@@ -236,7 +237,8 @@ export default class Register extends Component {
                                     <Col xs={24} md={24} xl={24}>
                                         <Form.Item
                                             name="phone"
-                                            rules={[{ required: true, message: 'กรุณากรอกเบอร์โทรศัพท์!' }]}>
+                                            // rules={[{ required: true, message: 'กรุณากรอกเบอร์โทรศัพท์!' }]}
+                                            >
                                             <Input placeholder="เบอร์โทรศัพท์" style={{ width: '100%' }} id="form-input" />
                                         </Form.Item>
                                     </Col>
@@ -244,7 +246,8 @@ export default class Register extends Component {
                                     <Col xs={24} md={24} xl={24}>
                                         <Form.Item
                                             name="company"
-                                            rules={[{ required: true, message: 'กรุณากรอกสถานประกอบการ!' }]}>
+                                            // rules={[{ required: true, message: 'กรุณากรอกสถานประกอบการ!' }]}
+                                            >
                                             <Input placeholder="ชื่อสถานประกอบการ เช่น ชื่อบริษัท" id="form-input" />
                                         </Form.Item>
                                     </Col>
@@ -253,10 +256,10 @@ export default class Register extends Component {
                                         <Form.Item
                                             name="email"
                                             rules={[
-                                                {
-                                                    type: 'email',
-                                                    message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
-                                                },
+                                                // {
+                                                //     type: 'email',
+                                                //     message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
+                                                // },
                                                 {
                                                     required: true,
                                                     message: 'กรุณากรอกอีเมลล์',

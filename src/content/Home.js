@@ -3,12 +3,15 @@ import { Container } from 'react-bootstrap';
 import { Row, Col, Image, Button } from 'antd';
 import axios from 'axios';
 import '../css/Home.css';
-import cover1 from '../img/Cover1.png';
-import unit1 from '../img/unit1.webp';
-import unit2 from '../img/unit2.webp';
+import unit1 from '../img/unit1.jpg';
+import unit2 from '../img/unit2.jpg';
+import unit3 from '../img/unit3.jpg';
+import unit4 from '../img/unit4.jpg';
+import unit5 from '../img/unit5.jpg';
 import ReactPlayer from 'react-player';
 import testV1 from '../video/test.mp4';
 import { config } from '../config/config';
+import incourse4 from '../img/incourse4.jpg';
 
 import Header2 from '../template/Header2';
 
@@ -63,29 +66,24 @@ export default class Home extends Component {
                         </Row>
                     </Col>
                 </Row>
-                <Row>
-                    <Col xs={24} md={12} xl={12} id="home-video">
-                        <ReactPlayer
-                            url={testV1}
-                            className='react-player'
-                            width='70%'
-                            height='max-content'
-                            controls={true}
-                            playsinline={true}
-                            playIcon={true}
-                            pip={false}
-                            // playing={this.state.playingTopic3}
-                            // onProgress={this.onProgressVedioTopic3}
-                            // onEnded={() => { this.onEndedVedio(TopicCode3) }}
-                            // onPlay={() => { this.onCreateTopic(TopicCode3) }}
-                            fluid />
+                {/* <Row id="row-coverhome">
+                    <Col xs={24} md={12} xl={12}>
+                        <Col xs={24} md={24} xl={24}>
+                            <Image src={incourse4} id="img-row2" style={{width: "70%"}} fluid></Image>
+                        </Col>
+                        <Col xs={24} md={24} xl={24} id="textHeader-row2">
+                            รูปภาพกิจกรรม
+                        </Col>
                     </Col>
                     <Col xs={24} md={12} xl={12}>
-                        <Row id="rowheadHome">
-                            <Row id="headHome">รายละเอียดภาพรวมหลักสูตรทั้งหมด</Row>
-                        </Row>
+                        <Col xs={24} md={24} xl={24}>
+                            <Image src={incourse4} id="img-row2" style={{width: "70%"}} fluid></Image>
+                        </Col>
+                        <Col xs={24} md={24} xl={24} id="textHeader-row2">
+                            รูปภาพกิจกรรม
+                        </Col>
                     </Col>
-                </Row>
+                </Row> */}
                 <Row id="row-coverhome">
                         <Col xs={10} md={4} xl={4}>
                             <Row id="row-img-coursedetail">
@@ -105,7 +103,7 @@ export default class Home extends Component {
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={cover1} placeholder={false} preview={false} fluid></Image>   
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit3} placeholder={false} preview={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
                                 <Button disabled>รายละเอียดหลักสูตร</Button>
@@ -113,7 +111,7 @@ export default class Home extends Component {
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%"}} src={cover1} placeholder={false} fluid></Image>   
+                                <Image style={{width: "100%"}} src={unit4} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
                                 <Button id="btn-coursedetail">รายละเอียดหลักสูตร</Button>
@@ -121,7 +119,7 @@ export default class Home extends Component {
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={cover1} placeholder={false} preview={false} fluid></Image>   
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit5} placeholder={false} preview={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
                                 <Button disabled>รายละเอียดหลักสูตร</Button>

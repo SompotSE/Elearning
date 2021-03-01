@@ -12,7 +12,7 @@ import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 // import { NavLink } from 'react-router-dom';
-import banner from "../../img/Banner/Course3.webp";
+import banner from "../../img/Banner/Course3.jpg";
 // import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';
 // import v2 from '../../img/V2.png';
@@ -612,14 +612,14 @@ export default withRouter(class Course4 extends Component {
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
-                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณผ่านการทดสอบ</Row>
                                         </Col>
                                     </>
                                     :
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
-                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณไม่ผ่านการทดสอบ</Row>
                                         </Col>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">

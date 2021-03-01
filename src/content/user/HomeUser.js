@@ -9,10 +9,12 @@ import '../../css/HomeUser.css';
 import ReactPlayer from 'react-player';
 import testV1 from '../../video/test.mp4';
 import { AiFillPlayCircle } from "react-icons/ai";
-import unit1 from '../../img/unit1.webp';
-import unit2 from '../../img/unit2.webp';
+import unit1 from '../../img/unit1.jpg';
+import unit2 from '../../img/unit2.jpg';
+import unit3 from '../../img/unit3.jpg';
+import unit4 from '../../img/unit4.jpg';
+import unit5 from '../../img/unit5.jpg';
 import Header2 from '../../template/Header2';
-import cover1 from '../../img/Cover1.png';
 
 // import course1 from '../../img/Course1.webp';
 // import course2 from '../../img/Course2.webp';
@@ -209,7 +211,7 @@ export default withRouter(class HomeUser extends Component {
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
                                 {/* <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode3) }}></Image>   */}
-                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={cover1} placeholder={false} fluid></Image>   
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit3} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
                                 {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button> */}
@@ -218,7 +220,7 @@ export default withRouter(class HomeUser extends Component {
                         </Col>
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode4) }}></Image>   
+                                <Image style={{width: "100%", cursor: "pointer"}} src={unit4} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode4) }}></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
                                 <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode4) }}>รายละเอียดหลักสูตร</Button>
@@ -227,7 +229,7 @@ export default withRouter(class HomeUser extends Component {
                         <Col xs={10} md={4} xl={4}>
                             <Row  id="row-img-coursedetail">
                                 {/* <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode5) }}></Image> */}
-                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={cover1} placeholder={false} fluid></Image>   
+                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit5} placeholder={false} fluid></Image>   
                             </Row>
                             <Row id="row-btn-coursedetail">
                                 {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button> */}

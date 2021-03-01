@@ -110,11 +110,11 @@
     #font-detail {
         font-size: 16px;
         padding-top: 2%;
-        padding-left: 3%;
+        padding-left: 8%;
     }
     #font-detail2 {
         font-size: 16px;
-        padding-left: 3%;
+        padding-left: 8%;
         margin-top: 1%;
     }
     #font-detail1 {
@@ -142,6 +142,7 @@
         font-size: 16px;
         padding-top: 5%;
         padding-right: 4%;
+        padding-left: 5%;
     }
     #video-course1 {
         display: flex;
@@ -218,11 +219,11 @@
     #font-detail {
         font-size: 16px;
         padding-top: 5%;
-        padding-left: 3%;
+        padding-left: 8%;
     }
     #font-detail2 {
         font-size: 16px;
-        padding-left: 3%;
+        padding-left: 8%;
     }
     #font-detail1 {
         font-size: 16px;
@@ -249,6 +250,7 @@
         font-size: 16px;
         padding-top: 5%;
         padding-right: 4%;
+        padding-left: 5%;
     }
     #video-course1 {
         display: flex;
@@ -339,11 +341,11 @@
     #font-detail {
         font-size: 12px;
         padding-top: 5%;
-        padding-left: 3%;
+        padding-left: 8%;
     }
     #font-detail2 {
         font-size: 12px;
-        padding-left: 3%;
+        padding-left: 8%;
     }
     #font-detail1 {
         font-size: 12px;
@@ -370,6 +372,7 @@
         font-size: 12px;
         padding-top: 5%;
         padding-right: 4%;
+        padding-left: 5%;
     }
     #video-course1 {
         display: flex;
@@ -462,11 +465,11 @@
     #font-detail {
         font-size: 12px;
         padding-top: 5%;
-        padding-left: 3%;
+        padding-left: 8%;
     }
     #font-detail2 {
         font-size: 12px;
-        padding-left: 3%;
+        padding-left: 8%;
     }
     #font-detail1 {
         font-size: 12px;
@@ -493,7 +496,7 @@
     #unit-detail{
         font-size: 12px;
         padding-top: 1%;
-        margin-left: 3%;
+        /* margin-left: 5%; */
         padding-right: 4%;
         margin-bottom: 3%;
     }
@@ -516,12 +519,12 @@
         margin-top: 3%;
         padding-left: 31%;
     }
-    #progress-course1{
+    #progress-course1 {
         display: flex;
-        justify-content: left;
+        justify-content: center;
         align-items: center;
         margin-top: 3%;
-        padding-left: 35%;
+        padding-left: 0% !important;
     }
     #progress-course2{
         display: flex;
@@ -576,6 +579,13 @@
         display: flex;
         justify-content: center;
         padding-top: 3%;
+    }
+    #btn-certificate{
+        margin-top: 3%;
+        margin-bottom: 2%;
+        padding-left: 3%;
+        display: flex;
+        justify-content: center;
     }
 }
 

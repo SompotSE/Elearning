@@ -9,15 +9,15 @@ import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import ReactPlayer from 'react-player';
 import '../../css/Course.css';
-import imgcourse from '../../img/userhome.png';
+import imgcourse from '../../img/incourse4.jpg';
 import TeacherCourse4 from '../../img/Teacher/TeacherCourse4.webp';
 // import { NavLink } from 'react-router-dom';
-import banner from "../../img/Banner/Course4.webp";
+import banner from "../../img/Banner/Course4.jpg";
 
-import unit1 from '../../img/unit1.webp';
-import unit2 from '../../img/unit2.webp';
-import course4 from '../../img/course4.png';
-import course5 from '../../img/course5.png';
+import unit1 from '../../img/unit1.jpg';
+import unit2 from '../../img/unit2.jpg';
+import unit3 from '../../img/unit3.jpg';
+import unit5 from '../../img/unit4.jpg';
 
 import pdf from "../../pdf/Course4.pdf"
 
@@ -561,8 +561,8 @@ export default withRouter(class Course4 extends Component {
                         <Image src={imgcourse} fluid></Image>
                     </Col>
                     <Col xs={24} md={12} xl={12}>
-                        <Row id="font-header">รายละเอียด</Row>
-                        <Row id="font-detail">หลักสูตร IEC 62304 มาตรฐาน Life Cycle ของการพัฒนาซอฟต์แวร์สำหรับอุปกรณ์การแพทย์และซอฟต์แวร์ด้านการแพทย์</Row>
+                        {/* <Row id="font-header">รายละเอียด</Row>
+                        <Row id="font-detail">หลักสูตร IEC 62304 มาตรฐาน Life Cycle ของการพัฒนาซอฟต์แวร์สำหรับอุปกรณ์การแพทย์และซอฟต์แวร์ด้านการแพทย์</Row> */}
                         <Row id="font-header">วัตถุประสงค์</Row>
                         <Row id="font-detail2">1. เพื่อให้เข้าใจมาตรฐานที่เกี่ยวข้องกับซอฟต์แวร์เครื่องมือแพทย์ (ข้อกำหนดของมาตรฐาน การเชื่อมโยงระหว่างมาตรฐาน) รวมทั้งเพื่อให้เข้าใจคำนิยามต่างๆ และภาพรวมกระบวนการพัฒนาซอฟต์แวร์เครื่องมือแพทย์แบบ V-Model</Row>
                         <Row id="font-detail2">2. เพื่อให้เข้าใจและประยุกต์การพัฒนาซอฟต์แวร์เครื่องมือแพทย์ตามหลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ให้สอดคล้องตาม มาตรฐาน IEC62304: 2006 +AMD1:2015</Row>
@@ -607,14 +607,14 @@ export default withRouter(class Course4 extends Component {
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
-                                            <Row id="font-detail1">คุณผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณผ่านการทดสอบ</Row>
                                         </Col>
                                     </>
                                     :
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
-                                            <Row id="font-detail1">คุณไม่ผ่านการทำสอบ</Row>
+                                            <Row id="font-detail1">คุณไม่ผ่านการทดสอบ</Row>
                                         </Col>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
@@ -995,7 +995,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course4} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} fluid></Image>
+                                    <Image src={unit3} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button> */}
@@ -1005,7 +1005,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course5} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} fluid></Image>
+                                    <Image src={unit5} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button> */}

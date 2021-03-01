@@ -11,7 +11,7 @@ import unit5 from '../img/unit5.jpg';
 import ReactPlayer from 'react-player';
 import testV1 from '../video/test.mp4';
 import { config } from '../config/config';
-import incourse4 from '../img/incourse4.jpg';
+// import incourse4 from '../img/incourse4.jpg';
 
 import Header2 from '../template/Header2';
 
@@ -35,7 +35,10 @@ export default class Home extends Component {
                         โครงการพัฒนานวัตกรรมการแพทย์ดิจิทัลเพื่อต่อสู้กลุ่มโรคไม่ติดต่อเรื้อรัง (NCD)
                     </Col>
                     <Col xs={24} md={24} xl={24} id="header-project">
-                        สู่ระบบสาธารณสุขไทย เพื่อความยั่งยืนทางด้านสุขภาพ สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (สวทช)
+                        สู่ระบบสาธารณสุขไทย เพื่อความยั่งยืนทางด้านสุขภาพ
+                    </Col>
+                    <Col xs={24} md={24} xl={24} id="header-project">
+                        สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (สวทช)
                     </Col>
                 </Row>
                 <Row>

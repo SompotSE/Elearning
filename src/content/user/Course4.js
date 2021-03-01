@@ -20,16 +20,16 @@ import unit3 from '../../img/unit3.jpg';
 import unit5 from '../../img/unit4.jpg';
 
 import pdf from "../../pdf/Course4.pdf"
-import test from '../../video/test.mp4';
+// import test from '../../video/test.mp4';
 import Topic1 from '../../video/Course4/Course4Topic1.mp4';
 import Topic2 from '../../video/Course4/Course4Topic2.mp4';
 import Topic3 from '../../video/Course4/Course4Topic3.mp4';
 import Topic4 from '../../video/Course4/Course4Topic4.mp4';
 import Topic5 from '../../video/Course4/Course4Topic5.mp4';
 import Topic6 from '../../video/Course4/Course4Topic6.mp4';
-// import Topic7 from '../../video/Course4/Course4Topic7.mp4';
-// import Topic8 from '../../video/Course4/Course4Topic8.mp4';
-// import Topic9 from '../../video/Course4/Course4Topic9.mp4';
+import Topic7 from '../../video/Course4/Course4Topic7.mp4';
+import Topic8 from '../../video/Course4/Course4Topic8.mp4';
+import Topic9 from '../../video/Course4/Course4Topic9.mp4';
 
 import { config } from '../../config/config';
 
@@ -552,7 +552,9 @@ export default withRouter(class Course4 extends Component {
         return (
             <Container fluid id="bg-course">
                 <Row>
-                    <Image src={banner} fluid></Image>
+                    <Col xs={24} md={24} xl={24}>
+                        <Image src={banner} fluid></Image>
+                    </Col>
                 </Row>
                 {/* <Row id="row-headercourse">
                     <Breadcrumb>
@@ -901,7 +903,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={test}
+                                            url={Topic7}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -939,7 +941,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={test}
+                                            url={Topic8}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -977,7 +979,7 @@ export default withRouter(class Course4 extends Component {
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={test}
+                                            url={Topic9}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -1044,7 +1046,9 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={2} xl={2}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit1} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit1} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button> */}
@@ -1054,7 +1058,9 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit2} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit2} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode2) }}>รายละเอียดหลักสูตร</Button> */}
@@ -1066,7 +1072,9 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit3} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit3} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button> */}
@@ -1076,7 +1084,9 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit5} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit5} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button> */}

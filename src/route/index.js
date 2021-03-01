@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 
 import Home from "../content/Home";
-// import Register from "../content/Register"
+import Register from "../content/Register"
 import Login from "../content/Login"
 import Logout from "../content/Logout"
 import ForgetPass from "../content/ForgetPass";

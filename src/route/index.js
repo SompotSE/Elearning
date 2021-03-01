@@ -42,7 +42,7 @@ export default class Index extends Component {
                 <Route exact path="/Form/:courseCode" component={Form} />
                 <Route exact path="/ConfirmRegister/:ConfirmRegisterKey" component={ConfirmRegister} />
 
-                {/* <Route exact path="/Register" component={Register} /> */}
+                <Route exact path="/Register" component={Register} />
                 <Route exact path="/Login" component={Login} />
                 <Route exact path="/ForgetPass" component={ForgetPass} />
                 <Route exact path="/Logout" component={Logout} />

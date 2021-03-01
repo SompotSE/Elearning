@@ -1,5 +1,5 @@
 export var config = {
-    "ipServer": "http://206.189.43.0/API",
+    "ipServer": "https://digitalncd.com/API",
     //"ipServer": "http://localhost:5000"
   }
   

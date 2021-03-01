@@ -210,6 +210,21 @@ export default withRouter(class ExamPost extends Component {
                         (!this.state.ansResultStatus) ?
                             <div id="body-exam-post">
                                 <Row id="head-exam-post">แบบทดสอบหลังเรียน</Row>
+                                <Row id="pagination">
+                                    <Col xs={24} md={16} xl={16} id="col-pagination">
+                                        <Pagination
+                                            current={this.state.current_page}
+                                            pageSize={1}
+                                            responsive={true}
+                                            total={Num}
+                                            onChange={this.onChangePage}
+                                            // size="large"
+                                        />
+                                    </Col>
+                                    <Col xs={24} md={6} xl={6} id="col-pagination">
+                                        <Button disabled={this.state.current_page === Num ? false : true} onClick={this.onSendExam}>ส่งแบบทดสอบ</Button>
+                                    </Col>
+                                </Row>
                                 <Row id="box-exam">
                                     <Col xs={24} md={24} xl={24} id="exam-header">
                                         <div>{renderHTML(this.state.exam[this.state.current_page - 1]?.examinationlistText)} </div>
@@ -226,20 +241,7 @@ export default withRouter(class ExamPost extends Component {
                                         </RadioGroup>
                                     </Col>
                                 </Row>
-                                <Row id="pagination">
-                                    <Col xs={24} md={24} xl={24} id="col-pagination">
-                                        <Pagination
-                                            current={this.state.current_page}
-                                            pageSize={1}
-                                            responsive={true}
-                                            total={Num}
-                                            onChange={this.onChangePage}
-                                        />
-                                    </Col>
-                                    <Col xs={24} md={24} xl={24} id="col-pagination">
-                                        <Button disabled={this.state.current_page === Num ? false : true} onClick={this.onSendExam}>ส่งแบบทดสอบ</Button>
-                                    </Col>
-                                </Row>
+                                
                             </div>
                             :
                             <div id="body-exam-post">

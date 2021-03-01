@@ -70,7 +70,7 @@ export default withRouter(class HomeUser extends Component {
     async componentDidMount() {
         var url_all_topic = ip + "/UserTopic/find/all/user";
         const alltopic = await (await axios.get(url_all_topic, { headers: this.state.header })).data;
-    
+
         if (!alltopic?.status) {
             swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                 this.setState({
@@ -104,7 +104,7 @@ export default withRouter(class HomeUser extends Component {
 
         var url_create_course = ip + "/UserCourse/create";
         const create_course = await (await axios.post(url_create_course, createTopic, { headers: this.state.header })).data;
-        
+
         if (!create_course?.status) {
             swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                 this.setState({
@@ -115,18 +115,18 @@ export default withRouter(class HomeUser extends Component {
                 window.location.replace('/', false);
             });
         } else {
-            if(course === CourseCode1) {
+            if (course === CourseCode1) {
                 this.props.history.push("/Course1");
-            } else if(course === CourseCode2) {
+            } else if (course === CourseCode2) {
                 this.props.history.push("/Course2");
-            } else if(course === CourseCode3) {
+            } else if (course === CourseCode3) {
                 this.props.history.push("/Course3");
-            } else if(course === CourseCode4) {
+            } else if (course === CourseCode4) {
                 this.props.history.push("/Course4");
-            } else if(course === CourseCode5) {
+            } else if (course === CourseCode5) {
                 this.props.history.push("/Course5");
             }
-            
+
         }
     }
 
@@ -155,7 +155,7 @@ export default withRouter(class HomeUser extends Component {
                                 fluid />
                         </Row>
                         <Row id="img-btn">
-                            <AiFillPlayCircle id="img-play" style={{width: "10%"}}/>
+                            <AiFillPlayCircle id="img-play" style={{ width: "10%" }} />
                             <div>เริ่มเรียนหลักสูตรของคุณต่อ</div>
                         </Row>
                     </Col>
@@ -163,81 +163,91 @@ export default withRouter(class HomeUser extends Component {
                     </Col>
                     <Col xs={24} md={10} xl={10}>
                         <Row id="head-headcouse">ความคืบหน้าการเรียนรู้</Row>
-                        <Row id="headcouse"><Progress percent={parseInt((100 * this.state.sumtopuser) / this.state.sumtopall)} strokeWidth={20} strokeColor={(parseInt((100 * this.state.sumtopuser) / this.state.sumtopall) >= 80) ? "#006633" : "#CC0000"}/></Row>
+                        <Row id="headcouse"><Progress percent={parseInt((100 * this.state.sumtopuser) / this.state.sumtopall)} strokeWidth={20} strokeColor={(parseInt((100 * this.state.sumtopuser) / this.state.sumtopall) >= 80) ? "#006633" : "#CC0000"} /></Row>
                         <Row>
                             <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 1</Col>
-                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course1[0]?.countuser) / this.state.course1[0]?.countall)} strokeColor={(parseInt((100 * this.state.course1[0]?.countuser) / this.state.course1[0]?.countall) >= 80) ? "#006633" : "#CC0000"}/></Col>
+                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course1[0]?.countuser) / this.state.course1[0]?.countall)} strokeColor={(parseInt((100 * this.state.course1[0]?.countuser) / this.state.course1[0]?.countall) >= 80) ? "#006633" : "#CC0000"} /></Col>
                         </Row>
                         <Row>
                             <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 2</Col>
-                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course2[0]?.countuser) / this.state.course2[0]?.countall)} strokeColor={(parseInt((100 * this.state.course2[0]?.countuser) / this.state.course2[0]?.countall) >= 80) ? "#006633" : "#CC0000"}/></Col>
+                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course2[0]?.countuser) / this.state.course2[0]?.countall)} strokeColor={(parseInt((100 * this.state.course2[0]?.countuser) / this.state.course2[0]?.countall) >= 80) ? "#006633" : "#CC0000"} /></Col>
                         </Row>
                         <Row>
                             <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 3</Col>
-                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course3[0]?.countuser) / this.state.course3[0]?.countall)} strokeColor={(parseInt((100 * this.state.course3[0]?.countuser) / this.state.course3[0]?.countall) >= 80) ? "#006633" : "#CC0000"}/></Col>
+                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course3[0]?.countuser) / this.state.course3[0]?.countall)} strokeColor={(parseInt((100 * this.state.course3[0]?.countuser) / this.state.course3[0]?.countall) >= 80) ? "#006633" : "#CC0000"} /></Col>
                         </Row>
                         <Row>
                             <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 4</Col>
-                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course4[0]?.countuser) / this.state.course4[0]?.countall)} strokeColor={(parseInt((100 * this.state.course4[0]?.countuser) / this.state.course4[0]?.countall) >= 80) ? "#006633" : "#CC0000"}/></Col>
+                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course4[0]?.countuser) / this.state.course4[0]?.countall)} strokeColor={(parseInt((100 * this.state.course4[0]?.countuser) / this.state.course4[0]?.countall) >= 80) ? "#006633" : "#CC0000"} /></Col>
                         </Row>
                         <Row>
                             <Col xs={6} md={6} xl={6} id="headcouse">หลักสูตรที่ 5</Col>
-                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course5[0]?.countuser) / this.state.course5[0]?.countall)} strokeColor={(parseInt((100 * this.state.course5[0]?.countuser) / this.state.course5[0]?.countall) >= 80) ? "#006633" : "#CC0000"}/></Col>
+                            <Col xs={18} md={18} xl={18}><Progress percent={parseInt((100 * this.state.course5[0]?.countuser) / this.state.course5[0]?.countall)} strokeColor={(parseInt((100 * this.state.course5[0]?.countuser) / this.state.course5[0]?.countall) >= 80) ? "#006633" : "#CC0000"} /></Col>
                         </Row>
                     </Col>
                 </Row>
 
                 <Row id="row-coverhomeUser">
-                        <Col xs={10} md={4} xl={4} >
-                            <Row id="row-img-coursedetail">
-                                {/* <Image style={{width: "100%", cursor: "pointer"}} src={unit1} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>  */}
-                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit1} placeholder={false} fluid></Image>   
-                            </Row>
-                            <Row id="row-btn-coursedetail">
-                                {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button> */}
-                                <Button disabled>รายละเอียดหลักสูตร</Button>
-                            </Row>
-                        </Col>
-                        <Col xs={10} md={4} xl={4}>
-                            <Row  id="row-img-coursedetail">
-                                {/* <Image style={{width: "100%", cursor: "pointer"}} src={unit2} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode2) }}></Image>    */}
-                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit2} placeholder={false} fluid></Image> 
-                            </Row>
-                            <Row id="row-btn-coursedetail">
-                                {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode2) }}>รายละเอียดหลักสูตร</Button> */}
-                                <Button disabled>รายละเอียดหลักสูตร</Button>
-                            </Row>
-                        </Col>
-                        <Col xs={10} md={4} xl={4}>
-                            <Row  id="row-img-coursedetail">
-                                {/* <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode3) }}></Image>   */}
-                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit3} placeholder={false} fluid></Image>   
-                            </Row>
-                            <Row id="row-btn-coursedetail">
-                                {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button> */}
-                                <Button disabled>รายละเอียดหลักสูตร</Button>
-                            </Row>
-                        </Col>
-                        <Col xs={10} md={4} xl={4}>
-                            <Row  id="row-img-coursedetail">
-                                <Image style={{width: "100%", cursor: "pointer"}} src={unit4} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode4) }}></Image>   
-                            </Row>
-                            <Row id="row-btn-coursedetail">
-                                <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode4) }}>รายละเอียดหลักสูตร</Button>
-                            </Row>
-                        </Col>
-                        <Col xs={10} md={4} xl={4}>
-                            <Row  id="row-img-coursedetail">
-                                {/* <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode5) }}></Image> */}
-                                <Image style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)"}} src={unit5} placeholder={false} fluid></Image>   
-                            </Row>
-                            <Row id="row-btn-coursedetail">
-                                {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button> */}
-                                <Button disabled>รายละเอียดหลักสูตร</Button>
-                            </Row>
-                        </Col>
+                    <Col xs={10} md={4} xl={4} >
+                        <Row id="row-img-coursedetail">
+                            {/* <Image style={{width: "100%", cursor: "pointer"}} src={unit1} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode1) }}></Image>  */}
+                            <Col xs={24} md={24} xl={24} >
+                                <Image style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} src={unit1} placeholder={false} fluid></Image>
+                            </Col>
+                        </Row>
+                        <Row id="row-btn-coursedetail">
+                            {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button> */}
+                            <Button disabled>รายละเอียดหลักสูตร</Button>
+                        </Row>
+                    </Col>
+                    <Col xs={10} md={4} xl={4}>
+                        <Row id="row-img-coursedetail">
+                            {/* <Image style={{width: "100%", cursor: "pointer"}} src={unit2} placeholder={false} fluid onClick={() => { this.onClicktoCourse(CourseCode2) }}></Image>    */}
+                            <Col xs={24} md={24} xl={24} >
+                                <Image style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} src={unit2} placeholder={false} fluid></Image>
+                            </Col>
+                        </Row>
+                        <Row id="row-btn-coursedetail">
+                            {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode2) }}>รายละเอียดหลักสูตร</Button> */}
+                            <Button disabled>รายละเอียดหลักสูตร</Button>
+                        </Row>
+                    </Col>
+                    <Col xs={10} md={4} xl={4}>
+                        <Row id="row-img-coursedetail">
+                            {/* <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode3) }}></Image>   */}
+                            <Col xs={24} md={24} xl={24} >
+                                <Image style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} src={unit3} placeholder={false} fluid></Image>
+                            </Col>
+                        </Row>
+                        <Row id="row-btn-coursedetail">
+                            {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button> */}
+                            <Button disabled>รายละเอียดหลักสูตร</Button>
+                        </Row>
+                    </Col>
+                    <Col xs={10} md={4} xl={4}>
+                        <Row id="row-img-coursedetail">
+                            <Col xs={24} md={24} xl={24} >
+                                <Image style={{ width: "100%", cursor: "pointer" }} src={unit4} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode4) }}></Image>
+                            </Col>
+                        </Row>
+                        <Row id="row-btn-coursedetail">
+                            <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode4) }}>รายละเอียดหลักสูตร</Button>
+                        </Row>
+                    </Col>
+                    <Col xs={10} md={4} xl={4}>
+                        <Row id="row-img-coursedetail">
+                            {/* <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode5) }}></Image> */}
+                            <Col xs={24} md={24} xl={24} >
+                                <Image style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} src={unit5} placeholder={false} fluid></Image>
+                            </Col>
+                        </Row>
+                        <Row id="row-btn-coursedetail">
+                            {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button> */}
+                            <Button disabled>รายละเอียดหลักสูตร</Button>
+                        </Row>
+                    </Col>
                 </Row>
-                
+
             </Container>
         );
     }

@@ -16,6 +16,14 @@
     padding-right: 4%;
 }
 
+#row-footer1{
+    background-color: #FFFFFF;
+    padding-left: 5%;
+    padding-right: 4%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1%;
+}
 #col-footer1{
     margin-top: 1%;
     margin-bottom: 0.5%;
@@ -87,6 +95,12 @@
     
     #descript-footer3{
         font-size: 14px;
+    }
+    #col-footer-logo{
+        display: flex;
+        justify-content: space-between;
+        padding-right: 3%;
+        padding-bottom: 0.5%;
     }
 }
 
@@ -207,6 +221,12 @@
     }
     #descript-footer3{
         font-size: 6px;
+    }
+    #col-footer-logo{
+        display: flex;
+        justify-content: space-between;
+        padding-right: 3%;
+        padding-bottom: 3%;
     }
 }
 

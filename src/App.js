@@ -3,6 +3,7 @@ import './App.css';
 import { Layout } from 'antd';
 import PageHeader from './template/Header';
 import PageFooter from './template/Footer';
+import PageFooter2 from './template/Footer2';
 // import PageHeader2 from './template/Header2';
 import Routing from "./route";
 // import Register from '../src/content/Register'
@@ -36,7 +37,7 @@ export default class App extends Component {
             {(window.innerWidth >= 1200 && (window.location.pathname === "/Register" || window.location.pathname === "/register")) ?
               <></>
               :
-              <Footer style={{ marginTop: "2%" }}><PageFooter /></Footer>
+              <Footer style={{ marginTop: "2%" }}><PageFooter2 /><PageFooter /></Footer>
             }
           </Layout>
         </Layout>

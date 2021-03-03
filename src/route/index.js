@@ -9,6 +9,7 @@ import ForgetPass from "../content/ForgetPass";
 // import ChangePass from "../content/ChangePass";
 import Form from "../content/Form";
 import ConfirmRegister from "../content/ConfirmRegister";
+import Elearning from "../content/Elearning";
 
 import Course1 from "../content/user/Course1";
 import Course2 from "../content/user/Course2";
@@ -29,6 +30,7 @@ export default class Index extends Component {
         return (
             <Switch>
                 <Route exact path="/" component={Home} />
+                <Route exact path="/Elearning" component={Elearning} />
 
                 <Route exact path="/HomeUser" component={HomeUser} />
                 <Route exact path="/Course1" component={Course1} />

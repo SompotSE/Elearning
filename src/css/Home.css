@@ -192,6 +192,19 @@
         font-size: 7px;
         font-weight: bold;
     }
+    #descrip-Home{
+        padding-right: 5%;
+        padding-left: 2.5%;
+        text-indent: 1cm;
+        text-align: justify;
+    }
+    #descrip-Home1{
+        padding-right: 5%;
+        padding-left: 4%;
+        text-indent: 1cm;
+        text-align: justify;
+        margin-top: 2%;
+    }
     
 }
 

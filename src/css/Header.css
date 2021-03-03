@@ -149,6 +149,11 @@
     margin-top: 3%;
 }
 
+#active-menu-header {
+    font-size: "18px" !important; 
+    border: "1px solid #000000" !important;
+}
+
 #row-btnForgetPass{
     display: flex;
     justify-content: flex-end;
@@ -293,13 +298,20 @@
         padding: 3% 10% 3% 10%;
     }
     #active-header {
-        /* color: #BB0000; */
-        display: flex;
+        color: #BB0000;
+        /* display: flex; */
         justify-content: center;
         border-bottom: 3px solid #2C4893;
         color: #2C4893;
         font-size: 18px;
-        padding: 3% 10% 3% 10%;
+        /* padding: 3% 10% 3% 10%; */
+    }
+    #row-navi{
+        padding: 0% 5% 0% 5%;
+    }
+    #text-header{
+        font-size: 18px;
+        color: #000000;
     }
 }
 
@@ -379,8 +391,8 @@ a:hover {
 }
 
 #active-header {
-    /* color: #BB0000; */
-    display: flex;
+    color: #BB0000;
+    /* display: flex; */
     justify-content: center;
     border-bottom: 3px solid #2C4893;
     color: #2C4893;

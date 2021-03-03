@@ -181,7 +181,7 @@ export default withRouter(class Header extends Component {
             }
         } else {
             if (login?.message === "You Not Confirm Email") {
-                swal("Warning!", "กรุณายืนยัน Email ก่อนเข้าสู่ระบบ", "warning").then((value) => {
+                swal("","ระบบจะเปิดให้ใช้งานในวันที่ 5 มีนาคม 2546 \n ตั้งแต่เวลา 14.00 น. เป็นต้นไป", "warning").then((value) => {
                     this.setState({
                         statusSend: false
                     });
@@ -370,13 +370,13 @@ export default withRouter(class Header extends Component {
                                                                             <Menu.Item key="2">
                                                                                 <NavLink to="/Admin/Statistic"><span type="primary" id="btn-sty">สถิติ</span></NavLink >
                                                                             </Menu.Item>
-                                                                            <Menu.Item key="3">
+                                                                            {/* <Menu.Item key="3">
                                                                                 {window.innerWidth >= 684 ?
                                                                                     <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                                     :
                                                                                     <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                                 }
-                                                                            </Menu.Item>
+                                                                            </Menu.Item> */}
                                                                             <Menu.Item key="4">
                                                                                 <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
                                                                             </Menu.Item>
@@ -472,13 +472,13 @@ export default withRouter(class Header extends Component {
                                                                     <Menu.Item key="2">
                                                                         <NavLink to="/Admin/Statistic"><span type="primary" id="btn-sty">สถิติ</span></NavLink >
                                                                     </Menu.Item>
-                                                                    <Menu.Item key="3">
+                                                                    {/* <Menu.Item key="3">
                                                                     {window.innerWidth >= 684 ?
                                                                         <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                             :
                                                                             <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                                 }
-                                                                    </Menu.Item>
+                                                                    </Menu.Item> */}
                                                                     <Menu.Item key="4">
                                                                         <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
                                                                     </Menu.Item>
@@ -571,9 +571,9 @@ export default withRouter(class Header extends Component {
                                         (!this.state.statusSend) ? <Button htmlType="submit" id="btn-login">SIGN IN</Button> : <Spin />
                                     }
                                 </Col>
-                                <Col xs={24} md={24} xl={24} id="row-login">
+                                {/* <Col xs={24} md={24} xl={24} id="row-login">
                                     <span id="ft-pass" onClick={() => this.showForgetPass()} style={{ cursor: "pointer" }}>ลืมรหัสผ่าน?</span>
-                                </Col>
+                                </Col> */}
                                 {/* <Col xs={24} md={24} xl={24} id="row-login1">คุณยังไม่มีบัญชี <span id="link-regis" style={{ cursor: "pointer" }} onClick={() => { this.onClickRegister() }}> ลงทะเบียนเข้าใช้ </span></Col> */}
                             </Col>
                             <Col xs={4} md={4} xl={4}></Col>

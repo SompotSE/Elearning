@@ -61,6 +61,7 @@
     border-radius: 1.5mm;
     color: #ffffff;
     margin-top: 5%;
+    min-height: 50px;
 }
 
 #ft-pass{

@@ -563,7 +563,7 @@
         transition: all 0.3s;
     }
     .ant-pagination.mini .ant-pagination-item {
-        min-width: 16px !important;
+        /* min-width: 16px !important; */
         height: 24px;
         margin: 0;
         line-height: 22px;

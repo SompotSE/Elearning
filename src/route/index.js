@@ -6,7 +6,7 @@ import Register from "../content/Register"
 import Login from "../content/Login"
 import Logout from "../content/Logout"
 import ForgetPass from "../content/ForgetPass";
-import ChangePass from "../content/ChangePass";
+// import ChangePass from "../content/ChangePass";
 import Form from "../content/Form";
 import ConfirmRegister from "../content/ConfirmRegister";
 
@@ -38,7 +38,7 @@ export default class Index extends Component {
                 <Route exact path="/Course5" component={Course5} />
                 <Route exact path="/ExamPre" component={ExamPre} />
                 <Route exact path="/ExamPostCourse4" component={ExamPostCourse4} />
-                <Route exact path="/ChangePass" component={ChangePass} />
+                {/* <Route exact path="/ChangePass" component={ChangePass} /> */}
                 <Route exact path="/Form/:courseCode" component={Form} />
                 <Route exact path="/ConfirmRegister/:ConfirmRegisterKey" component={ConfirmRegister} />
 

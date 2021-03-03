@@ -77,7 +77,7 @@ export default withRouter(class ExamPost extends Component {
         } else {
             if (exam_post.data.length >= 3) {
                 swal("Warning!", "จำนวนครั้งในการทำข้อสอบครบแล้ว", "warning").then((value) => {
-                    this.props.history.push("/Course1");
+                    this.props.history.push("/Course4");
                 });
             }
         }
@@ -143,8 +143,15 @@ export default withRouter(class ExamPost extends Component {
 
     async onSendExam() {
         const answer = await this.state.exam?.filter((item) => item.answer === "");
+        
         if (answer.length > 0) {
+            let index = await this.state.exam?.findIndex((item) => item.answer === "");
+            console.log(answer[0].examinationlistCode, " answer")
+            console.log(index, " index")
             swal("Warning!", "กรุณาทำข้อสอบให้ครบ", "warning").then((value) => {
+                this.setState({
+                    current_page: (index + 1)
+                });
             });
         } else {
             var endDate = new Date();

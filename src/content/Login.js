@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { Row, Col, Input, Form, Button, Spin } from 'antd';
 import '../css/Login.css';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import { config } from '../config/config';
@@ -68,7 +68,7 @@ export default class Login extends Component {
             }
         } else {
             if(login?.message === "You Not Confirm Email") {
-                swal("Warning!", "กรุณายืนยัน Email ก่อนเข้าสู่ระบบ", "warning").then((value) => {
+                swal("","ระบบจะเปิดให้ใช้งานในวันที่ 5 มีนาคม 2546 \n ตั้งแต่เวลา 14.00 น. เป็นต้นไป", "warning").then((value) => {
                     this.setState({
                         statusSend: false
                     });
@@ -131,9 +131,9 @@ export default class Login extends Component {
                                     (!this.state.statusSend) ? <Button htmlType="submit" id="btn-login">SIGN IN</Button> : <Spin />
                                 }
                             </Col>
-                            <Col xs={24} md={24} xl={24} id="row-login">
+                            {/* <Col xs={24} md={24} xl={24} id="row-login">
                                 <NavLink to="/ForgetPass"><span id="ft-pass">ลืมรหัสผ่าน?</span></NavLink>
-                            </Col>
+                            </Col> */}
                             {/* <Col xs={24} md={24} xl={24} id="row-login1"> คุณยังไม่มีบัญชี <NavLink to="/Register"><span id="link-regis">  ลงทะเบียนเข้าใช้ </span></NavLink></Col> */}
                         </Col>
                         <Col xs={2} md={2} xl={2}></Col>

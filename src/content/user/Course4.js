@@ -21,20 +21,21 @@ import unit5 from '../../img/unit4.jpg';
 
 import pdf from "../../pdf/Course4.pdf"
 // import test from '../../video/test.mp4';
-import Topic1 from '../../video/Course4/Course4Topic1.mp4';
-import Topic2 from '../../video/Course4/Course4Topic2.mp4';
-import Topic3 from '../../video/Course4/Course4Topic3.mp4';
-import Topic4 from '../../video/Course4/Course4Topic4.mp4';
-import Topic5 from '../../video/Course4/Course4Topic5.mp4';
-import Topic6 from '../../video/Course4/Course4Topic6.mp4';
-import Topic7 from '../../video/Course4/Course4Topic7.mp4';
-import Topic8 from '../../video/Course4/Course4Topic8.mp4';
-import Topic9 from '../../video/Course4/Course4Topic9.mp4';
 
 import { config } from '../../config/config';
 
 const { Panel } = Collapse;
 const cookies = new Cookies();
+
+const Topic1 = 'https://www.digitalncd.com/API/video/Course4Topic1.mp4';
+const Topic2 = 'https://www.digitalncd.com/API/video/Course4Topic2.mp4';
+const Topic3 = 'https://www.digitalncd.com/API/video/Course4Topic3.mp4';
+const Topic4 = 'https://www.digitalncd.com/API/video/Course4Topic4.mp4';
+const Topic5 = 'https://www.digitalncd.com/API/video/Course4Topic5.mp4';
+const Topic6 = 'https://www.digitalncd.com/API/video/Course4Topic6.mp4';
+const Topic7 = 'https://www.digitalncd.com/API/video/Course4Topic7.mp4';
+const Topic8 = 'https://www.digitalncd.com/API/video/Course4Topic8.mp4';
+const Topic9 = 'https://www.digitalncd.com/API/video/Course4Topic9.mp4';
 
 const ip = config.ipServer;
 const CourseCode = "COURSE1004";

@@ -214,7 +214,7 @@ export default withRouter(class ExamPost extends Component {
             <Container fluid id="bg-ExamPost">
                 {
                     (this.state.statusexam) ?
-                        (this.state.ansResultStatus) ?
+                        (!this.state.ansResultStatus) ?
                             <div id="body-exam-post">
                                 <Row id="head-exam-post">แบบทดสอบหลังเรียน</Row>
                                 <Row id="pagination">

@@ -29,11 +29,11 @@ export default class Home extends Component {
                     สสส
                 </Row>
                 <Row>
-                    <Col xs={24} md={24} xl={10} id="home-video">
+                    <Col xs={24} md={24} xl={12} id="home-video">
                         <ReactPlayer
                             url={testV1}
                             className='react-player'
-                            width='70%'
+                            width='90%'
                             height='max-content'
                             controls={true}
                             playsinline={true}
@@ -58,7 +58,7 @@ export default class Home extends Component {
                 <Row id="row-coverhome">
                     <Col xs={24} md={12} xl={12}>
                         <Col xs={24} md={24} xl={24}>
-                            <Image src={Home2} id="img-row2" style={{width: "70%"}} fluid></Image>
+                            <Image src={Home2} id="img-row2" style={{width: "70%", paddingBottom: "3%"}} fluid></Image>
                         </Col>
                     </Col>
                     <Col xs={24} md={12} xl={12}>

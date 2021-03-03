@@ -11,16 +11,6 @@ import { QuestionCircleOutlined, UserOutlined, MenuOutlined } from '@ant-design/
 import { config } from '../config/config';
 import { FaCheckCircle } from "react-icons/fa";
 import letter from "../img/letter.png";
-import BIC from "../img/1.jpeg";
-import DE from "../img/3.jpeg";
-import mhesi from "../img/5.jpeg";
-import NECTEC from "../img/7.jpeg";
-import nstda from "../img/8.jpeg";
-import onde from "../img/9.jpeg";
-import PTEC from "../img/10.jpeg";
-import SP from "../img/11.jpeg";
-import TMC from "../img/12.jpeg";
-import TSP from "../img/13.jpeg";
 
 
 const cookies = new Cookies();
@@ -323,10 +313,10 @@ export default withRouter(class Header extends Component {
                             <>
                                 <Col xs={17} md={19} xl={19}>
                                     <Row id="row-navi">
-                                        <Col xs={3} md={3} xl={3}>
+                                        <Col xs={3} md={3} xl={3} style={{borderRight: "2px solid #000000", display: "flex", justifyContent: "flex-end", paddingRight: "3%"}}>
                                             <span type="primary" id={(window.location.pathname === "/") ? "active-header" : "text-header"} onClick={() => this.props.history.push("/")} style={{ cursor: "pointer" }}>Home</span>
                                         </Col>
-                                        <Col>
+                                        <Col style={{paddingLeft: "3%"}}>
                                             {/* <Button id={(window.location.pathname === "/Elearning") || (window.location.pathname === "/elearning") ? "active-header" : "text-header"} >Elearning</Button> */}
                                             <span type="primary" id={(window.location.pathname === "/Elearning") || (window.location.pathname === "/elearning") ? "active-header" : "text-header"} onClick={() => this.props.history.push("/Elearning")} style={{ cursor: "pointer" }}>Elearning</span>
                                         </Col>
@@ -411,26 +401,6 @@ export default withRouter(class Header extends Component {
                             </>
                             :
                             <>
-                                <Row>
-                                    <Col xs={24} style={{ padding: "1.5%" }}>
-                                        <Row id="logo-layout">
-                                            <Image src={onde} fluid id="img-logo"></Image>
-                                            <Image src={DE} fluid id="img-logo"></Image>
-                                            <Image src={mhesi} fluid id="img-logo"></Image>
-                                            <Image src={nstda} fluid id="img-logo"></Image>
-                                            <Image src={TMC} fluid id="img-logo"></Image>
-                                            <Image src={TSP} fluid id="img-logo"></Image>
-                                        </Row>
-                                    </Col>
-                                    <Col xs={24} style={{ padding: "1.5%" }}>
-                                        <Row id="logo-layout">
-                                            <Image src={SP} fluid id="img-logo"></Image>
-                                            <Image src={BIC} id="img-logo" fluid></Image>
-                                            <Image src={NECTEC} fluid id="img-logo"></Image>
-                                            <Image src={PTEC} fluid id="img-logo"></Image>
-                                        </Row>
-                                    </Col>
-                                </Row>
                                 <Col xs={24}>
                                     {
                                         (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
@@ -472,30 +442,45 @@ export default withRouter(class Header extends Component {
                                                                                 <Menu.Item key="2">
                                                                                     <NavLink to="/Admin/Statistic"><span type="primary" id="btn-sty">สถิติ</span></NavLink >
                                                                                 </Menu.Item>
-                                                                                {/* <Menu.Item key="3">
+                                                                                <Menu.Item key="4">
+                                                                                    <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลักผู้ใช้</span></NavLink>
+                                                                                </Menu.Item>
+                                                                                <Menu.Item key="5">
+                                                                                    <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลักสูตร</span></NavLink>
+                                                                                </Menu.Item>
+                                                                                <Menu.Item key="6">
+                                                                                    <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>
+                                                                                </Menu.Item>
+                                                                                {/* <Menu.Item key="7">
                                                                     {window.innerWidth >= 684 ?
                                                                         <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                             :
                                                                             <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                                 }
                                                                     </Menu.Item> */}
-                                                                                <Menu.Item key="4">
+                                                                                <Menu.Item key="8">
                                                                                     <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
                                                                                 </Menu.Item>
                                                                             </>
                                                                             :
                                                                             <>
                                                                                 <Menu.Item key="0">
-                                                                                    <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                                    <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
                                                                                 </Menu.Item>
-                                                                                {/* <Menu.Item key="1">
+                                                                                <Menu.Item key="1">
+                                                                                    <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>
+                                                                                </Menu.Item>
+                                                                                <Menu.Item key="2">
+                                                                                    <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลักสูตร</span></NavLink>
+                                                                                </Menu.Item>
+                                                                                {/* <Menu.Item key="3">
                                                                         {window.innerWidth >= 684 ?
                                                                         <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                         :
                                                                         <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                         }
                                                                     </Menu.Item> */}
-                                                                                <Menu.Item key="2">
+                                                                                <Menu.Item key="4">
                                                                                     <span type="primary" id="btn-sty" onClick={() => this.logout()}>ออกจากระบบ</span>
                                                                                 </Menu.Item>
                                                                             </>

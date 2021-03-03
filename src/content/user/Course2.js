@@ -475,7 +475,7 @@ export default withRouter(class Course4 extends Component {
             if (this.state.examPost.length !== 3) {
                 this.props.history.push("/ExamPost");
             } else {
-                swal("Warning!", "จำนวนครั้งในการทำข้อสอบครบแล้ว", "warning").then((value) => {
+                swal("Warning!", "คุณทดสอบครบจำนวน 3 ครั้งแล้ว", "warning").then((value) => {
                 });
             }
         } else {
@@ -520,7 +520,7 @@ export default withRouter(class Course4 extends Component {
 
         var url_create_course = ip + "/UserCourse/create";
         const create_course = await (await axios.post(url_create_course, createTopic, { headers: this.state.header })).data;
-        
+
         if (!create_course?.status) {
             swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                 this.setState({
@@ -531,18 +531,18 @@ export default withRouter(class Course4 extends Component {
                 window.location.replace('/', false);
             });
         } else {
-            if(course === CourseCode1) {
+            if (course === CourseCode1) {
                 this.props.history.push("/Course1");
-            } else if(course === CourseCode2) {
+            } else if (course === CourseCode2) {
                 this.props.history.push("/Course2");
-            } else if(course === CourseCode3) {
+            } else if (course === CourseCode3) {
                 this.props.history.push("/Course3");
-            } else if(course === CourseCode4) {
+            } else if (course === CourseCode4) {
                 this.props.history.push("/Course4");
-            } else if(course === CourseCode5) {
+            } else if (course === CourseCode5) {
                 this.props.history.push("/Course5");
             }
-            
+
         }
     }
 
@@ -608,7 +608,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={24} md={24} xl={12} id="progress-course">
                                 <Progress type="circle" percent={this.state.percentExamPost} strokeColor={(this.state.percentExamPost >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
                             </Col>
-                            {
+                            {/* {
                                 (this.state.percentExamPost >= 80) ?
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
@@ -625,6 +625,22 @@ export default withRouter(class Course4 extends Component {
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
                                             <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
+                                        </Col>
+                                    </>
+                            } */}
+                            {
+                                (this.state.examPost.length < 3) ?
+                                    <>
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course1">
+                                            <Row id="font-detail1">คุณสามารถทดสอบได้อีก {3 - this.state.examPost.length} ครั้ง</Row>
+                                        </Col>
+                                    </>
+                                    :
+                                    <>
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course1">
+                                            <Row id="font-detail1">คุณทดสอบครบจำนวน 3 ครั้งแล้ว</Row>
                                         </Col>
                                     </>
                             }
@@ -977,7 +993,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={2} xl={2}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit1} style={{width: "100%", cursor: "pointer"}} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode1) }} fluid></Image>
+                                    <Image src={unit1} style={{ width: "100%", cursor: "pointer" }} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode1) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button>
@@ -986,7 +1002,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course3} style={{width: "100%", cursor: "pointer"}} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode3) }} fluid></Image>
+                                    <Image src={course3} style={{ width: "100%", cursor: "pointer" }} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode3) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button>
@@ -997,7 +1013,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course4} style={{width: "100%", cursor: "pointer"}} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode4) }} fluid></Image>
+                                    <Image src={course4} style={{ width: "100%", cursor: "pointer" }} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode4) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode4) }}>รายละเอียดหลักสูตร</Button>
@@ -1006,7 +1022,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course5} style={{width: "100%", cursor: "pointer"}} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode5) }} fluid></Image>
+                                    <Image src={course5} style={{ width: "100%", cursor: "pointer" }} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode5) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button>

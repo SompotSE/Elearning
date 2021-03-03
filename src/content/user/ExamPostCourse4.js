@@ -214,7 +214,7 @@ export default withRouter(class ExamPost extends Component {
             <Container fluid id="bg-ExamPost">
                 {
                     (this.state.statusexam) ?
-                        (!this.state.ansResultStatus) ?
+                        (this.state.ansResultStatus) ?
                             <div id="body-exam-post">
                                 <Row id="head-exam-post">แบบทดสอบหลังเรียน</Row>
                                 <Row id="pagination">
@@ -254,7 +254,7 @@ export default withRouter(class ExamPost extends Component {
                             <div id="body-exam-post">
                                 <Row id="border-score">
                                     <Col xs={24} md={24} xl={24} id="header-Examport">ผลการทดสอบหลังเรียน</Col>
-                                    <Col xs={24} md={24} xl={24} id="header-Examport">{this.state.nameCourse}</Col>
+                                    <Col xs={24} md={24} xl={24} id="header-Examport1">{this.state.nameCourse}</Col>
                                     <Col xs={24} md={24} xl={24}>
                                         <Row>
                                             <Col xs={24} md={12} xl={12} id="score-Exampost">{this.state.ansScore + " / " + this.state.ansNum}</Col>

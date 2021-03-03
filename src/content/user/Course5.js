@@ -544,7 +544,7 @@ export default withRouter(class Course4 extends Component {
             if (this.state.examPost.length !== 3) {
                 this.props.history.push("/ExamPost");
             } else {
-                swal("Warning!", "จำนวนครั้งในการทำข้อสอบครบแล้ว", "warning").then((value) => {
+                swal("Warning!", "คุณทดสอบครบจำนวน 3 ครั้งแล้ว", "warning").then((value) => {
                 });
             }
         } else {
@@ -686,7 +686,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={24} md={24} xl={12} id="progress-course2">
                                 <Progress type="circle" percent={this.state.percentExamPost} strokeColor={(this.state.percentExamPost >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
                             </Col>
-                            {
+                            {/* {
                                 (this.state.percentExamPost >= 80) ?
                                     <>
                                         <Col xs={0} md={0} xl={12}></Col>
@@ -703,6 +703,22 @@ export default withRouter(class Course4 extends Component {
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course3">
                                             <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
+                                        </Col>
+                                    </>
+                            } */}
+                            {
+                                (this.state.examPost.length < 3) ?
+                                    <>
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course1">
+                                            <Row id="font-detail1">คุณสามารถทดสอบได้อีก {3 - this.state.examPost.length} ครั้ง</Row>
+                                        </Col>
+                                    </>
+                                    :
+                                    <>
+                                        <Col xs={0} md={0} xl={12}></Col>
+                                        <Col xs={24} md={24} xl={12} id="progress-course1">
+                                            <Row id="font-detail1">คุณทดสอบครบจำนวน 3 ครั้งแล้ว</Row>
                                         </Col>
                                     </>
                             }

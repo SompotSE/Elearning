@@ -8,6 +8,8 @@ import testV1 from '../video/test.mp4';
 import Home1 from '../img/Home1.jpg';
 import Home2 from '../img/Home2.jpg';
 import { config } from '../config/config';
+import '../template/Footer2'
+import Footer2 from '../template/Footer2';
 
 // import Header2 from '../template/Header2';
 
@@ -27,11 +29,11 @@ export default class Home extends Component {
                     สสส
                 </Row>
                 <Row>
-                    <Col xs={24} md={24} xl={12} id="home-video">
+                    <Col xs={24} md={24} xl={10} id="home-video">
                         <ReactPlayer
                             url={testV1}
                             className='react-player'
-                            width='90%'
+                            width='70%'
                             height='max-content'
                             controls={true}
                             playsinline={true}
@@ -43,7 +45,7 @@ export default class Home extends Component {
                             // onPlay={() => { this.onCreateTopic(TopicCode3) }}
                             fluid />
                     </Col>
-                    <Col xs={24} md={24} xl={12}>
+                    <Col xs={24} md={24} xl={12} style={{display: "flex", alignItems: "conter"}}>
                         <Row id="rowheadHome">
                             <Row id="headHome">ความเป็นมา</Row>
                             <Row id="descrip-Home">ปัจจุบันระบบสาธารณสุขไทยต้องรองรับจำนวนผู้ป่วยที่เพิ่มขึ้นอย่างต่อเนื่องทุกปี โดยเฉพาะผู้ป่วยในกลุ่มโรคไม่ติดต่อเรื้อรัง หรือ NCDs เช่น โรคมะเร็ง โรคเบาหวาน โรคหลอดเลือดสมองและหัวใจ โรคความดันโลหิตสูง, โรคถุงลมโป่งพอง เป็นต้น ซึ่งเกิดจากการใช้ชีวิตประจำวันที่ไม่เหมาะสม เช่น การสูบบุหรี่ การดื่มเครื่องดื่มแอลกอฮอล์ การไม่ออกกำลังกาย การมีความเครียดสูง</Row>
@@ -68,6 +70,9 @@ export default class Home extends Component {
 และ นางวรรณพร เทพหัสดิน ณ อยุธยา เลขาธิการคณะกรรมการดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งชาติ เข้าร่วมพิธีลงนามสัญญารับทุน
 กองทุนพัฒนาดิจิทัลเพื่อเศรษฐกิจและสังคม ประจำปีงบประมาณ พ.ศ. 2563 ครั้งที่ 2 ซึ่งจัดโดยสำนักงานคณะกรรมการดิจิทัลเพื่อเศรษฐกิจ
 และสังคมแห่งชาติ (สดช.) ณ ห้องวีนัส ชั้น 3 โรงแรมมิราเคิล แกรนด์ คอนเวนชั่น ถนนแจ้งวัฒนะ หลักสี่ กรุงเทพฯ</Col>
+                </Row>
+                <Row>
+                    <Footer2/>
                 </Row>
             </Container>
         );

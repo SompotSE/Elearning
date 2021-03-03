@@ -12,7 +12,7 @@ import SP from "../img/11.jpeg";
 import TMC from "../img/12.jpeg";
 import TSP from "../img/13.jpeg";
 
-export default class Footer extends Component {
+export default class Footer2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,7 +30,7 @@ export default class Footer extends Component {
                         <Image src={TSP} fluid id="img-logo"></Image>
                     </Col>
                     <Col xs={24} md={12} xl={12} id="col-footer-logo">
-                        <Image src={SP} fluid id="img-logo"></Image>
+                        <Image src={SP} fluid style={{width: "30%", display: "flex", paddingTop: "0.8%"}}></Image>
                         <Image src={BIC} id="img-logo" fluid></Image>
                         <Image src={mhesi} fluid id="img-logo"></Image>
                         <Image src={TMC} fluid id="img-logo"></Image>

@@ -405,15 +405,63 @@ export default withRouter(class Header extends Component {
                                     {
                                         (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
                                             <Col xs={24} md={24} xl={24} id="row-btnsty">
-                                                <Row>
+                                                {/* <Row>
                                                     <Col xs={12} md={12} xl={12}></Col>
                                                     <Col xs={12} md={12} xl={12}>
                                                         <span type="primary" id={(window.location.pathname === "/Login") || (window.location.pathname === "/login") ? "active-header" : "btn-sty"} onClick={() => this.LoginButton()}>เข้าสู่ระบบ</span>
                                                     </Col>
-                                                    {/* <Col xs={12} md={12} xl={12}>
+                                                    <Col xs={12} md={12} xl={12}>
                                                         <span type="primary" id={(window.location.pathname === "/Register") || (window.location.pathname === "/register") ? "active-header" : "btn-sty"} onClick={() => this.RegisterButton()}>สมัครสมาชิก</span>
-                                                    </Col> */}
-                                                </Row>
+                                                    </Col>
+                                                </Row> */}
+                                                <Col xs={24} id="menu-header">
+                                                        <Dropdown
+                                                            id="btn-dropdown"
+                                                            width={150}
+                                                            trigger={['click']}
+                                                            overlay={
+                                                                <Menu>
+                                                                    {
+                                                                        (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
+                                                                            <>
+                                                                                <Menu.Item key="0">
+                                                                                    <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                                </Menu.Item>
+                                                                                <Menu.Item key="1">
+                                                                                    <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>
+                                                                                </Menu.Item>
+                                                                                <Menu.Item key="2">
+                                                                                    <span type="primary" id={(window.location.pathname === "/Login") || (window.location.pathname === "/login") ? "btn-sty" : "btn-sty"} onClick={() => this.LoginButton()}>เข้าสู่ระบบ</span>
+                                                                                </Menu.Item>
+                                                                            </>
+                                                                            :
+                                                                            <>
+                                                                                <Menu.Item key="0">
+                                                                                    <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                                </Menu.Item>
+                                                                                <Menu.Item key="1">
+                                                                                    <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>
+                                                                                </Menu.Item>
+                                                                                <Menu.Item key="2">
+                                                                                    <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลักสูตร</span></NavLink>
+                                                                                </Menu.Item>
+                                                                                {/* <Menu.Item key="3">
+                                                                                        {window.innerWidth >= 684 ?
+                                                                                        <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
+                                                                                        :
+                                                                                        <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
+                                                                                        }
+                                                                                    </Menu.Item> */}
+                                                                                <Menu.Item key="4">
+                                                                                    <span type="primary" id="btn-sty" onClick={() => this.logout()}>ออกจากระบบ</span>
+                                                                                </Menu.Item>
+                                                                            </>
+                                                                    }
+                                                                </Menu>
+                                                            } placement="bottomRight" >
+                                                            <MenuOutlined />
+                                                        </Dropdown>
+                                                    </Col>
                                             </Col>
                                             :
                                             <Col xs={24} style={{ justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignContent: "center", alignItems: "center" }}>

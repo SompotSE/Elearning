@@ -28,7 +28,7 @@ export default class Home extends Component {
             <Container fluid id="bg-home">
                 <Row>
                     <Col xs={24} md={24} xl={24}>
-                        <Image src={HomeBanner}></Image>
+                        <Image src={HomeBanner} fluid></Image>
                     </Col>
                 </Row>
                 <Row>
@@ -61,12 +61,12 @@ export default class Home extends Component {
                 <Row id="row-coverhome">
                     <Col xs={24} md={12} xl={12}>
                         <Col xs={24} md={24} xl={24}>
-                            <Image src={Home2} id="img-row2" style={{width: "70%", paddingBottom: "3%"}} fluid></Image>
+                            <Image src={Home2} id="img-row2" style={{width: "70%", height: "fit-content"}} fluid></Image>
                         </Col>
                     </Col>
                     <Col xs={24} md={12} xl={12}>
                         <Col xs={24} md={24} xl={24}>
-                            <Image src={Home1} id="img-row2" style={{width: "70%"}} fluid></Image>
+                            <Image src={Home1} id="img-row2" style={{width: "70%", height: "fit-content"}} fluid></Image>
                         </Col>
                     </Col>
                     <Col  xs={24} md={24} xl={24} id="descrip-Home1"><span id="headHome">วันที่ 14 ธันวาคม 2563 </span> นางสาว อัจฉรินทร์ พัฒนพันธ์ชัย ปลัดกระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม 

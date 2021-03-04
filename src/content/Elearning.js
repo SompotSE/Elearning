@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Container } from 'react-bootstrap';
-import { Row, Col } from 'antd';
+import { Row, Col, Image } from 'antd';
 import '../css/Elearning.css';
 import ReactPlayer from 'react-player';
 import testV1 from '../video/test.mp4';
+import HomeBanner from '../img/Home-01.jpg';
 
 export default class Elearning extends Component {
     constructor(props) {
@@ -15,6 +16,11 @@ export default class Elearning extends Component {
     render() {
         return (
             <Container fluid>
+                <Row>
+                    <Col xs={24} md={24} xl={24}>
+                        <Image src={HomeBanner} fluid></Image>
+                    </Col>
+                </Row>
                 <Row>
                     <Col id="col-elearning">
                         <ReactPlayer

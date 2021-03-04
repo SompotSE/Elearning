@@ -12,7 +12,7 @@ import '../../css/Course.css';
 import imgcourse from '../../img/userhome.png';
 import userprofile from '../../img/userprofile.png';
 import { NavLink } from 'react-router-dom';
-import unit2 from '../../img/unit2.webp';
+import unit2 from '../../img/unit2.jpg';
 import banner from "../../img/Banner/Course1.webp";
 // import { AiFillPlayCircle } from "react-icons/ai";
 // import v1 from '../../img/V1.png';

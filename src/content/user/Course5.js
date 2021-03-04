@@ -16,10 +16,10 @@ import TeacherCourse5_3 from '../../img/Teacher/TeacherCourse5_3.webp';
 // import { NavLink } from 'react-router-dom';
 import banner from "../../img/Banner/Course5.jpg";
 
-import unit1 from '../../img/unit1.webp';
-import unit2 from '../../img/unit2.webp';
-import course4 from '../../img/course4.png';
-import course5 from '../../img/course5.png';
+import unit1 from '../../img/unit1.jpg';
+import unit2 from '../../img/unit2.jpg';
+import unit4 from '../../img/unit4.jpg';
+import unit3 from '../../img/unit3.jpg';
 
 import pdf from "../../pdf/Course5.pdf"
 
@@ -1181,7 +1181,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course4} id="img-course" style={{width: "100%", cursor: "pointer"}} onClick={() => { this.onClicktoCourse(CourseCode3) }} fluid></Image>
+                                    <Image src={unit3} id="img-course" style={{width: "100%", cursor: "pointer"}} onClick={() => { this.onClicktoCourse(CourseCode3) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button>
@@ -1190,7 +1190,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course5} id="img-course" style={{width: "100%", cursor: "pointer"}} onClick={() => { this.onClicktoCourse(CourseCode4) }} fluid></Image>
+                                    <Image src={unit4} id="img-course" style={{width: "100%", cursor: "pointer"}} onClick={() => { this.onClicktoCourse(CourseCode4) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode4) }}>รายละเอียดหลักสูตร</Button>

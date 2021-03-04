@@ -7,7 +7,7 @@ import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import '../../css/HomeUser.css';
 import ReactPlayer from 'react-player';
-import testV1 from '../../video/test.mp4';
+// import testV1 from '../../video/test.mp4';
 import { AiFillPlayCircle } from "react-icons/ai";
 import unit1 from '../../img/unit1.jpg';
 import unit2 from '../../img/unit2.jpg';
@@ -25,6 +25,8 @@ import Header2 from '../../template/Header2';
 // import incourse2 from '../../img/incourse2.svg';
 
 import { config } from '../../config/config';
+
+const VideoElearning = 'https://www.digitalncd.com/API/video/Home/Elearning.mp4';
 
 const cookies = new Cookies();
 
@@ -140,7 +142,7 @@ export default withRouter(class HomeUser extends Component {
                     <Col xs={24} md={12} xl={12}>
                         <Row id="video-center">
                             <ReactPlayer
-                                url={testV1}
+                                url={VideoElearning}
                                 className='react-player'
                                 width='100%'
                                 height='max-content'

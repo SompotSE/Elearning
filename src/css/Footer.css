@@ -48,7 +48,9 @@
         margin-top: 1%;
         margin-bottom: 0.5%;
     }
-    
+    #img-logo{
+        height: 55px;
+    }
     #col-footer3{
         padding-left: 3%;
         margin-top: 1%;

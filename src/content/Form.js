@@ -273,7 +273,7 @@ export default class AdminHome extends Component {
             this.state.source12 === 0 ||
             this.state.source13 === 0 ||
             this.state.sourcepor === 0 ||
-            this.state.sourceporDesc === "" ||
+            // this.state.sourceporDesc === "" ||
             this.state.source14 === 0 ||
             this.state.source15 === 0 ||
             this.state.source16 === 0 ||

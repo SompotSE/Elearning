@@ -304,6 +304,7 @@
     #text-header{
         font-size: 18px;
         color: #000000;
+        font-weight: bold;
     }
     #menu-header {
         display: flex;
@@ -420,6 +421,7 @@ a:hover {
     justify-content: center;
     border-bottom: 3px solid #2C4893;
     color: #2C4893;
+    font-weight: bold;
 }
 
 a {

@@ -99,8 +99,9 @@
     #col-footer-logo{
         display: flex;
         justify-content: space-between;
-        padding-right: 3%;
+        padding-right: 5%;
         padding-bottom: 0.5%;
+        align-items: center;
     }
 }
 
@@ -226,7 +227,8 @@
         display: flex;
         justify-content: space-between;
         padding-right: 3%;
-        padding-bottom: 3%;
+        padding-bottom: 3%;        
+        align-items: center;
     }
     #row-footer1{
         background-color: #FFFFFF;

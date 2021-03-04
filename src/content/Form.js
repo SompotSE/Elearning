@@ -313,8 +313,7 @@ export default class AdminHome extends Component {
             <Container id="bg-form" fluid>
                 <Row id="row-header-form">
                     <Col xs={20} md={12} xl={12}>
-                        <Col xs={24} md={24} xl={24} id="col-header-form">Siminar Evaluation</Col>
-                        <Col xs={24} md={24} xl={24} id="col-header-form">แบบประเมินผลงานสัมนา</Col>
+                        <Col xs={24} md={24} xl={24} id="col-header-form">แบบประเมินผล</Col>
                     </Col>
                     {/* <Col xs={4} md={12} xl={12} id="logo-header-form">โลโก้</Col> */}
                 </Row>
@@ -336,19 +335,19 @@ export default class AdminHome extends Component {
                         <Col xs={24} md={24} xl={24}>
                             <RadioGroup onChange={this.onChange} value={this.state.source} style={{fontSize: "10px"}}>
                                 <Row>
-                                    <Col xs={24} md={4} xl={2} id="radio-source">
+                                    <Col xs={24} md={4} xl={3} id="radio-source">
                                         <FormControlLabel value="1" control={<Radio />}  />Email
                                     </Col>
-                                    <Col xs={24} md={4} xl={2} id="radio-source">
+                                    <Col xs={24} md={4} xl={3} id="radio-source">
                                     <   FormControlLabel value="2" control={<Radio />}  />Brochure
                                     </Col>
-                                    <Col xs={24} md={4} xl={2} id="radio-source">
+                                    <Col xs={24} md={4} xl={3} id="radio-source">
                                         <FormControlLabel value="3" control={<Radio />}  />Website
                                     </Col>
-                                    <Col xs={24} md={5} xl={2} id="radio-source">
+                                    <Col xs={24} md={5} xl={4} id="radio-source">
                                         <FormControlLabel value="4" control={<Radio />}  />Colleagues
                                     </Col>
-                                    <Col xs={24} md={7} xl={6} id="radio-source">
+                                    <Col xs={24} md={7} xl={7} id="radio-source">
                                         <FormControlLabel value="5" control={<Radio />}  />
                                             Other (Please specify) 
                                             {this.state.source === "5" ? <Input style={{ width: 100, marginLeft: 10 }} name="knowOther" value={this.state.knowOther} onChange={this.onChangeKnowOther}/> : null}

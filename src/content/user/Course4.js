@@ -10,7 +10,7 @@ import swal from 'sweetalert';
 import ReactPlayer from 'react-player';
 import '../../css/Course.css';
 import imgcourse from '../../img/incourse4.jpg';
-import TeacherCourse4 from '../../img/Teacher/TeacherCourse4.webp';
+import TeacherCourse4 from '../../img/Teacher/TeacherCourse4.png';
 // import { NavLink } from 'react-router-dom';
 import banner from "../../img/Banner/Course4.jpg";
 

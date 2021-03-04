@@ -109,7 +109,7 @@ export default class Login extends Component {
                                     <Input placeholder="ชื่อผู้ใช้" id="form-logininput" />
                                 </Form.Item>
                             </Col>
-                            <Row id="login-header">รหัสผ่าน</Row>
+                            <Row id="login-headermobile">รหัสผ่าน</Row>
                             <Col xs={24} md={24} xl={24}>
                                 <Form.Item
                                     name="password"

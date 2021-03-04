@@ -60,14 +60,18 @@ export default class Home extends Component {
                 
                 <Row id="row-coverhome">
                     <Col xs={24} md={12} xl={12}>
+                        <Row>
                         <Col xs={24} md={24} xl={24}>
                             <Image src={Home2} id="img-row2" style={{width: "70%", height: "fit-content"}} fluid></Image>
                         </Col>
+                        </Row>
                     </Col>
                     <Col xs={24} md={12} xl={12}>
+                        <Row>
                         <Col xs={24} md={24} xl={24}>
                             <Image src={Home1} id="img-row2" style={{width: "70%", height: "fit-content"}} fluid></Image>
                         </Col>
+                    </Row>
                     </Col>
                     <Col  xs={24} md={24} xl={24} id="descrip-Home1"><span id="headHome">วันที่ 14 ธันวาคม 2563 </span> นางสาว อัจฉรินทร์ พัฒนพันธ์ชัย ปลัดกระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม 
 และ นางวรรณพร เทพหัสดิน ณ อยุธยา เลขาธิการคณะกรรมการดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งชาติ เข้าร่วมพิธีลงนามสัญญารับทุน

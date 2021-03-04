@@ -20,6 +20,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding-right: 5%;
 }
 
 #rowbtn-sty{
@@ -308,7 +309,7 @@
         /* padding: 3% 10% 3% 10%; */
     }
     #row-navi{
-        padding: 0% 5% 0% 5%;
+        padding: 1% 10% 1% 5%;
     }
     #text-header{
         font-size: 18px;

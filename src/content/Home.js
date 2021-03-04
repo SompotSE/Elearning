@@ -61,14 +61,14 @@ export default class Home extends Component {
                 <Row id="row-coverhome">
                     <Col xs={24} md={12} xl={12}>
                         <Row>
-                        <Col xs={24} md={24} xl={24}>
+                        <Col xs={24} md={24} xl={24} style={{display: "flex", justifyContent: "center"}}>
                             <Image src={Home2} id="img-row2" style={{width: "70%"}} fluid></Image>
                         </Col>
                         </Row>
                     </Col>
                     <Col xs={24} md={12} xl={12}>
                         <Row>
-                        <Col xs={24} md={24} xl={24}>
+                        <Col xs={24} md={24} xl={24} style={{display: "flex", justifyContent: "center"}}>
                             <Image src={Home1} id="img-row2" style={{width: "70%"}} fluid></Image>
                         </Col>
                     </Row>

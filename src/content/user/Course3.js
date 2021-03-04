@@ -18,10 +18,10 @@ import banner from "../../img/Banner/Course3.jpg";
 // import v2 from '../../img/V2.png';
 // import v3 from '../../img/V3.png';
 
-import unit1 from '../../img/unit1.webp';
-import unit2 from '../../img/unit2.webp';
-import course4 from '../../img/course4.png';
-import course5 from '../../img/course5.png';
+import unit1 from '../../img/unit1.jpg';
+import unit2 from '../../img/unit2.jpg';
+import unit4 from '../../img/unit4.jpg';
+import unit5 from '../../img/unit5.jpg';
 
 // import incourse1 from '../../img/incourse1.svg';
 // import incourse2 from '../../img/incourse2.svg';
@@ -1012,7 +1012,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course4} id="img-course" style={{ width: "100%", cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode4) }} fluid></Image>
+                                    <Image src={unit4} id="img-course" style={{ width: "100%", cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode4) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode4) }}>รายละเอียดหลักสูตร</Button>
@@ -1021,7 +1021,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={course5} id="img-course" style={{ width: "100%", cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode5) }} fluid></Image>
+                                    <Image src={unit5} id="img-course" style={{ width: "100%", cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode5) }} fluid></Image>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button>

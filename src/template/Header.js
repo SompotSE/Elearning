@@ -322,7 +322,7 @@ export default withRouter(class Header extends Component {
                                         </Col>
                                     </Row>
                                 </Col>
-                                <Col xs={8} md={5} xl={5}>
+                                <Col xs={8} md={5} xl={5}  id="menu-header">
                                     <Row>
                                         <Col xs={24} md={24} xl={24} id="btn-header">
                                             {

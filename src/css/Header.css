@@ -278,16 +278,6 @@
     align-items: center;
 }
 
-#menu-header {
-    display: flex;
-    justify-content: flex-end;
-    text-align: center;
-    padding-right: 5%;
-    padding-bottom: 1%;
-    padding-top: 1%;
-}
-
-
 /* notebook */
 @media screen and (min-width: 601px) { 
     #img-logo{
@@ -315,6 +305,14 @@
         font-size: 18px;
         color: #000000;
     }
+    #menu-header {
+        display: flex;
+        justify-content: flex-end;
+        text-align: center;
+        padding-right: 5%;
+        padding-bottom: 1%;
+        align-items: center;
+    }
 }
 
 /* ipad pro */
@@ -322,12 +320,28 @@
     #img-logo{
         height: 24px;
     }
+    #menu-header {
+        display: flex;
+        justify-content: flex-end;
+        text-align: center;
+        padding-right: 5%;
+        padding-bottom: 1%;
+        align-items: center;
+    }
 }
 
 /* ipad */
 @media screen and (max-width: 768px) {
     #img-logo{
         height: 18px;
+    }
+    #menu-header {
+        display: flex;
+        justify-content: flex-end;
+        text-align: center;
+        padding-right: 5%;
+        padding-bottom: 1%;
+        align-items: center;
     }
 }
 
@@ -371,6 +385,14 @@
     .ant-btn {
         font-size: 10px !important;
         padding: 4px 10px !important;
+    }
+    #menu-header {
+        display: flex;
+        justify-content: flex-end;
+        text-align: center;
+        padding-right: 5%;
+        padding-bottom: 1%;
+        align-items: center;
     }
 
 }

@@ -219,6 +219,7 @@
 }
 
 #row-img-date{
-    display: flex;
+    display: inherit;
     justify-content: center;
+    padding-bottom: 3%;
 }

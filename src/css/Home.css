@@ -99,7 +99,7 @@
     }
     #descrip-Home1{
         padding-right: 5%;
-        padding-left: 4%;
+        padding-left: 2%;
         text-indent: 1cm;
         text-align: justify;
         margin-top: 2%;
@@ -219,6 +219,6 @@
 }
 
 #row-img-date{
-    display: inherit;
+    display: flex;
     justify-content: center;
 }

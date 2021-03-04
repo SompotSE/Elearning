@@ -5,8 +5,19 @@
     margin-bottom: 2%;
 }
 
+#row-video-elearning{
+    margin-top: 3%;
+}
+
+
+
 /* notebook */
 @media screen and (min-width: 601px) {
+    #headElearning{
+        font-size: 18px;
+        font-weight: bold;
+        color: #6F6AFA;
+    }
     #descrip-Elearning{
         padding-right: 5%;
         padding-left: 4%;
@@ -57,6 +68,11 @@
 
 /* telephone */
 @media screen and (max-width: 684px){
+    #headElearning{
+        font-size: 12px;
+        font-weight: bold;
+        color: #6F6AFA;
+    }
     #descrip-Elearning{
         padding-right: 8%;
         padding-left: 8%;

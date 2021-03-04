@@ -7,6 +7,7 @@ import ReactPlayer from 'react-player';
 import testV1 from '../video/test.mp4';
 import Home1 from '../img/Home1.jpg';
 import Home2 from '../img/Home2.jpg';
+import HomeBanner from '../img/Home-01.jpg';
 import { config } from '../config/config';
 
 // import Header2 from '../template/Header2';
@@ -24,7 +25,9 @@ export default class Home extends Component {
         return (
             <Container fluid id="bg-home">
                 <Row>
-                    สสส
+                    <Col xs={24} md={24} xl={24}>
+                        <Image src={HomeBanner}></Image>
+                    </Col>
                 </Row>
                 <Row>
                     <Col xs={24} md={24} xl={12} id="home-video">

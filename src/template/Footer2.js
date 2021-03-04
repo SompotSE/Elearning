@@ -30,7 +30,7 @@ export default class Footer2 extends Component {
                         <Image src={TSP} fluid id="img-logo" onClick={() => { window.open("https://www.sciencepark.or.th/index.php/th/", "_blank"); }} style={{ cursor: "pointer"}}></Image>
                     </Col>
                     <Col xs={24} md={12} xl={12} id="col-footer-logo">
-                        <Image src={SP} fluid style={{width: "30%", display: "flex", paddingTop: "0.8%", cursor: "pointer"}} onClick={() => { window.open("http://swpark.or.th/?fbclid=IwAR1iIWgflzwMW2k53QZK9MGkodxsPHMiV3G8wkhlQF6eeQ8ASTDQl01cHAs", "_blank"); }}></Image>
+                        <Image src={SP} fluid style={{width: "30%", display: "flex", paddingTop: "0.8%", cursor: "pointer", height: "auto"}} onClick={() => { window.open("http://swpark.or.th/?fbclid=IwAR1iIWgflzwMW2k53QZK9MGkodxsPHMiV3G8wkhlQF6eeQ8ASTDQl01cHAs", "_blank"); }}></Image>
                         <Image src={BIC} id="img-logo" fluid onClick={() => { window.open("https://www.nectec.or.th/", "_blank"); }} style={{ cursor: "pointer"}}></Image>
                         <Image src={mhesi} fluid id="img-logo" onClick={() => { window.open("https://www.mhesi.go.th/", "_blank"); }} style={{cursor: "pointer"}}></Image>
                         <Image src={TMC} fluid id="img-logo"></Image>

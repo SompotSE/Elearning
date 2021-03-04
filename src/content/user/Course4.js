@@ -598,7 +598,7 @@ export default withRouter(class Course4 extends Component {
                     <Col xs={24} md={12} xl={12}>
                         <Row>
                             <Col xs={24} md={24} xl={24} id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Col>
-                            <Col xs={24} md={24} xl={12}>
+                            <Col xs={24} md={12} xl={12}>
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
@@ -610,7 +610,7 @@ export default withRouter(class Course4 extends Component {
                                         </>
                                 }
                             </Col>
-                            <Col xs={24} md={24} xl={12} id="progress-course">
+                            <Col xs={24} md={12} xl={12} id="progress-course">
                                 <Progress type="circle" percent={this.state.percentExamPost} strokeColor={(this.state.percentExamPost >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
                             </Col>
                             {/* {

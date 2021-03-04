@@ -7,7 +7,6 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import { config } from '../config/config';
-import Header2 from '../template/Header2';
 
 const cookies = new Cookies();
 
@@ -87,9 +86,6 @@ export default class Login extends Component {
 
         return (
             <Container fluid id="LoginMobile">
-                <Row>
-                    <Header2 />
-                </Row>
                 <Form onFinish={this.onLogin}>
                     <Row id="login-mobile">
                         <Col xs={2} md={2} xl={2}></Col>

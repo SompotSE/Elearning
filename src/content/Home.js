@@ -7,6 +7,7 @@ import ReactPlayer from 'react-player';
 import testV1 from '../video/test.mp4';
 import Home1 from '../img/Home1.jpg';
 import Home2 from '../img/Home2.jpg';
+import HomeBanner from '../img/Home-01.jpg';
 import { config } from '../config/config';
 import '../template/Footer2'
 import Footer2 from '../template/Footer2';
@@ -26,7 +27,9 @@ export default class Home extends Component {
         return (
             <Container fluid id="bg-home">
                 <Row>
-                    สสส
+                    <Col xs={24} md={24} xl={24}>
+                        <Image src={HomeBanner} fluid></Image>
+                    </Col>
                 </Row>
                 <Row>
                     <Col xs={24} md={24} xl={12} id="home-video">
@@ -58,12 +61,12 @@ export default class Home extends Component {
                 <Row id="row-coverhome">
                     <Col xs={24} md={12} xl={12}>
                         <Col xs={24} md={24} xl={24}>
-                            <Image src={Home2} id="img-row2" style={{width: "70%", paddingBottom: "3%"}} fluid></Image>
+                            <Image src={Home2} id="img-row2" style={{width: "70%", height: "fit-content"}} fluid></Image>
                         </Col>
                     </Col>
                     <Col xs={24} md={12} xl={12}>
                         <Col xs={24} md={24} xl={24}>
-                            <Image src={Home1} id="img-row2" style={{width: "70%"}} fluid></Image>
+                            <Image src={Home1} id="img-row2" style={{width: "70%", height: "fit-content"}} fluid></Image>
                         </Col>
                     </Col>
                     <Col  xs={24} md={24} xl={24} id="descrip-Home1"><span id="headHome">วันที่ 14 ธันวาคม 2563 </span> นางสาว อัจฉรินทร์ พัฒนพันธ์ชัย ปลัดกระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม 

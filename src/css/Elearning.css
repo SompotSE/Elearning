@@ -12,12 +12,14 @@
         padding-left: 4%;
         text-indent: 1cm;
         text-align: justify;
+        font-size: 18px;
     }
     #descrip-Elearning1{
         padding-right: 5%;
         padding-left: 4%;
         text-indent: 1cm;
         text-align: justify;
+        font-size: 18px;
     }
 }
 
@@ -56,15 +58,17 @@
 /* telephone */
 @media screen and (max-width: 684px){
     #descrip-Elearning{
-        padding-right: 5%;
-        padding-left: 4%;
+        padding-right: 8%;
+        padding-left: 8%;
         text-indent: 1cm;
         text-align: justify;
+        font-size: 12px;
     }
     #descrip-Elearning1{
-        padding-right: 5%;
-        padding-left: 4%;
+        padding-right: 8%;
+        padding-left: 8%;
         text-indent: 1cm;
         text-align: justify;
+        font-size: 12px;
     }
 }

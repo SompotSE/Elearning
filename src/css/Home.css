@@ -13,6 +13,8 @@
     color: #6F6AFA;
     margin-bottom: 2%;
     padding-left: 2.5%;
+    padding-top: 1%;
+    margin-bottom: 1.5%;
 
 }
 
@@ -89,10 +91,11 @@
         font-weight: bold;
     }
     #descrip-Home{
-        padding-right: 5%;
+        padding-right: 10%;
         padding-left: 2.5%;
         text-indent: 1cm;
         text-align: justify;
+        font-size: 18px;
     }
     #descrip-Home1{
         padding-right: 5%;
@@ -100,6 +103,7 @@
         text-indent: 1cm;
         text-align: justify;
         margin-top: 2%;
+        font-size: 18px;
     }
 }
 
@@ -190,24 +194,26 @@
         font-weight: bold;
     }
     #descrip-Home{
-        padding-right: 5%;
-        padding-left: 2.5%;
+        padding-right: 8%;
+        padding-left: 8%;
         text-indent: 1cm;
+        font-size: 12px;
         text-align: justify;
     }
     #descrip-Home1{
-        padding-right: 5%;
+        padding-right: 4%;
         padding-left: 4%;
         text-indent: 1cm;
         text-align: justify;
         margin-top: 2%;
+        font-size: 12px;
     }
     
 }
 
 #home-video{
     display: flex;
-    justify-content: center;
     margin-top: 5%;
     align-items: center;
+    padding-left: 7%;
 }

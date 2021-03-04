@@ -41,6 +41,10 @@ export default class Footer extends Component {
                             <Col xs={4} md={2} xl={2} id="descript-footer2"><BsFillPeopleFill style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/></Col>
                             <Col xs={20} md={21} xl={21} id="descript-footer2">Gap Analysis เตรียมความพร้อมสู่การออกเชิงพาณิชย์</Col>
                         </Row>
+                        <Row>
+                            <Col xs={4} md={2} xl={2} id="descript-footer2"><BsFillPeopleFill style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/></Col>
+                            <Col xs={20} md={21} xl={21} id="descript-footer2">ผู้ผ่านการคัดเลือกรอบสุดท้าย ได้เข้าร่วมกิจกรรม Digital Health-Tech Coaching & Acceleration Program พร้อมรับเงินทุนสนับสนุน 280,000 บาท และขยายผลจริงในโรงพยาบาล</Col>
+                        </Row>
                         {/* <Col xs={24} md={24} xl={24} id="descript-footer2"><BsFillPeopleFill style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>ผู้ผ่านการคัดเลือกรอบสุดท้าย ได้เข้าร่วมกิจกรรม Digital Health-Tech Coaching & Acceleration Program พร้อมรับเงินทุนสนับสนุน 280,000 บาท และขยายผลจริงในโรงพยาบาล</Col> */}
                         {/* <Col xs={24} md={24} xl={24} id="descript-footer2">วิธีการเข้าชมคอร์สเรียน</Col> */}
                     </Col>
@@ -61,7 +65,7 @@ export default class Footer extends Component {
                         {/* <Col xs={24} md={24} xl={24} id="descript-footer2"><FaTwitter style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/>Twitter</Col> */}
                     </Col>
                     <Col xs={11} md={6} xl={6} id="col-footer4">
-                        <Col xs={24} md={24} xl={24} id="header-footer">ติดต่อสอบถาม</Col>
+                        <Col xs={24} md={24} xl={24} id="header-footer">ติดต่อสอบถามโครงการ</Col>
                         <Row>
                             <Col xs={4} md={2} xl={2} id="descript-footer2"><FiPhoneCall style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/></Col>
                             <Col xs={20} md={21} xl={21} id="descript-footer2">086 373 4271 ( คุณกานต์ธิดาพร )</Col>
@@ -73,6 +77,11 @@ export default class Footer extends Component {
                         <Row>
                             <Col xs={4} md={2} xl={2} id="descript-footer2"><IoIosMailOpen style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/></Col>
                             <Col xs={20} md={21} xl={21} id="descript-footer2">ikd@nstda.or.th</Col>
+                        </Row>
+                        <Col xs={24} md={24} xl={24} id="header-footer">ติดต่อสอบถามด้านระบบ</Col>
+                        <Row>
+                            <Col xs={4} md={2} xl={2} id="descript-footer2"><FiPhoneCall style={{fontSize: "18px", color: "#FF7C00", marginRight: "3%"}}/></Col>
+                            <Col xs={20} md={21} xl={21} id="descript-footer2">082 245 2329 ( คุณฐิติพงศ์ )</Col>
                         </Row>
                     </Col>   
                 </Row>

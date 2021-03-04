@@ -3,8 +3,9 @@ import { Container, Image } from 'react-bootstrap';
 import { Row, Col } from 'antd';
 import '../css/Elearning.css';
 import ReactPlayer from 'react-player';
-import testV1 from '../video/test.mp4';
 import HomeBanner from '../img/Home-01.jpg';
+
+const VideoElearning = 'https://www.digitalncd.com/API/video/Home/Elearning.mp4';
 
 export default class Elearning extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ export default class Elearning extends Component {
                 <Row id="row-video-elearning">
                     <Col id="col-elearning">
                         <ReactPlayer
-                            url={testV1}
+                            url={VideoElearning}
                             className='react-player'
                             width='60%'
                             height='max-content'

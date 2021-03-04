@@ -318,7 +318,7 @@ export default withRouter(class Header extends Component {
                                         </Col>
                                         <Col style={{paddingLeft: "3%"}}>
                                             {/* <Button id={(window.location.pathname === "/Elearning") || (window.location.pathname === "/elearning") ? "active-header" : "text-header"} >Elearning</Button> */}
-                                            <span type="primary" id={(window.location.pathname === "/Elearning") || (window.location.pathname === "/elearning") ? "active-header" : "text-header"} onClick={() => this.props.history.push("/Elearning")} style={{ cursor: "pointer" }}>Elearning</span>
+                                            <span type="primary" id={(window.location.pathname === "/Elearning") || (window.location.pathname === "/elearning") ? "active-header" : "text-header"} onClick={() => this.props.history.push("/Elearning")} style={{ cursor: "pointer" }}>E-learning</span>
                                         </Col>
                                     </Row>
                                 </Col>
@@ -569,21 +569,17 @@ export default withRouter(class Header extends Component {
                             <Col xs={16} md={16} xl={16}>
                                 <Col xs={24} md={24} xl={24} id="LoginHeader1">เข้าสู่ระบบ</Col>
                                 <Col xs={24} md={24} xl={24} id="LoginDescrip">เมื่อคุณเข้าสู่ระบบคุณได้ทำตาม<span id="LoginDescrip-si">ข้อตกลงผู้ใช้</span></Col>
-                                <Row id="login-header">อีเมลล์</Row>
+                                <Row id="login-header">ชื่อผู้ใช้</Row>
                                 <Col xs={24} md={24} xl={24}>
                                     <Form.Item
                                         name="email"
                                         rules={[
                                             {
-                                                type: 'email',
-                                                message: 'รูปแบบอีเมลล์ไม่ถูกต้อง',
-                                            },
-                                            {
                                                 required: true,
-                                                message: 'กรุณากรอกอีเมลล์',
+                                                message: 'กรุณากรอกชื่อผู้ใช้',
                                             },
                                         ]}>
-                                        <Input placeholder="อีเมลล์" id="form-logininput" />
+                                        <Input placeholder="ชื่อผู้ใช้" id="form-logininput" />
                                     </Form.Item>
                                 </Col>
                                 <Row id="login-header">รหัสผ่าน</Row>
@@ -601,7 +597,7 @@ export default withRouter(class Header extends Component {
                                 </Col>
                                 <Col xs={24} md={24} xl={24} id="row-login">
                                     {
-                                        (!this.state.statusSend) ? <Button htmlType="submit" id="btn-login">SIGN IN</Button> : <Spin />
+                                        (!this.state.statusSend) ? <Button htmlType="submit" id="btn-login">เข้าสู่ระบบ</Button> : <Spin />
                                     }
                                 </Col>
                                 {/* <Col xs={24} md={24} xl={24} id="row-login">

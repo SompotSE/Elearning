@@ -92,7 +92,7 @@ export default class Login extends Component {
                         <Col xs={20} md={20} xl={20}>
                             <Col xs={24} md={24} xl={24} id="LoginHeader">เข้าสู่ระบบ</Col>
                             <Col xs={24} md={24} xl={24} id="LoginDescrip">เมื่อคุณเข้าสู่ระบบคุณได้ทำตาม<span id="LoginDescrip-si">ข้อตกลงผู้ใช้</span></Col>
-                            <Row id="login-headermobile">อีเมลล์</Row>
+                            <Row id="login-headermobile">ชื่อผู้ใช้</Row>
                             <Col xs={24} md={24} xl={24}>
                                 <Form.Item
                                     name="email"
@@ -103,10 +103,10 @@ export default class Login extends Component {
                                         // },
                                         {
                                             required: true,
-                                            message: 'กรุณากรอกอีเมลล์',
+                                            message: 'กรุณากรอกชื่อผู้ใช้',
                                         },
                                     ]}>
-                                    <Input placeholder="อีเมลล์" id="form-logininput" />
+                                    <Input placeholder="ชื่อผู้ใช้" id="form-logininput" />
                                 </Form.Item>
                             </Col>
                             <Row id="login-header">รหัสผ่าน</Row>
@@ -124,7 +124,7 @@ export default class Login extends Component {
                             </Col>
                             <Col xs={24} md={24} xl={24} id="row-login">
                                 {
-                                    (!this.state.statusSend) ? <Button htmlType="submit" id="btn-login">SIGN IN</Button> : <Spin />
+                                    (!this.state.statusSend) ? <Button htmlType="submit" id="btn-login">เข้าสู่ระบบ</Button> : <Spin />
                                 }
                             </Col>
                             {/* <Col xs={24} md={24} xl={24} id="row-login">

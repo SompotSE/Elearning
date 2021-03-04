@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
-import { Row, Col, Image } from 'antd';
+import { Container, Image } from 'react-bootstrap';
+import { Row, Col } from 'antd';
 import axios from 'axios';
 import '../css/Home.css';
 import ReactPlayer from 'react-player';

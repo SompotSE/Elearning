@@ -982,15 +982,18 @@ export default class AdminHome extends Component {
                                             </Col>
                                     </Row>
                                     <Row id="row-por">
-                                            <Col xs={24} md={24} xl={4} id="radio-source">
+                                            <Col xs={24} md={8} xl={4} id="radio-source">
                                                 <FormControlLabel value="2" control={<Radio />} />ไม่พอใจ เนื่องจาก
                                             </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col xs={24} md={24} xl={12}>
+                                            <Col xs={24} md={14} xl={14}>
                                             <Input placeholder="โปรดกรอกข้อมูล" id="input-por" name="sourceporDesc" value={this.state.sourceporDesc} onChange={this.onChangeKnowOther}/>
                                         </Col>
                                     </Row>
+                                    {/* <Row>
+                                        <Col xs={24} md={24} xl={12}>
+                                            <Input placeholder="โปรดกรอกข้อมูล" id="input-por" name="sourceporDesc" value={this.state.sourceporDesc} onChange={this.onChangeKnowOther}/>
+                                        </Col>
+                                    </Row> */}
                                 </RadioGroup>
                             </Col>
                         </Col>

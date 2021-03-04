@@ -311,19 +311,19 @@ export default withRouter(class Header extends Component {
                     {
                         (window.innerWidth >= 768) ?
                             <>
-                                <Col xs={17} md={19} xl={19}>
+                                <Col xs={8} md={8} xl={8}>
                                     <Row id="row-navi">
-                                        <Col xs={3} md={3} xl={3} style={{borderRight: "2px solid #000000", display: "flex", justifyContent: "flex-end", paddingRight: "3%"}}>
+                                        <Col xs={3} md={3} xl={3} style={{ borderRight: "2px solid #000000", display: "flex", justifyContent: "flex-end", paddingRight: "3%" }}>
                                             <span type="primary" id={(window.location.pathname === "/") ? "active-header" : "text-header"} onClick={() => this.props.history.push("/")} style={{ cursor: "pointer" }}>Home</span>
                                         </Col>
-                                        <Col style={{paddingLeft: "3%"}}>
+                                        <Col style={{ paddingLeft: "3%" }}>
                                             {/* <Button id={(window.location.pathname === "/Elearning") || (window.location.pathname === "/elearning") ? "active-header" : "text-header"} >Elearning</Button> */}
                                             <span type="primary" id={(window.location.pathname === "/Elearning") || (window.location.pathname === "/elearning") ? "active-header" : "text-header"} onClick={() => this.props.history.push("/Elearning")} style={{ cursor: "pointer" }}>E-learning</span>
                                         </Col>
                                     </Row>
                                 </Col>
-                                <Col xs={8} md={5} xl={5}  id="menu-header">
-                                    <Row>
+                                <Col xs={15} md={15} xl={15} id="menu-header">
+                                    {/* <Row> */}
                                         <Col xs={24} md={24} xl={24} id="btn-header">
                                             {
                                                 (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
@@ -341,7 +341,10 @@ export default withRouter(class Header extends Component {
                                                     </>
                                                     :
                                                     <>
-                                                        <UserOutlined id="logo-user" /> <span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span> | <span style={{ paddingRight: "5%" }}></span>
+                                                    <Col xs={24} md={24} xl={24}>
+                                                        <Row id="row-flexend">
+                                                            <UserOutlined id="logo-user" /> <span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span> | <span style={{ paddingRight: "5%" }}></span>
+                                                        
                                                         <Dropdown
                                                             trigger={['click']}
                                                             width={150}
@@ -390,13 +393,15 @@ export default withRouter(class Header extends Component {
                                                                     }
                                                                 </Menu>
                                                             } placement="bottomRight" >
-                                                            <MenuOutlined />
-                                                        </Dropdown>
 
+                                                            <MenuOutlined style={{paddingTop: "0.4%"}}/>
+                                                        </Dropdown>
+                                                        </Row>
+                                                        </Col>
                                                     </>
                                             }
                                         </Col>
-                                    </Row>
+                                    {/* </Row> */}
                                 </Col>
                             </>
                             :
@@ -415,60 +420,60 @@ export default withRouter(class Header extends Component {
                                                     </Col>
                                                 </Row> */}
                                                 <Col xs={24} id="menu-header">
-                                                        <Dropdown
-                                                            id="btn-dropdown"
-                                                            width={150}
-                                                            trigger={['click']}
-                                                            overlay={
-                                                                <Menu>
-                                                                    {
-                                                                        (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
-                                                                            <>
-                                                                                <Menu.Item key="0">
-                                                                                    <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
-                                                                                </Menu.Item>
-                                                                                <Menu.Item key="1">
-                                                                                    <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>
-                                                                                </Menu.Item>
-                                                                                <Menu.Item key="2">
-                                                                                    <span type="primary" id={(window.location.pathname === "/Login") || (window.location.pathname === "/login") ? "btn-sty" : "btn-sty"} onClick={() => this.LoginButton()}>เข้าสู่ระบบ</span>
-                                                                                </Menu.Item>
-                                                                            </>
-                                                                            :
-                                                                            <>
-                                                                                <Menu.Item key="0">
-                                                                                    <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
-                                                                                </Menu.Item>
-                                                                                <Menu.Item key="1">
-                                                                                    <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>
-                                                                                </Menu.Item>
-                                                                                <Menu.Item key="2">
-                                                                                    <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลักสูตร</span></NavLink>
-                                                                                </Menu.Item>
-                                                                                {/* <Menu.Item key="3">
+                                                    <Dropdown
+                                                        id="btn-dropdown"
+                                                        width={150}
+                                                        trigger={['click']}
+                                                        overlay={
+                                                            <Menu>
+                                                                {
+                                                                    (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
+                                                                        <>
+                                                                            <Menu.Item key="0">
+                                                                                <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                            </Menu.Item>
+                                                                            <Menu.Item key="1">
+                                                                                <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>
+                                                                            </Menu.Item>
+                                                                            <Menu.Item key="2">
+                                                                                <span type="primary" id={(window.location.pathname === "/Login") || (window.location.pathname === "/login") ? "btn-sty" : "btn-sty"} onClick={() => this.LoginButton()}>เข้าสู่ระบบ</span>
+                                                                            </Menu.Item>
+                                                                        </>
+                                                                        :
+                                                                        <>
+                                                                            <Menu.Item key="0">
+                                                                                <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                            </Menu.Item>
+                                                                            <Menu.Item key="1">
+                                                                                <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>
+                                                                            </Menu.Item>
+                                                                            <Menu.Item key="2">
+                                                                                <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลักสูตร</span></NavLink>
+                                                                            </Menu.Item>
+                                                                            {/* <Menu.Item key="3">
                                                                                         {window.innerWidth >= 684 ?
                                                                                         <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                                         :
                                                                                         <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                                         }
                                                                                     </Menu.Item> */}
-                                                                                <Menu.Item key="4">
-                                                                                    <span type="primary" id="btn-sty" onClick={() => this.logout()}>ออกจากระบบ</span>
-                                                                                </Menu.Item>
-                                                                            </>
-                                                                    }
-                                                                </Menu>
-                                                            } placement="bottomRight" >
-                                                            <MenuOutlined />
-                                                        </Dropdown>
-                                                    </Col>
+                                                                            <Menu.Item key="4">
+                                                                                <span type="primary" id="btn-sty" onClick={() => this.logout()}>ออกจากระบบ</span>
+                                                                            </Menu.Item>
+                                                                        </>
+                                                                }
+                                                            </Menu>
+                                                        } placement="bottomRight" >
+                                                        <MenuOutlined />
+                                                    </Dropdown>
+                                                </Col>
                                             </Col>
                                             :
                                             <Col xs={24} style={{ justifyContent: "flex-end", backgroundColor: "#FAFAFA", alignContent: "center", alignItems: "center" }}>
                                                 <Row>
                                                     <Col xs={20}>
                                                         <Row style={{ marginBottom: "2%", paddingTop: "2%", paddingLeft: "3%" }}>
-                                                            <UserOutlined id="logo-user" /><span style={{ paddingRight: "5%" }}> Sompot</span>
+                                                            <UserOutlined id="logo-user" /><span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span>
                                                         </Row>
                                                     </Col>
                                                     <Col xs={4} id="menu-header">

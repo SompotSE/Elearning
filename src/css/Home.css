@@ -148,6 +148,27 @@
         font-size: 16px;
         font-weight: bold;
     }
+    #headHome2{
+        font-size: 18px;
+        padding-left: 5%;
+        font-weight: bold;
+        color: #6F6AFA;
+    }
+    #descrip-Home{
+        padding-right: 8%;
+        padding-left: 5%;
+        text-indent: 1cm;
+        font-size: 18px;
+        text-align: justify;
+    }
+    #descrip-Home1{
+        padding-right: 5%;
+        padding-left: 5%;
+        text-indent: 1cm;
+        text-align: justify;
+        margin-top: 2%;
+        font-size: 18px;
+    }
 }
 
 /* ipad */
@@ -171,6 +192,7 @@
         font-size: 18px;
         font-weight: bold;
         color: #6F6AFA;
+        padding-left: 5%;
     }
     #headHome3{
         font-size: 18px;
@@ -180,11 +202,20 @@
     .ant-image-preview-img {
         width: 70%;
     }
-    #descrip-project{
-        display: flex;
-        justify-content: center;
-        font-size: 12px;
-        font-weight: bold;
+    #descrip-Home{
+        padding-right: 8%;
+        padding-left: 5%;
+        text-indent: 1cm;
+        font-size: 18px;
+        text-align: justify;
+    }
+    #descrip-Home1{
+        padding-right: 5%;
+        padding-left: 5%;
+        text-indent: 1cm;
+        text-align: justify;
+        margin-top: 2%;
+        font-size: 18px;
     }
 }
 
@@ -223,7 +254,7 @@
     }
     #headHome3{
         /* padding-left: 6%; */
-        font-size: 14px;
+        font-size: 12px;
         font-weight: bold;
         color: #6F6AFA;
     }

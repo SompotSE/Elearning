@@ -181,6 +181,7 @@
         color: #ffffff;
         padding-top: 0.5%;
         padding-bottom: 0.5%;
+        font-size: 18px !important;
     }
     #radio-source{
         padding-left: 1.5%;
@@ -257,6 +258,7 @@
         color: #ffffff;
         padding-top: 0.5%;
         padding-bottom: 0.5%;
+        font-size: 18px !important;
     }
     #radio-source{
         padding-left: 1.5%;
@@ -332,6 +334,7 @@
         color: #ffffff;
         padding-top: 0.5%;
         padding-bottom: 0.5%;
+        font-size: 18px !important;
     }
     #radio-source{
         padding-left: 1.5%;
@@ -424,8 +427,9 @@
         border-radius: 2mm;
         width: 100%;
         color: #ffffff;
-        padding-top: 0.5%;
-        padding-bottom: 0.5%;
+        padding-top: 1.5% !important;
+        padding-bottom: 1.5% !important;
+        font-size: 14px !important;
     }
     #radio-source{
         padding-left: 1.5%;

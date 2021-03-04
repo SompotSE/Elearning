@@ -296,6 +296,12 @@
         font-size: 18px;
         padding: 3% 10% 3% 10%;
     }
+    #btn-sty9{
+        display: flex;
+        justify-content: center;
+        font-size: 15px;
+        padding: 3% 10% 3% 10%;
+    }
     #active-header {
         color: #BB0000;
         /* display: flex; */

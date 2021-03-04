@@ -322,12 +322,12 @@ export default withRouter(class Header extends Component {
                                         </Col>
                                     </Row>
                                 </Col>
-                                <Col xs={15} md={15} xl={15} id="menu-header">
+                                <Col xs={15} md={15} xl={15} id="menu-header" >
                                     {/* <Row> */}
-                                        <Col xs={24} md={24} xl={24} id="btn-header">
+                                        
                                             {
                                                 (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
-                                                    <>
+                                                <Col xs={24} md={24} xl={24} id="btn-header" >
                                                         {window.innerWidth >= 684 ?
                                                             <Button type="primary" id="btn-sty1" onClick={() => this.showModal()}>เข้าสู่ระบบ</Button>
                                                             :
@@ -338,14 +338,15 @@ export default withRouter(class Header extends Component {
                                                             :
                                                             <NavLink to="/Register"><Button type="primary" id="btn-sty1">สมัครสมาชิก</Button></NavLink>
                                                         } */}
-                                                    </>
+                                                    </Col>
                                                     :
                                                     <>
-                                                    <Col xs={24} md={24} xl={24}>
+                                                    <Col xs={24} md={24} xl={24} id="row-btnsty">
                                                         <Row id="row-flexend">
                                                             <UserOutlined id="logo-user" /> <span style={{ paddingRight: "5%" }}> {this.state.user?.name}</span> | <span style={{ paddingRight: "5%" }}></span>
                                                         
                                                         <Dropdown
+                                                        id="btn-dropdown"
                                                             trigger={['click']}
                                                             width={150}
                                                             overlay={
@@ -354,29 +355,29 @@ export default withRouter(class Header extends Component {
                                                                         (this.state.user?.userRoleId === 1) ?
                                                                             <>
                                                                                 <Menu.Item key="0">
-                                                                                    <NavLink to="/Admin/Home"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                                    <NavLink to="/Admin/Home"><span type="primary" id="btn-sty9" >หน้าหลัก</span></NavLink>
                                                                                 </Menu.Item>
                                                                                 <Menu.Item key="1">
-                                                                                    <NavLink to="/Admin/TopScore"><span type="primary" id="btn-sty">คะแนนสูงสุด</span></NavLink >
+                                                                                    <NavLink to="/Admin/TopScore"><span type="primary" id="btn-sty9">คะแนนสูงสุด</span></NavLink >
                                                                                 </Menu.Item>
                                                                                 <Menu.Item key="2">
-                                                                                    <NavLink to="/Admin/Statistic"><span type="primary" id="btn-sty">สถิติ</span></NavLink >
+                                                                                    <NavLink to="/Admin/Statistic"><span type="primary" id="btn-sty9">สถิติ</span></NavLink >
                                                                                 </Menu.Item>
                                                                                 {/* <Menu.Item key="3">
                                                                                 {window.innerWidth >= 684 ?
-                                                                                    <span type="primary" id="btn-sty" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
+                                                                                    <span type="primary" id="btn-sty9" onClick={() => this.showchangePass()}>เปลี่ยนรหัสผ่าน</span>
                                                                                     :
-                                                                                    <NavLink to="/ChangePass"><span type="primary" id="btn-sty" >เปลี่ยนรหัสผ่าน</span></NavLink>
+                                                                                    <NavLink to="/ChangePass"><span type="primary" id="btn-sty9" >เปลี่ยนรหัสผ่าน</span></NavLink>
                                                                                 }
                                                                             </Menu.Item> */}
                                                                                 <Menu.Item key="4">
-                                                                                    <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
+                                                                                    <NavLink to="/Logout"><span type="primary" id="btn-sty9">ออกจากระบบ</span></NavLink >
                                                                                 </Menu.Item>
                                                                             </>
                                                                             :
                                                                             <>
                                                                                 <Menu.Item key="0">
-                                                                                    <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลักสูตร</span></NavLink>
+                                                                                    <NavLink to="/HomeUser"><span type="primary" id="btn-sty9" >หน้าหลักสูตร</span></NavLink>
                                                                                 </Menu.Item>
                                                                                 {/* <Menu.Item key="1">
                                                                                 {window.innerWidth >= 684 ?
@@ -386,7 +387,7 @@ export default withRouter(class Header extends Component {
                                                                                 }
                                                                             </Menu.Item> */}
                                                                                 <Menu.Item key="2">
-                                                                                    <NavLink to="/Logout"><span type="primary" id="btn-sty">ออกจากระบบ</span></NavLink >
+                                                                                    <NavLink to="/Logout"><span type="primary" id="btn-sty9">ออกจากระบบ</span></NavLink >
                                                                                 </Menu.Item>
 
                                                                             </>
@@ -400,7 +401,7 @@ export default withRouter(class Header extends Component {
                                                         </Col>
                                                     </>
                                             }
-                                        </Col>
+                                        
                                     {/* </Row> */}
                                 </Col>
                             </>

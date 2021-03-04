@@ -359,6 +359,13 @@ export default class AdminHome extends Component {
                         </Col>
                     </Row>
                     <Row id="row-form">
+                        <Col xs={24} md={0} xl={0} id="header-form">เกณฑ์คะแนน</Col>
+                        <Col xs={12} md={0} xl={0} id="header-form">1 = ต้องปรับปรุง</Col>
+                        <Col xs={12} md={0} xl={0} id="header-form">2 = ปานกลาง</Col>
+                        <Col xs={12} md={0} xl={0} id="header-form">3 = มาก</Col>
+                        <Col xs={12} md={0} xl={0} id="header-form">4 = มากที่สุด</Col>
+                    </Row>
+                    <Row id="row-form">
                         <Col xs={24} md={24} xl={24} id="header-form">ท่านทราบข่าวสัมมนาจากแหล่งใด Source of Information</Col>
                         <Col xs={24} md={24} xl={24}>
                             <RadioGroup onChange={this.onChange} value={this.state.source} style={{ fontSize: "10px" }}>
@@ -384,7 +391,6 @@ export default class AdminHome extends Component {
                             </RadioGroup>
                         </Col>
                     </Row>
-
                     <Row id="row-form">
                         <Col xs={24} md={12} xl={12} id="kate">เกณฑ์การประเมิน Criteria</Col>
                         <Col xs={0} md={12} xl={12}>

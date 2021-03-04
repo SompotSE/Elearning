@@ -376,7 +376,7 @@ export default withRouter(class Header extends Component {
                                                                             :
                                                                             <>
                                                                                 <Menu.Item key="0">
-                                                                                    <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                                    <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลักสูตร</span></NavLink>
                                                                                 </Menu.Item>
                                                                                 {/* <Menu.Item key="1">
                                                                                 {window.innerWidth >= 684 ?
@@ -430,7 +430,7 @@ export default withRouter(class Header extends Component {
                                                                     (this.state.token === "" || this.state.token === null || this.state.token === undefined) ?
                                                                         <>
                                                                             <Menu.Item key="0">
-                                                                                <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                                <NavLink to="/"><span type="primary" id="btn-sty" >Home</span></NavLink>
                                                                             </Menu.Item>
                                                                             <Menu.Item key="1">
                                                                                 <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>
@@ -442,7 +442,7 @@ export default withRouter(class Header extends Component {
                                                                         :
                                                                         <>
                                                                             <Menu.Item key="0">
-                                                                                <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                                <NavLink to="/"><span type="primary" id="btn-sty" >Home</span></NavLink>
                                                                             </Menu.Item>
                                                                             <Menu.Item key="1">
                                                                                 <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>
@@ -496,7 +496,7 @@ export default withRouter(class Header extends Component {
                                                                                     <NavLink to="/Admin/Statistic"><span type="primary" id="btn-sty">สถิติ</span></NavLink >
                                                                                 </Menu.Item>
                                                                                 <Menu.Item key="4">
-                                                                                    <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลักผู้ใช้</span></NavLink>
+                                                                                    <NavLink to="/"><span type="primary" id="btn-sty" >Home</span></NavLink>
                                                                                 </Menu.Item>
                                                                                 <Menu.Item key="5">
                                                                                     <NavLink to="/HomeUser"><span type="primary" id="btn-sty" >หน้าหลักสูตร</span></NavLink>
@@ -518,7 +518,7 @@ export default withRouter(class Header extends Component {
                                                                             :
                                                                             <>
                                                                                 <Menu.Item key="0">
-                                                                                    <NavLink to="/"><span type="primary" id="btn-sty" >หน้าหลัก</span></NavLink>
+                                                                                    <NavLink to="/"><span type="primary" id="btn-sty" >Home</span></NavLink>
                                                                                 </Menu.Item>
                                                                                 <Menu.Item key="1">
                                                                                     <NavLink to="/Elearning"><span type="primary" id="btn-sty" >E-learning</span></NavLink>

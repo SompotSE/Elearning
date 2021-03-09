@@ -556,8 +556,9 @@
         justify-content: center;
     }
     #teacher1{
-        display: flex;
-        justify-content: center;
+        /* display: flex;
+        justify-content: center; */
+        text-align: center;
     }
     #teacher2{
         display: flex;
@@ -659,8 +660,9 @@
 }
 
 #teacher1{
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
 }
 
 #img-main-course {

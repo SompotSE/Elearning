@@ -569,52 +569,52 @@ export default withRouter(class Course4 extends Component {
         } else {
 
             //Add New
-            if(TopicCode1 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic1) {
+            if (TopicCode1 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic1) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode2 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic2) {
+            } else if (TopicCode2 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic2) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode3 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic3) {
+            } else if (TopicCode3 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic3) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode4 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic4) {
+            } else if (TopicCode4 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic4) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode5 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic5) {
+            } else if (TopicCode5 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic5) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode6 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic6) {
+            } else if (TopicCode6 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic6) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode7 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic7) {
+            } else if (TopicCode7 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic7) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode8 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic8) {
+            } else if (TopicCode8 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic8) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode9 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic9) {
+            } else if (TopicCode9 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic9) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode10 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic10) {
+            } else if (TopicCode10 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic10) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode11 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic11) {
+            } else if (TopicCode11 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic11) {
                     this.updateStatusTopic(Topic)
                 }
-            } else if(TopicCode12 === Topic) {
-                if(update_time?.data[0]?.time >= allTimeTopic12) {
+            } else if (TopicCode12 === Topic) {
+                if (update_time?.data[0]?.time >= allTimeTopic12) {
                     this.updateStatusTopic(Topic)
                 }
             }
@@ -628,7 +628,7 @@ export default withRouter(class Course4 extends Component {
     async updateStatusTopic(Topic) {
         if (this.state.topicAll?.filter((item) => item.topicCode === Topic)[0]?.videoStatus !== "A") {
             var url_update_topic = ip + "/UserTopic/update/statustopic/" + CourseCode + "/" + Topic;
-            const update_topic = await (await axios.put(url_update_topic, {} , { headers: this.state.header })).data;
+            const update_topic = await (await axios.put(url_update_topic, {}, { headers: this.state.header })).data;
             if (!update_topic?.status) {
                 swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                     this.setState({
@@ -730,7 +730,9 @@ export default withRouter(class Course4 extends Component {
         return (
             <Container fluid id="bg-course">
                 <Row>
-                    <Image src={banner} fluid></Image>
+                    <Col xs={24} md={24} xl={24}>
+                        <Image src={banner} fluid></Image>
+                    </Col>
                 </Row>
                 {/* <Row id="row-headercourse">
                     <Breadcrumb>
@@ -1367,7 +1369,7 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
                                     <Col xs={24} md={24} xl={24}>
-                                        <Image src={unit1} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                        <Image src={unit1} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
                                         {/* <Image src={unit1} id="img-course" style={{ width: "100%", cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode1) }} fluid></Image> */}
                                     </Col>
                                 </Row>

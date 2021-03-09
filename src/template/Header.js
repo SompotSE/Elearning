@@ -237,7 +237,6 @@ export default withRouter(class Header extends Component {
     }
 
     async onForgetPass(values) {
-        console.log(values, " values");
 
         this.setState({
             statusSendForgetPass: true
@@ -304,7 +303,6 @@ export default withRouter(class Header extends Component {
     }
 
     render() {
-        console.log(window.location.pathname, " window.location.pathname")
         return (
             <Container fluid id="conflu">
                 <Row id="row-header1">

@@ -9,31 +9,45 @@ import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import ReactPlayer from 'react-player';
 import '../../css/Course.css';
-import imgcourse from '../../img/userhome.png';
-import TeacherCourse5_1 from '../../img/Teacher/TeacherCourse5_1.webp';
-import TeacherCourse5_2 from '../../img/Teacher/TeacherCourse5_2.webp';
-import TeacherCourse5_3 from '../../img/Teacher/TeacherCourse5_3.webp';
+import imgcourse from '../../img/incourse5.jpg';
+import TeacherCourse5_1 from '../../img/Teacher/TeacherCourse5_1.png';
+import TeacherCourse5_2 from '../../img/Teacher/TeacherCourse5_2.png';
+import TeacherCourse5_3 from '../../img/Teacher/TeacherCourse5_3.png';
 // import { NavLink } from 'react-router-dom';
 import banner from "../../img/Banner/Course5.jpg";
 
 import unit1 from '../../img/unit1.jpg';
 import unit2 from '../../img/unit2.jpg';
-import unit4 from '../../img/unit4.jpg';
 import unit3 from '../../img/unit3.jpg';
+import unit4 from '../../img/unit4.jpg';
+
 
 import pdf from "../../pdf/Course5.pdf"
 
-import testV1 from '../../video/test.mp4';
+// import testV1 from '../../video/test.mp4';
 
 import { config } from '../../config/config';
 
 const { Panel } = Collapse;
 const cookies = new Cookies();
 
+const Topic1 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic1.mp4';
+const Topic2 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic2.mp4';
+const Topic3 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic3.mp4';
+const Topic4 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic4.mp4';
+const Topic5 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic5.mp4';
+const Topic6 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic6.mp4';
+const Topic7 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic7.mp4';
+const Topic8 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic8.mp4';
+const Topic9 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic9.mp4';
+const Topic10 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic10.mp4';
+const Topic11 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic11.mp4';
+const Topic12 = 'https://www.digitalncd.com/API/video/Course5/Course5Topic12.mp4';
+
 const ip = config.ipServer;
 const CourseCode = "COURSE1005";
 
-const TopicCount = 9;
+const TopicCount = 12;
 
 const TopicCode1 = "TOP500001";
 const TopicCode2 = "TOP500002";
@@ -62,6 +76,21 @@ var timeTopic9 = 0;
 var timeTopic10 = 0;
 var timeTopic11 = 0;
 var timeTopic12 = 0;
+
+//Add New
+const allTimeTopic1 = 3916;
+const allTimeTopic2 = 3826;
+const allTimeTopic3 = 1247;
+const allTimeTopic4 = 1722;
+const allTimeTopic5 = 727;
+const allTimeTopic6 = 2052;
+const allTimeTopic7 = 179;
+const allTimeTopic8 = 679;
+const allTimeTopic9 = 1693;
+const allTimeTopic10 = 195;
+const allTimeTopic11 = 560;
+const allTimeTopic12 = 6743;
+////////////
 
 const CourseCode1 = "COURSE1001";
 const CourseCode2 = "COURSE1002";
@@ -97,7 +126,7 @@ export default withRouter(class Course4 extends Component {
 
             isModaldetailCertificate: false,
             isModalCertificate: false,
-            
+
             course1: [],
             course2: [],
             course3: [],
@@ -127,6 +156,9 @@ export default withRouter(class Course4 extends Component {
         this.showCertificate = this.showCertificate.bind(this);
         this.showCertificateOK = this.showCertificateOK.bind(this);
         this.onClicktoCourse = this.onClicktoCourse.bind(this);
+        //Add New
+        this.updateStatusTopic = this.updateStatusTopic.bind(this);
+        ///////////
     }
 
     componentWillMount() {
@@ -188,7 +220,6 @@ export default withRouter(class Course4 extends Component {
                 window.location.replace('/', false);
             });
         } else {
-            console.log(topic.data, " topic.data")
             this.setState({
                 topicAll: topic.data
             });
@@ -308,6 +339,7 @@ export default withRouter(class Course4 extends Component {
                 topicCode: topicCode,
                 courseCode: CourseCode,
                 recStatus: "A",
+                videoStatus: "N", //Add New ///////////////
                 time: 0
             };
 
@@ -535,14 +567,103 @@ export default withRouter(class Course4 extends Component {
                 window.location.replace('/', false);
             });
         } else {
+
+            //Add New
+            if(TopicCode1 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic1) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode2 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic2) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode3 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic3) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode4 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic4) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode5 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic5) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode6 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic6) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode7 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic7) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode8 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic8) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode9 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic9) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode10 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic10) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode11 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic11) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode12 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic12) {
+                    this.updateStatusTopic(Topic)
+                }
+            }
+            ////////////
+
             return update_time?.status;
         }
     }
 
+    //Add New
+    async updateStatusTopic(Topic) {
+        if (this.state.topicAll?.filter((item) => item.topicCode === Topic)[0]?.videoStatus !== "A") {
+            var url_update_topic = ip + "/UserTopic/update/statustopic/" + CourseCode + "/" + Topic;
+            const update_topic = await (await axios.put(url_update_topic, {} , { headers: this.state.header })).data;
+            if (!update_topic?.status) {
+                swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                    this.setState({
+                        token: cookies.remove('token_user', { path: '/' }),
+                        user: cookies.remove('user', { path: '/' }),
+                        email: cookies.remove('email', { path: '/' })
+                    });
+                    window.location.replace('/', false);
+                });
+            } else {
+                var url_topic = ip + "/UserTopic/find/" + CourseCode;
+                const topic = await (await axios.get(url_topic, { headers: this.state.header })).data;
+                if (!topic?.status) {
+                    swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                        this.setState({
+                            token: cookies.remove('token_user', { path: '/' }),
+                            user: cookies.remove('user', { path: '/' }),
+                            email: cookies.remove('email', { path: '/' })
+                        });
+                        window.location.replace('/', false);
+                    });
+                } else {
+                    this.setState({
+                        topicAll: topic.data
+                    });
+                }
+            }
+        }
+        //////////////////////
+    }
+
     onExamPost() {
-        if (this.state.topicAll.length >= TopicCount) {
+        if (this.state.topicAll?.filter((item) => item.videoStatus === "A").length >= TopicCount) { //Add New
             if (this.state.examPost.length !== 3) {
-                this.props.history.push("/ExamPost");
+                this.props.history.push("/ExamPostCourse5");
             } else {
                 swal("Warning!", "คุณทดสอบครบจำนวน 3 ครั้งแล้ว", "warning").then((value) => {
                 });
@@ -579,7 +700,7 @@ export default withRouter(class Course4 extends Component {
 
         var url_create_course = ip + "/UserCourse/create";
         const create_course = await (await axios.post(url_create_course, createTopic, { headers: this.state.header })).data;
-        
+
         if (!create_course?.status) {
             swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
                 this.setState({
@@ -590,18 +711,18 @@ export default withRouter(class Course4 extends Component {
                 window.location.replace('/', false);
             });
         } else {
-            if(course === CourseCode1) {
+            if (course === CourseCode1) {
                 this.props.history.push("/Course1");
-            } else if(course === CourseCode2) {
+            } else if (course === CourseCode2) {
                 this.props.history.push("/Course2");
-            } else if(course === CourseCode3) {
+            } else if (course === CourseCode3) {
                 this.props.history.push("/Course3");
-            } else if(course === CourseCode4) {
+            } else if (course === CourseCode4) {
                 this.props.history.push("/Course4");
-            } else if(course === CourseCode5) {
+            } else if (course === CourseCode5) {
                 this.props.history.push("/Course5");
             }
-            
+
         }
     }
 
@@ -751,7 +872,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 1. มาตรฐานเครื่องมือแพทย์ประเภทไฟฟ้าและอิเล็กทรอนิกส์ IEC60601 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -759,7 +880,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         {/* <Image src={v1} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode1) }}></Image> */}
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic1}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -767,6 +888,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic1}
                                             onProgress={this.onProgressVedioTopic1}
                                             onEnded={() => { this.onEndedVedio(TopicCode1) }}
@@ -783,7 +911,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 2. มาตรฐานด้านความเข้ากันได้ทางแม่เหล็กไฟฟ้าสำหรับเครื่องมือแพทย์</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -791,7 +919,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         {/* <Image src={v2} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode2) }}></Image> */}
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic2}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -799,6 +927,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic2}
                                             onProgress={this.onProgressVedioTopic2}
                                             onEnded={() => { this.onEndedVedio(TopicCode2) }}
@@ -815,14 +950,14 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 3. การขอการรับรองเครื่องมือแพทย์ในสากล</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic3}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -830,6 +965,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic3}
                                             onProgress={this.onProgressVedioTopic3}
                                             onEnded={() => { this.onEndedVedio(TopicCode3) }}
@@ -846,14 +988,14 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 4. โครงสร้างของมาตรฐาน IEC 60601-1</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode4)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode4)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic4}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -861,6 +1003,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic4}
                                             onProgress={this.onProgressVedioTopic4}
                                             onEnded={() => { this.onEndedVedio(TopicCode4) }}
@@ -877,14 +1026,14 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 5. การชี้บ่งบริภัณฑ์ไฟฟ้าทางการแพทย์  การทำเครื่องหมาย และเอกสาร</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode5)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode5)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic5}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -892,6 +1041,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic5}
                                             onProgress={this.onProgressVedioTopic5}
                                             onEnded={() => { this.onEndedVedio(TopicCode5) }}
@@ -908,14 +1064,14 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 6. การป้องกันอันตรายทางไฟฟ้า จากบริภัณฑ์ไฟฟ้าทางการแพทย์ </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode6)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode6)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic6}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -923,6 +1079,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic6}
                                             onProgress={this.onProgressVedioTopic6}
                                             onEnded={() => { this.onEndedVedio(TopicCode6) }}
@@ -939,14 +1102,14 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 7. การป้องกันอันตรายทางกลของบริภัณฑ์ไฟฟ้าทางการแพทย์ </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode7)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode7)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic7}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -954,6 +1117,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic7}
                                             onProgress={this.onProgressVedioTopic7}
                                             onEnded={() => { this.onEndedVedio(TopicCode7) }}
@@ -970,14 +1140,14 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 8. การป้องกันอันตรายที่เกิดจากการแผ่รังสีที่ไม่ต้องการและอุณหภูมิที่สูงเกินควร </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode8)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode8)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic8}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -985,6 +1155,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic8}
                                             onProgress={this.onProgressVedioTopic8}
                                             onEnded={() => { this.onEndedVedio(TopicCode8) }}
@@ -1001,14 +1178,14 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 9. สภาพเสี่ยงอันตรายและภาวะผิดพร่อง และ การสร้างบริภัณฑ์ไฟฟ้าทางการแพทย์</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode9)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode9)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic9}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -1016,6 +1193,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic9}
                                             onProgress={this.onProgressVedioTopic9}
                                             onEnded={() => { this.onEndedVedio(TopicCode9) }}
@@ -1032,14 +1216,14 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 10. ประเภทของมาตรฐาน EMC</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode10)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode10)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic10}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -1047,6 +1231,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic10}
                                             onProgress={this.onProgressVedioTopic10}
                                             onEnded={() => { this.onEndedVedio(TopicCode10) }}
@@ -1063,14 +1254,14 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 11. มาตรฐานการทดสอบ IEC/EN 60601-1-2 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode11)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode11)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic11}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -1078,6 +1269,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic11}
                                             onProgress={this.onProgressVedioTopic11}
                                             onEnded={() => { this.onEndedVedio(TopicCode11) }}
@@ -1094,14 +1292,14 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 12. หัวข้อทดสอบในมาตรฐาน IEC/EN 60601-1-2 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode12)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode12)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic12}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -1109,6 +1307,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic12}
                                             onProgress={this.onProgressVedioTopic12}
                                             onEnded={() => { this.onEndedVedio(TopicCode12) }}
@@ -1161,19 +1366,27 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={2} xl={2}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit1} id="img-course" style={{width: "100%", cursor: "pointer"}} onClick={() => { this.onClicktoCourse(CourseCode1) }} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit1} id="img-course" style={{width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                        {/* <Image src={unit1} id="img-course" style={{ width: "100%", cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode1) }} fluid></Image> */}
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button>
+                                    {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button> */}
+                                    <Button disabled>รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit2} id="img-course" style={{width: "100%", cursor: "pointer"}} onClick={() => { this.onClicktoCourse(CourseCode2) }} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit2} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                        {/* <Image src={unit2} id="img-course" style={{width: "100%", cursor: "pointer"}} onClick={() => { this.onClicktoCourse(CourseCode2) }} fluid></Image> */}
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode2) }}>รายละเอียดหลักสูตร</Button>
+                                    {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode2) }}>รายละเอียดหลักสูตร</Button> */}
+                                    <Button disabled>รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={1} md={0} xl={0}></Col>
@@ -1181,16 +1394,22 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit3} id="img-course" style={{width: "100%", cursor: "pointer"}} onClick={() => { this.onClicktoCourse(CourseCode3) }} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit3} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                        {/* <Image src={unit3} id="img-course" style={{width: "100%", cursor: "pointer"}} onClick={() => { this.onClicktoCourse(CourseCode3) }} fluid></Image> */}
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button>
+                                    {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button> */}
+                                    <Button disabled>รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit4} id="img-course" style={{width: "100%", cursor: "pointer"}} onClick={() => { this.onClicktoCourse(CourseCode4) }} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit4} id="img-course" style={{ width: "100%", cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode4) }} fluid></Image>
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode4) }}>รายละเอียดหลักสูตร</Button>

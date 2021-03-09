@@ -410,7 +410,6 @@ export default withRouter(class Course1 extends Component {
         this.setState({ isModalCertificate: true });
     }
     showCertificateOK() {
-        console.log("OK")
         this.setState({ isModalCertificate: false });
     }
 

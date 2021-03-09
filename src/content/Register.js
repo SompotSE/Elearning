@@ -82,7 +82,6 @@ export default class Register extends Component {
                 sendNewsEmail: (values.sendEmail) ? "A" : "N"
             };
 
-            console.log(data, " datadatadata")
 
             var url_register = ip + "/User/Register";
             const register = await (await axios.post(url_register, data)).data;
@@ -164,7 +163,6 @@ export default class Register extends Component {
     }
 
     async onForgetPass(values) {
-        console.log(values, " values");
 
         this.setState({
             statusSendForgetPass: true

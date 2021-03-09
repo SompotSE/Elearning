@@ -17,7 +17,7 @@ import banner from "../../img/Banner/Course4.jpg";
 import unit1 from '../../img/unit1.jpg';
 import unit2 from '../../img/unit2.jpg';
 import unit3 from '../../img/unit3.jpg';
-import unit5 from '../../img/unit4.jpg';
+import unit5 from '../../img/unit5.jpg';
 
 import pdf from "../../pdf/Course4.pdf"
 // import test from '../../video/test.mp4';
@@ -63,6 +63,17 @@ var timeTopic6 = 0;
 var timeTopic7 = 0;
 var timeTopic8 = 0;
 var timeTopic9 = 0;
+
+const allTimeTopic1 = 2401;
+const allTimeTopic2 = 1272;
+const allTimeTopic3 = 1497;
+const allTimeTopic4 = 1497;
+const allTimeTopic5 = 1563;
+const allTimeTopic6 = 783;
+const allTimeTopic7 = 1749;
+const allTimeTopic8 = 1025;
+const allTimeTopic9 = 1157;
+
 
 const CourseCode1 = "COURSE1001";
 const CourseCode2 = "COURSE1002";
@@ -123,6 +134,7 @@ export default withRouter(class Course4 extends Component {
         this.showCertificate = this.showCertificate.bind(this);
         this.showCertificateOK = this.showCertificateOK.bind(this);
         this.onClicktoCourse = this.onClicktoCourse.bind(this);
+        this.updateStatusTopic = this.updateStatusTopic.bind(this);
     }
 
     componentWillMount() {
@@ -184,7 +196,6 @@ export default withRouter(class Course4 extends Component {
                 window.location.replace('/', false);
             });
         } else {
-            console.log(topic.data, " topic.data")
             this.setState({
                 topicAll: topic.data
             });
@@ -294,6 +305,7 @@ export default withRouter(class Course4 extends Component {
                 topicCode: topicCode,
                 courseCode: CourseCode,
                 recStatus: "A",
+                videoStatus: "N",
                 time: 0
             };
 
@@ -479,12 +491,84 @@ export default withRouter(class Course4 extends Component {
                 window.location.replace('/', false);
             });
         } else {
+            
+            if(TopicCode1 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic1) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode2 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic2) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode3 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic3) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode4 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic4) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode5 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic5) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode6 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic6) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode7 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic7) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode8 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic8) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode9 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic9) {
+                    this.updateStatusTopic(Topic)
+                }
+            }
             return update_time?.status;
         }
     }
 
+    async updateStatusTopic(Topic) {
+        if (this.state.topicAll?.filter((item) => item.topicCode === Topic)[0]?.videoStatus !== "A") {
+            var url_update_topic = ip + "/UserTopic/update/statustopic/" + CourseCode + "/" + Topic;
+            const update_topic = await (await axios.put(url_update_topic, {} , { headers: this.state.header })).data;
+            if (!update_topic?.status) {
+                swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                    this.setState({
+                        token: cookies.remove('token_user', { path: '/' }),
+                        user: cookies.remove('user', { path: '/' }),
+                        email: cookies.remove('email', { path: '/' })
+                    });
+                    window.location.replace('/', false);
+                });
+            } else {
+                var url_topic = ip + "/UserTopic/find/" + CourseCode;
+                const topic = await (await axios.get(url_topic, { headers: this.state.header })).data;
+                if (!topic?.status) {
+                    swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                        this.setState({
+                            token: cookies.remove('token_user', { path: '/' }),
+                            user: cookies.remove('user', { path: '/' }),
+                            email: cookies.remove('email', { path: '/' })
+                        });
+                        window.location.replace('/', false);
+                    });
+                } else {
+                    this.setState({
+                        topicAll: topic.data
+                    });
+                }
+            }
+        }
+    }
+
     onExamPost() {
-        if (this.state.topicAll.length >= TopicCount) {
+        if (this.state.topicAll?.filter((item) => item.videoStatus === "A").length >= TopicCount) {
             if (this.state.examPost.length !== 3) {
                 this.props.history.push("/ExamPostCourse4");
             } else {
@@ -545,7 +629,6 @@ export default withRouter(class Course4 extends Component {
             } else if (course === CourseCode5) {
                 this.props.history.push("/Course5");
             }
-
         }
     }
 
@@ -680,7 +763,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 1. ภาพรวมมาตรฐานของซอฟต์แวร์เครื่องมือแพทย์ IEC60601 Cl.14 and IEC62304 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -722,7 +805,7 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -761,7 +844,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 3. Software Engineering Overview – Part 1 Software Requirement Management (การจัดการโครงการพัฒนาซอฟต์แวร์)</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -799,7 +882,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 4. Software Engineering Overview – Part 1 Software Analysis and design (การวิเคราะห์และออกแบบซอฟต์แวร์)</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode4)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode4)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -837,7 +920,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 5. Software Engineering Overview – Part 2 Software Quality Management (การจัดการคุณภาพซอฟต์แวร์)</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode5)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode5)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -875,7 +958,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 6. Software Engineering Overview – Part 2 Software Configuration Management </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode6)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode6)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -913,7 +996,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 7. Software Engineering Overview – Part 2 Software Risk Management </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode7)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode7)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -951,7 +1034,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 8. Software Engineering Overview – Part 2 Software Maintenance & Re-Engineering Supporting Tools for Software Engineering</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode8)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode8)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -989,7 +1072,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={20} md={22} xl={22} id="sub-header"> 9. Applying ISO/IEC 29110 to ISO/IEC 62304 for Medical device software SME</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode9)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode9)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -1102,12 +1185,12 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
                                     <Col xs={24} md={24} xl={24}>
-                                        <Image src={unit5} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                        <Image src={unit5} id="img-course" style={{ width: "100%", cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode5) }} fluid></Image>
                                     </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button> */}
-                                    <Button disabled>รายละเอียดหลักสูตร</Button>
+                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button>
+                                    {/* <Button disabled>รายละเอียดหลักสูตร</Button> */}
                                 </Row>
                             </Col>
                         </Row>

@@ -238,14 +238,14 @@ export default withRouter(class HomeUser extends Component {
                     </Col>
                     <Col xs={10} md={4} xl={4}>
                         <Row id="row-img-coursedetail">
-                            {/* <Image style={{width: "100%", cursor: "pointer"}} src={cover1} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode5) }}></Image> */}
                             <Col xs={24} md={24} xl={24} >
-                                <Image style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} src={unit5} placeholder={false} fluid></Image>
+                                <Image style={{width: "100%", cursor: "pointer"}} src={unit5} placeholder={false} onClick={() => { this.onClicktoCourse(CourseCode5) }} fluid></Image>
+                                {/* <Image style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} src={unit5} placeholder={false} fluid></Image> */}
                             </Col>
                         </Row>
                         <Row id="row-btn-coursedetail">
-                            {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button> */}
-                            <Button disabled>รายละเอียดหลักสูตร</Button>
+                            <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button>
+                            {/* <Button disabled>รายละเอียดหลักสูตร</Button> */}
                         </Row>
                     </Col>
                 </Row>

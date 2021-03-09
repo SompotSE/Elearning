@@ -90,7 +90,6 @@ export default class AdminHome extends Component {
     }
 
     onSearchFild(value) {
-        // console.log(value, " value")
         var dataSearch = [];
         dataSearch.splice(0);
         let name = this.state.useradminall.filter(useradmin => useradmin.name.toUpperCase().includes(value.toUpperCase()));
@@ -106,10 +105,6 @@ export default class AdminHome extends Component {
         this.setState({
             useradmin: dataSearchfilter
         })
-        // console.log(name, " name");
-        // console.log(company, " company");
-        // console.log(dataSearch, " dataSearch");
-        // console.log(dataSearchfilter, " dataSearchfilter");
     }
 
     render() {

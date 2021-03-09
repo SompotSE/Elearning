@@ -59,7 +59,6 @@ export default class AdminTopScore extends Component {
                 window.location.replace('/', false);
             });
         } else {
-            console.log(viwe.data, " viwe.data")
             this.setState({
                 viwe: viwe.data,
                 statuslode: true
@@ -78,7 +77,6 @@ export default class AdminTopScore extends Component {
                 window.location.replace('/', false);
             });
         } else {
-            console.log(exam.data, " exam.data")
             var tempcourse1 = [];
             var tempcourse2 = [];
             var tempcourse3 = [];
@@ -108,7 +106,6 @@ export default class AdminTopScore extends Component {
     }
 
     render() {
-        console.log(this.state.series, " series")
         return (
             <Container id="bg-AdminStatistic" fluid>
                 {

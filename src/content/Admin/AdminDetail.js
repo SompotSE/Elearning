@@ -63,7 +63,6 @@ export default class AdminTopScore extends Component {
     }
 
     async info(courseCode) {
-        console.log(courseCode, " courseCode");
         var url_topic_time = ip + "/UserTopic/find/admin/detail/" + courseCode + "/" + this.props.match.params.userId;
         const topic_time = await (await axios.get(url_topic_time, { headers: this.state.header })).data;
         if (!topic_time?.status) {

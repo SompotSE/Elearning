@@ -46,7 +46,6 @@ export default class ChangePass extends Component {
     }
 
     async onChangePass(values) {
-        console.log(values, " values")
         this.setState({
             statusSendChangePass: true
         });

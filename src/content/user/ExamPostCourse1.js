@@ -20,9 +20,9 @@ import { config } from '../../config/config';
 const cookies = new Cookies();
 
 const ip = config.ipServer;
-const CourseCode = "COURSE1005";
+const CourseCode = "COURSE1001";
 const Num = 20;
-const TopicCount = 12;
+const TopicCount = 10;
 
 const ExamCodePost = "EXAM10002";
 
@@ -80,7 +80,7 @@ export default withRouter(class ExamPost extends Component {
         } else {
             if (topic.data?.filter((item) => item.videoStatus === "A").length < TopicCount) {
                 swal("Warning!", "คุณยังเรียนไม่ครบทุกบทเรียน", "warning").then((value) => {
-                    this.props.history.push("/Course5");
+                    this.props.history.push("/Course1");
                 });
             }
         }
@@ -98,7 +98,7 @@ export default withRouter(class ExamPost extends Component {
         } else {
             if (exam_post.data.length >= 3) {
                 swal("Warning!", "จำนวนครั้งในการทำข้อสอบครบแล้ว", "warning").then((value) => {
-                    this.props.history.push("/Course5");
+                    this.props.history.push("/Course1");
                 });
             }
         }

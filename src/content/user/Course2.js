@@ -9,45 +9,50 @@ import Cookies from 'universal-cookie';
 import swal from 'sweetalert';
 import ReactPlayer from 'react-player';
 import '../../css/Course.css';
-import imgcourse from '../../img/userhome.png';
-import userprofile from '../../img/userprofile.png';
+import imgcourse from '../../img/incourse2.jpg';
+import TeacherCourse2 from '../../img/Teacher/TeacherCourse2.png';
 // import { NavLink } from 'react-router-dom';
-import banner from "../../img/Banner/Course2.jpg";
-// import { AiFillPlayCircle } from "react-icons/ai";
-// import v1 from '../../img/V1.png';
-// import v2 from '../../img/V2.png';
-// import v3 from '../../img/V3.png';
+import banner from "../../img/Banner/Course4.jpg";
 
 import unit1 from '../../img/unit1.jpg';
 import unit3 from '../../img/unit3.jpg';
 import unit4 from '../../img/unit4.jpg';
 import unit5 from '../../img/unit5.jpg';
 
-// import incourse1 from '../../img/incourse1.svg';
-// import incourse2 from '../../img/incourse2.svg';
-
-import testV1 from '../../video/test.mp4';
+import pdf from "../../pdf/Course2.pdf"
+// import test from '../../video/test.mp4';
 
 import { config } from '../../config/config';
-// import banner from '../../img/banner.png';
 
 const { Panel } = Collapse;
 const cookies = new Cookies();
 
+const Topic1 = 'https://www.digitalncd.com/API/video/Course2/Course2Topic1.mp4';
+const Topic2 = 'https://www.digitalncd.com/API/video/Course2/Course2Topic2.mp4';
+const Topic3 = 'https://www.digitalncd.com/API/video/Course2/Course2Topic3.mp4';
+const Topic4 = 'https://www.digitalncd.com/API/video/Course2/Course2Topic4.mp4';
+const Topic5 = 'https://www.digitalncd.com/API/video/Course2/Course2Topic5.mp4';
+const Topic6 = 'https://www.digitalncd.com/API/video/Course2/Course2Topic6.mp4';
+const Topic7 = 'https://www.digitalncd.com/API/video/Course2/Course2Topic7.mp4';
+const Topic8 = 'https://www.digitalncd.com/API/video/Course2/Course2Topic8.mp4';
+const Topic9 = 'https://www.digitalncd.com/API/video/Course2/Course2Topic9.mp4';
+const Topic10 = 'https://www.digitalncd.com/API/video/Course2/Course2Topic10.mp4';
+
 const ip = config.ipServer;
 const CourseCode = "COURSE1004";
 
-const TopicCount = 9;
+const TopicCount = 10;
 
-const TopicCode1 = "TOP400001";
-const TopicCode2 = "TOP400002";
-const TopicCode3 = "TOP400003";
-const TopicCode4 = "TOP400004";
-const TopicCode5 = "TOP400005";
-const TopicCode6 = "TOP400006";
-const TopicCode7 = "TOP400007";
-const TopicCode8 = "TOP400008";
-const TopicCode9 = "TOP400009";
+const TopicCode1 = "TOP200001";
+const TopicCode2 = "TOP200002";
+const TopicCode3 = "TOP200003";
+const TopicCode4 = "TOP200004";
+const TopicCode5 = "TOP200005";
+const TopicCode6 = "TOP200006";
+const TopicCode7 = "TOP200007";
+const TopicCode8 = "TOP200008";
+const TopicCode9 = "TOP200009";
+const TopicCode10 = "TOP2000010";
 
 const ExamCodePost = "EXAM10002";
 
@@ -60,12 +65,25 @@ var timeTopic6 = 0;
 var timeTopic7 = 0;
 var timeTopic8 = 0;
 var timeTopic9 = 0;
+var timeTopic10 = 0;
+
+const allTimeTopic1 = 0;
+const allTimeTopic2 = 0;
+const allTimeTopic3 = 0;
+const allTimeTopic4 = 0;
+const allTimeTopic5 = 0;
+const allTimeTopic6 = 0;
+const allTimeTopic7 = 0;
+const allTimeTopic8 = 0;
+const allTimeTopic9 = 0;
+const allTimeTopic10 = 0;
 
 const CourseCode1 = "COURSE1001";
 const CourseCode2 = "COURSE1002";
 const CourseCode3 = "COURSE1003";
 const CourseCode4 = "COURSE1004";
 const CourseCode5 = "COURSE1005";
+
 export default withRouter(class Course4 extends Component {
     constructor(props) {
         super(props);
@@ -86,11 +104,14 @@ export default withRouter(class Course4 extends Component {
             playingTopic7: false,
             playingTopic8: false,
             playingTopic9: false,
+            playingTopic10: false,
 
             examPost: [],
             percentExamPost: 0,
 
             isModaldetailCertificate: false,
+            isModalCertificate: false,
+
             course1: [],
             course2: [],
             course3: [],
@@ -111,11 +132,14 @@ export default withRouter(class Course4 extends Component {
         this.onProgressVedioTopic7 = this.onProgressVedioTopic7.bind(this);
         this.onProgressVedioTopic8 = this.onProgressVedioTopic8.bind(this);
         this.onProgressVedioTopic9 = this.onProgressVedioTopic9.bind(this);
+        this.onProgressVedioTopic10 = this.onProgressVedioTopic10.bind(this);
         this.onEndedVedio = this.onEndedVedio.bind(this);
         this.playingVedio = this.playingVedio.bind(this);
         this.updateTimeTopic = this.updateTimeTopic.bind(this);
-        this.info = this.info.bind(this);
+        this.showCertificate = this.showCertificate.bind(this);
+        this.showCertificateOK = this.showCertificateOK.bind(this);
         this.onClicktoCourse = this.onClicktoCourse.bind(this);
+        this.updateStatusTopic = this.updateStatusTopic.bind(this);
     }
 
     componentWillMount() {
@@ -197,7 +221,6 @@ export default withRouter(class Course4 extends Component {
                 form: assessment_course.data?.assessment
             });
         }
-
     }
 
     async onDownlode() {
@@ -237,6 +260,13 @@ export default withRouter(class Course4 extends Component {
                 }
             }
         }
+
+        const save = document.createElement('a');
+        save.href = pdf;
+        save.target = '_blank';
+        save.rel = "noopener noreferrer";
+        save.download = "ISO14971.pdf";
+        save.click();
     }
 
     playingVedio(topicCode) {
@@ -249,6 +279,7 @@ export default withRouter(class Course4 extends Component {
         var playTopic7 = false;
         var playTopic8 = false;
         var playTopic9 = false;
+        var playTopic10 = false;
 
         if (topicCode === TopicCode1) { playTopic1 = true }
         else if (topicCode === TopicCode2) { playTopic2 = true }
@@ -259,6 +290,7 @@ export default withRouter(class Course4 extends Component {
         else if (topicCode === TopicCode7) { playTopic7 = true }
         else if (topicCode === TopicCode8) { playTopic8 = true }
         else if (topicCode === TopicCode9) { playTopic9 = true }
+        else if (topicCode === TopicCode10) { playTopic10 = true }
 
         this.setState({
             playingTopic1: playTopic1,
@@ -269,7 +301,8 @@ export default withRouter(class Course4 extends Component {
             playingTopic6: playTopic6,
             playingTopic7: playTopic7,
             playingTopic8: playTopic8,
-            playingTopic9: playTopic9
+            playingTopic9: playTopic9,
+            playingTopic10: playTopic10
         })
     }
 
@@ -280,6 +313,7 @@ export default withRouter(class Course4 extends Component {
                 topicCode: topicCode,
                 courseCode: CourseCode,
                 recStatus: "A",
+                videoStatus: "N",
                 time: 0
             };
 
@@ -397,6 +431,15 @@ export default withRouter(class Course4 extends Component {
         }
     }
 
+    onProgressVedioTopic10(state) {
+        // state is time in vedio play
+        if (this.state.playingTopic10) { timeTopic10 += 1; }
+        if (timeTopic10 === 10) {
+            this.updateTimeTopic(TopicCode10, timeTopic10);
+            timeTopic10 = 0;
+        }
+    }
+
     onEndedVedio(Topic) {
         var time = 0;
         if (Topic === TopicCode1) {
@@ -444,6 +487,11 @@ export default withRouter(class Course4 extends Component {
             timeTopic9 = 0;
             this.setState({ playingTopic9: false })
         }
+        else if (Topic === TopicCode10) {
+            time = timeTopic10;
+            timeTopic10 = 0;
+            this.setState({ playingTopic10: false })
+        }
 
         this.updateTimeTopic(Topic, time);
     }
@@ -465,14 +513,90 @@ export default withRouter(class Course4 extends Component {
                 window.location.replace('/', false);
             });
         } else {
+            
+            if(TopicCode1 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic1) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode2 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic2) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode3 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic3) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode4 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic4) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode5 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic5) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode6 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic6) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode7 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic7) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode8 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic8) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode9 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic9) {
+                    this.updateStatusTopic(Topic)
+                }
+            } else if(TopicCode10 === Topic) {
+                if(update_time?.data[0]?.time >= allTimeTopic10) {
+                    this.updateStatusTopic(Topic)
+                }
+            }
             return update_time?.status;
         }
     }
 
+    async updateStatusTopic(Topic) {
+        if (this.state.topicAll?.filter((item) => item.topicCode === Topic)[0]?.videoStatus !== "A") {
+            var url_update_topic = ip + "/UserTopic/update/statustopic/" + CourseCode + "/" + Topic;
+            const update_topic = await (await axios.put(url_update_topic, {} , { headers: this.state.header })).data;
+            if (!update_topic?.status) {
+                swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                    this.setState({
+                        token: cookies.remove('token_user', { path: '/' }),
+                        user: cookies.remove('user', { path: '/' }),
+                        email: cookies.remove('email', { path: '/' })
+                    });
+                    window.location.replace('/', false);
+                });
+            } else {
+                var url_topic = ip + "/UserTopic/find/" + CourseCode;
+                const topic = await (await axios.get(url_topic, { headers: this.state.header })).data;
+                if (!topic?.status) {
+                    swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                        this.setState({
+                            token: cookies.remove('token_user', { path: '/' }),
+                            user: cookies.remove('user', { path: '/' }),
+                            email: cookies.remove('email', { path: '/' })
+                        });
+                        window.location.replace('/', false);
+                    });
+                } else {
+                    this.setState({
+                        topicAll: topic.data
+                    });
+                }
+            }
+        }
+    }
+
     onExamPost() {
-        if (this.state.topicAll.length >= TopicCount) {
+        if (this.state.topicAll?.filter((item) => item.videoStatus === "A").length >= TopicCount) {
             if (this.state.examPost.length !== 3) {
-                this.props.history.push("/ExamPost");
+                this.props.history.push("/ExamPostCourse2");
             } else {
                 swal("Warning!", "คุณทดสอบครบจำนวน 3 ครั้งแล้ว", "warning").then((value) => {
                 });
@@ -492,21 +616,11 @@ export default withRouter(class Course4 extends Component {
         }
     }
 
-    showdetailCertificate() {
-        this.setState({ isModaldetailCertificate: true });
+    showCertificate() {
+        this.setState({ isModalCertificate: true });
     }
-
-    info() {
-        Modal.info({
-            title: 'ข้อมูลการรับใบ Certificate',
-            width: "500px",
-            content: (
-                <div>
-                    <p id="certifi">สามารถติดต่อขอรับใบ Certificate ได้ที่หน่วยงานต้นสังกัด</p>
-                </div>
-            ),
-            onOk() { },
-        });
+    showCertificateOK() {
+        this.setState({ isModalCertificate: false });
     }
 
     async onClicktoCourse(course) {
@@ -541,7 +655,6 @@ export default withRouter(class Course4 extends Component {
             } else if (course === CourseCode5) {
                 this.props.history.push("/Course5");
             }
-
         }
     }
 
@@ -549,7 +662,9 @@ export default withRouter(class Course4 extends Component {
         return (
             <Container fluid id="bg-course">
                 <Row>
-                    <Image src={banner} fluid></Image>
+                    <Col xs={24} md={24} xl={24}>
+                        <Image src={banner} fluid></Image>
+                    </Col>
                 </Row>
                 {/* <Row id="row-headercourse">
                     <Breadcrumb>
@@ -566,25 +681,24 @@ export default withRouter(class Course4 extends Component {
                         <Image src={imgcourse} fluid></Image>
                     </Col>
                     <Col xs={24} md={12} xl={12}>
-                        <Row id="font-header">รายละเอียด</Row>
-                        <Row id="font-detail">หลักสูตร IEC 62304 มาตรฐาน Life Cycle ของการพัฒนาซอฟต์แวร์สำหรับอุปกรณ์การแพทย์และซอฟต์แวร์ด้านการแพทย์</Row>
+                        {/* <Row id="font-header">รายละเอียด</Row>
+                        <Row id="font-detail">ISO 14971:2019 การบริหารความเสี่ยงเครื่องมือแพทย์ (Risk Management for Medical Device)</Row> */}
                         <Row id="font-header">วัตถุประสงค์</Row>
-                        <Row id="font-detail2">1. เพื่อให้เข้าใจมาตรฐานที่เกี่ยวข้องกับซอฟต์แวร์เครื่องมือแพทย์ (ข้อกำหนดของมาตรฐาน การเชื่อมโยงระหว่างมาตรฐาน) รวมทั้งเพื่อให้เข้าใจคำนิยามต่างๆ และภาพรวมกระบวนการพัฒนาซอฟต์แวร์เครื่องมือแพทย์แบบ V-Model</Row>
-                        <Row id="font-detail2">2. เพื่อให้เข้าใจและประยุกต์การพัฒนาซอฟต์แวร์เครื่องมือแพทย์ตามหลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ให้สอดคล้องตาม มาตรฐาน IEC62304: 2006 +AMD1:2015</Row>
-                        <Row id="font-detail2">3. เพื่อให้เห็นภาพและเข้าใจการประยุกต์การพัฒนาซอฟต์แวร์เครื่องมือแพทย์ตามหลักการวิศวกรรมซอฟต์แวร์ให้สอดคล้องตาม มาตรฐาน IEC62304: 2006 +AMD1:2015 โดยการยกตัวอย่างกรณีศึกษา</Row>
-                        <Row id="font-detail2">4. เพื่อให้ทราบการประยุกต์ให้หน่วยงาน SME ที่พัฒนาซอฟต์แวร์ตามมาตรฐาน ISO/IEC 29110 ยกระดับให้เป็นมาตรฐาน ISO/IEC 62304 สำหรับการพัฒนาซอฟต์แวร์เครื่องมือแพทย์</Row>
+                        <Row id="font-detail2">1. เพื่อให้ได้รับความรู้และความเข้าใจในมาตรฐาน ISO 14971</Row>
+                        <Row id="font-detail2">2. เพื่อให้มีทักษะในการจัดทำระบบมาตรฐาน ISO 14971</Row>
+                        <Row id="font-detail2">3. เพื่อให้มีทัศนคติที่ดีในการจัดทำระบบซึ่งจะเป็นประโยชน์กับทุกคน</Row>
                     </Col>
                 </Row>
 
                 <Row id="row-headercourse">
                     <Col xs={24} md={12} xl={12}>
                         <Row>
-                            <Col xs={7} md={7} xl={7}><Image src={userprofile} id="teacher-img" fluid></Image></Col>
+                            <Col xs={7} md={7} xl={7}><Image src={TeacherCourse2} id="teacher-img" fluid></Image></Col>
                             <Col xs={17} md={17} xl={17}>
                                 <Row id="font-header">ผู้สอน</Row>
-                                <Row id="font-detail">ดร. พนิตา  เมนะเนตร</Row>
+                                <Row id="font-detail">นายแพทย์องอาจ วิจินธนสาร</Row>
                                 <Row id="font-header">หน่วยงานหลัก</Row>
-                                <Row id="font-detail">ศูนย์ทดสอบผลิตภัณฑ์ไฟฟ้าและอิเล็กทรอนิกส์ (PTEC) สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (สวทช.) กระทรวงอุดมศึกษาวิทยาศาสตร์ วิจัยและนวัตรกรรม</Row>
+                                <Row id="font-detail">ผู้อำนวยการโรงพยาบาลอมก๋อย</Row>
                             </Col>
                         </Row>
                     </Col>
@@ -592,11 +706,11 @@ export default withRouter(class Course4 extends Component {
                     <Col xs={24} md={12} xl={12}>
                         <Row>
                             <Col xs={24} md={24} xl={24} id="font-header1">ความสำเร็จในการทำแบบทดสอบ</Col>
-                            <Col xs={24} md={24} xl={12}>
+                            <Col xs={24} md={12} xl={12}>
                                 {
                                     (this.state.percentExamPost >= 80) ?
                                         <>
-                                            <Row id="btn-certificate"><Button onClick={this.info}>ข้อมูลการรับใบ Certificate</Button></Row>
+                                            <Row id="btn-certificate"><Button onClick={() => this.showCertificate()}>ข้อมูลการรับใบ Certificate</Button></Row>
                                         </>
                                         :
                                         <>
@@ -604,7 +718,7 @@ export default withRouter(class Course4 extends Component {
                                         </>
                                 }
                             </Col>
-                            <Col xs={24} md={24} xl={12} id="progress-course">
+                            <Col xs={24} md={12} xl={12} id="progress-course">
                                 <Progress type="circle" percent={this.state.percentExamPost} strokeColor={(this.state.percentExamPost >= 80) ? "#006633" : "#CC0000"} strokeWidth={13} width={130} />
                             </Col>
                             {/* {
@@ -623,7 +737,7 @@ export default withRouter(class Course4 extends Component {
                                         </Col>
                                         <Col xs={0} md={0} xl={12}></Col>
                                         <Col xs={24} md={24} xl={12} id="progress-course1">
-                                            <Row id="font-detail1">เหลือจำนวนการทำแบบทดสอบ {3 - this.state.examPost.length} ครั้ง</Row>
+                                            <Row id="font-detail1">คุณสามารถทดสอบได้อีก {3 - this.state.examPost.length} ครั้ง</Row>
                                         </Col>
                                     </>
                             } */}
@@ -657,7 +771,9 @@ export default withRouter(class Course4 extends Component {
                         >
                             <Panel header="เอกสารประกอบการเรียน" key="1">
                                 <Row id="row-iconcheck">
+
                                     <Col xs={20} md={22} xl={22} id="sub-header" style={{ cursor: "pointer" }} onClick={this.onDownlode}> - ดาวน์โหลดเอกสาร </Col>
+
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
                                             (this.state.course?.downlodeDoc === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
@@ -669,10 +785,10 @@ export default withRouter(class Course4 extends Component {
 
                             <Panel header="บทเรียน" key="2">
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 1. ภาพรวมมาตรฐานของซอฟต์แวร์เครื่องมือแพทย์ IEC60601 Cl.14 and IEC62304 </Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 1. ภาพรวม ISO 14971:2019 </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode1)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -680,7 +796,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         {/* <Image src={v1} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode1) }}></Image> */}
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic1}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -688,6 +804,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic1}
                                             onProgress={this.onProgressVedioTopic1}
                                             onEnded={() => { this.onEndedVedio(TopicCode1) }}
@@ -696,18 +819,16 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะมีมาตรฐานต่างๆ ที่เกี่ยวข้อง ในบทเรียนนี้มีวัตถุประสงค์ เพื่อให้เข้าใจมาตรฐานที่เกี่ยวข้องกับซอฟต์แวร์เครื่องมือแพทย์ (ข้อกำหนดของมาตรฐาน การเชื่อมโยงระหว่างมาตรฐาน) รวมทั้งเพื่อให้เข้าใจคำนิยามต่างๆ และภาพรวมกระบวนการพัฒนาซอฟต์แวร์เครื่องมือแพทย์แบบ V-Model  </Row>
+                                        <Row id="unit-detail">มาตรฐานฉบับนี้มีจุดมุ่งหมายเพื่อเป็นกรอบสำหรับผู้ผลิตในการบริหารความเสี่ยงที่เกี่ยวข้องกับเครื่องมือแพทย์ ซึ่งเกิดจากการประยุกต์ใช้ประสบการณ์ การทำความเข้าใจ และการตัดสินใจที่เป็นระบบ สำหรับกลุ่มผู้ผลิตระบบหรือเครื่องมือแพทย์โดยเฉพาะ ตั้งแต่ การออกแบบ การทดสอบต้นแบบ การผลิต การตรวจสอบ การจัดเก็บ และกระบวนการอื่น ๆ โดยใช้หลักการบริหารความเสี่ยงที่ได้จัดทำขึ้น ส่วนผู้ผลิตอื่นๆ ที่เกี่ยวข้อง เช่น อุตสาหกรรมเพื่อสุขภาพ สามารถใช้เป็นแนวทางในการพัฒนาและรักษาระบบกระบวนการบริหารความเสี่ยงได้เช่นกัน</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 2. Software Engineering Overview – Part 1
-                                    Software development Process (กระบวนการพัฒนาซอฟต์แวร์)
-                                    Software Project Management (การจัดการโครงการพัฒนาซอฟต์แวร์)
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 2. การตีความข้อกำหนด ข้อที่ 1-3
                                     </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode2)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
@@ -715,7 +836,7 @@ export default withRouter(class Course4 extends Component {
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         {/* <Image src={v2} fluid style={{ cursor: "pointer" }} onClick={() => { this.onCreateTopic(TopicCode2) }}></Image> */}
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic2}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -723,6 +844,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic2}
                                             onProgress={this.onProgressVedioTopic2}
                                             onEnded={() => { this.onEndedVedio(TopicCode2) }}
@@ -731,22 +859,22 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ เริ่มจาก Software development Process  ในบทเรียนนี้ มีวัตถุประสงค์ เพื่อเข้าใจและทราบการประยุกต์กระบวนc]tจัดการโครงการการพัฒนาซอฟต์แวร์เครื่องมือแพทย์ </Row>
+                                        <Row id="unit-detail">มาตรฐานฉบับนี้ระบุกระบวนการที่ผู้ผลิตเครื่องมือแพทย์สามารถชี้บ่งอันตรายที่เกี่ยวข้องกับเครื่องมือแพทย์ ประมาณการและประเมินผลความเสี่ยงเกี่ยวกับอันตรายเหล่านั้น การควบคุมความเสี่ยง และการเฝ้าระวังประสิทธิผลของการควบคุมดังกล่าว ทั้งนี้ การประเมินความเสี่ยงและการจัดทำระบบการจัดการคุณภาพในการผลิตเครื่องมือแพทย์ ถือเป็นข้อบังคับ/กฎหมายสำหรับการผลิตเครื่องมือแพทย์ โดยสามารถประยุกต์ใช้แนวทางการดำเนินงานตามมาตรฐานสากล เช่น ISO 13485, ISO 14971 ในการดำเนินการ ข้อกำหนดทั่วไปสำหรับการบริหารความเสี่ยง กล่าวถึง กระบวนการบริหารความเสี่ยง ความรับผิดชอบของฝ่ายบริหาร คุณสมบัติของบุคลากร แผนการบริหารความเสี่ยง และแฟ้มข้อมูลการบริหารความเสี่ยง</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 3. Software Engineering Overview – Part 1 Software Requirement Management (การจัดการโครงการพัฒนาซอฟต์แวร์)</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 3. การตีความข้อกำหนดที่ 4</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode3)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic3}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -754,6 +882,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic3}
                                             onProgress={this.onProgressVedioTopic3}
                                             onEnded={() => { this.onEndedVedio(TopicCode3) }}
@@ -762,22 +897,22 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software requirement Management  ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์กระบวนการจัดการความต้องการระบบ พร้อมยกตัวอย่าง Case study : A generic insulin infusion pump ของ Zhang Y, Jones PL, Jetley R. เพื่อแสดงให้เห็นการประยุกต์ใช้วิศวกรรมซอฟต์แวร์ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์ และแสดงตัวอย่างความสอดคล้องบางข้อกำหนดใน IEC62304</Row>
+                                        <Row id="unit-detail">การวิเคราะห์ความเสี่ยง (Risk analysis) ระบุถึง กระบวนการวิเคราะห์ความเสี่ยง วัตถุประสงค์การใช้งานและการระบุคุณลักษณะที่เกี่ยวข้องกับด้านความปลอดภัยของเครื่องมือแพทย์ ระบุความเป็นอันตราย และการคาดการณ์ถึงความเสี่ยงในแต่ละสถานการณ์ที่อันตราย</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 4. Software Engineering Overview – Part 1 Software Analysis and design (การวิเคราะห์และออกแบบซอฟต์แวร์)</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 4. การตีความข้อกำหนดที่ 5 - 6</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode4)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode4)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic4}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -785,6 +920,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic4}
                                             onProgress={this.onProgressVedioTopic4}
                                             onEnded={() => { this.onEndedVedio(TopicCode4) }}
@@ -793,22 +935,22 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software requirement Management  ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์กระบวนการวิเคราะห์และออกแบบซอฟต์แวร์ และ ทราบลักษณะการออกแบบสถาปัตยกรรม รวมทั้ง จัดทำการประเมิน Safety Classification ได้ พร้อมยกตัวอย่าง Case study : A generic insulin infusion pump ของ Zhang Y, Jones PL, Jetley R. เพื่อแสดงให้เห็นการประยุกต์ใช้วิศวกรรมซอฟต์แวร์ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์ และแสดงตัวอย่างความสอดคล้องบางข้อกำหนดใน IEC62304</Row>
+                                        <Row id="unit-detail">การประเมินความเสี่ยง (Risk evaluation) ในแต่ละสถานการณ์อันตราย (Hazardous Situation) ผู้ผลิตต้องตัดสินใจ ใช้เกณฑ์ตามที่กำหนดไว้ในแผนการบริหารความเสี่ยงหากจำเป็นต้องลดความเสี่ยงที่เกิดขึ้น แต่หากการความเสี่ยงเป็นสิ่งที่ไม่จำเป็น ก็ไม่จำเป็นต้องควบคุมความเสี่ยงต่อไป ทั้งนี้ผลลัพธ์ที่ได้ของการประเมินผลความเสี่ยงจะถูกบันทึกไว้ในแฟ้มข้อมูลการบริหารความเสี่ยง การควบคุมความเสี่ยง (Risk control) กล่าวถึงการลดความเสี่ยงที่จำเป็น จะต้องมีการกำหนดมาตรการในการควบคุมความเสี่ยง โดยมาตรการที่ใช้จะต้องมีความเหมาะสมสำหรับการลดความเสี่ยงลงให้อยู่ในระดับที่ยอมรับได้ ดำเนินการตามมาตรการควบคุมความเสี่ยง การประเมินผลความเสี่ยงที่เหลือ (Residual Risk) โดยการใช้เกณฑ์การประเมินตามที่ได้กำหนดไว้ในแผนการบริหารความเสี่ยง ส่วนความเสี่ยงที่เกิดจากมาตรการควบคุมความเสี่ยง จะต้องถูกนำมาทำการทบทวน ทั้งนี้ ความเสี่ยงใหม่หรือความเสี่ยงที่เพิ่มขึ้น จะต้องได้รับการจัดการตามขั้นตอนต่าง ๆ ของกระบวนการบริหารความเสี่ยง โดยผลของการทบทวนจะต้องถูกบันทึกไว้ในแฟ้มข้อมูลการบริหารความเสี่ยง</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 5. Software Engineering Overview – Part 2 Software Quality Management (การจัดการคุณภาพซอฟต์แวร์)</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 5. การตีความข้อกำหนดที่ 7-9</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode5)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode5)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic5}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -816,6 +958,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic5}
                                             onProgress={this.onProgressVedioTopic5}
                                             onEnded={() => { this.onEndedVedio(TopicCode5) }}
@@ -824,22 +973,22 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software Quality Management ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์การจัดการคุณภาพซอฟต์แวร์ ได้แก่ verification and validation และ review and testing</Row>
+                                        <Row id="unit-detail">ผู้ผลิตจะต้องประเมินความเสี่ยงที่เหลืออยู่โดยรวมว่าสามารถจัดการได้ตามแผนการจัดการความเสี่ยง และพิจารณาถึงประโยชน์ที่ได้รับจากจากการนำไปใช้งานเครื่องมือแพทย์ถ้ามีมากกว่าความเสี่ยงที่เหลืออยู่โดยรวมก็สามารถยอมรับความเสี่ยงที่เหลืออยู่โดยรวมได้ การรายงานการบริหารความเสี่ยง (Risk management report) ผู้ผลิตจะต้องมีการทบทวนกระบวนการของการบริหารความเสี่ยง โดยนำผลของการทบทวนจัดทำเป็นรายงานการบริหารความเสี่ยงและรวบรวมในแฟ้มข้อมูลการบริหารความเสี่ยง ผู้ผลิตจะต้องจัดทำระบบเพื่อรวบรวมและทบทวนข้อมูลเกี่ยวกับเครื่องมือแพทย์และอุปกรณ์ที่คล้ายกันในขั้นตอนการผลิตและหลังการผลิต</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 6. Software Engineering Overview – Part 2 Software Configuration Management </Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 6. มาตรฐานเครื่องมือแพทย์  (หลักเกณฑ์ที่ 1-2) </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode6)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode6)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic6}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -847,6 +996,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic6}
                                             onProgress={this.onProgressVedioTopic6}
                                             onEnded={() => { this.onEndedVedio(TopicCode6) }}
@@ -855,22 +1011,22 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software Configuration Management  ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์กระบวนการ Configuration และ Change</Row>
+                                        <Row id="unit-detail">เครื่องมือแพทย์ทั้งหมดที่ไม่ได้รุกล้ำเข้าไปในร่างกาย ซึ่งสัมผัสกับผิวหนังที่มีบาดแผล เครื่องมือแพทย์ทั้งหมดที่ไม่ได้รุกล้ำเข้าไปในร่างกาย ซึ่งใช้สำหรับเป็นทางผ่าน หรือเก็บของเหลวของร่างกาย หรือเนื้อเยื่อของร่างกายของเหลวอื่น หรือ แก๊ส</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 7. Software Engineering Overview – Part 2 Software Risk Management </Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 7. มาตรฐานเครื่องมือแพทย์  (หลักเกณฑ์ที่ 3-5) </Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode7)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode7)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic7}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -878,6 +1034,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic7}
                                             onProgress={this.onProgressVedioTopic7}
                                             onEnded={() => { this.onEndedVedio(TopicCode7) }}
@@ -886,22 +1049,22 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software Risk Management  ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์กระบวนการประเมินความเสี่ยง ตาม ISO14971 สำหรับซอฟต์แวร์เครื่องมือแพทย์ พร้อมยกตัวอย่าง Case study : A generic insulin infusion pump ของ Zhang Y, Jones PL, Jetley R. เพื่อแสดงให้เห็นการประยุกต์ใช้วิศวกรรมซอฟต์แวร์ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์ และแสดงตัวอย่างความสอดคล้องบางข้อกำหนดใน IEC62304</Row>
+                                        <Row id="unit-detail">เครื่องมือแพทย์ดังกล่าวรุกล้ำเข้าไปในร่างกายทางอ้อม เพราะมุ่งหมายสำหรับใช้ปรับปรุงองค์ประกอบทางชีวภาพ หรือทางเคมีของสาร ซึ่งในที่สุดจะนำสารดังกล่าวเข้าสู่ร่างกาย (รายละเอียดอยู่ในหมายเหตุหลักเกณฑ์ที่ ๔)โดยทั่วไป เครื่องมือแพทย์ดังกล่าวจะใช้ร่วมกับเครื่องมือแพทย์ที่มีกำลังที่อยู่ในขอบข่ายตามหลักเกณฑ์ที่ ๙ หรือ ๑๑) เครื่องมือแพทย์ตามหลักเกณฑ์นี้ ไม่ได้สัมผัสผู้ป่วยหรือสัมผัสผิวหนังปกติไม่มีบาดแผลเครื่องมือแพทย์ทั้งหมดที่รุกล้ำเข้าไปในร่างกายผ่านช่องเปิดของร่างกาย (โดยไม่รวมการรุกล้ำเข้าไปในร่างกายด้วยวิธีทางศัลยกรรม) ไม่ได้เพื่อเชื่อมต่อเข้ากับเครื่องมือแพทย์ที่มีกำลัง หรือมุ่งหมายเพื่อเชื่อมต่อกับเครื่องมือแพทย์ประเภทที่ ๑ เท่านั้น</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 8. Software Engineering Overview – Part 2 Software Maintenance & Re-Engineering Supporting Tools for Software Engineering</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 8. มาตรฐานเครื่องมือแพทย์  (หลักเกณฑ์ที่ 6-10)</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode8)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode8)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic8}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -909,6 +1072,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic8}
                                             onProgress={this.onProgressVedioTopic8}
                                             onEnded={() => { this.onEndedVedio(TopicCode8) }}
@@ -917,22 +1087,22 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">ในการพัฒนาซอฟต์แวร์เครื่องมือแพทย์จะใช้หลักการวิศวกรรมซอฟต์แวร์ (Software Engineering) ซึ่งมีหลายองค์ประกอบที่ทำให้ ซอฟต์แวร์มีคุณภาพ ส่งมอบทันเวลาและลดค่าใช้จ่าย ซึ่งหลักการวิศวกรรมซอฟต์แวร์ ส่วน Software Maintenance & Re-Engineering ในบทเรียนนี้ มีวัตถุประสงค์เพื่อเข้าใจและทราบการประยุกต์กระบวนการบำรุงรักษาซอฟต์แวร์และกระบวนการจัดการปัญหา และในส่วน Supporting Tools for Software Engineering ในบทเรียนนี้ มีวัตถุประสงค์เพื่อทราบเครื่องมือสนับสนุนการพัฒนาซอฟต์แวร์เครื่องมือแพทย์</Row>
+                                        <Row id="unit-detail">เครื่องมือแพทย์ที่รุกล้ำเข้าไปในร่างกายด้วยวิธีทางศัลยกรรมทั้งหมดที่มุ่งหมายสำหรับใช้งานชั่วครู่เครื่องมือแพทย์รุกล้ำเข้าไปในร่างกายด้วยวิธีทางศัลยกรรมทั้งหมดที่มุ่งหมายสำหรับใช้งานระยะสั้น เครื่องมือแพทย์ที่ฝังในร่างกายทั้งหมด และรุกล้ำเข้าไปในร่างกายด้วยวิธีทางศัลยกรรมที่มุ่งหมายสำหรับใช้งานระยะยาว เครื่องมือแพทย์ที่มีกำลังที่ใช้ในการรักษาทั้งหมดที่มุ่งหมายเพื่อบริหารหรือแลกเปลี่ยนพลังงาน เครื่องมือแพทย์ที่มีกำลังทั้งหมดที่ มุ่งหมายเพื่อควบคุมหรือติดตามสมรรถนะของเครื่องมือแพทย์ที่มีกำลังที่ใช้ในการรักษาประเภทที่ ๓ หรือมุ่งหมายเพื่อทำให้เกิดผลโดยตรงต่อสมรรถนะของเครื่องมือแพทย์นั้น</Row>
                                     </Col>
                                 </Row>
 
                                 <Row id="row-iconcheck">
-                                    <Col xs={20} md={22} xl={22} id="sub-header"> 9. Applying ISO/IEC 29110 to ISO/IEC 62304 for Medical device software SME</Col>
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 9. มาตรฐานเครื่องมือแพทย์  (หลักเกณฑ์ที่ 10-16)</Col>
                                     <Col xs={2} md={2} xl={2} id="icon-chack">
                                         {
-                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode9)[0]?.recStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode9)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
                                         }
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col xs={24} md={12} xl={12} id="video-course1">
                                         <ReactPlayer
-                                            url={testV1}
+                                            url={Topic9}
                                             className='react-player'
                                             width='100%'
                                             height='100%'
@@ -940,6 +1110,13 @@ export default withRouter(class Course4 extends Component {
                                             playsinline={true}
                                             playIcon={true}
                                             pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
                                             playing={this.state.playingTopic9}
                                             onProgress={this.onProgressVedioTopic9}
                                             onEnded={() => { this.onEndedVedio(TopicCode9) }}
@@ -948,7 +1125,45 @@ export default withRouter(class Course4 extends Component {
                                     </Col>
                                     <Col xs={24} md={10} xl={10}>
                                         <Row id="unit-header">รายละเอียด</Row>
-                                        <Row id="unit-detail">อธิบายการประยุกต์ให้หน่วยงาน SME ที่พัฒนาซอฟต์แวร์ตามมาตรฐาน  ISO/IEC 29110 ยกระดับให้เป็นมาตรฐาน ISO/IEC 62304 สำหรับการพัฒนาซอฟต์แวร์เครื่องมือแพทย์ </Row>
+                                        <Row id="unit-detail">เครื่องมือแพทย์ที่มีกำลังที่มุ่งหมายสำหรับการวินิจฉัย เครื่องมือแพทย์ตามหลักเกณฑ์นี้ส่วนใหญ่เป็นระบบนำส่งยาหรือเครื่องมือสำหรับดมยาสลบ เครื่องมือแพทย์ที่มีกำลังที่ไม่เข้าข่ายหลักเกณฑ์ดังกล่าวข้างต้นเครื่องมือแพทย์ที่มียา (ตามกฎหมายว่าด้วยยา) เป็นส่วนประกอบรวมเข้าไปเป็นส่วนหนึ่งของเครื่องมือแพทย์ เพื่อช่วยเสริมการทำงานของเครื่องมือแพทย์ต่อร่างกาย เครื่องมือแพทย์ทั้งหมดที่ผลิตหรือ มีส่วนของเนื้อเยื่อหรืออนุพันธ์ของสัตว์ที่ไม่มีชีวิตประกอบอยู่ เครื่องมือแพทย์ทั้งหมดที่มุ่งหมายเฉพาะเพื่อใช้สำหรับทำให้เครื่องมือแพทย์ปราศจากเชื้อ หรือฆ่าเชื้อเมื่อสิ้นสุดขั้นตอน เครื่องมือแพทย์ทั้งหมดที่ใช้สำหรับการคุมกำเนิด หรือป้องกันโรคติดเชื้อจากการมีเพศสัมพันธ์ </Row>
+                                    </Col>
+                                </Row>
+
+                                <Row id="row-iconcheck">
+                                    <Col xs={20} md={22} xl={22} id="sub-header"> 10. บทสรุป มาตรฐาน ISO 14971:2019</Col>
+                                    <Col xs={2} md={2} xl={2} id="icon-chack">
+                                        {
+                                            (this.state.topicAll?.filter((item) => item.topicCode === TopicCode10)[0]?.videoStatus === "A") ? <AiFillCheckSquare style={{ fontSize: '250%', color: '#00794C' }} /> : <BorderOutlined style={{ fontSize: '250%', color: '#DDDDDD' }} />
+                                        }
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={24} md={12} xl={12} id="video-course1">
+                                        <ReactPlayer
+                                            url={Topic10}
+                                            className='react-player'
+                                            width='100%'
+                                            height='100%'
+                                            controls={true}
+                                            playsinline={true}
+                                            playIcon={true}
+                                            pip={false}
+                                            config={{
+                                                file: {
+                                                    attributes: {
+                                                        controlsList: 'nodownload'
+                                                    }
+                                                }
+                                            }}
+                                            playing={this.state.playingTopic10}
+                                            onProgress={this.onProgressVedioTopic10}
+                                            onEnded={() => { this.onEndedVedio(TopicCode10) }}
+                                            onPlay={() => { this.onCreateTopic(TopicCode10) }}
+                                            fluid />
+                                    </Col>
+                                    <Col xs={24} md={10} xl={10}>
+                                        <Row id="unit-header">รายละเอียด</Row>
+                                        <Row id="unit-detail">การนำมาตรฐานระบบการบริหารจัดการ ISO 14971 มีส่วนช่วยสร้างประโยชน์ดังต่อไปนี้ องค์กรทราบถึงความเสี่ยงและระดับผลกระทบที่จะเกิดขึ้นของเครื่องมือแพทย์ เพื่อนำไปใช้ในการจัดการความเสี่ยงและแก้ไขปรับปรุงผลิตภัณฑ์ให้มีความปลอดภัย เป็นเครื่องมือที่นำมาประยุกต์ใช้เพื่อให้ดำเนินการได้สอดคล้องตามกฎหมายหรือข้อบังคับ เช่น CE Marking (MDD93/42/EEC) กฎหมายเครื่องมือแพทย์ของอาเซียน หรือ AMDD (ASEAN Medical Device Directive)</Row>
                                     </Col>
                                 </Row>
 
@@ -992,19 +1207,25 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={2} xl={2}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit1} style={{ width: "100%", cursor: "pointer" }} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode1) }} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit1} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button>
+                                    {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode1) }}>รายละเอียดหลักสูตร</Button> */}
+                                    <Button disabled>รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit3} style={{ width: "100%", cursor: "pointer" }} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode3) }} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit3} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button>
+                                    {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode2) }}>รายละเอียดหลักสูตร</Button> */}
+                                    <Button disabled>รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={1} md={0} xl={0}></Col>
@@ -1012,24 +1233,42 @@ export default withRouter(class Course4 extends Component {
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit4} style={{ width: "100%", cursor: "pointer" }} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode4) }} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit4} id="img-course" style={{ width: "100%", cursor: "no-drop", filter: "grayscale(1.0)" }} fluid></Image>
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
-                                    <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode4) }}>รายละเอียดหลักสูตร</Button>
+                                    {/* <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode3) }}>รายละเอียดหลักสูตร</Button> */}
+                                    <Button disabled>รายละเอียดหลักสูตร</Button>
                                 </Row>
                             </Col>
                             <Col xs={1} md={1} xl={1}></Col>
                             <Col xs={10} md={4} xl={4} id="course-menu">
                                 <Row id="course1-menu">
-                                    <Image src={unit5} style={{ width: "100%", cursor: "pointer" }} id="img-course" onClick={() => { this.onClicktoCourse(CourseCode5) }} fluid></Image>
+                                    <Col xs={24} md={24} xl={24}>
+                                        <Image src={unit5} id="img-course" style={{ width: "100%", cursor: "pointer" }} onClick={() => { this.onClicktoCourse(CourseCode5) }} fluid></Image>
+                                    </Col>
                                 </Row>
                                 <Row id="row-btn-coursedetail">
                                     <Button id="btn-coursedetail" onClick={() => { this.onClicktoCourse(CourseCode5) }}>รายละเอียดหลักสูตร</Button>
+                                    {/* <Button disabled>รายละเอียดหลักสูตร</Button> */}
                                 </Row>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
+
+                <Modal
+                    title="ข้อมูลการรับใบ Certificate"
+                    footer={[
+                        <Button key="submit" type="primary" onClick={this.showCertificateOK}>
+                            ตกลง
+                        </Button>,
+                    ]}
+                    visible={this.state.isModalCertificate}
+                    width={500}>
+                    โปรดติดต่อรับใบ Certificate ที่ต้นสังกัดของท่าน
+                </Modal>
 
             </Container>
         );

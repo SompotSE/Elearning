@@ -64,15 +64,15 @@ var timeTopic7 = 0;
 var timeTopic8 = 0;
 var timeTopic9 = 0;
 
-const allTimeTopic1 = 2401;
-const allTimeTopic2 = 1272;
-const allTimeTopic3 = 1497;
-const allTimeTopic4 = 1497;
-const allTimeTopic5 = 1563;
-const allTimeTopic6 = 783;
-const allTimeTopic7 = 1749;
-const allTimeTopic8 = 1025;
-const allTimeTopic9 = 1157;
+const allTimeTopic1 = 2241;
+const allTimeTopic2 = 1112;
+const allTimeTopic3 = 1337;
+const allTimeTopic4 = 1337;
+const allTimeTopic5 = 1403;
+const allTimeTopic6 = 623;
+const allTimeTopic7 = 1589;
+const allTimeTopic8 = 865;
+const allTimeTopic9 = 997;
 
 
 const CourseCode1 = "COURSE1001";

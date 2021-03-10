@@ -78,18 +78,18 @@ var timeTopic11 = 0;
 var timeTopic12 = 0;
 
 //Add New
-const allTimeTopic1 = 3916;
-const allTimeTopic2 = 3826;
-const allTimeTopic3 = 1247;
-const allTimeTopic4 = 1722;
-const allTimeTopic5 = 727;
-const allTimeTopic6 = 2052;
-const allTimeTopic7 = 179;
-const allTimeTopic8 = 679;
-const allTimeTopic9 = 1693;
-const allTimeTopic10 = 195;
-const allTimeTopic11 = 560;
-const allTimeTopic12 = 6743;
+const allTimeTopic1 = 3756;
+const allTimeTopic2 = 3666;
+const allTimeTopic3 = 1087;
+const allTimeTopic4 = 1562;
+const allTimeTopic5 = 567;
+const allTimeTopic6 = 1892;
+const allTimeTopic7 = 219;
+const allTimeTopic8 = 519;
+const allTimeTopic9 = 1533;
+const allTimeTopic10 = 235;
+const allTimeTopic11 = 420;
+const allTimeTopic12 = 6583;
 ////////////
 
 const CourseCode1 = "COURSE1001";
@@ -749,8 +749,8 @@ export default withRouter(class Course4 extends Component {
                         <Image src={imgcourse} fluid></Image>
                     </Col>
                     <Col xs={24} md={12} xl={12}>
-                        <Row id="font-header">รายละเอียด</Row>
-                        <Row id="font-detail">หลักสูตร IEC 60601  Series มาตรฐานความปลอดภัยและความมีประสิทธิภาพของเครื่องมือแพทย์	ที่เกี่ยวข้องกับอุปกรณ์ไฟฟ้าอิเล็กทรอนิกส์</Row>
+                        {/* <Row id="font-header">รายละเอียด</Row>
+                        <Row id="font-detail">หลักสูตร IEC 60601  Series มาตรฐานความปลอดภัยและความมีประสิทธิภาพของเครื่องมือแพทย์	ที่เกี่ยวข้องกับอุปกรณ์ไฟฟ้าอิเล็กทรอนิกส์</Row> */}
                         <Row id="font-header">วัตถุประสงค์</Row>
                         <Row id="font-detail2">1. เพื่อยกระดับฐานความรู้ของบุคลากรของภาคอุตสาหกรรม และผู้สนใจ ให้มีความรู้ ความเข้าใจถึงแนวโน้มการบังคับใช้มาตรฐานที่เกี่ยวข้องกับผลิตภัณฑ์เครื่องมือแพทย์ประเภทไฟฟ้าอิเล็กทรอนิกส์ และทราบถึงความสำคัญของมาตรฐาน การทดสอบ การทดสอบตามมาตรฐาน IEC60601 ในด้านต่างๆ อาทิ เช่น ด้านความปอดภัย ด้านความเข้ากันได้ทางแม่เหล็กไฟฟ้า EMC และด้านมาตรฐานเฉพาะของเครื่องมือแพทย์ฯ </Row>
                         <Row id="font-detail2">2. เพื่อนำความรู้ที่ได้ไปดำเนินการวางแผนการพัฒนา ปรับปรุงประสิทธิภาพผลิตภัณฑ์เครื่องมือแพทย์เพื่อลดความเสี่ยงจากการสูญเสียเวลา ค่าใช้จ่าย และเพิ่มโอกาสทางธุรกิจ แก่การผลิตเครื่องมือแพทย์</Row>

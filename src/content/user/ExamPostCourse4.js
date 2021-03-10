@@ -22,6 +22,7 @@ const cookies = new Cookies();
 const ip = config.ipServer;
 const CourseCode = "COURSE1004";
 const Num = 20;
+const TopicCount = 9;
 
 const ExamCodePost = "EXAM10002";
 
@@ -64,6 +65,26 @@ export default withRouter(class ExamPost extends Component {
     }
 
     async componentDidMount() {
+
+        var url_topic = ip + "/UserTopic/find/" + CourseCode;
+        const topic = await (await axios.get(url_topic, { headers: this.state.header })).data;
+        if (!topic?.status) {
+            swal("Error!", "เกิดข้อผิดพลาดในการเข้าสู่ระบบ \n กรุณาเข้าสู่ระบบใหม่", "error").then((value) => {
+                this.setState({
+                    token: cookies.remove('token_user', { path: '/' }),
+                    user: cookies.remove('user', { path: '/' }),
+                    email: cookies.remove('email', { path: '/' })
+                });
+                window.location.replace('/', false);
+            });
+        } else {
+            if (topic.data?.filter((item) => item.videoStatus === "A").length < TopicCount) {
+                swal("Warning!", "คุณยังเรียนไม่ครบทุกบทเรียน", "warning").then((value) => {
+                    this.props.history.push("/Course4");
+                });
+            }
+        }
+
         var url_exam_post = ip + "/UserExamination/find/" + CourseCode + "/" + ExamCodePost;
         const exam_post = await (await axios.get(url_exam_post, { headers: this.state.header })).data;
         if (!exam_post?.status) {

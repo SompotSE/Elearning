@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 
 import Home from "../content/Home";
-import Register from "../content/Register"
+// import Register from "../content/Register"
 import Login from "../content/Login"
 import Logout from "../content/Logout"
-import ForgetPass from "../content/ForgetPass";
+// import ForgetPass from "../content/ForgetPass";
 // import ChangePass from "../content/ChangePass";
 import Form from "../content/Form";
 import ConfirmRegister from "../content/ConfirmRegister";
@@ -18,6 +18,9 @@ import Course4 from "../content/user/Course4";
 import Course5 from "../content/user/Course5";
 import HomeUser from "../content/user/HomeUser";
 import ExamPre from "../content/user/ExamPre";
+// import ExamPostCourse1 from "../content/user/ExamPostCourse1";
+// import ExamPostCourse2 from "../content/user/ExamPostCourse2";
+// import ExamPostCourse3 from "../content/user/ExamPostCourse3";
 import ExamPostCourse4 from "../content/user/ExamPostCourse4";
 import ExamPostCourse5 from "../content/user/ExamPostCourse5";
 
@@ -41,15 +44,18 @@ export default class Index extends Component {
                 <Route exact path="/Course4" component={Course4} />
                 <Route exact path="/Course5" component={Course5} />
                 <Route exact path="/ExamPre" component={ExamPre} />
+                {/* <Route exact path="/ExamPostCourse1" component={ExamPostCourse1} />
+                <Route exact path="/ExamPostCourse2" component={ExamPostCourse2} />
+                <Route exact path="/ExamPostCourse3" component={ExamPostCourse3} /> */}
                 <Route exact path="/ExamPostCourse4" component={ExamPostCourse4} />
                 <Route exact path="/ExamPostCourse5" component={ExamPostCourse5} />
                 {/* <Route exact path="/ChangePass" component={ChangePass} /> */}
                 <Route exact path="/Form/:courseCode" component={Form} />
                 <Route exact path="/ConfirmRegister/:ConfirmRegisterKey" component={ConfirmRegister} />
 
-                <Route exact path="/Register" component={Register} />
+                {/* <Route exact path="/Register" component={Register} /> */}
                 <Route exact path="/Login" component={Login} />
-                <Route exact path="/ForgetPass" component={ForgetPass} />
+                {/* <Route exact path="/ForgetPass" component={ForgetPass} /> */}
                 <Route exact path="/Logout" component={Logout} />
 
                 <Route exact path="/Admin/Home" component={AdminHome} />
